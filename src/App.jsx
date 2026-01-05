@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster as Sonner } from "@/components/ui/Sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
@@ -36,7 +36,6 @@ import { getMe } from "./service/authService";
 import MyProfile from "./pages/public/MyProfile";
 import AddAddressModal from "./pages/public/order/AddAddressModal";
 import SignupGuard from "./pages/auth/SignupGuard";
-import { Toaster } from "./components/ui/Toaster";
 
 const queryClient = new QueryClient();
 
@@ -65,7 +64,6 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       {/* <TooltipProvider> */}
       <CartProvider>
-        <Toaster/> {/*alert*/}
         <Sonner /> {/***/}
         <BrowserRouter>
           <Routes>
