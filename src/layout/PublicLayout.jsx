@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "@/layout/Navbar";
 import Footer from "./Footer";
 import { useEffect } from "react";
-import useAuthStore from "../store/useAuthStore";
+import useAuthStore from "@/store/useAuthStore";
 
 export default function PublicLayout() {
   const location = useLocation();

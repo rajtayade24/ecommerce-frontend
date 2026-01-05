@@ -3,9 +3,9 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { getUserById, setUserActive } from "../../service/adminService";
+import { getUserById, setUserActive } from "@/service/adminService";
 import { Eye } from "lucide-react";
-import { Card } from "../../components/ui/Card";
+import { Card } from "@/components/ui/Card";
 
 function statusBadge(active) {
   return active ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";

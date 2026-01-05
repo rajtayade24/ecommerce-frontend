@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { getUsers, setUserActive } from "../service/adminService";
+import { getUsers, setUserActive } from "@/service/adminService";
 
 const PAGE_SIZE = 8;
 

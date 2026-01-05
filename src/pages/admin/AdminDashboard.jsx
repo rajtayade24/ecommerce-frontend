@@ -11,9 +11,9 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getAllCategoriesCount, getAllOrdersCount, getAllProductsCount, getAllUsersCount, getRevenue, postCategory } from "../../service/adminService";
-import OrdersTable from "../../components/OrdersTable";
-import { useOrder } from "../../hooks/useOrder";
+import { getAllCategoriesCount, getAllOrdersCount, getAllProductsCount, getAllUsersCount, getRevenue, postCategory } from "@/service/adminService";
+import OrdersTable from "@/components/OrdersTable";
+import { useOrder } from "@/hooks/useOrder";
 
 /**
  * AdminDashboard
@@ -211,7 +211,7 @@ export default function AdminDashboard() {
           </div>
 
           <OrdersTable orders={orders.slice(0, 3)} />
-          
+
           <Link to="/admin/orders">
             <div className="flex justify-center">
               <Button>

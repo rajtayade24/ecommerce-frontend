@@ -4,8 +4,8 @@ import { ShoppingCart, Leaf, Star, Check } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
-import { Card } from "../ui/Card";
-import useAuthStore from "../../store/useAuthStore";
+import { Card } from "@/components/ui/Card";
+import useAuthStore from "@/store/useAuthStore";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ export const ProductCard = ({ product }) => {
 
     setQty(0);
   };
-  if (!product) return null; 
+  if (!product) return null;
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}

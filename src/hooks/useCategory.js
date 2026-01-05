@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getCategories } from "../service/userService";
-import {postCategory, deleteCategory } from "../service/adminService";
+import { getCategories } from "@/service/userService";
+import { postCategory, deleteCategory } from "@/service/adminService";
 
 const PAGE_SIZE = 4;
 

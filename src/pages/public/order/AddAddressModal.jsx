@@ -10,10 +10,10 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { addUserAddress } from '@/service/authService';
-import { Input } from '../../../components/ui/Input';
-import { DialogDescription } from '../../../components/ui/Dialog';
-import useAuthStore from '../../../store/useAuthStore';
-import UnAuthorizedUser from '../UnAuthorizedUser';
+import { Input } from '@/components/ui/Input';
+import { DialogDescription } from '@/components/ui/Dialog';
+import useAuthStore from '@/store/useAuthStore';
+import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 
 const AddAddressModal = ({ open, onClose, onAdded }) => {
   const { isAuthenticated } = useAuthStore();

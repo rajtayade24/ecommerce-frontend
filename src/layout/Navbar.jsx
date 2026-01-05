@@ -10,15 +10,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
-import useAuthStore from "../store/useAuthStore";
+import useAuthStore from "@/store/useAuthStore";
 import ProfileMenu from "@/components/ProfileMenu";
-import { getAllCarts, getSearchSuggestions } from "../service/userService";
-import { Card } from "../components/ui/Card";
-import { ScrollArea } from "../components/ui/ScrollArea";
-import { cn } from "../lib/utils";
-import TopNavigations from "../components/TopNavigations";
-import { DropdownMenu,  DropdownMenuTrigger } from "../components/ui/DropdownMenu";
-import { useSignupStore } from "../store/useSignupStore";
+import { getAllCarts, getSearchSuggestions } from "@/service/userService";
+import { Card } from "@/components/ui/Card";
+import { ScrollArea } from "@/components/ui/ScrollArea";
+import { cn } from "@/lib/utils";
+import TopNavigations from "@/components/TopNavigations";
+import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
+import { useSignupStore } from "@/store/useSignupStore";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -266,13 +266,13 @@ export const Navbar = () => {
 // import { Input } from "@/components/ui/input";
 // import { Badge } from "@/components/ui/badge";
 // import { useEffect, useState } from "react";
-// import useAuthStore from "../store/useAuthStore";
+// import useAuthStore from "@/store/useAuthStore";
 // import ProfileMenu from "@/components/ProfileMenu";
-// import { getAllCarts, getSearchSuggestions } from "../service/userService";
-// import { Card } from "../components/ui/Card";
-// import { ScrollArea } from "../components/ui/ScrollArea";
-// import { cn } from "../lib/utils";
-// import TopNavigations from "../components/TopNavigations";
+// import { getAllCarts, getSearchSuggestions } from "@/service/userService";
+// import { Card } from "@/components/ui/Card";
+// import { ScrollArea } from "@/components/ui/ScrollArea";
+// import { cn } from "@/lib/utils";
+// import TopNavigations from "@/components/TopNavigations";
 
 // export const Navbar = () => {
 //   const navigate = useNavigate();

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Edit, Trash2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useCategory } from "../../hooks/useCategory";
-import { Card } from "../../components/ui/Card";
+import { useCategory } from "@/hooks/useCategory";
+import { Card } from "@/components/ui/Card";
 
 export default function ManageCategories() {
   const {
@@ -20,7 +20,7 @@ export default function ManageCategories() {
 
   const [query, setQuery] = useState("");
 
-  
+
   // filter categories by search query
   const filtered = categories.filter((c) =>
     `${c.name} ${c.id} ${c.description}`.toLowerCase().includes(query.toLowerCase())

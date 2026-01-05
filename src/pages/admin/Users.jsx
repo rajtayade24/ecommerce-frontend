@@ -4,9 +4,9 @@ import { Eye, UserCheck, UserX } from "lucide-react";
 import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useUser } from "../../hooks/useUser";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/Select";
-import { Card } from "../../components/ui/Card";
+import { useUser } from "@/hooks/useUser";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
+import { Card } from "@/components/ui/Card";
 
 const statusBadge = (active) =>
   active ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";

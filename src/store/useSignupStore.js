@@ -1,7 +1,7 @@
 // src/store/useSignupStore.js
 import { create } from "zustand";
 import { signup as signupService, login as loginService } from "@/service/authService";
-import { sendOtp, verifyOtp } from "../service/authService";
+import { sendOtp, verifyOtp } from "@/service/authService";
 
 export const useSignupStore = create((set, get) => ({
   // form fields used across steps

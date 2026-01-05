@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Edit, Trash2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useProduct } from "../../hooks/useProduct";
-import { Card } from "../../components/ui/Card";
+import { useProduct } from "@/hooks/useProduct";
+import { Card } from "@/components/ui/Card";
 
 export default function ManageProducts() {
   const navigate = useNavigate();

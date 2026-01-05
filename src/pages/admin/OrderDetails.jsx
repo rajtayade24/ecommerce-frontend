@@ -12,9 +12,9 @@ import {
   Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { formatMoney } from "../../utils/formatMoney";
-import { getOrderById, markOrderComplete, cancelOrder } from "../../service/adminService";
-import { Card } from "../../components/ui/Card";
+import { formatMoney } from "@/utils/formatMoney";
+import { getOrderById, markOrderComplete, cancelOrder } from "@/service/adminService";
+import { Card } from "@/components/ui/Card";
 
 const STATUS_BADGE = {
   PENDING: "bg-gray-100 text-gray-800",

@@ -2,8 +2,8 @@ import React from 'react'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { Link, useNavigate } from "react-router-dom";
-import { useSignupStore } from '../../store/useSignupStore';
-import useAuthStore from '../../store/useAuthStore';
+import { useSignupStore } from '@/store/useSignupStore';
+import useAuthStore from '@/store/useAuthStore';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-console.log(identifier, password);
+    console.log(identifier, password);
     if (!identifier) {
       useSignupStore.setState({ error: "Email or mobile is required" });
       return;

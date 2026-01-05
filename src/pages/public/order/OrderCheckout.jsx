@@ -6,10 +6,10 @@ import useAuthStore from '@/store/useAuthStore';
 import { Button } from '@/components/ui/Button';
 import { getCartItems, postOrder } from '@/service/userService';
 import OrderItemCard from '@/components/card/OrderItemCard';
-import { Label } from '../../../components/ui/Label';
-import { Card } from '../../../components/ui/Card';
+import { Label } from '@/components/ui/Label';
+import { Card } from '@/components/ui/Card';
 import AddAddressModal from './AddAddressModal';
-import UnAuthorizedUser from '../UnAuthorizedUser';
+import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 
 const OrderCheckout = () => {
   const { state } = useLocation();

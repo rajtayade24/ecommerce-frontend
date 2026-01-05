@@ -4,13 +4,13 @@ import {
   Dialog,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import useAuthStore from "../../store/useAuthStore";
-import { formatDate } from "../../utils/formatDate";
-import { getUserAddress } from "../../service/authService";
-import { Button } from "../../components/ui/Button";
-import { Label } from "../../components/ui/Label";
-import { EditProfile } from "../../components/EditProfile";
-import UnAuthorizedUser from "./UnAuthorizedUser";
+import useAuthStore from "@/store/useAuthStore";
+import { formatDate } from "@/utils/formatDate";
+import { getUserAddress } from "@/service/authService";
+import { Button } from "@/components/ui/Button";
+import { Label } from "@/components/ui/Label";
+import { EditProfile } from "@/components/EditProfile";
+import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
 // MyProfile.jsx
 export default function MyProfile() {
   const navigate = useNavigate();
@@ -50,9 +50,9 @@ export default function MyProfile() {
     .map((s) => s.charAt(0))
     .slice(0, 2)
     .join("");
- 
- 
-    if (!user)
+
+
+  if (!user)
     return (
       <div className="p-6 max-w-xl mx-auto text-center">
         <p>No user data. Please login.</p>

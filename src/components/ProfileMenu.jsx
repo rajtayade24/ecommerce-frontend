@@ -11,8 +11,8 @@ import {
   LogOut,
 } from "lucide-react"
 import { Button } from './ui/Button'
-import useAuthStore from '../store/useAuthStore'
-import { useSignupStore } from '../store/useSignupStore'
+import useAuthStore from '@/store/useAuthStore'
+import { useSignupStore } from '@/store/useSignupStore'
 import { Link, useNavigate } from "react-router-dom";
 import { Dialog, DialogTrigger } from './ui/Dialog'
 import DialogContentImpl from './DialogContentImpl'

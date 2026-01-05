@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import OrderCard from '@/components/card/OrderCard';
 import { Button } from '@/components/ui/button';
 import useMyOrders from '@/hooks/useMyOrders';
-import UnAuthorizedUser from './UnAuthorizedUser';
-import useAuthStore from '../../store/useAuthStore';
+import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
+import useAuthStore from '@/store/useAuthStore';
 
 const MyOrders = () => {
   const { isAuthenticated } = useAuthStore();

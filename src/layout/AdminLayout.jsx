@@ -2,7 +2,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import AdminTopBar from "./AdminTopBar";
 import Footer from "./Footer";
-import useAuthStore from "../store/useAuthStore";
+import useAuthStore from "@/store/useAuthStore";
 import { useEffect } from "react";
 
 export default function AdminLayout() {
@@ -15,7 +15,7 @@ export default function AdminLayout() {
   return (
     <div className="px-0 flex-1 bg-background">
 
-      <AdminTopBar/>
+      <AdminTopBar />
 
       <div className="min-h-screen  container flex-1 py-6 px-4 ">
         {/* Nested admin pages */}

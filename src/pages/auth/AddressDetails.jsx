@@ -10,10 +10,10 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { useSignupStore } from "../../store/useSignupStore";
+import { useSignupStore } from "@/store/useSignupStore";
 import { useNavigate } from "react-router-dom";
-import { CITY_MAP } from "../../data/CITY_MAP";
-import useAuthStore from "../../store/useAuthStore";
+import { CITY_MAP } from "@/data/CITY_MAP";
+import useAuthStore from "@/store/useAuthStore";
 
 const ALL_STATES = Object.keys(CITY_MAP);
 

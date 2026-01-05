@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
-import { getAllCategories } from "../../service/userService";
-import { useProduct } from "../../hooks/useProduct";
+import { getAllCategories } from "@/service/userService";
+import { useProduct } from "@/hooks/useProduct";
 
 export default function ProductForm() {
   const { id } = useParams();
@@ -205,7 +205,7 @@ export default function ProductForm() {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit}     encType="multipart/form-data" className=" rounded-2xl shadow-sm p-6 space-y-6">
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className=" rounded-2xl shadow-sm p-6 space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
           {/* Name */}

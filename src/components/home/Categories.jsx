@@ -4,7 +4,7 @@ import categoryVegetables from "@/assets/category-vegetables.jpg";
 import categoryFruits from "@/assets/category-fruits.jpg";
 import categoryExotic from "@/assets/category-exotic.jpg";
 import categoryOrganic from "@/assets/category-organic.jpg";
-import { useCategory } from "../../hooks/useCategory";
+import { useCategory } from "@/hooks/useCategory";
 
 export const Categories = () => {
   const {

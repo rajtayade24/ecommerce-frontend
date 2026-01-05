@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
-import { useOrder } from '../hooks/useOrder';
+import { useOrder } from '@/hooks/useOrder';
 import { useNavigate } from "react-router-dom";
 import { Eye, CheckCircle, XCircle, Download, ArrowRightCircle } from "lucide-react";
-import { formatMoney } from '../utils/formatMoney';
+import { formatMoney } from '@/utils/formatMoney';
 
 import { Button } from "@/components/ui/button";
 import { Card } from './ui/Card';
@@ -19,7 +19,7 @@ const STATUS_BADGE = {
 
 const OrdersTable = ({ orders, showAll = false }) => {
   const navigate = useNavigate();
-  
+
   const {
     isLoading,
     isError,
@@ -30,11 +30,11 @@ const OrdersTable = ({ orders, showAll = false }) => {
     markCompleteOrderMutation,
     cancelOrderMutation,
   } = useOrder();
-  
+
   const loadMoreRef = useRef(null);
   useEffect(() => {
     if (!loadMoreRef.current || !hasNextPage) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isFetchingNextPage) {
@@ -43,28 +43,28 @@ const OrdersTable = ({ orders, showAll = false }) => {
       },
       { rootMargin: "200px" }
     );
-    
+
     observer.observe(loadMoreRef.current);
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
-  
-  
+
+
   const handleMarkComplete = async (orderNumber) => {
     if (!window.confirm(`Mark order ${orderNumber} as COMPLETED?`)) return;
     await markCompleteOrderMutation.mutateAsync(orderNumber);
     alert(`Order ${orderNumber} marked as completed (mock).`);
   };
-  
+
   const handleCancel = async (orderNumber) => {
     if (!window.confirm(`Cancel order ${orderNumber}? This cannot be undone.`)) return;
     await cancelOrderMutation.mutateAsync(orderNumber);
     alert(`Order ${orderNumber} cancelled (mock).`);
   };
-  
+
   const handleView = (id) => {
     navigate(`/admin/orders/${id}`);
   };
-  
+
   function StatusBadge({ status }) {
     const cls = STATUS_BADGE[status] ?? "bg-gray-100 text-gray-800";
     return (
@@ -73,7 +73,7 @@ const OrdersTable = ({ orders, showAll = false }) => {
       </span>
     );
   }
-  
+
   if (isLoading) return <div className="p-6">Loading orders…</div>;
   if (isError) return <div className="p-6 text-red-600">{String(error)}</div>;
   return (

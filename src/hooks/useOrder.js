@@ -1,10 +1,10 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { cancelOrder, getAllOrders, markOrderComplete } from "../service/adminService";
+import { cancelOrder, getAllOrders, markOrderComplete } from "@/service/adminService";
 
 const PAGE_SIZE = 8;
 
-export function useOrder(filter= {}) {
+export function useOrder(filter = {}) {
   const {
     data,
     isLoading,
@@ -25,11 +25,11 @@ export function useOrder(filter= {}) {
   });
 
   const orders = data?.pages.flatMap((p) => p.content) ?? [];
-  
+
   const queryClient = useQueryClient();
-   /* =========================
-     HELPER: UPDATE ORDER STATUS IN CACHE
-     ========================= */
+  /* =========================
+    HELPER: UPDATE ORDER STATUS IN CACHE
+    ========================= */
   const updateOrderStatusInCache = (orderNumber, newStatus) => {
     queryClient.setQueryData(["order", filter], (oldData) => {
       if (!oldData) return oldData;
@@ -110,7 +110,7 @@ export function useOrder(filter= {}) {
     hasNextPage,
     isFetchingNextPage,
 
-     markCompleteOrderMutation,
+    markCompleteOrderMutation,
     cancelOrderMutation,
   };
 

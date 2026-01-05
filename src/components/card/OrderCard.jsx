@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import { Truck, Check, X, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Card } from '../ui/Card';
+import { Card } from '@/components/ui/Card';
 
 const statusColor = (status) => {
   switch (status) {

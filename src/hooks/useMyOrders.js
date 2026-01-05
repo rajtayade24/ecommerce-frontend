@@ -1,7 +1,7 @@
 // hooks/useOrders.js
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { getOrders } from '../service/userService';
+import { getOrders } from '@/service/userService';
 import { cancelOrder } from '@/service/userService';
 
 const PAGE_SIZE = 10;
@@ -48,7 +48,7 @@ export const useMyOrders = () => {
   // });
 
   // return Array.from(map.values());
-// }, [data]);
+  // }, [data]);
 
   const cancelOrderMutation = useMutation({
     mutationFn: (orderId) => cancelOrder(orderId),

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCategory } from "../../hooks/useCategory";
+import { useCategory } from "@/hooks/useCategory";
 
 // Mock fetch for edit (replace with real API later)
 async function mockFetchCategory(id) {

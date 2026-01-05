@@ -3,7 +3,7 @@ import { ProductCard } from "@/components/card/ProductCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useProduct } from "../../hooks/useProduct";
+import { useProduct } from "@/hooks/useProduct";
 
 export const FeaturedProducts = () => {
   const { products } = useProduct({ isFeatured: true })

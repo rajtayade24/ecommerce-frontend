@@ -13,10 +13,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { useProduct } from '../../hooks/useProduct';
-import { getAllCategories } from '../../service/userService';
+import { useProduct } from '@/hooks/useProduct';
+import { getAllCategories } from '@/service/userService';
 import { useSearchParams, } from 'react-router-dom'
-import useAuthStore from '../../store/useAuthStore';
+import useAuthStore from '@/store/useAuthStore';
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,7 +56,7 @@ const Products = () => {
     data,
     isLoading,
     isError,
-    error, 
+    error,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,

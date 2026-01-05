@@ -5,8 +5,8 @@ import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/hooks/useCart";
-import UnAuthorizedUser from "./UnAuthorizedUser";
-import useAuthStore from "../../store/useAuthStore";
+import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
+import useAuthStore from "@/store/useAuthStore";
 
 const Cart = () => {
   const navigate = useNavigate();

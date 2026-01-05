@@ -5,8 +5,8 @@ import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { getOrderById } from '@/service/adminService';
-import useAuthStore from '../../store/useAuthStore';
-import UnAuthorizedUser from './UnAuthorizedUser';
+import useAuthStore from '@/store/useAuthStore';
+import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 
 const UserOrderDetails = () => {
   const { id } = useParams();
