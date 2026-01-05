@@ -1,7 +1,7 @@
 // src/components/UnAuthorizedUser.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 const UnAuthorizedUser = ({ redirectTo = "/login", message }) => {
   const navigate = useNavigate();

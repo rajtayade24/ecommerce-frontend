@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
 import CategoryCard from '@/components/card/CategoryCard';
 import { useCategory } from '@/hooks/useCategory';
 
@@ -51,7 +51,7 @@ export default function Categories() {
   }, [categories, search]);
 
   if (isLoading) return <div className="text-center py-16">Loading categories…</div>
-  if (isError) return <div>{error}</div>
+  if (isError) return <div>{error?.message}</div>
 
   return (
     <div className="min-h-screen bg-background">

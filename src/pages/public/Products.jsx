@@ -1,9 +1,9 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { ProductCard } from '@/components/card/ProductCard';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
 import { Checkbox } from '@/components/ui/Checkbox';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { SlidersHorizontal } from 'lucide-react';
 import {
   Sheet,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
+} from '@/components/ui/Sheet';
 import { useProduct } from '@/hooks/useProduct';
 import { getAllCategories } from '@/service/userService';
 import { useSearchParams, } from 'react-router-dom'
@@ -221,7 +221,7 @@ const Products = () => {
           {/* Products Grid */}
           <div className="flex-1">
 
-            {isError ? <div>Error: {error}</div>
+            {isError ? <div>Error: {error?.message}</div>
               :
               (isLoading ? < div > Loading...</div>
                 :

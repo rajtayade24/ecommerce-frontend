@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { MoreHorizontalIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import {
   Dialog,
   DialogClose,
@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/Dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,

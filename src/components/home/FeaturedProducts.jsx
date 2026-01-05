@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/card/ProductCard";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useProduct } from "@/hooks/useProduct";

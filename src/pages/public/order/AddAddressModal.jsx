@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Button } from '@/components/ui/Button';
 import { Label } from '@/components/ui/Label';
 import {
@@ -8,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { addUserAddress } from '@/service/authService';
 import { Input } from '@/components/ui/Input';
 import { DialogDescription } from '@/components/ui/Dialog';
@@ -17,10 +16,8 @@ import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 
 const AddAddressModal = ({ open, onClose, onAdded }) => {
   const { isAuthenticated } = useAuthStore();
-  if (!isAuthenticated) {
-    return <UnAuthorizedUser />;
-  }
   const [loading, setLoading] = useState(false);
+ 
   const [form, setForm] = useState({
     name: '',
     line1: '',
@@ -32,16 +29,16 @@ const AddAddressModal = ({ open, onClose, onAdded }) => {
     label: 'home',
     primaryAddress: false
   });
-
+  
   const handleChange = (k) => (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setForm(prev => ({ ...prev, [k]: value }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    
     try {
       const payload = {
         name: form.name,
@@ -56,7 +53,7 @@ const AddAddressModal = ({ open, onClose, onAdded }) => {
       // payload shape: { name, line1, line2, city, state, pincode, phone, label, primaryAddress }
       payload.address = `${form.line1}${form.line2 ? ', ' + form.line2 : ''}`;
       delete payload.line1; delete payload.line2;
-
+      
       const saved = await addUserAddress(payload);
       onAdded(saved);
       onClose();
@@ -67,7 +64,10 @@ const AddAddressModal = ({ open, onClose, onAdded }) => {
       setLoading(false);
     }
   };
-
+  
+  if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
+  }
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-xl">

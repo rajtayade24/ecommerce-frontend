@@ -1,13 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 import { motion } from 'framer-motion';
 
 const placeholderImage = 'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=1200&auto=format&fit=crop';
 
 export default function CategoryCard({ category }) {
   const navigate = useNavigate();
-  
+
   const handleNavigate = (slug) => {
     const params = new URLSearchParams();
     if (slug) params.set("category", slug);
@@ -23,7 +23,7 @@ export default function CategoryCard({ category }) {
       viewport={{ once: true }}
       className="bg-card rounded-2xl border overflow-hidden hover-lift"
     >
-      <div onClick={()=> handleNavigate(category.slug)} className="block">
+      <div onClick={() => handleNavigate(category.slug)} className="block">
         <div className="relative aspect-video bg-muted overflow-hidden">
           <img
             src={category.image || placeholderImage}

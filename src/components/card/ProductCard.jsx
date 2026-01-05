@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/Badge";
 import { ShoppingCart, Leaf, Star, Check } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "@/hooks/useCart";

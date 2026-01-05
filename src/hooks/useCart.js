@@ -4,7 +4,7 @@ import { addToCart, getCarts, removeFromCart, updateCartQuantity, clearCart } fr
 
 const PAGE_SIZE = 10;
 
-export const useCart = () => {
+export const useCart = ({ enabled = true } = {}) => {
   const queryClient = useQueryClient();
 
   const {
@@ -18,7 +18,7 @@ export const useCart = () => {
   } = useInfiniteQuery({
     queryKey: ["cart"],
     queryFn: ({ pageParam = 0 }) => getCarts(pageParam, PAGE_SIZE),
-
+    enabled, // ⭐ IMPORTANT FIX ⭐
     getNextPageParam: (lastPage) => {
       if (
         typeof lastPage.number !== "number" ||

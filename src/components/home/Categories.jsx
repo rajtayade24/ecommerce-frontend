@@ -15,7 +15,7 @@ export const Categories = () => {
   } = useCategory()
 
   if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>{error}</div>
+  if (isError) return <div>{error?.message}</div>
 
   return (
     <section className="py-16 bg-muted/30">

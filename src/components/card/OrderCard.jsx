@@ -1,9 +1,9 @@
 // components/OrderCard.jsx
 import React from 'react';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/components/ui/Badge';
 import { format } from 'date-fns';
 import { Truck, Check, X, Eye } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/Card';
 

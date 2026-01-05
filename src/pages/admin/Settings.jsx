@@ -1,8 +1,8 @@
 // src/pages/admin/Settings.jsx
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea"; // if not available, replace with <textarea>
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea"; // if not available, replace with <textarea>
 import { Image, CreditCard, Truck, Mail } from "lucide-react";
 
 /**

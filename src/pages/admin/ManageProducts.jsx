@@ -2,8 +2,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Edit, Trash2, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { useProduct } from "@/hooks/useProduct";
 import { Card } from "@/components/ui/Card";
 
@@ -50,7 +50,7 @@ export default function ManageProducts() {
   }
 
   if (isLoading) return <div>Loading....</div>
-  if (isError) return <div>{error}</div>
+  if (isError) return <div>{error?.message}</div>
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">

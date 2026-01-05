@@ -10,7 +10,7 @@ import {
   Eye,
   Check,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { getAllCategoriesCount, getAllOrdersCount, getAllProductsCount, getAllUsersCount, getRevenue, postCategory } from "@/service/adminService";
 import OrdersTable from "@/components/OrdersTable";
 import { useOrder } from "@/hooks/useOrder";

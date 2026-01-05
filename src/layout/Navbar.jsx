@@ -6,9 +6,9 @@ import {
 
 } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Badge } from "@/components/ui/Badge";
 import { useEffect, useState } from "react";
 import useAuthStore from "@/store/useAuthStore";
 import ProfileMenu from "@/components/ProfileMenu";
@@ -262,9 +262,9 @@ export const Navbar = () => {
 };
 // import { UserCircle2Icon, ShoppingCart, Search, Menu, Leaf, Settings } from "lucide-react";
 // import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import { Badge } from "@/components/ui/badge";
+// import { Button } from "@/components/ui/Button";
+// import { Input } from "@/components/ui/Input";
+// import { Badge } from "@/components/ui/Badge";
 // import { useEffect, useState } from "react";
 // import useAuthStore from "@/store/useAuthStore";
 // import ProfileMenu from "@/components/ProfileMenu";

@@ -1,12 +1,12 @@
 import React from "react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/Input";
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/ui/select";
+} from "@/components/ui/Select";
 
 export default function MobileNumberInput({ mobile, setMobile }) {
   const countries = {

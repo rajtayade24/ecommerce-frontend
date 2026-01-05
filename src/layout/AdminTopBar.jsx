@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Menu, Users, Package, Home } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 import {
   DropdownMenu,

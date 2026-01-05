@@ -1,15 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import OrderCard from '@/components/card/OrderCard';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import useMyOrders from '@/hooks/useMyOrders';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 import useAuthStore from '@/store/useAuthStore';
 
 const MyOrders = () => {
   const { isAuthenticated } = useAuthStore();
-  if (!isAuthenticated) {
-    return <UnAuthorizedUser />;
-  }
 
   const {
     orders,
@@ -21,12 +18,12 @@ const MyOrders = () => {
     hasNextPage,
     isFetchingNextPage,
     cancelOrderMutation,
-  } = useMyOrders();
+  } = useMyOrders({ enabled: isAuthenticated });
 
 
   const loadMoreRef = useRef(null);
   useEffect(() => {
-    if (!loadMoreRef.current) return;
+    if (!loadMoreRef.current || !isAuthenticated) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -47,6 +44,9 @@ const MyOrders = () => {
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
+  if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
+  }
 
   if (isLoading) {
     return <div className="p-8 text-center">Loading orders...</div>;

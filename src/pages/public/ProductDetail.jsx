@@ -4,8 +4,8 @@ import { ShoppingCart, Leaf, ArrowLeft, Heart } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
 import { getProductById } from '@/service/userService';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 import useAuthStore from '@/store/useAuthStore';
 import { useCart } from '@/contexts/CartContext';
 

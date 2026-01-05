@@ -2,8 +2,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Download, ArrowRightCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { useOrder } from "@/hooks/useOrder";
 import { exportCSV } from "@/utils/exportsCSV";
 import OrdersTable from "@/components/OrdersTable";

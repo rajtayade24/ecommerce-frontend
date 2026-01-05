@@ -6,7 +6,7 @@ import { cancelOrder } from '@/service/userService';
 
 const PAGE_SIZE = 10;
 
-export const useMyOrders = () => {
+export const useMyOrders = ({ enabled = true } = {}) => {
   const queryClient = useQueryClient();
 
   const {
@@ -21,6 +21,7 @@ export const useMyOrders = () => {
   } = useInfiniteQuery({
     queryKey: ["orders"],
     queryFn: ({ pageParam = 0 }) => getOrders(pageParam, PAGE_SIZE),
+    enabled,
     getNextPageParam: (lastPage) => {
       if (
         typeof lastPage.number !== "number" ||

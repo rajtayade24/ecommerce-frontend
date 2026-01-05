@@ -1,7 +1,7 @@
 // src/pages/AddressDetails.jsx
 import React, { useMemo, useState, useEffect } from "react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/Label";
+import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import {
   Select,
@@ -9,7 +9,7 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/ui/select";
+} from "@/components/ui/Select";
 import { useSignupStore } from "@/store/useSignupStore";
 import { useNavigate } from "react-router-dom";
 import { CITY_MAP } from "@/data/CITY_MAP";
@@ -216,7 +216,7 @@ export default function AddressDetails() {
       </div>
 
       <div className="mt-4">
-        {error && <div className="text-sm text-red-600 mb-2">{error}</div>}
+        {error && <div className="text-sm text-red-600 mb-2">{error?.message}</div>}
         {success && <div className="text-sm text-green-600 mb-2">{success}</div>}
 
         <Button type="submit" className="w-full" onClick={(e) => {

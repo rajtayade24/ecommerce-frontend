@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Truck } from 'lucide-react';
 import { format } from 'date-fns';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 import { getOrderById } from '@/service/adminService';
 import useAuthStore from '@/store/useAuthStore';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
@@ -16,33 +16,33 @@ const UserOrderDetails = () => {
   const [isError, setError] = useState(null);
 
   const { isAuthenticated } = useAuthStore();
-  if (!isAuthenticated) {
-    return <UnAuthorizedUser />;
-  }
-
+  
   useEffect(() => {
-    if (!id) return;
+    if (!id || !isAuthenticated) return;
     let mounted = true;
     setLoading(true);
     setError(null);
-
+    
     getOrderById(id)
-      .then((res) => {
-        if (!mounted) return;
-        setOrder(res);
-      })
-      .catch((err) => {
-        if (!mounted) return;
-        setError(err?.message || String(err));
-      })
+    .then((res) => {
+      if (!mounted) return;
+      setOrder(res);
+    })
+    .catch((err) => {
+      if (!mounted) return;
+      setError(err?.message || String(err));
+    })
       .finally(() => mounted && setLoading(false));
 
-    return () => (mounted = false);
-  }, [id]);
-
+      return () => (mounted = false);
+    }, [id]);
+    
+    if (!isAuthenticated) {
+      return <UnAuthorizedUser />;
+    }
   if (isLoading) return <div className="p-8 text-center">Loading order...</div>;
   if (isError) return <div className="p-8 text-center text-red-600">Error: {error?.message}</div>;
-
+  
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="flex items-center gap-3 mb-6">

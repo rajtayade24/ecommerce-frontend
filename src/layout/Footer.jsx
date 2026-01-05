@@ -116,7 +116,7 @@ export default function Footer() {
                 disabled={loading || sent}
               >
                 {loading ? 'Saving...' : sent ? 'Subscribed' : 'Subscribe'}
-              </button>
+              </Button>
             </form> */}
 
             <div className="mt-6 text-sm text-slate-400 flex items-center gap-2">

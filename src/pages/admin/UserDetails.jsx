@@ -2,7 +2,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { getUserById, setUserActive } from "@/service/adminService";
 import { Eye } from "lucide-react";
 import { Card } from "@/components/ui/Card";
@@ -95,22 +95,20 @@ export default function UserDetails() {
     toggleActiveMutation.mutate({ userId: user.id, active: wantActive });
   };
 
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className="p-6">
         <div className="text-lg font-medium">Loading user...</div>
       </div>
     );
-  }
 
-  if (isError) {
+  if (isError)
     return (
       <div className="p-6">
         <div className="text-red-600">Error loading user: {String(error)}</div>
         <Button onClick={() => navigate(-1)} className="mt-4">Back</Button>
       </div>
     );
-  }
 
   // render details
   return (

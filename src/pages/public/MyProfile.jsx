@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/Dialog"
 import useAuthStore from "@/store/useAuthStore";
 import { formatDate } from "@/utils/formatDate";
 import { getUserAddress } from "@/service/authService";
@@ -40,16 +40,16 @@ export default function MyProfile() {
     setAuthenticated(false)
     navigate("/");
   }
-
-  if (!isAuthenticated) {
-    return <UnAuthorizedUser />;
-  }
-
+  
   const initials = (user.name || "?")
     .split(" ")
     .map((s) => s.charAt(0))
     .slice(0, 2)
     .join("");
+  
+    if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
+  }
 
 
   if (!user)

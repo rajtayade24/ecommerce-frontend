@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Eye, CheckCircle, XCircle, Download, ArrowRightCircle } from "lucide-react";
 import { formatMoney } from '@/utils/formatMoney';
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Card } from '@/components/ui/Card';
 
 const STATUS_BADGE = {

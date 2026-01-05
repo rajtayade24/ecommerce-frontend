@@ -2,8 +2,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { useCart } from "@/hooks/useCart";
 import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
 import useAuthStore from "@/store/useAuthStore";
@@ -12,13 +12,11 @@ const Cart = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
 
-  if (!isAuthenticated) {
-    return <UnAuthorizedUser />;
-  }
 
-  const { items, removeCartMutation, updateQuantityMutation } = useCart();
+  const { items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
 
   const totals = useMemo(() => {
+    if (!isAuthenticated) return
     const subtotal = items.reduce(
       (sum, i) => sum + i.variant.price * i.quantity,
       0
@@ -46,6 +44,10 @@ const Cart = () => {
 
     navigate("/checkout", { state: { items: checkoutItems } });
   };
+
+  if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
+  }
 
   if (items.length === 0) {
     return (
