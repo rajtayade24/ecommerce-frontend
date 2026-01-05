@@ -1,0 +1,37 @@
+{
+  "name": "Spinach",
+  "slug": "spinach",
+  "description": "Fresh raw spinach leaves.",
+  "featured": false,
+  "organic": true,
+  "nutrition": {
+    "calories": "23 kcal per 100 g",
+    "protein": "2.9 g per 100 g",
+    "carbs": "3.6 g per 100 g",
+    "fiber": "2.2 g per 100 g",
+    "vitamins": [
+      "Vitamin A",
+      "Vitamin C",
+      "Iron"
+    ]
+  },
+  "categoryId": 7,
+  "images": [
+    "url_to_spinach_image"
+  ],
+  "variants": [
+    {
+      "value": 1,
+      "unit": "kg",
+      "price": 25.00,
+      "stock": 200
+    },
+ 
+    {
+      "value": 500,
+      "unit": "g",
+      "price": 15.00,
+      "stock": 200
+    }
+  ]
+}

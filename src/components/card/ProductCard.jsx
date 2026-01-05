@@ -1,0 +1,160 @@
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { ShoppingCart, Leaf, Star, Check } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "@/hooks/useCart";
+import { useState } from "react";
+import { Card } from "../ui/Card";
+import useAuthStore from "../../store/useAuthStore";
+
+export const ProductCard = ({ product }) => {
+  const navigate = useNavigate()
+  const [qty, setQty] = useState(0);
+
+  // auth state
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  // only initialize cart if authenticated
+  const cart = isAuthenticated ? useCart() : null;
+
+  const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      navigate("/carts", {
+        state: { redirectTo: window.location.pathname },
+      });
+      return;
+    }
+    // logged in → call mutation
+    cart.addToCartMutation.mutate({
+      productId: product.id,
+      variantId: product.variants[0].id,
+      quantity: qty,
+    });
+
+    setQty(0);
+  };
+  if (!product) return null; 
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <Card className=" rounded-2xl border overflow-hidden hover-lift h-full flex flex-col">
+        {/* Image Container */}
+        <Link
+          to={`/products/${product.id}`}
+          className="relative overflow-hidden bg-muted aspect-square"
+        >
+          <img
+            // src={productImages[product.image] || productImages.tomatoes}
+            src={product?.images?.[0] || productImages.tomatoes}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+
+          {/* Badges */}
+          <div className="absolute top-3 left-3 flex flex-col gap-2">
+            {product.isOrganic && (
+              <Badge className="bg-primary text-primary-foreground flex items-center gap-1">
+                <Leaf className="h-3 w-3" />
+                Organic
+              </Badge>
+            )}
+            {product.isFeatured && (
+              <Badge className="bg-secondary text-secondary-foreground flex items-center gap-1">
+                <Star className="h-3 w-3" />
+                Featured
+              </Badge>
+            )}
+          </div>
+
+          {!product.inStock > 0 && (
+            <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
+              <Badge variant="destructive">Out of Stock</Badge>
+            </div>
+          )}
+        </Link>
+
+        {/* Content */}
+        <div className="p-4 flex-1 flex flex-col">
+          <Link to={`/products/${product.id}`}>
+            <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+              {product.name}
+            </h3>
+          </Link>
+
+          <p className="text-sm text-muted-foreground mb-3 line-clamp-2 flex-1">
+            {product.description}
+          </p>
+
+          {/* Price and Action */}
+          <div className="flex items-center justify-between pt-3 border-t">
+            <div>
+              <div className="text-2xl font-bold text-primary">
+                ₹{product?.variants[0]?.price?.toFixed(2)}
+              </div>
+              <div className="text-xs text-muted-foreground">
+                {product?.variants[0]?.value}
+                {product?.variants[0]?.unit}
+              </div>
+            </div>
+
+            <div className="flex gap-1">
+              <div className="flex items-center gap-0.5 bg-primary text-white rounded-full px-[2px] py-0.5">
+                {qty === 0 ? (
+                  <button
+                    size="icon"
+                    className="rounded-full"
+                    onClick={() => setQty(1)}
+                  >
+                    <ShoppingCart className="h-4 w-4" />
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => setQty(qty === 1 ? 0 : qty - 1)}
+                      className="px-1 text-xs"
+                    >
+                      −
+                    </button>
+
+                    <span className="text-xs font-semibold w-4 text-center">
+                      {qty}
+                    </span>
+
+                    <button
+                      onClick={() => setQty(qty + 1)}
+                      className="px-1 text-xs"
+                    >
+                      +
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {qty !== 0 && (
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => setQty(0)}
+                    className="flex items-center justify-center bg-primary text-white rounded-full px-1.5 py-0.5 text-xs"
+                  >
+                    ×
+                  </button>
+
+                  <button
+                    onClick={handleAddToCart}
+                    className="flex items-center justify-center bg-primary text-white rounded-full px-1.5 py-0.5"
+                  >
+                    <Check className="h-3 w-3" />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+};

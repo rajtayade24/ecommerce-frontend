@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "skipLibCheck": true
+  }
+}
