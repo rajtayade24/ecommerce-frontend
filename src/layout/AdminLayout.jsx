@@ -1,7 +1,7 @@
 // src/components/layouts/AdminLayout.jsx
 import { Link, Outlet, useLocation } from "react-router-dom";
-import AdminTopBar from "./AdminTopBar";
-import Footer from "./Footer";
+import AdminTopBar from "@/layout/AdminTopBar";
+import Footer from "@/layout/Footer";
 import useAuthStore from "@/store/useAuthStore";
 import { useEffect } from "react";
 

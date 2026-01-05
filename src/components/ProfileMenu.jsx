@@ -10,13 +10,13 @@ import {
   Info,
   LogOut,
 } from "lucide-react"
-import { Button } from './ui/Button'
+import { Button } from '@/components/ui/Button'
 import useAuthStore from '@/store/useAuthStore'
 import { useSignupStore } from '@/store/useSignupStore'
 import { Link, useNavigate } from "react-router-dom";
-import { Dialog, DialogTrigger } from './ui/Dialog'
-import DialogContentImpl from './DialogContentImpl'
-import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from './ui/DropdownMenu'
+import { Dialog, DialogTrigger } from '@/components/ui/Dialog'
+import DialogContentImpl from '@/components/DialogContentImpl'
+import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from '@/components/ui/DropdownMenu'
 
 function ProfileMenu() {
   const navigate = useNavigate();

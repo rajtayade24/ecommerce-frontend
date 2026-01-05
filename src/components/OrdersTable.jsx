@@ -5,7 +5,7 @@ import { Eye, CheckCircle, XCircle, Download, ArrowRightCircle } from "lucide-re
 import { formatMoney } from '@/utils/formatMoney';
 
 import { Button } from "@/components/ui/button";
-import { Card } from './ui/Card';
+import { Card } from '@/components/ui/Card';
 
 const STATUS_BADGE = {
   PENDING: "bg-gray-100 text-gray-800",

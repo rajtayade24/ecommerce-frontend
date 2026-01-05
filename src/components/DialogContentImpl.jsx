@@ -1,6 +1,6 @@
 import React from 'react'
-import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/Dialog'
-import { Button } from './ui/Button'
+import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/Dialog'
+import { Button } from '@/components/ui/Button'
 
 function DialogContentImpl({
   title = "Edit profile",

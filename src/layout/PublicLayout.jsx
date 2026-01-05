@@ -1,7 +1,7 @@
 // src/components/layouts/PublicLayout.jsx
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "@/layout/Navbar";
-import Footer from "./Footer";
+import Footer from "@/layout/Footer";
 import { useEffect } from "react";
 import useAuthStore from "@/store/useAuthStore";
 

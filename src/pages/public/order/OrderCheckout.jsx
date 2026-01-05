@@ -8,7 +8,7 @@ import { getCartItems, postOrder } from '@/service/userService';
 import OrderItemCard from '@/components/card/OrderItemCard';
 import { Label } from '@/components/ui/Label';
 import { Card } from '@/components/ui/Card';
-import AddAddressModal from './AddAddressModal';
+import AddAddressModal from '@/pages/public/order/AddAddressModal';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 
 const OrderCheckout = () => {
