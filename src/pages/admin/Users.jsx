@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useMemo, useId } from "react";
 import { Eye, UserCheck, UserX } from "lucide-react";
 import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/Input";
 import { useUser } from "@/hooks/useUser";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
 import { Card } from "@/components/ui/Card";
