@@ -20,16 +20,24 @@ function DialogContentImpl({
       </DialogHeader>
       {content}
       <DialogFooter>
+
+
         <DialogClose asChild>
           <Button variant="outline">{cancel}</Button>
         </DialogClose>
-        <Button type="submit"
-          onClick={() => {
-            onSave && onSave()
-          }}
-        >
-          {save}
-        </Button>
+
+
+        <DialogClose asChild>
+          <Button
+            type="button"
+            onClick={() => {
+              onSave && onSave()
+            }}
+          >
+            {save}
+          </Button>
+        </DialogClose>
+        
       </DialogFooter>
     </DialogContent >
   )

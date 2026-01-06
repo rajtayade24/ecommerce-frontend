@@ -150,7 +150,7 @@ export function useProduct(filter = {}) {
 
   // -------------------- DELETE PRODUCT MUTATION --------------------
   const deleteProductMutation = useMutation({
-    mutationFn: async ({ id, token }) => await deleteProduct(id, token),
+    mutationFn: async (id ) => await deleteProduct(id),
 
     onMutate: async ({ id }) => {
       const queryKey = ["product"];

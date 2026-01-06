@@ -1,11 +1,13 @@
 // src/pages/admin/ManageProducts.jsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Edit, Trash2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useProduct } from "@/hooks/useProduct";
 import { Card } from "@/components/ui/Card";
+import { Dialog, DialogTrigger } from "../../components/ui/Dialog";
+import DialogContentImpl from "../../components/DialogContentImpl";
 
 export default function ManageProducts() {
   const navigate = useNavigate();
@@ -19,7 +21,8 @@ export default function ManageProducts() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useProduct()
+    deleteProductMutation,
+  } = useProduct();
 
   const loadMoreRef = useRef(null);
 
@@ -33,39 +36,36 @@ export default function ManageProducts() {
           fetchNextPage();
         }
       },
-      {
-        root: null,
-        rootMargin: "200px",
-        threshold: 0.1,
-      }
+      { root: null, rootMargin: "200px", threshold: 0.1 }
     );
+
     observer.observe(loadMoreRef.current);
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
-  function handleEdit(product) {
-    navigate(`/admin/products/${product.id}`, {
-      state: { product },
-    });
-  }
+  const handleEdit = (product) => {
+    navigate(`/admin/products/${product.id}`, { state: { product } });
+  };
 
-  if (isLoading) return <div>Loading....</div>
-  if (isError) return <div>{error?.message}</div>
+  if (isLoading) return <div>Loading....</div>;
+  if (isError) return <div>{error?.message}</div>;
+
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Products</h1>
-          <p className="text-sm text-muted-foreground">Manage your product catalog</p>
+          <p className="text-sm text-muted-foreground">
+            Manage your product catalog
+          </p>
         </div>
 
         <div className="flex items-center gap-3">
           <Input
             placeholder="Search products..."
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
+            onChange={(e) => setQuery(e.target.value)}
             className="max-w-xs"
           />
           <Link to="/admin/products/new">
@@ -76,7 +76,8 @@ export default function ManageProducts() {
         </div>
       </div>
 
-      <Card className=" rounded-2xl shadow-sm p-4 overflow-x-auto">
+      {/* Table */}
+      <Card className="rounded-2xl shadow-sm p-4 overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
             <tr className="text-left text-xs text-muted-foreground border-b">
@@ -89,38 +90,18 @@ export default function ManageProducts() {
           </thead>
 
           <tbody>
-            {products?.map((p, i) => (
-              <tr key={p?.id ?? i} className="border-b last:border-b-0">
-                <td className="py-3 text-sm font-medium">{p?.name}</td>
-                <td className="py-3 text-sm">{p?.slug ?? "—"}</td>
-                <td className="py-3 text-sm">₹{p?.price}</td>
-                <td className="py-3 text-sm">{p?.inStock ?? "—"} </td>
-                <td className="py-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    {/* <Link to={`/admin/products/${p?.id}`}> */}
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => handleEdit(p)}
-                      title="Edit"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    {/* </Link> */}
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => handleDelete(p?.id)}
-                      title="Delete"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
+            {products?.map((p) => (
+              <ProductRow
+                key={p.id}
+                product={p}
+                handleEdit={handleEdit}
+                deleteProductMutation={deleteProductMutation}
+              />
             ))}
           </tbody>
         </table>
+
+        {/* Load more */}
         <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
           {isFetchingNextPage && <div className="p-4">Loading more products...</div>}
 
@@ -139,6 +120,54 @@ export default function ManageProducts() {
           )}
         </div>
       </Card>
-    </div >
+    </div>
+  );
+}
+
+// --- Separate component for each row with its own dialog state ---
+function ProductRow({ product, handleEdit, deleteProductMutation }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <tr className="border-b last:border-b-0">
+      <td className="py-3 text-sm font-medium">{product?.name}</td>
+      <td className="py-3 text-sm">{product?.slug ?? "—"}</td>
+      <td className="py-3 text-sm">₹{product?.price}</td>
+      <td className="py-3 text-sm">{product?.inStock ?? "—"}</td>
+      <td className="py-3 text-sm">
+        <div className="flex items-center gap-2">
+          {/* Edit button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => handleEdit(product)}
+            title="Edit"
+          >
+            <Edit className="h-4 w-4" />
+          </Button>
+
+          {/* Delete dialog */}
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </DialogTrigger>
+
+            <DialogContentImpl
+              title="Delete Confirmation"
+              desc={`Do you want to delete ${product.name}?`}
+              save="Delete"
+              onSave={() =>
+                product.id &&
+                deleteProductMutation.mutate(product.id, {
+                  onSuccess: () => setOpen(false),
+                })
+              }
+            />
+          </Dialog>
+        </div>
+      </td>
+    </tr>
   );
 }
