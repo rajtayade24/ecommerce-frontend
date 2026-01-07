@@ -51,7 +51,6 @@ export default function MyProfile() {
     return <UnAuthorizedUser />;
   }
 
-
   if (!user)
     return (
       <div className="p-6 max-w-xl mx-auto text-center">

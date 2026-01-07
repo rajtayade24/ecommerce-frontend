@@ -19,7 +19,6 @@ const ALL_STATES = Object.keys(CITY_MAP);
 
 export default function AddressDetails() {
   const navigate = useNavigate();
-  // signup store (your setters & values)
 
   const [city, setCity] = useState("")
   const [state, setStateVal] = useState("")
@@ -29,8 +28,6 @@ export default function AddressDetails() {
 
   const {
     addAddress,
-    password,
-    confirmPassword,
     loading,
     error,
     success,
@@ -216,8 +213,8 @@ export default function AddressDetails() {
       </div>
 
       <div className="mt-4">
-        {error && <div className="text-sm text-red-600 mb-2">{error?.message}</div>}
-        {success && <div className="text-sm text-green-600 mb-2">{success}</div>}
+        {!success && <div className="text-sm text-red-600 mb-2">{verString}</div>}
+        {success && <div className="text-sm text-green-600 mb-2">{verString}</div>}
 
         <Button type="submit" className="w-full" onClick={(e) => {
           e.preventDefault()

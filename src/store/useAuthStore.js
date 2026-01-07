@@ -17,9 +17,6 @@ const useAuthStore = create(
     setUserMainId: (id) => set({ userMainId: id }),
     setToken: (token) => set({ token }),
 
-    verificationSuccess: "",
-    setVerificationSuccess: (value) => set({ verificationSuccess: value }),
-
     showProfileDetails: false,
     setShowProfileDetails: (v) => set({ showProfileDetails: v }),
     toggleProfileDetails: () => set((state) => ({ showProfileDetails: !state.showProfileDetails })),

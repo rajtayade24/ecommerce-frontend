@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-const UnAuthorizedUser = ({ redirectTo = "/login", message }) => {
+const UnAuthorizedUser = ({ redirectTo = "/verify/login", message }) => {
   const navigate = useNavigate();
 
   return (

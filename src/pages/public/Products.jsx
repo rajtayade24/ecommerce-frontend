@@ -255,13 +255,13 @@ const Products = () => {
                   </div>
                 </>
               )}
-            {products.length === 0 && (
+            {/* {products.length === 0 && (
               <div className="text-center py-16">
                 <p className="text-muted-foreground text-lg">
                   No products found matching your criteria
                 </p>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

@@ -1,200 +1,231 @@
 // src/store/useSignupStore.js
 import { create } from "zustand";
-import { signup as signupService, login as loginService } from "@/service/authService";
-import { sendOtp, verifyOtp } from "@/service/authService";
+import {
+  signup as signupService,
+  login as loginService,
+  sendOtp,
+  verifyOtp,
+} from "@/service/authService";
 
-export const useSignupStore = create((set, get) => ({
-  // form fields used across steps
-  identifier: "", // email or mobile entered at step 1
-  name: "",
-  mobile: "", // explicit mobile (optional)
-  password: "",
-  confirmPassword: "",
-  addresses: [],
+/**
+ * Notes:
+ * - success: boolean (null/true/false) used by UI to show color
+ * - verString: message to show to user (error/success)
+ * - disableVerifyBtn: prevents rapid OTP re-requests (cooldown)
+ */
 
-  // UI state
-  loading: false,
-  error: null,
-  success: null,
+const OTP_COOLDOWN_MS = 30_000; // 30 seconds cooldown for requests (configurable)
 
-  // setters
-  setIdentifier: (v) => set({ identifier: v }),
-  setName: (v) => set({ name: v }),
-  setMobile: (v) => set({ mobile: v }),
-  setPassword: (v) => set({ password: v }),
-  setConfirmPassword: (v) => set({ confirmPassword: v }),
-  setAddresses: (v) => set({ addresses: v }),
-  addAddress: (addressDto) => {
-    set((state) => ({
-      addresses: [...state.addresses, addressDto]
-    }));
-  },
+export const useSignupStore = create((set, get) => {
+  // internal timer id for OTP cooldown (not stored in persisted state)
+  let otpCooldownTimer = null;
 
+  return {
+    // form fields
+    identifier: "",
+    name: "",
+    mobile: "",
+    password: "",
+    confirmPassword: "",
+    addresses: [],
 
-  verificationSuccess: "",
-  verificationStatus: "",
-  disableVerifyBtn: false,
-  setVerificationSuccess: (v) => set({ verificationSuccess: v }),
-  setVerificationStatus: (v) => set({ verificationStatus: v }),
-  setDisableVerifyBtn: (v) => set({ disableVerifyBtn: v }),
+    // UI state
+    loading: false,
+    success: null, // null = neutral, true = success, false = failure
+    verString: "", // message shown to user
+    disableVerifyBtn: false,
+    isCodeOpen: false,
 
-  isCodeOpen: false,
-  setCodeOpen: (v) => set({ isCodeOpen: v }),
+    // setters
+    setIdentifier: (v) => set({ identifier: v }),
+    setName: (v) => set({ name: v }),
+    setMobile: (v) => set({ mobile: v }),
+    setPassword: (v) => set({ password: v }),
+    setConfirmPassword: (v) => set({ confirmPassword: v }),
+    setAddresses: (v) => set({ addresses: v }),
+    addAddress: (addressDto) => set((s) => ({ addresses: [...s.addresses, addressDto] })),
+    setVerString: (v) => set({ verString: v }),
+    setDisableVerifyBtn: (v) => set({ disableVerifyBtn: v }),
+    setCodeOpen: (v) => set({ isCodeOpen: v }),
 
-  // reset
-  reset: () =>
-    set({
-      identifier: "",
-      name: "",
-      mobile: "",
-      password: "",
-      confirmPassword: "",
-      addresses: [],
-      loading: false,
-      error: null,
-      success: null,
-    }),
-
-  // helper to build payload expected by backend
-  buildUserDto: () => {
-    const s = get();
-    let email = null;
-    let mobile = null;
-
-    if (s.identifier) {
-      if (s.identifier.includes("@")) email = s.identifier;
-      else mobile = s.identifier;
-    }
-
-    if (s.mobile) mobile = s.mobile; // explicit mobile overrides identifier
-
-    return {
-      name: s.name || "",
-      email,
-      mobile,
-      password: s.password,
-      addresses: s.addresses || [],
-    };
-  },
-
-  // perform signup network call
-  submitSignup: async (onSuccess) => {
-    set({ loading: true, error: null, success: null });
-    const userDto = get().buildUserDto();
-
-    try {
-      const { data, error } = await signupService(userDto);
-      if (error) {
-        set({ loading: false, error });
-        return { success: false, error };
-      }
-
-      // success
-      set({ loading: false, success: "Account created", error: null });
-      // option: store token if returned
-      if (data?.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("currentUser", JSON.stringify(data));
-      }
-
-      if (typeof onSuccess === "function") onSuccess(data); // If it function, then it calls that function and passes data (your signup response).
-
-      return { success: true, data };
-    } catch (err) {
-      set({ loading: false, error: err.message || "Signup error" });
-      return { success: false, error: err.message };
-    }
-  },
-
-  submitLogin: async (onSuccess) => {
-    set({ loading: true, error: null, success: null });
-    const { identifier, password } = get();
-
-    try {
-      const { data, error } = await loginService({ identifier, password })
-
-      if (error) {
-        set({ loading: false, error });
-        return { success: false, error };
-      }
-
-      // success
-      set({ loading: false, success: "Account created", error: null });
-      // option: store token if returned
-      if (data?.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("currentUser", JSON.stringify(data));
-      }
-
-      if (typeof onSuccess === "function") onSuccess(data); // If it function, then it calls that function and passes data (your signup response).
-
-      return { success: true, data };
-    } catch (err) {
-      set({ loading: false, error: err.message || "Signup error" });
-      return { success: false, error: err.message };
-    }
-  },
-
-  // normalized identifier helper — use get() to read mobile safely
-  getIdentifier: () => {
-    const m = (get().mobile || "").trim();
-    return /^\d{10}$/.test(m) ? "+91" + m : m;
-  },
-
-  sendOtpStore: async () => {
-    set({ disableVerifyBtn: true, verificationStatus: "Waiting..." });
-    setTimeout(() => set({ disableVerifyBtn: false }), 10000);
-
-    try {
-      const i = get().getIdentifier();
-      const data = await sendOtp(i);
-
+    // reset
+    reset: () =>
       set({
-        verificationSuccess: data.success || "false",
-        verificationStatus: data.message || "Code sent.",
-        isCodeOpen: true,
-      });
-    }
-    catch (err) {
-      console.error("sendOtpStore error:", err);
-      set({ verificationStatus: err.message || "Failed to send OTP" });
-      return { success: false, error: err.message };
-    };
-  },
+        identifier: "",
+        name: "",
+        mobile: "",
+        password: "",
+        confirmPassword: "",
+        addresses: [],
+        loading: false,
+        success: null,
+        verString: "",
+      }),
 
-  submitOtp: async (otp) => {
-    if (!get().isCodeOpen) {
-      set({ verificationStatus: "Please request OTP first" });
-      return { success: false, error: "otp_not_requested" };
-    }
-    if (!otp) {
-      set({ verificationStatus: "Please enter the code." });
-      return { success: false, error: "otp_missing" };
-    }
-    set({ disableVerifyBtn: true });
+    // helper - canonical identifier to send to backend
+    // prefer explicit mobile if provided, else use identifier (email or mobile)
+    getIdentifier: () => {
+      const m = (get().mobile || "").trim();
+      if (/^\d{10}$/.test(m)) return "+91" + m;
+      const id = (get().identifier || "").trim();
+      if (/^\d{10}$/.test(id)) return "+91" + id;
+      return id;
+    },
 
-    try {
-      const identifier = get().getIdentifier();
-      const data = await verifyOtp(identifier, otp);
+    // build payload expected by backend
+    buildUserDto: () => {
+      const s = get();
+      let email = null;
+      let mobile = null;
 
-      set({
-        verificationStatus:
-          data.message || (data.success === "true" ? "Verified." : "Invalid code."),
-        verificationSuccess: data.success || "false",
-      });
-      console.log(data);
-      return { success: data.success === true || data.success === "true", data };
-    } catch (err) {
-      console.error("submitOtp error:", err);
-      set({ verificationStatus: "Verification failed due to a server error." });
-      return { success: false, error: err.message };
-    } finally {
-      set({ disableVerifyBtn: false });
-    }
-  },
+      // identifier can be email or 10-digit local or E.164
+      if (s.identifier) {
+        if (s.identifier.includes("@")) email = s.identifier.trim();
+        else {
+          // if identifier looks like 10 digits or starts with +, prefer normalized mobile
+          const id = s.identifier.trim();
+          if (/^\d{10}$/.test(id)) mobile = id;
+          else mobile = id.startsWith("+") ? id : id;
+        }
+      }
 
-  onLogout: () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("currentUser")
-  }
-}));
+      // explicit mobile overrides identifier
+      if (s.mobile) mobile = s.mobile.trim();
+
+      return {
+        name: s.name || "",
+        email,
+        mobile,
+        password: s.password,
+        addresses: s.addresses || [],
+      };
+    },
+
+    // Sign up
+    submitSignup: async (onSuccess) => {
+      set({ loading: true, success: null, verString: "" });
+      // basic client-side validation
+      const s = get();
+      if (!s.password || !s.confirmPassword || s.password !== s.confirmPassword) {
+        set({ loading: false, success: false, verString: "Passwords do not match" });
+        return { success: false, error: "password_mismatch" };
+      }
+
+      const userDto = get().buildUserDto();
+
+      try {
+        const { data, status } = await signupService(userDto);
+        set({ loading: false, success: true, verString: "Signup successful" });
+
+        // store token if present
+        if (data?.token) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("currentUser", JSON.stringify(data));
+        }
+
+        if (typeof onSuccess === "function") onSuccess(data);
+        return { success: true, data };
+      } catch (err) {
+        const message = err.message || "Signup error";
+        set({ loading: false, success: false, verString: message });
+        return { success: false, error: message };
+      }
+    },
+
+    // Login
+    submitLogin: async (onSuccess) => {
+      set({ loading: true, success: null, verString: "" });
+      const { identifier, password } = get();
+      try {
+        const { data } = await loginService({ identifier, password });
+        set({ loading: false, success: true, verString: "Login successful" });
+
+        if (data?.token) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("currentUser", JSON.stringify(data));
+        }
+
+        if (typeof onSuccess === "function") onSuccess(data);
+        return { success: true, data };
+      } catch (err) {
+        const message = err.message || "Login failed";
+        set({ loading: false, success: false, verString: message });
+        return { success: false, error: message };
+      }
+    },
+
+    // send OTP
+    sendOtpStore: async () => {
+      // prevent spam
+      if (get().disableVerifyBtn) {
+        set({ verString: "Please wait before requesting another OTP", success: false });
+        return { success: false, error: "cooldown" };
+      }
+
+      set({ disableVerifyBtn: true, loading: true, success: null, verString: "Sending OTP..." });
+
+      // start cooldown timer
+      otpCooldownTimer && clearTimeout(otpCooldownTimer);
+      otpCooldownTimer = setTimeout(() => set({ disableVerifyBtn: false }), OTP_COOLDOWN_MS);
+
+      try {
+        const identifier = get().getIdentifier();
+        const { data } = await sendOtp(identifier);
+
+        // backend should return { success: true } or similar
+        const ok = data?.success === true || data?.ok === true || data?.status === "sent";
+        if (ok) {
+          set({ loading: false, success: true, verString: "OTP sent", isCodeOpen: true });
+          return { success: true, data };
+        } else {
+          const msg = data?.message || "Failed to send OTP";
+          set({ loading: false, success: false, verString: msg });
+          return { success: false, error: msg };
+        }
+      } catch (err) {
+        const message = err.message || "Failed to send OTP";
+        set({ loading: false, success: false, verString: message });
+        return { success: false, error: message };
+      }
+    },
+
+    // verify OTP
+    submitOtp: async (otp) => {
+      if (!get().isCodeOpen) {
+        set({ verString: "Please request OTP first", success: false });
+        return { success: false, error: "otp_not_requested" };
+      }
+      if (!otp) {
+        set({ verString: "Please enter the code.", success: false });
+        return { success: false, error: "otp_missing" };
+      }
+
+      set({ loading: true, success: null, verString: "" });
+
+      try {
+        const identifier = get().getIdentifier();
+        const { data } = await verifyOtp(identifier, otp);
+
+        const ok = data?.success === true || data?.verified === true || data?.ok === true;
+        if (ok) {
+          set({ loading: false, success: true, verString: "OTP verified" });
+          return { success: true, data };
+        } else {
+          const msg = data?.message || "Verification failed";
+          set({ loading: false, success: false, verString: msg });
+          return { success: false, error: msg };
+        }
+      } catch (err) {
+        const message = err.message || "Verification failed due to a server error.";
+        set({ loading: false, success: false, verString: message });
+        return { success: false, error: message };
+      }
+    },
+
+    onLogout: () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("currentUser");
+      set({ success: null, verString: "" });
+    },
+  };
+});

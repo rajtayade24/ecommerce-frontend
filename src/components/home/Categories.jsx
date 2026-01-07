@@ -43,7 +43,7 @@ export const Categories = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Link to={`/products?category=${category.id}`}>
+              <Link to={`/products?category=${category.slug}`}>
                 <div className="group relative overflow-hidden rounded-2xl bg-card border hover-lift cursor-pointer">
                   <div className="aspect-square overflow-hidden">
                     <img

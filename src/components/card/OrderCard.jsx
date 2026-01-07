@@ -19,6 +19,9 @@ const statusColor = (status) => {
 };
 
 const OrderCard = ({ order, onCancel, cancelling }) => {
+
+console.log(order);
+
   const first = order.items?.[0];
   const moreCount = Math.max(0, (order.items?.length || 0) - 1);
 
