@@ -2,7 +2,7 @@ services:
   - type: web
     name: ecommerce-frontend
     env: static
-    staticPublishPath: build
+    staticPublishPath: dist 
     routes:
       - type: rewrite
         source: /*
