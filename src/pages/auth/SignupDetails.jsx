@@ -22,7 +22,7 @@ function SignupDetails() {
     setConfirmPassword,
     isCodeOpen,
     disableVerifyBtn,
-    resString,
+    verString,
     sendOtpStore,
     error,
     success,
@@ -153,9 +153,7 @@ function SignupDetails() {
         </div>
       )}
 
-      {error && <div className="text-sm text-red-600 mb-2">{error?.message}</div>}
-      {success && <div className="text-sm text-green-600 mb-2">{success}</div>}
-      <p>{resString}</p>
+      <div className={`text-sm mb-2 ${success ? "text-green-600" : "text-red-600"}`}>{verString}</div>
 
       <Button
         onKeyUp={(e) => {

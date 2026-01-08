@@ -38,7 +38,7 @@ export const login = async (userObj) => {
 export const sendOtp = async (identifier) => {
   console.log(identifier);
   try {
-    const response = await api.post("/otp/send", { identifier }); console.log("send otp response: ", res);
+    const response = await api.post("/otp/send", { identifier }); console.log("send otp response: ", response);
     return { data: response.data, status: response.status };
   } catch (err) {
     throw new Error(extractError(err, "OTP request failed"));
@@ -47,7 +47,7 @@ export const sendOtp = async (identifier) => {
 
 export const verifyOtp = async (identifier, otp) => {
   try {
-    const response = await api.post("/otp/verify", { identifier, otp }); console.log("verify response: ", res);
+    const response = await api.post("/otp/verify", { identifier, otp }); console.log("verify response: ", response);
     return { data: response.data, status: response.status };
   } catch (err) {
     throw new Error(extractError(err, "OTP verification failed"));
@@ -56,8 +56,8 @@ export const verifyOtp = async (identifier, otp) => {
 
 export const getMe = async () => {
   try {
-    const res = await api.get("/auth/me"); console.log("user: ", res);
-    return res.data;
+    const response = await api.get("/auth/me"); console.log("user: ", response);
+    return response.data;
   } catch (err) {
     throw new Error(extractError(err, "Failed to fetch current user"));
   }

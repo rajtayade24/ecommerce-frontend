@@ -172,16 +172,14 @@ export const useSignupStore = create((set, get) => {
         const identifier = get().getIdentifier();
         const { data } = await sendOtp(identifier);
 
-        // backend should return { success: true } or similar
-        const ok = data?.success === true || data?.ok === true || data?.status === "sent";
-        if (ok) {
-          set({ loading: false, success: true, verString: "OTP sent", isCodeOpen: true });
-          return { success: true, data };
-        } else {
-          const msg = data?.message || "Failed to send OTP";
-          set({ loading: false, success: false, verString: msg });
-          return { success: false, error: msg };
-        }
+        set({
+          loading: false,
+          success: true,
+          verString: "OTP sent",
+          isCodeOpen: true
+        });
+
+        return { success: false, error: msg };
       } catch (err) {
         const message = err.message || "Failed to send OTP";
         set({ loading: false, success: false, verString: message });
@@ -206,15 +204,8 @@ export const useSignupStore = create((set, get) => {
         const identifier = get().getIdentifier();
         const { data } = await verifyOtp(identifier, otp);
 
-        const ok = data?.success === true || data?.verified === true || data?.ok === true;
-        if (ok) {
-          set({ loading: false, success: true, verString: "OTP verified" });
-          return { success: true, data };
-        } else {
-          const msg = data?.message || "Verification failed";
-          set({ loading: false, success: false, verString: msg });
-          return { success: false, error: msg };
-        }
+        set({ loading: false, success: true, verString: "OTP verified" });
+        return { success: true, data };
       } catch (err) {
         const message = err.message || "Verification failed due to a server error.";
         set({ loading: false, success: false, verString: message });

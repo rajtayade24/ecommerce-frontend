@@ -66,7 +66,6 @@ export default function CategoryForm() {
     hasNextPage,
     isFetchingNextPage,
     postCategoryMutation,
-    deleteCategoryMutation,
     refetch,
 
   } = useCategory()

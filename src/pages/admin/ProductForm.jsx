@@ -19,8 +19,8 @@ export default function ProductForm() {
   const [slug, setSlug] = useState(state?.product.slug ?? "");
   const [name, setName] = useState(state?.product.name ?? "");
   const [description, setDescription] = useState(state?.product.description ?? "");
-  const [isFeatured, setIsFeatured] = useState(state?.product.featured ?? false);
-  const [isOrganic, setIsOrganic] = useState(state?.product.organic ?? false);
+  const [isFeatured, setIsFeatured] = useState(Boolean(state?.product?.featured));
+  const [isOrganic, setIsOrganic] = useState(Boolean(state?.product?.organic));
 
   const [allCategories, setAllCategories] = useState([])
   const [category, setCategory] = useState(null)
@@ -282,12 +282,12 @@ export default function ProductForm() {
 
           {/* Flags */}
           <div className="flex items-center gap-4">
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" checked={isFeatured} onChange={(e) => setIsFeatured(e.target.checked)} />
               <span className="text-sm">Featured</span>
             </label>
 
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" checked={isOrganic} onChange={(e) => setIsOrganic(e.target.checked)} />
               <span className="text-sm">Organic</span>
             </label>

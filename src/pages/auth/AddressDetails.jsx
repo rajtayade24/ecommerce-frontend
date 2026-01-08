@@ -29,11 +29,9 @@ export default function AddressDetails() {
   const {
     addAddress,
     loading,
-    error,
     success,
     submitSignup,
-    mobile,
-    name
+    verString,
   } = useSignupStore();
 
   const { setUser, setAuthenticated } = useAuthStore()
@@ -213,8 +211,7 @@ export default function AddressDetails() {
       </div>
 
       <div className="mt-4">
-        {!success && <div className="text-sm text-red-600 mb-2">{verString}</div>}
-        {success && <div className="text-sm text-green-600 mb-2">{verString}</div>}
+        <div className={`text-sm mb-2 ${success ? "text-green-600" : "text-red-600"}`}>{verString}</div>
 
         <Button type="submit" className="w-full" onClick={(e) => {
           e.preventDefault()
