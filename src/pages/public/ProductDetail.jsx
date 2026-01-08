@@ -43,8 +43,9 @@ const ProductDetail = () => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   // only initialize cart if authenticated
-  const cart = isAuthenticated ? useCart() : null;
+  const cart = useCart({ enabled: isAuthenticated });
 
+  
   const handleAddToCart = () => {
     if (!isAuthenticated) {
       navigate("/carts", {
