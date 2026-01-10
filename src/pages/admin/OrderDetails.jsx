@@ -35,7 +35,7 @@ export default function OrderDetails() {
 
   useEffect(() => {
     if (!id) return;
-    let mounted = true;
+    const mounted = true;
     setLoading(true);
     setError(null);
 

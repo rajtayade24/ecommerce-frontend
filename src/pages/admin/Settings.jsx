@@ -47,7 +47,7 @@ export default function Settings() {
   const [logoPreview, setLogoPreview] = useState("");
 
   useEffect(() => {
-    let mounted = true;
+    const mounted = true;
     mockLoad().then((data) => {
       if (!mounted) return;
       setStoreName(data.storeName || "");

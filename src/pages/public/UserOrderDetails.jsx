@@ -16,33 +16,33 @@ const UserOrderDetails = () => {
   const [isError, setError] = useState(null);
 
   const { isAuthenticated } = useAuthStore();
-  
+
   useEffect(() => {
     if (!id || !isAuthenticated) return;
-    let mounted = true;
+    const mounted = true;
     setLoading(true);
     setError(null);
-    
+
     getOrderById(id)
-    .then((res) => {
-      if (!mounted) return;
-      setOrder(res);
-    })
-    .catch((err) => {
-      if (!mounted) return;
-      setError(err?.message || String(err));
-    })
+      .then((res) => {
+        if (!mounted) return;
+        setOrder(res);
+      })
+      .catch((err) => {
+        if (!mounted) return;
+        setError(err?.message || String(err));
+      })
       .finally(() => mounted && setLoading(false));
 
-      return () => (mounted = false);
-    }, [id]);
-    
-    if (!isAuthenticated) {
-      return <UnAuthorizedUser />;
-    }
+    return () => (mounted = false);
+  }, [id]);
+
+  if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
+  }
   if (isLoading) return <div className="p-8 text-center">Loading order...</div>;
   if (isError) return <div className="p-8 text-center text-red-600">Error: {error?.message}</div>;
-  
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="flex items-center gap-3 mb-6">
