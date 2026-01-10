@@ -19,7 +19,7 @@ const UserOrderDetails = () => {
 
   useEffect(() => {
     if (!id || !isAuthenticated) return;
-    const mounted = true;
+    let mounted = true;
     setLoading(true);
     setError(null);
 

@@ -22,7 +22,7 @@ export default function CategoryForm() {
   useEffect(() => {
     if (!isEdit) return;
 
-    const mounted = true; // flag to prevent setting state if unmounted
+    let mounted = true; // flag to prevent setting state if unmounted
 
     const fetchCategory = async () => {
       try {
