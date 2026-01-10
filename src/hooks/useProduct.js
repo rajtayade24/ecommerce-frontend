@@ -81,11 +81,12 @@ export function useProduct(filter = {}) {
 
         return { ...old, pages: newPages };
       });
+      toast.success("Product created successfully! ");
     },
 
     onError: (err) => {
       const message = err?.message || JSON.stringify(err) || "Upload failed";
-      alert("Upload error: " + message);
+      toast.error(`Failed to create product: ${message}`);
     },
   });
 
@@ -123,7 +124,7 @@ export function useProduct(filter = {}) {
       if (context?.previousData) {
         queryClient.setQueryData(["product"], context.previousData);
       }
-      alert("Failed to update product");
+      toast.error("Failed to update product");
     },
 
     onSuccess: (updatedProduct) => {
@@ -141,6 +142,7 @@ export function useProduct(filter = {}) {
           })),
         };
       });
+      toast.success("Product updated successfully ");
     },
 
     onSettled: () => {
@@ -150,7 +152,7 @@ export function useProduct(filter = {}) {
 
   // -------------------- DELETE PRODUCT MUTATION --------------------
   const deleteProductMutation = useMutation({
-    mutationFn: async (id ) => await deleteProduct(id),
+    mutationFn: async (id) => await deleteProduct(id),
 
     onMutate: async ({ id }) => {
       const queryKey = ["product"];
@@ -176,19 +178,19 @@ export function useProduct(filter = {}) {
 
         return { ...old, pages: newPages };
       });
-
       return { previousData };
     },
-
+    
     onError: (error, _, context) => {
       if (context?.previousData) {
         queryClient.setQueryData(["product"], context.previousData);
       }
-      alert("Failed to delete product.");
+      toast.error("Failed to delete product ");
     },
 
     onSettled: () => {
       queryClient.invalidateQueries(["product"]);
+        toast.success("Product deleted "); 
     },
   });
 

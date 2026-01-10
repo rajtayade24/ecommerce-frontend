@@ -1,9 +1,9 @@
 
 import { useInfiniteQuery, useMutation, useQueryClient, } from "@tanstack/react-query";
 import { addToCart, getCarts, removeFromCart, updateCartQuantity, clearCart } from "@/service/userService";
+import { toast } from "@/components/ui/Sonner";
 
 const PAGE_SIZE = 10;
-
 export const useCart = ({ enabled = true } = {}) => {
   const queryClient = useQueryClient();
 
@@ -79,11 +79,12 @@ export const useCart = ({ enabled = true } = {}) => {
 
         return { ...old, pages: newPages };
       });
+      toast.success("Item added to cart!");
     },
 
     onError: (err) => {
       const message = err?.message || JSON.stringify(err) || "Upload failed";
-      console.log(message);
+      toast.error(`Failed to add item: ${message}`);
     },
   });
 
@@ -122,11 +123,12 @@ export const useCart = ({ enabled = true } = {}) => {
       if (context?.previousData) {
         queryClient.setQueryData(["cart"], context.previousData);
       }
-      alert("Failed to delete item from cart.");
+      toast.error("Failed to delete item from cart");
     },
 
     onSettled: () => {
       queryClient.invalidateQueries(["cart"]);
+      toast.info("Cart updated");
     },
   });
 
@@ -151,7 +153,7 @@ export const useCart = ({ enabled = true } = {}) => {
 
         return { ...old, pages: newPages };
       });
-
+      toast.success("Quantity updated");
       return { previousData };
     },
 
@@ -159,13 +161,14 @@ export const useCart = ({ enabled = true } = {}) => {
       if (context?.previousData) {
         queryClient.setQueryData(["cart"], context.previousData);
       }
-      alert("Failed to update quantity");
+      toast.error("Failed to update quantity ⚠️");
     },
 
     onSettled: () => {
       queryClient.invalidateQueries(["cart"]);
     },
   });
+
   const clearCartMutation = useMutation({
     mutationFn: async () => clearCart(),
 
@@ -180,6 +183,7 @@ export const useCart = ({ enabled = true } = {}) => {
         pages: [],
       });
 
+      toast.success("Cart cleared");
       return { previousData };
     },
 
@@ -187,7 +191,7 @@ export const useCart = ({ enabled = true } = {}) => {
       if (context?.previousData) {
         queryClient.setQueryData(["cart"], context.previousData);
       }
-      alert("Failed to clear cart");
+      toast.error("Failed to clear cart");
     },
 
     onSettled: () => {

@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import {
   User,
   Package,
+  LogIn,
   ShoppingCart,
   Sun,
   Moon,
@@ -21,6 +22,7 @@ import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from '@/comp
 function ProfileMenu() {
   const navigate = useNavigate();
   const setUser = useAuthStore(s => s.setUser)
+  const isAuthenticated = useAuthStore(s => s.isAuthenticated)
   const setAuthenticated = useAuthStore(s => s.setAuthenticated)
   const setUserMainId = useAuthStore(s => s.setUserMainId)
   const setToken = useAuthStore(s => s.setToken)
@@ -42,9 +44,19 @@ function ProfileMenu() {
       <DropdownMenuGroup>
 
         <DropdownMenuItem className='p-0 m-0 w-full'>
-          <Link to="/me/profile" className='w-full'>
-            <Button variant="ghost" className="w-full justify-start rounded-none">  <User size={16} />Your Account</Button>
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/me/profile" className='w-full'>
+              <Button variant="ghost" className="w-full justify-start rounded-none">
+                <User size={16} />Your Account
+              </Button>
+            </Link>
+          ) : (
+            <Link to="/verify/login" className='w-full'>
+              <Button variant="outline"  className="w-full justify-start rounded-none">
+                <LogIn size={16} /> Login
+              </Button>
+            </Link>
+          )}
         </DropdownMenuItem>
 
         <DropdownMenuItem className='p-0 m-0 w-full'>
@@ -75,22 +87,24 @@ function ProfileMenu() {
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'
-          onSelect={(e) => e.preventDefault()} // 👈 IMPORTANT
-        >
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="ghost" className="w-full justify-start rounded-none">  <LogOut size={16} />Logout</Button>
-            </DialogTrigger>
+        {isAuthenticated && (
+          <DropdownMenuItem className='p-0 m-0 w-full'
+            onSelect={(e) => e.preventDefault()} // 👈 IMPORTANT
+          >
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" className="w-full justify-start rounded-none">  <LogOut size={16} />Logout</Button>
+              </DialogTrigger>
 
-            <DialogContentImpl
-              desc='Do you Want to logout??'
-              title='Logout Conformation'
-              save='Logout'
-              onSave={handleLogout}
-            />
-          </Dialog>
-        </DropdownMenuItem>
+              <DialogContentImpl
+                desc='Do you Want to logout??'
+                title='Logout Conformation'
+                save='Logout'
+                onSave={handleLogout}
+              />
+            </Dialog>
+          </DropdownMenuItem>
+        )}
 
       </DropdownMenuGroup>
     </DropdownMenuContent>

@@ -6,6 +6,7 @@ import {
   sendOtp,
   verifyOtp,
 } from "@/service/authService";
+import { toast } from "@/components/ui/Sonner";
 
 /**
  * Notes:
@@ -108,6 +109,7 @@ export const useSignupStore = create((set, get) => {
       const s = get();
       if (!s.password || !s.confirmPassword || s.password !== s.confirmPassword) {
         set({ loading: false, success: false, verString: "Passwords do not match" });
+        toast.error("Passwords do not match");
         return { success: false, error: "password_mismatch" };
       }
 
@@ -116,6 +118,7 @@ export const useSignupStore = create((set, get) => {
       try {
         const { data, status } = await signupService(userDto);
         set({ loading: false, success: true, verString: "Signup successful" });
+        toast.success("Signup successful!");
 
         // store token if present
         if (data?.token) {
@@ -128,6 +131,7 @@ export const useSignupStore = create((set, get) => {
       } catch (err) {
         const message = err.message || "Signup error";
         set({ loading: false, success: false, verString: message });
+        toast.error(`Signup failed: ${message}`);
         return { success: false, error: message };
       }
     },
@@ -139,6 +143,7 @@ export const useSignupStore = create((set, get) => {
       try {
         const { data } = await loginService({ identifier, password });
         set({ loading: false, success: true, verString: "Login successful" });
+        toast.success("Login successful!");
 
         if (data?.token) {
           localStorage.setItem("token", data.token);
@@ -150,13 +155,14 @@ export const useSignupStore = create((set, get) => {
       } catch (err) {
         const message = err.message || "Login failed";
         set({ loading: false, success: false, verString: message });
+        toast.error(`Login failed: ${message}`);
         return { success: false, error: message };
       }
     },
 
     // send OTP
     sendOtpStore: async () => {
-      set({loading: true, success: null, verString: "Sending OTP..." });
+      set({ loading: true, success: null, verString: "Sending OTP..." });
 
       try {
         const identifier = get().getIdentifier();
@@ -168,11 +174,13 @@ export const useSignupStore = create((set, get) => {
           verString: "OTP sent",
           isCodeOpen: true
         });
+        toast.success("OTP sent successfully!");
 
         return { success: false, error: msg };
       } catch (err) {
         const message = err.message || "Failed to send OTP";
         set({ loading: false, success: false, verString: message });
+        toast.error(`OTP failed: ${message}`);
         return { success: false, error: message };
       }
     },
@@ -181,10 +189,12 @@ export const useSignupStore = create((set, get) => {
     submitOtp: async (otp) => {
       if (!get().isCodeOpen) {
         set({ verString: "Please request OTP first", success: false });
+        toast.error("Please request OTP first");
         return { success: false, error: "otp_not_requested" };
       }
       if (!otp) {
         set({ verString: "Please enter the code.", success: false });
+        toast.error("Please enter the OTP code");
         return { success: false, error: "otp_missing" };
       }
 
@@ -195,10 +205,12 @@ export const useSignupStore = create((set, get) => {
         const { data } = await verifyOtp(identifier, otp);
 
         set({ loading: false, success: true, verString: "OTP verified" });
+        toast.success("OTP verified successfully!");
         return { success: true, data };
       } catch (err) {
         const message = err.message || "Verification failed due to a server error.";
         set({ loading: false, success: false, verString: message });
+        toast.error(`OTP verification failed: ${message}`);
         return { success: false, error: message };
       }
     },
@@ -207,6 +219,8 @@ export const useSignupStore = create((set, get) => {
       localStorage.removeItem("token");
       localStorage.removeItem("currentUser");
       set({ success: null, verString: "" });
+
+      toast.info("Logged out successfully");
     },
   };
 });

@@ -1,6 +1,7 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { cancelOrder, getAllOrders, markOrderComplete } from "@/service/adminService";
+import { toast } from "@/components/ui/Sonner";
 
 const PAGE_SIZE = 8;
 
@@ -66,12 +67,13 @@ export function useOrder(filter = {}) {
     onError: (err, orderNumber, context) => {
       // rollback
       queryClient.invalidateQueries({ queryKey: ["order", filter] });
-      console.error("Failed to mark complete:", err);
+      toast.error("Failed to mark order as complete")
     },
 
     onSuccess: (updatedOrder) => {
       // ensure backend truth
       updateOrderStatusInCache(updatedOrder.orderNumber, updatedOrder.status);
+      toast.success("Order marked complete ");
     },
   });
 
@@ -92,11 +94,12 @@ export function useOrder(filter = {}) {
 
     onError: (err) => {
       queryClient.invalidateQueries({ queryKey: ["order", filter] });
-      console.error("Failed to cancel order:", err);
+      toast.error("Failed to cancel order");
     },
 
     onSuccess: (updatedOrder) => {
       updateOrderStatusInCache(updatedOrder.orderNumber, updatedOrder.status);
+       toast.success("Order cancelled ");
     },
   });
 

@@ -114,7 +114,7 @@ export default function CategoryForm() {
         </div>
       </div>
 
-      <form
+      <motion.form
 
         onSubmit={handleSubmit}
         className="bg-white rounded-2xl shadow-sm p-6 space-y-6"
@@ -150,7 +150,7 @@ export default function CategoryForm() {
         </div>
 
         <button id="cat-form-submit" type="submit" className="hidden">Save</button>
-      </form>
+      </motion.form>
     </div>
   );
 }

@@ -18,7 +18,7 @@ const UnAuthorizedUser = ({ redirectTo = "/verify/login", message }) => {
         </p>
 
         <div className="flex gap-3 justify-center">
-          <Button onClick={() => navigate(redirectTo)}>Sign in / Sign up</Button>
+          <Button onClick={() => navigate(redirectTo)}>Login / Sign up</Button>
 
           <Link to="/products">
             <Button variant="ghost">Browse Products</Button>

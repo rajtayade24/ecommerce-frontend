@@ -57,7 +57,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    console.log(darkMode ? "dark mode is applied" : "dark mode is applied");
+    console.log(darkMode ? "dark mode" : "light mode");
     document.documentElement.classList.toggle("dark", darkMode);
     try { localStorage.setItem("dark", darkMode ? "true" : "false"); } catch (e) { }
   }, [darkMode]);
@@ -66,7 +66,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       {/* <TooltipProvider> */}
       <CartProvider>
-        <Sonner /> {/***/}
+        <Sonner theme={darkMode? "dark": "light"} />
         <BrowserRouter>
           <Routes>
             {/* Public routes wrapped by PublicLayout (Navbar included) */}

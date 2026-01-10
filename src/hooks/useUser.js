@@ -69,10 +69,12 @@ export function useUser(filters = {}) {
       if (context?.previous) {
         queryClient.setQueryData(["users", filters], context.previous);
       }
+      toast.error("Failed to update user status ");
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["users", filters] });
+          toast.success(`User successfully ${statusText} `);
     },
   });
 

@@ -1,9 +1,8 @@
 import {
   ShoppingCart,
   Search,
-  Menu,
   Leaf,
-
+  Menu
 } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +17,6 @@ import { ScrollArea } from "@/components/ui/ScrollArea";
 import { cn } from "@/lib/utils";
 import TopNavigations from "@/components/TopNavigations";
 import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/DropdownMenu";
-import { useSignupStore } from "@/store/useSignupStore";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -29,6 +27,7 @@ export const Navbar = () => {
   const toggleProfileDetails = useAuthStore(s => s.toggleProfileDetails)
   const { search, setSearch, debouncedSearch, setDebouncedSearch, setSearchQuery } = useAuthStore();
 
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -188,28 +187,22 @@ export const Navbar = () => {
               <TopNavigations />
             </div>
 
-            {user == null ? (
+            {isAuthenticated ? (
+              <Link to="/me/profile" className='w-full'>
+                <Button variant="outline" size="default" className="relative"
+                  onClick={toggleProfileDetails}
+                >
+                  Hello {user?.name?.trim().split(" ")[0]}
+                </Button>
+              </Link>
+            ) : (
               <Link to="/verify/login">
                 <Button variant="outline" size="default" className="relative">
                   Login
                 </Button>
               </Link>
-            ) : (
-              <DropdownMenu modal={false}>
-                <DropdownMenuTrigger asChild>
-                  {/* Mobile Menu Button */}
-                  <Button variant="outline" size="default" className="relative"
-                    onClick={toggleProfileDetails}
-                  >
-                    Hello {user?.name?.trim().split(" ")[0]}
-                  </Button>
-                </DropdownMenuTrigger>
-
-                <ProfileMenu />
-
-              </DropdownMenu>
-
             )}
+
             {/* Cart */}
             <Link to="/carts">
               <Button variant="ghost" size="icon" className="relative">
@@ -222,8 +215,7 @@ export const Navbar = () => {
               </Button>
             </Link>
 
-            {/* Mobile Menu */}
-            <div className="lg:hidden">
+            <div className="">
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
                   {/* Mobile Menu Button */}
@@ -236,6 +228,7 @@ export const Navbar = () => {
 
               </DropdownMenu>
             </div>
+
           </div>
         </div>
 

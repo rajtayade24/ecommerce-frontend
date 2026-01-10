@@ -1,8 +1,8 @@
 // hooks/useOrders.js
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
 import { getOrders } from '@/service/userService';
 import { cancelOrder } from '@/service/userService';
+import { toast } from '@/components/ui/Sonner';
 
 const PAGE_SIZE = 10;
 

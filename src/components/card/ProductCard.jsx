@@ -109,7 +109,7 @@ export const ProductCard = ({ product }) => {
                     className="rounded-full"
                     onClick={() => setQty(1)}
                   >
-                    <ShoppingCart className="h-4 w-4" />
+                    <ShoppingCart className="h-4 w-4 p-0.5" />
                   </button>
                 ) : (
                   <>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Leaf, ArrowLeft, Heart } from 'lucide-react';
-import { toast } from 'sonner';
 import { motion } from 'framer-motion';
 import { getProductById } from '@/service/userService';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import useAuthStore from '@/store/useAuthStore';
 import { useCart } from '@/contexts/CartContext';
+import { toast } from '@/components/ui/Sonner';
 
 const ProductDetail = () => {
   const navigate = useNavigate()

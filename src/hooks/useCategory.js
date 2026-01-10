@@ -64,11 +64,12 @@ export function useCategory() {
 
         return { ...old, pages: newPages };
       });
+      toast.success(`Category "${createdCategory?.name}" created successfully! 🎉`);
     },
     onError: (err) => {
       // show user-friendly message
       const message = err?.message || JSON.stringify(err) || "Upload failed";
-      alert("Upload error: " + message);
+      toast.error(`Category creation failed: ${message}`);
     },
   });
 
@@ -125,11 +126,12 @@ export function useCategory() {
       if (context?.previousData) {
         queryClient.setQueryData(queryKey, context.previousData);
       }
-      console.error("Delete failed:", error);
+      const message = error?.message || "Delete failed";
+      toast.error(`Failed to delete category: ${message}`);
     },
 
     onSuccess: (_, { id }) => {
-      console.log("Post deleted:", id);
+      toast.success("Category deleted successfully!");
     },
     onSettled: () => {
       const queryKey = ["category"];
