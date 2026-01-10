@@ -20,11 +20,12 @@ const OrderCheckout = () => {
 
   useEffect(() => {
     if (!state?.items) return;
+    setLoadinItems(true);
 
     getCartItems(state.items)
       .then(res => {
         setData(res);
-        console.log(res);
+        setLoadinItems(false);
       })
       .catch(err => console.log(err));
   }, [state.items]);
@@ -34,16 +35,22 @@ const OrderCheckout = () => {
   const primaryAddress = addresses?.find(a => a.primaryAddress === true);
   const [selectedAddressId, setselectedAddressId] = useState(primaryAddress ?? null)
   const [isAddOpen, setIsAddOpen] = useState(false);
+  const [loadingAddress, setLoadingAddress] = useState(false);
+  const [loadinItems, setLoadinItems] = useState(false);
+
   const refreshAddresses = async () => {
+    setLoadingAddress(true);
     const list = await getUserAddress(user.id);
     setAddresses(list);
+    setLoadingAddress(false);
   };
 
   useEffect(() => {
+    setLoadingAddress(true);
     const fetchAddress = async () => {
       const adds = await getUserAddress(user?.id ?? 1);
-      console.log(adds);
       setAddresses(adds);
+      setLoadingAddress(false);
     }
     fetchAddress();
   }, []);
@@ -89,9 +96,14 @@ const OrderCheckout = () => {
 
           <section className="rounded-2xl shadow p-6">
             <h3 className="font-medium text-lg mb-4">Order Summary</h3>
-            {data?.items?.map((item, i) => (
-              <OrderItemCard key={i} item={item} />
-            ))}
+
+            {loadinItems ? (
+              <div className="text-center">Loading order Items</div>
+            ) : data?.items.length === 0 ? (
+              <div className="text-center">No order Items found</div>
+            ) : (
+              data?.items?.map((item, i) => <OrderItemCard key={i} item={item} />)
+            )}
 
             <div className="mt-6 text-sm text-slate-500">Items are dispatched from nearby warehouses — estimated delivery: Before One day.</div>
           </section>
@@ -103,8 +115,13 @@ const OrderCheckout = () => {
             </div>
 
             <div className="mt-4 space-y-3">
-              {addresses.length ? (
-                addresses.map((a) => (
+
+              {loadingAddress ? (
+                <div className="text-center p-6">Loading Addresses...</div>
+              ) : addresses.length === 0 ? (
+                <div className="text-center p-6 text-slate-500">No saved addresses. Add a new address to continue.</div>
+              ) : (
+                addresses.map(a => (
                   <Label
                     key={a.id}
                     className={`flex items-center border rounded-lg p-4 transition-shadow hover:shadow-md ${a.id === selectedAddressId ? 'ring-2 ring-blue-200' : ''
@@ -137,8 +154,6 @@ const OrderCheckout = () => {
                     </Button>
                   </Label>
                 ))
-              ) : (
-                <div className="p-6 text-center text-slate-500">No saved addresses. Add a new address to continue.</div>
               )}
 
               <div className="pt-2 border-t">

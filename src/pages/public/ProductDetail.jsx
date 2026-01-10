@@ -16,11 +16,18 @@ const ProductDetail = () => {
 
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true);
     const fetchProduct = async () => {
-      const currentProduct = await getProductById(id);
-      setProduct(currentProduct);
+      try {
+        const currentProduct = await getProductById(id);
+        setProduct(currentProduct);
+      } catch (err) { }
+      finally {
+        setLoading(false);
+      }
     }
     fetchProduct();
   }, [id])
@@ -74,6 +81,8 @@ const ProductDetail = () => {
 
     navigate('/checkout', { state: { items: checkoutItems } });
   }
+
+  if (isLoading) return (<div className='text-center'>Loading product...</div>)
 
   if (!product) {
     return (
