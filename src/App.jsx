@@ -36,8 +36,8 @@ import { getMe } from "@/service/authService";
 import MyProfile from "@/pages/public/MyProfile";
 import AddAddressModal from "@/pages/public/order/AddAddressModal";
 import SignupGuard from "@/pages/auth/SignupGuard";
-import PrivacyPolicyPage from "./pages/public/PrivacyPolicyPage";
-import TermsAndServices from "./pages/public/TermsAndServices";
+import PrivacyPolicyPage from "@/pages/public/PrivacyPolicyPage";
+import TermsAndServices from "@/pages/public/TermsAndServices";
 
 const queryClient = new QueryClient();
 

@@ -6,8 +6,8 @@ import { formatMoney } from '@/utils/formatMoney';
 
 import { Button } from "@/components/ui/Button";
 import { Card } from '@/components/ui/Card';
-import { Dialog, DialogTrigger } from './ui/Dialog';
-import DialogContentImpl from './DialogContentImpl';
+import { Dialog, DialogTrigger } from '@/components/ui/Dialog';
+import DialogContentImpl from '@/components/DialogContentImpl'
 
 const STATUS_BADGE = {
   PENDING: "bg-gray-100 text-gray-800",

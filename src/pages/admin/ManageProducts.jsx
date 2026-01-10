@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useProduct } from "@/hooks/useProduct";
 import { Card } from "@/components/ui/Card";
-import { Dialog, DialogTrigger } from "../../components/ui/Dialog";
-import DialogContentImpl from "../../components/DialogContentImpl";
+import { Dialog, DialogTrigger } from "@/components/ui/Dialog";
+import DialogContentImpl from "@/components/DialogContentImpl";
 
 export default function ManageProducts() {
   const navigate = useNavigate();

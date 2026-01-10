@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
 import { getAllCategories } from "@/service/userService";
 import { useProduct } from "@/hooks/useProduct";
-import { getProductById } from "../../service/userService";
+import { getProductById } from "@/service/userService";
 
 export default function ProductForm() {
   const { id } = useParams();

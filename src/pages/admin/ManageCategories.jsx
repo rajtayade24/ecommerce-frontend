@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useCategory } from "@/hooks/useCategory";
 import { Card } from "@/components/ui/Card";
-import { Dialog, DialogTrigger } from "../../components/ui/Dialog";
-import DialogContentImpl from "../../components/DialogContentImpl";
+import { Dialog, DialogTrigger } from "@/components/ui/Dialog";
+import DialogContentImpl from "@/components/DialogContentImpl";
 
 export function ManageCategories() {
 

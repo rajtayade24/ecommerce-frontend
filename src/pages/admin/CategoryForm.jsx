@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { useCategory } from "@/hooks/useCategory";
-import { getCategoryById } from "../../service/userService";
+import { getCategoryById } from "@/service/userService";
 
 
 export default function CategoryForm() {
