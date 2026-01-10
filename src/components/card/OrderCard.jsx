@@ -4,9 +4,9 @@ import { format } from 'date-fns';
 import { Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 
 const statusVariant = (status) => {
   switch (status) {
