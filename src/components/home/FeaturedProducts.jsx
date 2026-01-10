@@ -8,7 +8,7 @@ import { useProduct } from "@/hooks/useProduct";
 export const FeaturedProducts = () => {
   const { products } = useProduct({ isFeatured: true })
   return (
-    <section className="py-16">
+    <section className="py-4 sm:py-8 lg:py-16">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

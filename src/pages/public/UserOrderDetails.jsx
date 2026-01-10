@@ -44,7 +44,7 @@ const UserOrderDetails = () => {
   if (isError) return <div className="p-8 text-center text-red-600">Error: {error?.message}</div>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto  p-2 lg:p-6">
       <div className="flex items-center gap-3 mb-6">
         <Link to="/orders"><Button variant="ghost"><ArrowLeft className="h-4 w-4" /> Back</Button></Link>
         <h1 className="text-2xl font-semibold">Order #{order.orderNumber}</h1>
@@ -88,7 +88,7 @@ const UserOrderDetails = () => {
               <div>{order.shippingAddress?.line1}</div>
               <div>{order.shippingAddress?.line2}</div>
               <div>{order.shippingAddress?.city}, {order.shippingAddress?.state} - {order.shippingAddress?.pincode}</div>
-              <div className="mt-2 text-sm text-slate-500">Phone: {order.shippingAddress?.phone}</div>
+              <div className="mt-2 text-sm text-slate-500">Phone: {order.shippingAddress?.mobile}</div>
             </div>
           </section>
         </div>
@@ -102,8 +102,9 @@ const UserOrderDetails = () => {
 
             <div className="mt-4 text-sm">
               <div><strong>Payment:</strong> {order.paymentMethod} • {order.currency} • {order.paymentStatus || '—'}</div>
-              <div className="mt-2 text-sm"><strong>Subtotal:</strong> ₹{order.subtotal?.toFixed(2) ?? '—'}</div>
-              <div className="text-sm"><strong>Delivery:</strong> ₹{order.deliveryFee?.toFixed(2) ?? '—'}</div>
+              <div className="mt-2 text-sm"><strong>Subtotal:</strong> ₹{order.itemsTotal?.toFixed(2) ?? '—'}</div>
+              <div className="text-sm"><strong>Delivery:</strong> ₹{order.shippingTotal?.toFixed(2) ?? '—'}</div>
+              <div className="text-sm"><strong>Tax:</strong> ₹{order.taxTotal?.toFixed(2) ?? '—'}</div>
               <div className="text-sm font-semibold mt-3">Total: ₹{order.totalAmount.toFixed(2)}</div>
             </div>
           </div>

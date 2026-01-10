@@ -112,7 +112,7 @@ export default function UserDetails() {
 
   // render details
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6">
+    <div className="max-w-3xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-semibold">{user?.name}</h2>
@@ -144,12 +144,16 @@ export default function UserDetails() {
         </Card>
 
         <Card className=" p-4 rounded shadow-sm">
-          <div className="text-xs text-muted-foreground">Roles</div>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {(user.roles || []).map((r) => (
-              <span key={r} className="px-2 py-1 rounded bg-slate-100 text-xs">{r}</span>
-            ))}
-          </div>
+          {(user?.roles.length > 1 || user.roles.includes("ADMIN".toUpperCase())) && (
+            <div>
+              <h3 className="text-sm text-gray-600">Roles</h3>
+              <div className="mt-1 flex flex-wrap gap-2">
+                {(user.roles || []).map((r) => (
+                  <span key={r} className="text-xs px-2 py-1 rounded">{r}</span>
+                ))}
+              </div>
+            </div>
+          )}
         </Card>
 
         <Card className=" p-4 rounded shadow-sm col-span-2">
@@ -179,7 +183,7 @@ export default function UserDetails() {
           <Card className=" p-4 rounded shadow-sm col-span-2">
             <div className="text-xs text-muted-foreground">Shipping address</div>
             <div className="mt-2 text-sm space-y-1">
-              <div>{user.shippingAddress.address}</div>
+              <div>{user.shippingAddress.line1} {user.shippingAddress.line2}</div>
               <div>{user.shippingAddress.city}, {user.shippingAddress.state}</div>
               <div>{user.shippingAddress.postcode}</div>
               <div>{user.shippingAddress.country}</div>

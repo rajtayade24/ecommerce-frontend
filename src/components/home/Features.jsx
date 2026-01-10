@@ -30,7 +30,7 @@ const features = [
 
 export const Features = () => {
   return (
-    <section className="py-16 bg-card border-y">
+    <section className="py-4 sm:py-8 lg:py-16 bg-card border-y">
       <div className="container px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (

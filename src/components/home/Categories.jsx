@@ -18,7 +18,7 @@ export const Categories = () => {
   if (isError) return <div>{error?.message}</div>
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-4 sm:py-8 lg:py-16 bg-muted/30">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

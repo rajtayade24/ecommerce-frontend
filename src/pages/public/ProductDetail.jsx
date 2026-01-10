@@ -45,7 +45,7 @@ const ProductDetail = () => {
   // only initialize cart if authenticated
   const cart = useCart({ enabled: isAuthenticated });
 
-  
+
   const handleAddToCart = () => {
     if (!isAuthenticated) {
       navigate("/carts", {
@@ -78,7 +78,7 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
-        <div className="container px-4 py-16 text-center">
+        <div className="container px-4 py-4 sm:py-8 lg:py-16 text-center">
           <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
           <Link to="/products">
             <Button>Back to Products</Button>

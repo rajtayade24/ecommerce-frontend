@@ -32,6 +32,8 @@ export default function AddressDetails() {
     success,
     submitSignup,
     verString,
+    mobile,
+    name,
   } = useSignupStore();
 
   const { setUser, setAuthenticated } = useAuthStore()
@@ -82,9 +84,12 @@ export default function AddressDetails() {
     const addressObj = {
       line1: addressLine1,
       line2: addressLine2,
+      name: name,
+      phone: mobile,
       city: city,
       state: state,
       pincode: pincode,
+      label: null,
     }
     addAddress(addressObj);
     // call submitSignup; on success navigate to login or home

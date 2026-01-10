@@ -41,7 +41,7 @@ export default function MyProfile() {
     navigate("/");
   }
   
-  const initials = (user.name || "?")
+  const initials = (user?.name || "?")
     .split(" ")
     .map((s) => s.charAt(0))
     .slice(0, 2)
@@ -65,7 +65,7 @@ export default function MyProfile() {
     );
 
   return (
-    <div className="container max-w-3xl mx-auto p-6">
+    <div className="max-w-3xl mx-auto ">
       <div className="shadow-md rounded-lg p-6 flex gap-6 border-muted">
         <div className="flex-shrink-0">
           <div className="h-20 w-20 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-700">
@@ -105,17 +105,6 @@ export default function MyProfile() {
               <p className="text-sm text-gray-500">{user.mobile || "-"}</p>
             </div>
 
-            {(user.roles.length > 1 || user.roles.includes("ADMIN".toUpperCase())) && (
-              <div>
-                <h3 className="text-sm text-gray-600">Roles</h3>
-                <div className="mt-1 flex flex-wrap gap-2">
-                  {(user.roles || []).map((r) => (
-                    <span key={r} className="text-xs px-2 py-1 rounded">{r}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-
             <div className="sm:col-span-2">
               <h3 className="text-sm text-gray-600">Addresses</h3>
               <div className="mt-2 space-y-2">
@@ -133,7 +122,7 @@ export default function MyProfile() {
                             <div className="ml-auto text-sm text-slate-500">{a.phone}</div>
                           </div>
 
-                          <div className="text-sm text-slate-600 mt-2">{a.address}</div>
+                          <div className="text-sm text-slate-600 mt-2">{a.line1} {a.line2}</div>
                           <div className="text-sm text-slate-600">{a.city}, {a.state} — <span className="font-medium">{a.pincode}</span></div>
                         </div>
                       </Label>

@@ -13,7 +13,7 @@ const Cart = () => {
   const { isAuthenticated } = useAuthStore();
 
 
-  const {isLoading, isError, error, items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
+  const { isLoading, isError, error, items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
 
   const totals = useMemo(() => {
     if (!isAuthenticated) return
@@ -77,74 +77,84 @@ const Cart = () => {
             </div>
           ) : (
             items.map(item => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-card border rounded-2xl p-4 flex gap-4"
-            >
-              <Link
-                to={`/products/${item.product.id}`}
-                className="w-24 h-24 rounded-xl overflow-hidden"
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="
+    bg-card border rounded-2xl p-4
+    flex flex-col sm:flex-row gap-4
+  "
               >
-                <img
-                  src={item.product.images?.[0]}
-                  alt={item.product.name}
-                  className="w-full h-full object-cover"
-                />
-              </Link>
+                {/* IMAGE */}
+                <Link
+                  to={`/products/${item.product.id}`}
+                  className="
+      w-full sm:w-24 h-40 sm:h-24
+      rounded-xl overflow-hidden
+    "
+                >
+                  <img
+                    src={item.product.images?.[0]}
+                    alt={item.product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </Link>
 
-              <div className="flex-1">
-                <div className="flex justify-between">
-                  <Link to={`/products/${item.product.id}`}>
-                    <h3 className="font-bold">{item.product.name}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {item.variant.value}
-                      {item.variant.unit}
-                    </p>
-                  </Link>
-
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() =>
-                      removeCartMutation.mutate({ id: item.id })
-                    }
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center gap-3">
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      disabled={item.quantity === 1}
-                      onClick={() => handleQuantityChange(item, -1)}
-                    >
-                      <Minus className="h-3 w-3" />
-                    </Button>
-
-                    <span className="w-8 text-center font-medium">
-                      {item.quantity}
-                    </span>
+                {/* CONTENT */}
+                <div className="flex-1">
+                  {/* TITLE + DELETE */}
+                  <div className="flex justify-between items-start gap-3">
+                    <Link to={`/products/${item.product.id}`}>
+                      <h3 className="font-semibold leading-tight">
+                        {item.product.name}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {item.variant.value}
+                        {item.variant.unit}
+                      </p>
+                    </Link>
 
                     <Button
+                      variant="ghost"
                       size="icon"
-                      variant="outline"
-                      onClick={() => handleQuantityChange(item, 1)}
+                      onClick={() => removeCartMutation.mutate({ id: item.id })}
                     >
-                      <Plus className="h-3 w-3" />
+                      <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
 
-                  <div className="text-lg font-bold">
-                    ₹{(item.variant.price * item.quantity).toFixed(2)}
+                  {/* QUANTITY + PRICE */}
+                  <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-3">
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        disabled={item.quantity === 1}
+                        onClick={() => handleQuantityChange(item, -1)}
+                      >
+                        <Minus className="h-3 w-3" />
+                      </Button>
+
+                      <span className="w-8 text-center font-medium">
+                        {item.quantity}
+                      </span>
+
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        onClick={() => handleQuantityChange(item, 1)}
+                      >
+                        <Plus className="h-3 w-3" />
+                      </Button>
+                    </div>
+
+                    <div className="text-lg font-bold text-right">
+                      ₹{(item.variant.price * item.quantity).toFixed(2)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
             ))
           )}
         </div>

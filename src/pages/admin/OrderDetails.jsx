@@ -146,7 +146,7 @@ export default function OrderDetails() {
           <div className="text-xs text-muted-foreground">Shipping address</div>
           <div className="mt-1 text-sm">
             <div className="font-medium">{order.shippingAddress?.name ?? order?.user?.name ?? "—"}</div>
-            <div className="text-sm text-muted-foreground">{order.shippingAddress?.address ?? ""}</div>
+            <div className="text-sm text-muted-foreground">{order.shippingAddress?.line1 ?? ""}{order.shippingAddress?.line2 ?? ""}</div>
             <div className="text-sm text-muted-foreground">{order.shippingAddress?.city ?? ""} {order.shippingAddress?.pincode ?? ""}</div>
             <div className="text-sm text-muted-foreground">{order.shippingAddress?.country ?? ""}</div>
           </div>
