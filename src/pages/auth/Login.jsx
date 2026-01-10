@@ -14,7 +14,9 @@ export default function Login() {
     password,
     setPassword,
     submitLogin,
-    error,
+    success,
+    verString,
+    
   } = useSignupStore();
 
   const { setUser, setAuthenticated } = useAuthStore()
@@ -23,12 +25,12 @@ export default function Login() {
     e.preventDefault();
     console.log(identifier, password);
     if (!identifier) {
-      useSignupStore.setState({ error: "Email or mobile is required" });
+      useSignupStore.setState({ verString: "Email or mobile is required" });
       return;
     }
 
     if (!password || password.length < 6) {
-      useSignupStore.setState({ error: "Password must be at least 6 characters" });
+      useSignupStore.setState({ verString: "Password must be at least 6 characters" });
       return;
     }
 
@@ -70,9 +72,7 @@ export default function Login() {
           />
         </div>
 
-        {error && (
-          <p className="text-red-500 text-sm text-center">{error?.message}</p>
-        )}
+        <div className={`text-sm mb-2 ${success ? "text-green-600" : "text-red-600"}`}>{verString}</div>
 
         <Button className="w-full mt-2" onClick={handleLogin}>
           Login
