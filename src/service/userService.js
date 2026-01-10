@@ -1,5 +1,14 @@
 import { api } from "./api";
 
+// Standardized helper to unwrap axios errors into a string
+function extractError(err, fallback = "Request failed") {
+  return (
+    err.response?.data?.error ||
+    err?.response?.data ||
+    err?.message ||
+    fallback
+  );
+}
 
 // GET /products
 //   ?search=
@@ -25,8 +34,7 @@ export const getProducts = async (page = 0, size = 1, filter = {}) => {
     // Backend should return: { content: [...], number, totalPages, totalElements, size }
     return response.data;
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "getproduct failed";
-    throw new Error(error);
+    throw new Error(extractError(err, "getproduct failed"));
   };
 }
 
@@ -35,11 +43,7 @@ export const getProductById = async (id) => {
     const response = await api.get(`/products/${id}`); console.log(response.data);
     return response.data;
   } catch (err) {
-    const message =
-      err.response?.data?.message ||
-      err.message ||
-      "Errror to get product";
-    throw new Error(message);
+    throw new Error(extractError(err, "Errror to get product"));
   }
 }
 
@@ -51,8 +55,7 @@ export const getCategories = async (page = 0, size = 2) => {
     console.log("categories", response);
     return response.data;
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "getCategories failed";
-    throw new Error(error);
+    throw new Error(extractError(err, "getCategories failed"));
   }
 };
 
@@ -61,11 +64,18 @@ export const getAllCategories = async () => {
     const response = await api.get("/categories/all"); console.log("all categories", response);
     return response.data;
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "getCategories failed"; console.log(error);
-    throw new Error(error);
+    throw new Error(extractError(err, "getAllCategories failed"));
   }
 }
 
+export const getCategoryById = async (id) => {
+  try {
+    const response = await api.get(`/categories/${id}`); console.log("category", response);
+    return response.data;
+  } catch (err) {
+    throw new Error(extractError(err, "getCategories failed"));
+  }
+}
 
 export const addToCart = async (dto) => {
   try {
@@ -75,12 +85,7 @@ export const addToCart = async (dto) => {
 
     return response.data; // return ONLY the CartItemDto
   } catch (err) {
-    const message =
-      err.response?.data?.message ||
-      err.message ||
-      "Add to cart failed";
-
-    throw new Error(message);  // IMPORTANT
+    throw new Error(extractError(err, "Add to cart failed"));
   }
 };
 export const getCarts = async (page = 0, size = 10) => {
@@ -88,12 +93,7 @@ export const getCarts = async (page = 0, size = 10) => {
     const response = await api.get("/carts", { params: { page, size } }); console.log("cart", response);
     return response.data;
   } catch (err) {
-    const message =
-      err.response?.data?.message ||
-      err.message ||
-      " getcart failed";
-
-    throw new Error(message);  // IMPORTANT
+    throw new Error(extractError(err, " getcart failed"));
   }
 };
 
@@ -102,22 +102,25 @@ export const removeFromCart = async (id) => {
     const res = await api.delete(`/carts/${id}`);
     return res.data;
   } catch (err) {
-    const message =
-      err.response?.data?.message ||
-      err.message ||
-      "remove to cart failed";
-
-    throw new Error(message);  // IMPORTANT
+    throw new Error(extractError(err, " remove to cart failed"));
   }
 };
 
 export const updateCartQuantity = async (id, quantity) => {
-  const res = await api.put(`/carts/${id}`, { quantity }); console.log("update cart: ", res);
-  return res.data;
+  try {
+    const res = await api.put(`/carts/${id}`, { quantity }); console.log("update cart: ", res);
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "update cart quantity failed"));
+  }
 }
 export const clearCart = async () => {
-  const res = await api.delete(`/carts/clear`); console.log("clear cart: ", res);
-  return res.data;
+  try {
+    const res = await api.delete(`/carts/clear`); console.log("clear cart: ", res);
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "clear cart failed"));
+  }
 }
 
 export const getAllCarts = async () => {
@@ -125,33 +128,26 @@ export const getAllCarts = async () => {
     const response = await api.get("/carts/count"); console.log("carts", response);
     return response.data;
   } catch (err) {
-    const error =
-      err.response?.data?.message ||
-      err.message ||
-      "getproduct failed";
-    throw new Error(error);  // IMPORTANT
+    throw new Error(extractError(err, "getproduct failed"));
   }
 };
 
 export const getCartItems = async (items) => {
-  console.log(items);
-  const response = await api.post("/orders/preview", { items }); console.log("orders preview: ", response);
-  return response.data;
+  try {
+    const response = await api.post("/orders/preview", { items }); console.log("orders preview: ", response);
+    return response.data;
+  } catch (err) {
+    throw new Error(extractError(err, "get cart items failed"));
+  }
 }
 
 export const postOrder = async (orderRequest) => {
   try {
-    console.log(orderRequest);
     const response = await api.post("/orders", orderRequest); console.log("post order", response);
     return response.data
   }
   catch (err) {
-    const error =
-      err.response?.data?.message ||
-      err.message ||
-      "getproduct failed";
-
-    throw new Error(error);  // IMPORTANT
+    throw new Error(extractError(err, "getproduct failed"));
   }
 }
 
@@ -174,24 +170,26 @@ export const getOrders = async (pageParam, PAGE_SIZE) => {
     return response.data
   }
   catch (err) {
-    const error =
-      err.response?.data?.message ||
-      err.message ||
-      "getproduct failed";
-
-    throw new Error(error);  // IMPORTANT
+    throw new Error(extractError(err, "orders failed"));
   }
 }
 
 export const cancelOrder = async (orderId) => {
-  // I used POST so we can keep REST idempotent semantics on server side.
-  const res = await api.post(`/orders/${orderId}/cancel`);
-  return res.data;
+  try {
+    const res = await api.post(`/orders/${orderId}/cancel`);
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "cancel orders failed"));
+  }
 };
 
 export const getSearchSuggestions = async (q, limit = 6) => {
   if (!q?.trim()) return [];
+  try {
+    const res = await api.get("/search/suggestions", { params: { q, limit } });
+    return res.data; // string[]
+  } catch (err) {
+    throw new Error(extractError(err, " getSearchSuggestions failed"));
+  }
 
-  const res = await api.get("/search/suggestions", { params: { q, limit } });
-  return res.data; // string[]
 };

@@ -50,9 +50,6 @@ export default function Categories() {
     ));
   }, [categories, search]);
 
-  if (isLoading) return <div className="text-center py-16">Loading categories…</div>
-  if (isError) return <div>{error?.message}</div>
-
   return (
     <div className="min-h-screen bg-background">
       <div className="container px-4 py-8">
@@ -76,15 +73,28 @@ export default function Categories() {
         </div>
 
         <div>
-          {filtered.length === 0 ? (
-            <div className="text-center py-16 text-muted-foreground">No categories found.</div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map(cat => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {isLoading ? (
+              <div className="py-4 text-center">
+                Loading...
+              </div>
+            ) : isError ? (
+              <div className="py-4 text-center text-red-500">
+                Error loading categories: {String(error)}
+              </div>
+            ) : filtered.length === 0 ? (
+              <div className="py-4 text-center">
+                No categories found
+              </div>
+            ) : (
+              filtered.map(cat => (
                 <CategoryCard key={cat.id} category={cat} />
-              ))}
-            </div>
-          )}
+              ))
+            )}
+
+          </div>
+
           <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
             {isFetchingNextPage && <div className="p-4">Loading more products...</div>}
 

@@ -7,45 +7,88 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
 import { getAllCategories } from "@/service/userService";
 import { useProduct } from "@/hooks/useProduct";
+import { getProductById } from "../../service/userService";
 
 export default function ProductForm() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { state } = useLocation();
 
   const isEdit = Boolean(id) && id !== "new";
 
   // main fields
-  const [slug, setSlug] = useState(state?.product.slug ?? "");
-  const [name, setName] = useState(state?.product.name ?? "");
-  const [description, setDescription] = useState(state?.product.description ?? "");
-  const [isFeatured, setIsFeatured] = useState(Boolean(state?.product?.featured));
-  const [isOrganic, setIsOrganic] = useState(Boolean(state?.product?.organic));
+  const [slug, setSlug] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [isOrganic, setIsOrganic] = useState(false);
 
-  const [allCategories, setAllCategories] = useState([])
-  const [category, setCategory] = useState(null)
-  const [isOtherCategory, setOtherCategory] = useState(false)
+  // Category fields
+  const [allCategories, setAllCategories] = useState([]);
+  const [category, setCategory] = useState(null);
+  const [isOtherCategory, setOtherCategory] = useState(false);
+
+  const [images, setImages] = useState([]);
+  const [nutrition, setNutrition] = useState({
+    calories: "",
+    protein: "",
+    carbs: "",
+    fiber: "",
+    vitamins: "", // comma-separated string
+  });
+
+  const [variants, setVariants] = useState([{ value: "", unit: "", price: "", stock: 0 }]);
+
+  // Fetch product by ID
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const p = await getProductById(id);
+
+        // Populate form fields
+        setSlug(p.slug || "");
+        setName(p.name || "");
+        setDescription(p.description || "");
+        setIsFeatured(Boolean(p.featured));
+        setIsOrganic(Boolean(p.organic));
+        setCategory(p.category || null);
+
+        setImages(p.images)
+
+        const n = p.nutrition || {};
+        setNutrition({
+          calories: n.calories ?? "",
+          protein: n.protein ?? "",
+          carbs: n.carbs ?? "",
+          fiber: n.fiber ?? "",
+          vitamins: Array.isArray(n.vitamins) ? n.vitamins.join(", ") : n.vitamins ?? "",
+        });
+
+        if (Array.isArray(p.variants) && p.variants.length > 0) {
+          setVariants(
+            p.variants.map((v) => ({
+              value: v.value ?? "",
+              unit: v.unit ?? "",
+              price: v.price ?? "",
+              stock: v.stock ?? 0,
+            }))
+          );
+        }
+
+      } catch (err) {
+        console.error("Failed to fetch product:", err);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
 
   useEffect(() => {
-    if (!state?.product?.category || !allCategories.length) return;
-    const found = allCategories.find((c) => Number(c.id) === Number(state.product.category));
+    if (!category || !allCategories.length) return;
+    const found = allCategories.find((c) => Number(c.id) === Number(category));
     if (found)
       setCategory(String(found.id));
-  }, [allCategories, state]);
-
-  // images: array of { url, file }
-  const [images, setImages] = useState(state?.product.images ?? []);
-  console.log(state);
-  // nutrition
-  const [nutrition, setNutrition] = useState({
-    calories: state?.product.nutrition?.calories ?? "",
-    protein: state?.product.nutrition?.protein ?? "",
-    carbs: state?.product.nutrition?.carbs ?? "",
-    fiber: state?.product.nutrition?.fiber ?? "",
-    vitamins: Array.isArray(state?.product?.nutrition?.vitamins)
-      ? state.product.nutrition.vitamins.join(", ")
-      : state?.product?.nutrition?.vitamins ?? "",
-  });
+  }, [allCategories]);
 
   const {
     isLoading,
@@ -53,20 +96,6 @@ export default function ProductForm() {
     postProductMutation,
     updateProductMutation
   } = useProduct()
-
-  const [variants, setVariants] = useState([{ value: "", unit: "", price: "", stock: 0 }]);
-  useEffect(() => {
-    if (state?.product?.variants?.length) {
-      setVariants(
-        state.product.variants.map(v => ({
-          value: v.value ?? "",
-          unit: v.unit ?? "",
-          price: v.price ?? "",
-          stock: v.stock ?? 0,
-        }))
-      );
-    }
-  }, [state]);
 
   function handleImageSelect(e) {
     const files = Array.from(e.target.files || []);

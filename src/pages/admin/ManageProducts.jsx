@@ -47,9 +47,6 @@ export default function ManageProducts() {
     navigate(`/admin/products/${product.id}`, { state: { product } });
   };
 
-  if (isLoading) return <div>Loading....</div>;
-  if (isError) return <div>{error?.message}</div>;
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -90,14 +87,36 @@ export default function ManageProducts() {
           </thead>
 
           <tbody>
-            {products?.map((p) => (
-              <ProductRow
-                key={p.id}
-                product={p}
-                handleEdit={handleEdit}
-                deleteProductMutation={deleteProductMutation}
-              />
-            ))}
+
+            {isLoading ? (
+              <tr>
+                <td colSpan={5} className="py-4 text-center">
+                  Loading...
+                </td>
+              </tr>
+            ) : isError ? (
+              <tr>
+                <td colSpan={5} className="py-4 text-center text-red-500">
+                  Error loading Products: {String(error)}
+                </td>
+              </tr>
+            ) : products.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="py-4 text-center">
+                  No Product found
+                </td>
+              </tr>
+            ) : (
+              products?.map((p) => (
+                <ProductRow
+                  key={p.id}
+                  product={p}
+                  handleEdit={handleEdit}
+                  deleteProductMutation={deleteProductMutation}
+                />
+              ))
+            )}
+
           </tbody>
         </table>
 

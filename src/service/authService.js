@@ -1,18 +1,15 @@
 // src/service/authService.js
 import { api } from "./api";
 
-/**
- * Standardized helper to unwrap axios errors into a string
- */
+// Standardized helper to unwrap axios errors into a string
 function extractError(err, fallback = "Request failed") {
   return (
-    err?.response?.data?.message ||
+    err.response?.data?.error ||
     err?.response?.data ||
     err?.message ||
     fallback
   );
 }
-
 
 export const signup = async (userObj) => {
   console.log("signup request: ", userObj);

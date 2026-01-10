@@ -132,8 +132,8 @@ export default function Footer() {
         <div className="border-t border-slate-800 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between text-sm text-slate-500">
           <div>© {currentYear} FreshMart. All rights reserved.</div>
           <div className="flex items-center gap-4 mt-3 md:mt-0">
-            <Link to="/terms" className="hover:text-white">Terms</Link>
-            <Link to="/privacy" className="hover:text-white">Privacy</Link>
+            <Link to="/term-service" className="hover:text-white">Terms & Services</Link>
+            <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link to="/sitemap.xml" className="hover:text-white">Sitemap</Link>
           </div>
         </div>

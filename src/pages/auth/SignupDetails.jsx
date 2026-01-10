@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 
@@ -6,9 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { useSignupStore } from "@/store/useSignupStore";
 import MobileNumberInput from '@/components/MobileNumberInput'
 
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { auth } from '@/firebase';
+
 function SignupDetails() {
   const navigate = useNavigate();
   const [otp, setOtp] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(0);
 
   // pull everything once from the store (avoid multiple calls)
   const {
@@ -22,6 +27,7 @@ function SignupDetails() {
     setConfirmPassword,
     isCodeOpen,
     disableVerifyBtn,
+    setDisableVerifyBtn,
     verString,
     sendOtpStore,
     error,
@@ -39,51 +45,122 @@ function SignupDetails() {
 
   const handleSendOtp = async (e) => {
     e?.preventDefault?.();
+    useSignupStore.setState({ verString: "" });
+    setLoading(true)
 
     if (!mobile || mobile.trim().length === 0) {
-      useSignupStore.setState({ error: "Mobile number is required" });
+      useSignupStore.setState({ verString: "Mobile number is required" });
       return;
     }
 
     if (!isValidIndianMobile(mobile)) {
-      useSignupStore.setState({ error: "Enter a valid 10-digit mobile number" });
+      useSignupStore.setState({ verString: "Enter a valid 10-digit mobile number" });
       return;
     }
 
     if (!name !== name.length <= 0) {
-      useSignupStore.setState({ error: "Name is required" });
+      useSignupStore.setState({ verString: "Name is required" });
       return;
     }
     if (!password) {
-      useSignupStore.setState({ error: "Password is required" });
+      useSignupStore.setState({ verString: "Password is required" });
       return;
     }
     if (!isValidPassword(password)) {
       useSignupStore.setState({
-        error: "Password must be at least 6 characters and contain letters and numbers",
+        verString: "Password must be at least 6 characters and contain letters and numbers",
       });
       return;
     }
 
     if (password !== confirmPassword) {
-      useSignupStore.setState({ error: "Passwords do not match" });
+      useSignupStore.setState({ verString: "Passwords do not match" });
       return;
     }
 
-    await sendOtpStore();
-  };
+    const phoneNumber = `+91${mobile}`;
 
-  const handleVerifyOtp = async (e) => {
-    e?.preventDefault?.();
-    const result = await submitOtp(otp);
-    console.log(result);
-    if (result.success == true) {
-      navigate("/verify/signup/address");
+    try {
+      if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new RecaptchaVerifier(
+          auth,
+          "recaptcha-container",
+          { size: "invisible" }
+        );
+      }
+
+      const appVerifier = window.recaptchaVerifier;
+
+      const confirmationResult = await signInWithPhoneNumber(
+        auth,
+        phoneNumber,
+        appVerifier
+      );
+
+      window.confirmationResult = confirmationResult;
+
+      useSignupStore.setState({ isCodeOpen: true, verString: "Otp sent" });
+      setTimeRemaining(30);
+      setDisableVerifyBtn(true);
+
+    } catch (err) {
+      console.error(err);
+      useSignupStore.setState({ verString: err.message });
+    } finally {
+      setLoading(false)
     }
   };
 
+  const handleVerifyOtp = async () => {
+    useSignupStore.setState({ verString: "" });
+    setLoading(true)
+    try {
+      // const result = await submitOtp(otp);
+
+      const result = await window.confirmationResult.confirm(otp);
+      const idToken = await result.user.getIdToken();
+
+      console.log(result);
+      useSignupStore.setState({ verString: "Otp verified" });
+
+      // Send ID token to backend signup API
+      // fetch("/api/auth/signup", { Authorization: Bearer idToken })
+
+      // if (result.success == true) {
+      navigate("/verify/signup/address");
+      useSignupStore.setState({ verString: "" });
+      // }
+    } catch (err) {
+      useSignupStore.setState({ error: "Invalid OTP" });
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (timeRemaining <= 0) {
+      setDisableVerifyBtn(false);
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeRemaining((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeRemaining]);
+
+  useEffect(() => {
+    if (otp.length === 6 && window.confirmationResult) {
+      handleVerifyOtp();
+    }
+  }, [otp]);
+
+
   return (
     <div>
+      {/* MUST EXIST BEFORE send OTP */}
+      <div id="recaptcha-container" className="max-h-[70vh]" inert></div>
+
       <nav className="text-center text-xl font-semibold py-4">
         <div> Let's create an account using your mobile number</div>
       </nav>
@@ -106,6 +183,7 @@ function SignupDetails() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="••••••••"
+          required
         />
       </div>
 
@@ -116,6 +194,7 @@ function SignupDetails() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="••••••••"
+          required
         />
       </div>
       {isCodeOpen && (
@@ -127,15 +206,8 @@ function SignupDetails() {
                 maxLength={6}
                 value={otp}
                 placeholder="Enter 6-digit code"
-                onChange={(e) => {
-                  const value = e.target.value;
-                  setOtp(value);
-                  console.log(value, value.length);
-                  // auto-submit when 6 digits entered using the input value
-                  if (value.length === 6) {
-                    handleVerifyOtp(e);
-                  }
-                }}
+                onChange={(e) => setOtp(e.target.value)}
+                required
               />
               <button
                 disabled={disableVerifyBtn}
@@ -146,7 +218,7 @@ function SignupDetails() {
                 }}
                 className="bg-blue-500 text-white py-2 px-4 rounded-md font-semibold mt-2 text-center cursor-pointer disabled:opacity-50"
               >
-                Resend Otp
+                {timeRemaining > 0 ? timeRemaining : "Resend Otp"}
               </button>
             </div>
           </div>
@@ -160,12 +232,13 @@ function SignupDetails() {
           if (e.key === "Enter") e.preventDefault();
         }}
         type="button"
+        disabled={isCodeOpen && otp.length !== 6}
         onClick={(e) => {
           if (!isCodeOpen) handleSendOtp(e);
           else handleVerifyOtp(e);
         }}
       >
-        {!isCodeOpen ? "Send otp" : "Verify"}
+        {isLoading ? "Loading..." : !isCodeOpen ? "Send otp" : "Verify"}
       </Button>
     </div >
   )

@@ -7,8 +7,6 @@ import {
   Users,
   DollarSign,
   BarChart2,
-  Eye,
-  Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { getAllCategoriesCount, getAllOrdersCount, getAllProductsCount, getAllUsersCount, getRevenue, postCategory } from "@/service/adminService";

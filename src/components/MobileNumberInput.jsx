@@ -38,6 +38,7 @@ export default function MobileNumberInput({ mobile, setMobile }) {
           onChange={(e) => setMobile(e.target.value)}
           placeholder="Mobile number"
           className="flex-1 rounded-xl"
+          required
         />
       </div>
     </div>

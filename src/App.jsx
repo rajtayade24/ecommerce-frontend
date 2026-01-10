@@ -36,6 +36,8 @@ import { getMe } from "@/service/authService";
 import MyProfile from "@/pages/public/MyProfile";
 import AddAddressModal from "@/pages/public/order/AddAddressModal";
 import SignupGuard from "@/pages/auth/SignupGuard";
+import PrivacyPolicyPage from "./pages/public/PrivacyPolicyPage";
+import TermsAndServices from "./pages/public/TermsAndServices";
 
 const queryClient = new QueryClient();
 
@@ -91,8 +93,11 @@ const App = () => {
               <Route path="/checkout" element={<OrderCheckout />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/me/profile" element={<MyProfile />} />
-              <Route path="/about" element={<AboutPage />} />
               <Route path="/address/new" element={<AddAddressModal />} />
+
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/term-service" element={<TermsAndServices />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             </Route>
 
             <Route path="/admin" element={<AdminLayout />}>
@@ -100,7 +105,7 @@ const App = () => {
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="products" element={<ManageProducts />} />
               <Route path="categories" element={<ManageCategories />} />
-              <Route path="categories/new" element={<CategoryForm />} />
+              <Route path="categories/:id" element={<CategoryForm />} />
               <Route path="products/:id" element={<ProductForm />} />
               <Route path="orders" element={<ManageOrders />} />
               <Route path="orders/:id" element={<OrderDetails />} />

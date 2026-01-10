@@ -126,7 +126,6 @@ export function useCategory() {
         queryClient.setQueryData(queryKey, context.previousData);
       }
       console.error("Delete failed:", error);
-      alert("Failed to delete post. Please try again.");
     },
 
     onSuccess: (_, { id }) => {

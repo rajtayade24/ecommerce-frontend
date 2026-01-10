@@ -60,23 +60,23 @@ export default function AddressDetails() {
     e.preventDefault();
 
     // clear previous error
-    useSignupStore.setState({ error: null });
+    useSignupStore.setState({ verString: null });
 
     if (!addressLine1 || addressLine1.trim().length === 0) {
-      useSignupStore.setState({ error: "Address Line 1 is required" });
+      useSignupStore.setState({ verString: "Address Line 1 is required" });
       return;
     }
 
     if (!city || city.trim().length === 0) {
-      useSignupStore.setState({ error: "city is required" });
+      useSignupStore.setState({ verString: "city is required" });
       return;
     }
     if (!state || state.trim().length === 0) {
-      useSignupStore.setState({ error: "state is required" });
+      useSignupStore.setState({ verString: "state is required" });
       return;
     }
     if (!pincode || pincode.trim().length === 0) {
-      useSignupStore.setState({ error: "pincode is required" });
+      useSignupStore.setState({ verString: "pincode is required" });
       return;
     }
     const addressObj = {
@@ -93,6 +93,7 @@ export default function AddressDetails() {
       setUser(data)
       setAuthenticated(true)
       navigate("/"); // adjust target as needed
+      useSignupStore.setState({ verString: "" });
     });
   };
 

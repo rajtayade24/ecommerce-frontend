@@ -1,5 +1,15 @@
 import { api } from "./api";
 
+// Standardized helper to unwrap axios errors into a string
+function extractError(err, fallback = "Request failed") {
+  return (
+    err.response?.data?.error ||
+    err?.response?.data ||
+    err?.message ||
+    fallback
+  );
+}
+
 // Create or update category
 export const postCategory = async (category, image) => {
   try {
@@ -15,12 +25,7 @@ export const postCategory = async (category, image) => {
 
     return { data: response.data, error: null };
   } catch (err) {
-    const error =
-      err.response?.data?.message ||
-      err.response?.data ||
-      err.message ||
-      "postCategory failed";
-    throw new Error(error)
+    throw new Error(extractError(err, "postCategory failed"));
   }
 };
 
@@ -29,8 +34,7 @@ export const deleteCategory = async (id) => {
     const res = await api.delete(`/admin/categories/${id}`);
     return res.data;
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "deleteCategory failed";
-    throw new Error(error);
+    throw new Error(extractError(err, "delete category failed"));
   }
 };
 
@@ -39,11 +43,11 @@ export const postProduct = async (product, images) => {
     console.log("product post request", product, images);
     const formData = new FormData();
     formData.append("product", new Blob([JSON.stringify(product)], { type: "application/json" }));
-
+    
     images.forEach((img) => {
       if (img.file) formData.append("images", img.file);
     });
-
+    
     const response = await api.post("/admin/products",
       formData,
       {
@@ -52,11 +56,10 @@ export const postProduct = async (product, images) => {
         },
       }
     ); console.log(response);
-
+    
     return { data: response.data, error: null };
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "postproduct failed";
-    throw new Error(error);
+    throw new Error(extractError(err, "postproduct failed"));
   }
 };
 
@@ -68,17 +71,16 @@ export const updateProduct = async (id, product, images) => {
     images.forEach((img) => {
       if (img.file) formData.append("images", img.file);
     });
-
+    
     const response = await api.put(`/admin/products/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }); console.log(response);
-
+    
     return { data: response.data, error: null };
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "update product failed";
-    throw new Error(error);
+    throw new Error(extractError(err, "update product failed"));
   }
 };
 
@@ -87,8 +89,7 @@ export const deleteProduct = async (id) => {
     const res = await api.delete(`/admin/products/${id}`);
     return res.data;
   } catch (err) {
-    const error = err.response?.data?.message || err.response?.data || err.message || "deleteproduct failed";
-    return { data: null, error };
+    throw new Error(extractError(err, "deleteproduct failed"));
   }
 };
 
@@ -96,14 +97,13 @@ export const getAllOrders = async (page, size, filter) => {
   const params = { page: page, size: size };
   if (filter.search != undefined) { params["search"] = filter.search }
   if (filter.status != undefined && filter.status !== null) { params["status"] = filter.status }
-
+  
   try {
     const response = await api.get(`/admin/orders`, { params }); console.log("get All order", response);
     return response.data
   }
   catch (err) {
-    const error = err.response?.data?.message || err.message || "getproduct failed";
-    throw new Error(error);  // IMPORTANT
+    throw new Error(extractError(err, "getproduct failed"));
   }
 }
 
@@ -113,12 +113,7 @@ export const getOrderById = async (id) => {
     return response.data
   }
   catch (err) {
-    const error =
-      err.response?.data?.message ||
-      err.message ||
-      "getproduct failed";
-
-    throw new Error(error);  // IMPORTANT
+    throw new Error(extractError(err, "getproduct failed"));
   }
 }
 
@@ -128,7 +123,7 @@ export const markOrderComplete = async (id) => {
     return response.data
   }
   catch (err) {
-    const error = err.response?.data?.message || err.message || err; throw new Error(error);
+    throw new Error(extractError(err, "mark order complete"));
   }
 }
 
@@ -138,14 +133,14 @@ export const cancelOrder = async (id) => {
     return response.data
   }
   catch (err) {
-    const error = err.response?.data?.message || err.message || err; throw new Error(error);
+    throw new Error(extractError(err, "cancel order failed"));
   }
 }
 export const getUsers = async (page = 0, size = 8, filters = {}) => {
   const params = { page, size };
   if (filters.search !== undefined && filters.search !== "") params.search = filters.search;
   if (filters.active !== undefined && filters.active !== null) params.active = filters.active;
-
+  
   const res = await api.get("/admin/users", { params });
   return res.data;
 };
@@ -159,8 +154,7 @@ export const setUserActive = async (userId, active) => {
     const res = await api.patch(`/admin/users/${userId}`, { active });
     return res.data;
   } catch (err) {
-    const message = err?.response?.data?.message || err?.response?.data || "Operation not allowed";
-    throw new Error(message);
+    throw new Error(extractError(err, "Operation not allowed"));
   }
 };
 

@@ -156,17 +156,7 @@ export const useSignupStore = create((set, get) => {
 
     // send OTP
     sendOtpStore: async () => {
-      // prevent spam
-      if (get().disableVerifyBtn) {
-        set({ verString: "Please wait before requesting another OTP", success: false });
-        return { success: false, error: "cooldown" };
-      }
-
-      set({ disableVerifyBtn: true, loading: true, success: null, verString: "Sending OTP..." });
-
-      // start cooldown timer
-      otpCooldownTimer && clearTimeout(otpCooldownTimer);
-      otpCooldownTimer = setTimeout(() => set({ disableVerifyBtn: false }), OTP_COOLDOWN_MS);
+      set({loading: true, success: null, verString: "Sending OTP..." });
 
       try {
         const identifier = get().getIdentifier();

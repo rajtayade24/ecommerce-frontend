@@ -4,27 +4,14 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { useCategory } from "@/hooks/useCategory";
+import { getCategoryById } from "../../service/userService";
 
-// Mock fetch for edit (replace with real API later)
-async function mockFetchCategory(id) {
-  return new Promise((res) =>
-    setTimeout(
-      () =>
-        res({
-          id,
-          name: "Fresh Vegetables",
-          description: "Garden fresh vegetable selection",
-          imageUrl: "https://via.placeholder.com/150",
-        }),
-      300
-    )
-  );
-}
 
 export default function CategoryForm() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const isEdit = Boolean(id) && id !== "new";
+
+  const isEdit = id && id !== "new";
 
   const [catId, setCatId] = useState("");
   const [name, setName] = useState("");
@@ -35,18 +22,36 @@ export default function CategoryForm() {
   useEffect(() => {
     if (!isEdit) return;
 
-    let mounted = true;
+    const mounted = true; // flag to prevent setting state if unmounted
 
-    mockFetchCategory(id).then((cat) => {
-      if (!mounted) return;
-      setCatId(cat.id);
-      setName(cat.name);
-      setDescription(cat.description);
-      setImagePreview(cat.imageUrl);
-    });
+    const fetchCategory = async () => {
+      try {
+        const category = await getCategoryById(id); // call your API
+        if (!mounted) return;
 
-    return () => (mounted = false);
+        setCatId(category.id ?? "");
+        setName(category.name ?? "");
+        setDescription(category.description ?? "");
+
+        if (category.image) {
+          setImagePreview(category.image); // URL of the image
+          setImageFile(null); // no local file selected yet
+        } else {
+          setImagePreview("");
+          setImageFile(null);
+        }
+      } catch (err) {
+        console.error("Failed to fetch category:", err);
+      }
+    };
+
+    fetchCategory();
+
+    return () => {
+      mounted = false; // cleanup to avoid memory leaks
+    };
   }, [id, isEdit]);
+
 
   function handleImageSelect(e) {
     const file = e.target.files[0];

@@ -127,6 +127,7 @@ export default function Users() {
             <tr className="text-left text-xs text-muted-foreground border-b">
               <th className="py-2">Name</th>
               <th className="py-2">Email</th>
+              <th className="py-2">Mo. No.</th>
               <th className="py-2">Role</th>
               <th className="py-2">Status</th>
               <th className="py-2">Actions</th>
@@ -150,6 +151,7 @@ export default function Users() {
                 <tr key={u.id ?? i} className="border-b last:border-b-0">
                   <td className="py-3 text-sm font-medium">{u.name}</td>
                   <td className="py-3 text-sm">{u.email}</td>
+                  <td className="py-3 text-sm">{u.mobile}</td>
                   <td className="py-3 text-sm">
                     {u?.roles?.map((r, i) => <div key={i}>{r}</div>)}
                   </td>

@@ -5,13 +5,17 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useCategory } from "@/hooks/useCategory";
 import { Card } from "@/components/ui/Card";
+import { Dialog, DialogTrigger } from "../../components/ui/Dialog";
+import DialogContentImpl from "../../components/DialogContentImpl";
 
-export default function ManageCategories() {
+export function ManageCategories() {
+
   const {
     categories,
     data,
     isLoading,
     isError,
+    error,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -50,17 +54,6 @@ export default function ManageCategories() {
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
-  function handleDelete(id) {
-    if (!window.confirm("Are you sure you want to delete this category?")) return;
-    deleteCategoryMutation.mutate({ id });
-  }
-
-  function handleEdit(id) {
-    // navigate to edit page
-    window.location.href = `/admin/categories/${id}`;
-  }
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading categories</div>;
 
   return (
     <div className="space-y-6">
@@ -98,33 +91,31 @@ export default function ManageCategories() {
             </tr>
           </thead>
           <tbody>
-            {filtered.length === 0 ? (
+            {isLoading ? (
               <tr>
-                <td colSpan="5" className="py-6 text-center text-sm text-muted-foreground">
-                  No categories found.
+                <td colSpan={5} className="py-4 text-center">
+                  Loading...
+                </td>
+              </tr>
+            ) : isError ? (
+              <tr>
+                <td colSpan={5} className="py-4 text-center text-red-500">
+                  Error loading categories: {String(error)}
+                </td>
+              </tr>
+            ) : filtered.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="py-4 text-center">
+                  No categories found
                 </td>
               </tr>
             ) : (
               filtered.map((c) => (
-                <tr key={c.id} className="border-b last:border-b-0">
-                  <td className="py-3 text-sm font-medium">{c.id}</td>
-                  <td className="py-3 text-sm">{c.name}</td>
-                  <td className="py-3 text-sm">{c.description}</td>
-                  <td className="py-3 text-sm">{c.count}</td>
-                  <td className="py-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <Button variant="ghost" size="icon" onClick={() => handleEdit(c.id)}>
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button variant="ghost" size="icon" onClick={() => handleDelete(c.id)}>
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
+                <CategoryRow c={c} key={c.id} />
               ))
             )}
           </tbody>
+          
         </table>
 
         <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
@@ -148,3 +139,58 @@ export default function ManageCategories() {
     </div>
   );
 }
+
+
+export function CategoryRow({ c, }) {
+  const [open, setOpen] = useState(false);
+
+  function handleEdit(id) {
+    window.location.href = `/admin/categories/${id}`;
+  }
+
+  const {
+    deleteCategoryMutation,
+  } = useCategory();
+
+  return (
+
+    < tr key={c.id} className="border-b last:border-b-0" >
+      <td className="py-3 text-sm font-medium">{c.id}</td>
+      <td className="py-3 text-sm">{c.name}</td>
+      <td className="py-3 text-sm">{c.description}</td>
+      <td className="py-3 text-sm">{c.count}</td>
+      <td className="py-3 text-sm">
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" onClick={() => handleEdit(c.id)}>
+            <Edit className="h-4 w-4" />
+          </Button>
+
+
+          {/* Delete dialog */}
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </DialogTrigger>
+
+            <DialogContentImpl
+              title="Delete Confirmation"
+              desc={`Do you want to delete ${c.name}?`}
+              save="Delete"
+              onSave={() =>
+                c.id &&
+                deleteCategoryMutation.mutate(c.id, {
+                  onSuccess: () => setOpen(false),
+                })
+              }
+            />
+          </Dialog>
+
+        </div>
+      </td>
+    </tr >
+  )
+}
+
+export default ManageCategories;

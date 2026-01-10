@@ -13,7 +13,7 @@ const Cart = () => {
   const { isAuthenticated } = useAuthStore();
 
 
-  const { items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
+  const {isLoading, isError, error, items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
 
   const totals = useMemo(() => {
     if (!isAuthenticated) return
@@ -49,20 +49,6 @@ const Cart = () => {
     return <UnAuthorizedUser />;
   }
 
-  if (items.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <ShoppingBag className="h-24 w-24 mx-auto text-muted-foreground mb-6" />
-          <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
-          <Link to="/products">
-            <Button size="lg">Browse Products</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="container px-4 py-8">
       <h1 className="text-4xl font-bold mb-8">Shopping Cart</h1>
@@ -70,7 +56,27 @@ const Cart = () => {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* CART ITEMS */}
         <div className="lg:col-span-2 space-y-4">
-          {items.map((item) => (
+
+          {isLoading ? (
+            <div className="py-4 text-center">
+              Loading...
+            </div>
+          ) : isError ? (
+            <div className="py-4 text-center text-red-500">
+              Error loading carts: {String(error)}
+            </div>
+          ) : items.length === 0 ? (
+            <div className="min-h-screen flex items-center justify-center">
+              <div className="text-center">
+                <ShoppingBag className="h-24 w-24 mx-auto text-muted-foreground mb-6" />
+                <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
+                <Link to="/products">
+                  <Button size="lg">Browse Products</Button>
+                </Link>
+              </div>
+            </div>
+          ) : (
+            items.map(item => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
@@ -139,7 +145,8 @@ const Cart = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* SUMMARY */}
