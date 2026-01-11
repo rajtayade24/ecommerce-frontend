@@ -7,7 +7,7 @@ import { verifyPayment } from "@/service/userService";
 
 const PaymentSuccess = () => {
   // used to read and manipulate the query parameters in the URL.
-  const [searchParams] = useSearchParams();// http://localhost:5173/payment-success?session_id=cs_test_a1QFrVGgJeNpK6Jce0H626VkfMG1UlXdl3g5Y26JhTwttxf2pEjgOIoFdE
+  const [searchParams] = useSearchParams(); // http://localhost:5173/payment-success?session_id=cs_test_a1QFrVGgJeNpK6Jce0H626VkfMG1UlXdl3g5Y26JhTwttxf2pEjgOIoFdE
   const navigate = useNavigate();
 
   // session_id is a query parameter.

@@ -84,7 +84,6 @@ const OrderCheckout = () => {
 
     const res = await postOrder(order);
     
-    toast.error("Order successful");
     if (res?.status === "SUCCESS" && res?.sessionUrl) {
       window.location.href = res.sessionUrl; // redirect to Stripe
     } else {
