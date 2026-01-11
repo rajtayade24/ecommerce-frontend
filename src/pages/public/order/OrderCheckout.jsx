@@ -118,10 +118,10 @@ const OrderCheckout = () => {
 
               {loadingAddress ? (
                 <div className="text-center p-6">Loading Addresses...</div>
-              ) : addresses.length === 0 ? (
+              ) : addresses?.length === 0 ? (
                 <div className="text-center p-6 text-slate-500">No saved addresses. Add a new address to continue.</div>
               ) : (
-                addresses.map(a => (
+                addresses?.map(a => (
                   <Label
                     key={a.id}
                     className={`flex items-center border rounded-lg p-4 transition-shadow hover:shadow-md ${a.id === selectedAddressId ? 'ring-2 ring-blue-200' : ''
