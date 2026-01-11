@@ -7,7 +7,7 @@ import heroBanner from "@/assets/hero-banner.jpg";
 export const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-      <div className="container px-4 py-4 sm:py-8 lg:py-16 md:py-24">
+      <div className="container py-4 sm:py-8 lg:py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div

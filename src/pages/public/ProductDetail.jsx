@@ -87,7 +87,7 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
-        <div className="container px-4 py-4 sm:py-8 lg:py-16 text-center">
+        <div className="container py-4 sm:py-8 lg:py-16 text-center">
           <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
           <Link to="/products">
             <Button>Back to Products</Button>
@@ -100,7 +100,7 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen bg-background">
 
-      <div className="container px-4 py-8">
+      <div className="container">
         <Link to="/products">
           <Button variant="ghost" className="mb-6">
             <ArrowLeft className="h-4 w-4 mr-2" />

@@ -52,7 +52,7 @@ export default function Categories() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container px-4 py-8">
+      <div className="container py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Categories</h1>
           <p className="text-muted-foreground">Browse categories and discover related products.</p>

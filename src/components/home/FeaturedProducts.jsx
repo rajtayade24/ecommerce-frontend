@@ -9,7 +9,7 @@ export const FeaturedProducts = () => {
   const { products } = useProduct({ isFeatured: true })
   return (
     <section className="py-4 sm:py-8 lg:py-16">
-      <div className="container px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
