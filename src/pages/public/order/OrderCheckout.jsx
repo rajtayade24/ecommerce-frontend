@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/Label';
 import { Card } from '@/components/ui/Card';
 import AddAddressModal from '@/pages/public/order/AddAddressModal';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
+import { toast } from '../../../components/ui/Sonner';
 
 const OrderCheckout = () => {
   const { state } = useLocation();
@@ -82,11 +83,12 @@ const OrderCheckout = () => {
     };
 
     const res = await postOrder(order);
-
+    
+    toast.error("Order successful");
     if (res?.status === "SUCCESS" && res?.sessionUrl) {
       window.location.href = res.sessionUrl; // redirect to Stripe
     } else {
-      alert("Payment initialization failed");
+      toast.error("Payment initialization failed");
     }
   };
   if (!isAuthenticated) {
