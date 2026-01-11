@@ -42,7 +42,7 @@ const Cart = () => {
       quantity: item.quantity,
     }));
 
-    navigate("/checkout", { state: { items: checkoutItems } });
+    navigate("/order/checkout", { state: { items: checkoutItems } });
   };
 
   if (!isAuthenticated) {

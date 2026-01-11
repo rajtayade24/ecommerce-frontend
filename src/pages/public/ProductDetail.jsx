@@ -79,7 +79,7 @@ const ProductDetail = () => {
       }
     ]
 
-    navigate('/checkout', { state: { items: checkoutItems } });
+    navigate('/order/checkout', { state: { items: checkoutItems } });
   }
 
   if (isLoading) return (<div className='text-center'>Loading product...</div>)

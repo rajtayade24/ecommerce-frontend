@@ -90,7 +90,7 @@ const App = () => {
               <Route path="/carts" element={<Cart />} />
               <Route path="/orders" element={<MyOrders />} />
               <Route path="/orders/:id" element={<UserOrderDetails />} />
-              <Route path="/checkout" element={<OrderCheckout />} />
+              <Route path="/order/checkout" element={<OrderCheckout />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/me/profile" element={<MyProfile />} />
               <Route path="/address/new" element={<AddAddressModal />} />

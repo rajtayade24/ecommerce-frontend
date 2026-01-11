@@ -20,15 +20,13 @@ const OrderCheckout = () => {
 
   useEffect(() => {
     if (!state?.items) return;
-    setLoadinItems(true);
 
+    setLoadinItems(true);
     getCartItems(state.items)
-      .then(res => {
-        setData(res);
-        setLoadinItems(false);
-      })
-      .catch(err => console.log(err));
-  }, [state.items]);
+      .then(res => setData(res))
+      .catch(console.error)
+      .finally(() => setLoadinItems(false));
+  }, [state]);
 
   const [addresses, setAddresses] = useState([]);
   const { user } = useAuthStore()
@@ -40,18 +38,30 @@ const OrderCheckout = () => {
 
   const refreshAddresses = async () => {
     setLoadingAddress(true);
-    const list = await getUserAddress(user.id);
-    setAddresses(list);
-    setLoadingAddress(false);
+    try {
+      const list = await getUserAddress();
+      setAddresses(list);
+    } catch (err) {
+      throw new Error(err);
+    }
+    finally {
+      setLoadingAddress(false);
+    }
   };
 
   useEffect(() => {
-    setLoadingAddress(true);
     const fetchAddress = async () => {
-      const adds = await getUserAddress(user?.id ?? 1);
-      setAddresses(adds);
-      setLoadingAddress(false);
-    }
+      setLoadingAddress(true);
+      try {
+        const adds = await getUserAddress();
+        setAddresses(adds);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoadingAddress(false);
+      }
+    };
+
     fetchAddress();
   }, []);
 
@@ -62,14 +72,14 @@ const OrderCheckout = () => {
     }
   }, [addresses]);
 
-  const handleDeliver = async () => {
+  const handleDeliver = async (address) => {
     const order = {
       userId: user.id,
       currency: "INR",
       paymentMethod: "STRIPE",
-      shippingAddress: addresses.find((a) => a.id === selectedAddressId),
-      items: data.items
-    }
+      shippingAddress: address,
+      items: data?.items ?? []
+    };
 
     const res = await postOrder(order);
 
@@ -147,7 +157,7 @@ const OrderCheckout = () => {
                     </div>
 
                     <Button
-                      onClick={handleDeliver}
+                      onClick={() => handleDeliver(a)}
                       className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg shadow-lg"
                     >
                       DELIVER HERE

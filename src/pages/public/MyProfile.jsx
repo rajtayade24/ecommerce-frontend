@@ -27,7 +27,7 @@ export default function MyProfile() {
 
   useEffect(() => {
     const fetchAddress = async () => {
-      setAddresses(await getUserAddress(user?.id ?? 1))
+      setAddresses(await getUserAddress())
     }
     fetchAddress();
   }, []);

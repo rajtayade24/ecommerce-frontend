@@ -60,9 +60,9 @@ export const getMe = async () => {
   }
 }
 
-export const getUserAddress = async (id) => {
+export const getUserAddress = async () => {
   try {
-    const response = await api.post(`/auth/addresses/${id}`); console.log("addresses: ", response);
+    const response = await api.get(`/auth/addresses`); console.log("addresses: ", response);
     return response.data
   }
   catch (err) {
