@@ -81,7 +81,7 @@ export default function Categories() {
               </div>
             ) : isError ? (
               <div className="py-4 text-center text-red-500">
-                Error loading categories: {String(error)}
+                Error loading categories: {String(error.message ?? error)}
               </div>
             ) : filtered.length === 0 ? (
               <div className="py-4 text-center">

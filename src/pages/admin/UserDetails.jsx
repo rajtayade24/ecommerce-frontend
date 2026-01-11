@@ -105,7 +105,7 @@ export default function UserDetails() {
   if (isError)
     return (
       <div className="p-6">
-        <div className="text-red-600">Error loading user: {String(error)}</div>
+        <div className="text-red-600">Error loading user: {String(error.message ?? error)}</div>
         <Button onClick={() => navigate(-1)} className="mt-4">Back</Button>
       </div>
     );

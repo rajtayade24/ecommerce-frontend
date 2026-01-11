@@ -16,14 +16,14 @@ export default function Login() {
     submitLogin,
     success,
     verString,
-    
+
   } = useSignupStore();
 
   const { setUser, setAuthenticated } = useAuthStore()
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(identifier, password);
+    console.log("login request", identifier, password);
     if (!identifier) {
       useSignupStore.setState({ verString: "Email or mobile is required" });
       return;

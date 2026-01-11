@@ -97,7 +97,7 @@ export default function ManageProducts() {
             ) : isError ? (
               <tr>
                 <td colSpan={5} className="py-4 text-center text-red-500">
-                  Error loading Products: {String(error)}
+                  Error loading Products: {String(error.message ?? error)}
                 </td>
               </tr>
             ) : products.length === 0 ? (

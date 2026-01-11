@@ -71,7 +71,7 @@ const OrderCheckout = () => {
       items: data.items
     }
 
-    const res = await postOrder(order); console.log(res);
+    const res = await postOrder(order);
 
     if (res?.status === "SUCCESS" && res?.sessionUrl) {
       window.location.href = res.sessionUrl; // redirect to Stripe
@@ -99,7 +99,7 @@ const OrderCheckout = () => {
 
             {loadinItems ? (
               <div className="text-center">Loading order Items</div>
-            ) : data?.items.length === 0 ? (
+            ) : data?.items?.length === 0 ? (
               <div className="text-center">No order Items found</div>
             ) : (
               data?.items?.map((item, i) => <OrderItemCard key={i} item={item} />)

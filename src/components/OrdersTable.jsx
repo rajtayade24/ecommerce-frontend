@@ -19,8 +19,6 @@ const STATUS_BADGE = {
 };
 
 const OrdersTable = ({ orders, showAll = false }) => {
-
-
   const {
     isLoading,
     isError,
@@ -72,7 +70,7 @@ const OrdersTable = ({ orders, showAll = false }) => {
           ) : isError ? (
             <tr>
               <td colSpan={5} className="py-4 text-center text-red-500">
-                Error loading orders: {String(error)}
+                Error loading orders: {String(error.message ?? error)}
               </td>
             </tr>
           ) : orders.length === 0 ? (

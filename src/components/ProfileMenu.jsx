@@ -43,7 +43,7 @@ function ProfileMenu() {
     <DropdownMenuContent className="w-40 p-0 rounded-none" align="end">
       <DropdownMenuGroup>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'>
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
           {isAuthenticated ? (
             <Link to="/me/profile" className='w-full'>
               <Button variant="ghost" className="w-full justify-start rounded-none">
@@ -52,43 +52,45 @@ function ProfileMenu() {
             </Link>
           ) : (
             <Link to="/verify/login" className='w-full'>
-              <Button variant="outline"  className="w-full justify-start rounded-none">
+              <Button variant="outline" className="w-full justify-start rounded-none">
                 <LogIn size={16} /> Login
               </Button>
             </Link>
           )}
         </DropdownMenuItem>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'>
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
           <Link to="/orders" className='w-full'>
             <Button variant="ghost" className="w-full justify-start rounded-none">  <Package size={16} /> Your Orders</Button>
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'>
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
           <Link to="/carts" className='w-full'>
             <Button variant="ghost" className="w-full justify-start rounded-none"> <ShoppingCart size={16} />Your Cart</Button>
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'>
+        <DropdownMenuItem className='p-0 m-0 w-full' >
           <Button onClick={toggleDarkMode} variant="ghost" className="w-full justify-start rounded-none">
             {darkMode ? <> <Sun size={16} /> Light mode </> : <><Moon size={16} /> Dark Mode </>}
           </Button>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'>
-          <Button variant="ghost" className="w-full justify-start rounded-none">  <Bell size={16} />Notification</Button>
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
+          <Link to="/notifications" className='w-full'>
+            <Button variant="ghost" className="w-full justify-start rounded-none">  <Bell size={16} />Notification</Button>
+          </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className='p-0 m-0 w-full'>
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
           <Link to="/about" className='w-full'>
             <Button variant="ghost" className="w-full justify-start rounded-none">   <Info size={16} />About</Button>
           </Link>
         </DropdownMenuItem>
 
         {isAuthenticated && (
-          <DropdownMenuItem className='p-0 m-0 w-full'
+          <DropdownMenuItem className='p-0 m-0 w-full '
             onSelect={(e) => e.preventDefault()} // 👈 IMPORTANT
           >
             <Dialog>

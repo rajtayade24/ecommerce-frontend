@@ -63,7 +63,7 @@ const Cart = () => {
             </div>
           ) : isError ? (
             <div className="py-4 text-center text-red-500">
-              Error loading carts: {String(error)}
+              Error loading carts: {String(error.message ?? error)}
             </div>
           ) : items.length === 0 ? (
             <div className="min-h-screen flex items-center justify-center">

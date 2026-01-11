@@ -100,7 +100,7 @@ export function ManageCategories() {
             ) : isError ? (
               <tr>
                 <td colSpan={5} className="py-4 text-center text-red-500">
-                  Error loading categories: {String(error)}
+                  Error loading categories: {String(error.message ?? error)}
                 </td>
               </tr>
             ) : filtered.length === 0 ? (
@@ -115,7 +115,7 @@ export function ManageCategories() {
               ))
             )}
           </tbody>
-          
+
         </table>
 
         <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>

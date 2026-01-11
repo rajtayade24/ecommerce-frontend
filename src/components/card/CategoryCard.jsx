@@ -15,7 +15,6 @@ export default function CategoryCard({ category }) {
     navigate(`/products?${params.toString()}`);
   };
 
-  console.log(category);
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}

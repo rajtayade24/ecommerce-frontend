@@ -96,7 +96,7 @@ export default function OrderDetails() {
   };
 
   if (loading) return <div className="p-6">Loading order…</div>;
-  if (error) return <div className="p-6 text-red-600">Error: {String(error)}</div>;
+  if (error) return <div className="p-6 text-red-600">Error: {String(error.message ?? error)}</div>;
   if (!order) return <div className="p-6 text-muted-foreground">Order not found</div>;
 
   const items = order.items ?? [];
