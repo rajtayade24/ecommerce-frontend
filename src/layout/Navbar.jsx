@@ -23,7 +23,6 @@ export const Navbar = () => {
   const { isAuthenticated } = useAuthStore();
 
   const user = useAuthStore(s => s.user)
-  const showProfileDetails = useAuthStore(s => s.showProfileDetails)
   const toggleProfileDetails = useAuthStore(s => s.toggleProfileDetails)
   const { search, setSearch, debouncedSearch, setDebouncedSearch, setSearchQuery } = useAuthStore();
 

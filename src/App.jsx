@@ -38,6 +38,7 @@ import AddAddressModal from "@/pages/public/order/AddAddressModal";
 import SignupGuard from "@/pages/auth/SignupGuard";
 import PrivacyPolicyPage from "@/pages/public/PrivacyPolicyPage";
 import TermsAndServices from "@/pages/public/TermsAndServices";
+import BackendLoader from "@/components/BackendLoader";
 
 const queryClient = new QueryClient();
 
@@ -66,58 +67,61 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       {/* <TooltipProvider> */}
       <CartProvider>
-        <Sonner theme={darkMode? "dark": "light"} />
-        <BrowserRouter>
-          <Routes>
-            {/* Public routes wrapped by PublicLayout (Navbar included) */}
-            <Route path="/verify" element={<UserVerification />}>
-              <Route path="signup" element={<Signup />}>
-                <Route index element={<SignupDetails />} />
-                {/* Protected steps */}
-                <Route element={<SignupGuard />}>
-                  <Route path="address" element={<AddressDetails />} />
+        <Sonner theme={darkMode ? "dark" : "light"} />
+
+        <BackendLoader >
+          <BrowserRouter>
+            <Routes>
+              {/* Public routes wrapped by PublicLayout (Navbar included) */}
+              <Route path="/verify" element={<UserVerification />}>
+                <Route path="signup" element={<Signup />}>
+                  <Route index element={<SignupDetails />} />
+                  {/* Protected steps */}
+                  <Route element={<SignupGuard />}>
+                    <Route path="address" element={<AddressDetails />} />
+                  </Route>
                 </Route>
+
+                <Route path="login" element={<Login />} />
               </Route>
 
-              <Route path="login" element={<Login />} />
-            </Route>
+              <Route element={<PublicLayout />}>
+                <Route path="/" element={<Index />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/categories" element={<Categories />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/carts" element={<Cart />} />
+                <Route path="/orders" element={<MyOrders />} />
+                <Route path="/orders/:id" element={<UserOrderDetails />} />
+                <Route path="/order/checkout" element={<OrderCheckout />} />
+                <Route path="/payment-success" element={<PaymentSuccess />} />
+                <Route path="/me/profile" element={<MyProfile />} />
+                <Route path="/address/new" element={<AddAddressModal />} />
 
-            <Route element={<PublicLayout />}>
-              <Route path="/" element={<Index />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/carts" element={<Cart />} />
-              <Route path="/orders" element={<MyOrders />} />
-              <Route path="/orders/:id" element={<UserOrderDetails />} />
-              <Route path="/order/checkout" element={<OrderCheckout />} />
-              <Route path="/payment-success" element={<PaymentSuccess />} />
-              <Route path="/me/profile" element={<MyProfile />} />
-              <Route path="/address/new" element={<AddAddressModal />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/term-service" element={<TermsAndServices />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              </Route>
 
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/term-service" element={<TermsAndServices />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            </Route>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="products" element={<ManageProducts />} />
+                <Route path="categories" element={<ManageCategories />} />
+                <Route path="categories/:id" element={<CategoryForm />} />
+                <Route path="products/:id" element={<ProductForm />} />
+                <Route path="orders" element={<ManageOrders />} />
+                <Route path="orders/:id" element={<OrderDetails />} />
+                <Route path="users" element={<Users />} />
+                <Route path="users/:id" element={<UserDetails />} />
+                <Route path="settings" element={<Settings />} />
+              </Route>
 
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="products" element={<ManageProducts />} />
-              <Route path="categories" element={<ManageCategories />} />
-              <Route path="categories/:id" element={<CategoryForm />} />
-              <Route path="products/:id" element={<ProductForm />} />
-              <Route path="orders" element={<ManageOrders />} />
-              <Route path="orders/:id" element={<OrderDetails />} />
-              <Route path="users" element={<Users />} />
-              <Route path="users/:id" element={<UserDetails />} />
-              <Route path="settings" element={<Settings />} />
-            </Route>
+              <Route path="*" element={<NotFound />} />
 
-            <Route path="*" element={<NotFound />} />
-
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </BackendLoader >
       </CartProvider>
       {/* </TooltipProvider> */}
     </QueryClientProvider >
