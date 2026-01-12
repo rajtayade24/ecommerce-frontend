@@ -104,7 +104,7 @@ export const ProductCard = ({ product }) => {
               </div>
             </div>
 
-            <div className="flex gap-1">
+            <div className="flex flex-col justify-center items-center gap-1.5">
               <div className="flex items-center gap-0.5 bg-primary text-white rounded-full px-[2px] py-0.5">
                 {qty === 0 ? (
                   <button

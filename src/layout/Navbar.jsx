@@ -62,6 +62,13 @@ export const Navbar = () => {
   }, [debouncedSearch]);
 
   const handleKeyDown = (e) => {
+
+    if (e.key === "Escape") {
+      setSuggestions([]);
+      setActiveIndex(-1);
+      return;
+    }
+
     if (!suggestions.length) return;
 
     if (e.key === "ArrowDown") {
@@ -82,23 +89,17 @@ export const Navbar = () => {
       e.preventDefault();
       handleSearch(suggestions[activeIndex]);
     }
-
-    if (e.key === "Escape") {
-      setSuggestions([]);
-      setActiveIndex(-1);
-    }
   };
 
   const handleSearch = (text) => {
+    if (!text) return;
+
     setSearch(text);
     setSearchQuery(text);
     setSuggestions([]);
     setActiveIndex(-1);
 
-    const params = new URLSearchParams();
-    params.set("search", text);
-
-    navigate(`/products?${params.toString()}`);
+    navigate(`/products?search=${encodeURIComponent(text)}`);
   };
 
   useEffect(() => {
@@ -109,7 +110,7 @@ export const Navbar = () => {
       setCarts(items)
     }
     fetchCarts();
-  }, [])
+  }, [isAuthenticated])
 
   const SearchDropdown = () => (
     <Card className=" absolute mt-2 w-full shadow-lg z-50">
@@ -161,21 +162,33 @@ export const Navbar = () => {
             )}
 
           </div>
+
           {/* Search Bar - Hidden on mobile */}
           <div className="relative hidden md:block w-full max-w-md mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Search fresh produce..."
-                className="pl-10"
-              />
-            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (search.trim()) {
+                  handleSearch(search.trim());
+                }
+              }}
+            >
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  enterKeyHint="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Search fresh produce..."
+                  className="pl-10"
+                />
+              </div>
+            </form>
 
             {/* Search Dropdown */}
-            {debouncedSearch && <SearchDropdown />}
+            {suggestions.length > 0 && <SearchDropdown />}
           </div>
 
           {/* TopNavigations Links */}
@@ -214,7 +227,7 @@ export const Navbar = () => {
             </Link>
 
             <div className="">
-             <DropdownMenu open={openMenu} onOpenChange={setOpenMenu} modal={false}>
+              <DropdownMenu open={openMenu} onOpenChange={setOpenMenu} modal={false}>
                 <DropdownMenuTrigger asChild>
                   {/* Mobile Menu Button */}
                   <Button variant="ghost" size="icon">
@@ -222,7 +235,7 @@ export const Navbar = () => {
                   </Button>
                 </DropdownMenuTrigger>
 
-                <ProfileMenu  />
+                <ProfileMenu />
 
               </DropdownMenu>
             </div>
@@ -232,21 +245,31 @@ export const Navbar = () => {
 
         {/* Mobile Search */}
         <div className="md:hidden pb-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Search fresh produce..."
-              className="pl-10"
-            />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (search.trim()) {
+                handleSearch(search.trim());
+              }
+            }}
+          >
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="search"
+                enterKeyHint="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Search fresh produce..."
+                className="pl-10"
+              />
+            </div>
 
-            {/* Search Dropdown */}
-            {debouncedSearch && <SearchDropdown />}
-
-          </div>
+            {suggestions.length > 0 && <SearchDropdown />}
+          </form>
         </div>
+
       </div>
     </nav >
   );
