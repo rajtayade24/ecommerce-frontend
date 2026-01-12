@@ -155,11 +155,10 @@ function SignupDetails() {
     }
   }, [otp]);
 
-
   return (
     <div>
       {/* MUST EXIST BEFORE send OTP */}
-      <div id="recaptcha-container" className="max-h-[70vh]" inert></div>
+      {/* <div id="recaptcha-container" className="max-h-[70vh]" inert></div> */}
 
       <nav className="text-center text-xl font-semibold py-4">
         <div> Let's create an account using your mobile number</div>
@@ -182,7 +181,7 @@ function SignupDetails() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="••••••••"
+          placeholder="abcdef@123"
           required
         />
       </div>
@@ -193,7 +192,7 @@ function SignupDetails() {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="••••••••"
+          placeholder="abcdef@123"
           required
         />
       </div>
@@ -209,7 +208,7 @@ function SignupDetails() {
                 onChange={(e) => setOtp(e.target.value)}
                 required
               />
-              <button
+              {/* <button
                 disabled={disableVerifyBtn}
                 type="button"
                 onClick={async (e) => {
@@ -219,7 +218,7 @@ function SignupDetails() {
                 className="bg-blue-500 text-white py-2 px-4 rounded-md font-semibold mt-2 text-center cursor-pointer disabled:opacity-50"
               >
                 {timeRemaining > 0 ? timeRemaining : "Resend Otp"}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -234,11 +233,43 @@ function SignupDetails() {
         type="button"
         disabled={isCodeOpen && otp.length !== 6}
         onClick={(e) => {
-          if (!isCodeOpen) handleSendOtp(e);
-          else handleVerifyOtp(e);
+          // if (!isCodeOpen) handleSendOtp(e);
+          // else handleVerifyOtp(e);
+          if (!mobile || mobile.trim().length === 0) {
+            useSignupStore.setState({ verString: "Mobile number is required" });
+            return;
+          }
+
+          if (!isValidIndianMobile(mobile)) {
+            useSignupStore.setState({ verString: "Enter a valid 10-digit mobile number" });
+            return;
+          }
+
+          if (!name !== name.length <= 0) {
+            useSignupStore.setState({ verString: "Name is required" });
+            return;
+          }
+          if (!password) {
+            useSignupStore.setState({ verString: "Password is required" });
+            return;
+          }
+          if (!isValidPassword(password)) {
+            useSignupStore.setState({
+              verString: "Password must be at least 6 characters and contain letters and numbers",
+            });
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            useSignupStore.setState({ verString: "Passwords do not match" });
+            return;
+          }
+          navigate("/verify/signup/address");
+            useSignupStore.setState({ verString: "" });
         }}
       >
-        {isLoading ? "Loading..." : !isCodeOpen ? "Send otp" : "Verify"}
+        {/* {isLoading ? "Loading..." : !isCodeOpen ? "Send otp" : "Verify"} */}
+        verify
       </Button>
     </div >
   )

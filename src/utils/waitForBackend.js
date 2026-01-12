@@ -1,5 +1,5 @@
 // src/utils/waitForBackend.js
-export async function waitForBackend(url, { maxRetries = 20, retryDelay = 1500, onAttempt } = {}) {
+export async function waitForBackend(url, { maxRetries = 30, retryDelay = 1500, onAttempt } = {}) {
   // normalize URL (no trailing slash)
   const normalized = url?.replace(/\/+$/, "") || "";
 
