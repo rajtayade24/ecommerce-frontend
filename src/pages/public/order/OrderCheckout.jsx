@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/Label';
 import { Card } from '@/components/ui/Card';
 import AddAddressModal from '@/pages/public/order/AddAddressModal';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
-import { toast } from '../../../components/ui/Sonner';
+import { toast } from '@/components/ui/Sonner';
 
 const OrderCheckout = () => {
   const { state } = useLocation();
