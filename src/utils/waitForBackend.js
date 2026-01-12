@@ -1,20 +1,26 @@
 // src/utils/waitForBackend.js
-export async function waitForBackend(url, { maxRetries = 30, retryDelay = 1500, onAttempt } = {}) {
-  // normalize URL (no trailing slash)
+export async function waitForBackend(
+  url,
+  { maxRetries = 30, retryDelay = 1500, onAttempt } = {}
+) {
   const normalized = url?.replace(/\/+$/, "") || "";
 
   for (let i = 1; i <= maxRetries; i++) {
     if (typeof onAttempt === "function") onAttempt(i, maxRetries);
+
     try {
-      // change path if your health endpoint is different (e.g. /actuator/health or /api/health)
-      const res = await fetch(`${normalized}/health`, { method: "GET", cache: "no-store" });
-      // only treat 2xx as ready
+      const res = await fetch(`${normalized}/health`, {
+        method: "GET",
+        cache: "no-store",
+      });
+
       if (res.ok) return true;
-    } catch (e) {
-      // network error - ignore and retry
+    } catch {
+      // ignore network errors
     }
-    // wait
+
     await new Promise((r) => setTimeout(r, retryDelay));
   }
+
   return false;
 }

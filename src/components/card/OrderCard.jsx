@@ -19,7 +19,7 @@ const statusVariant = (status) => {
   }
 };
 
-const MotionCard = motion(Card);
+const MotionCard = motion.create(Card);
 
 const OrderCard = ({ order, onCancel, cancelling }) => {
   const first = order.items?.[0];

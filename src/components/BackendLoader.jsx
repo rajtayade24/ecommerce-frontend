@@ -5,17 +5,41 @@ import { waitForBackend } from "@/utils/waitForBackend";
 export const VITE_API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
 const BackendLoader = ({ children }) => {
-  const [backendReady, setBackendReady] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [max, setMax] = useState(0);
 
   useEffect(() => {
-    waitForBackend(VITE_API_BASE).then(setBackendReady);
+    waitForBackend(VITE_API_BASE, {
+      onAttempt: (i, m) => {
+        setAttempt(i);
+        setMax(m);
+      },
+    }).then((ok) => {
+      if (ok) setReady(true);
+      else setFailed(true);
+    });
   }, []);
 
-  if (backendReady) return children;
+  if (ready) return children;
+
+  if (failed) {
+    return (
+      <div className="fixed inset-0 bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="tracking-widest text-sm">SERVER UNAVAILABLE</p>
+          <p className="mt-2 text-xs text-white/50">
+            Please refresh or try again later
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black text-white flex items-center justify-center overflow-hidden">
-      {/* Moving signal lines */}
+      {/* Signal animation */}
       <div className="absolute inset-0 flex items-center justify-center gap-2">
         {[...Array(9)].map((_, i) => (
           <motion.div
@@ -46,13 +70,9 @@ const BackendLoader = ({ children }) => {
           CONNECTING TO SERVER
         </p>
 
-        <motion.p
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="mt-2 text-xs text-white/40"
-        >
-          This may take a few seconds
-        </motion.p>
+        <p className="mt-2 text-xs text-white/40">
+          Attempt {attempt} / {max}
+        </p>
       </motion.div>
     </div>
   );
