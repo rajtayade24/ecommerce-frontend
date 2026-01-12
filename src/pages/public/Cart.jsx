@@ -12,7 +12,6 @@ const Cart = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthStore();
 
-
   const { isLoading, isError, error, items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
 
   const totals = useMemo(() => {

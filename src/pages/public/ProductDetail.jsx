@@ -6,13 +6,14 @@ import { getProductById } from '@/service/userService';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import useAuthStore from '@/store/useAuthStore';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { toast } from '@/components/ui/Sonner';
 
 const ProductDetail = () => {
   const navigate = useNavigate()
   const [selectedWeight, setSelectedWeight] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   const [product, setProduct] = useState(null);
   const { id } = useParams();
@@ -47,11 +48,9 @@ const ProductDetail = () => {
   }, [selectedWeight]);
 
   // auth state
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   // only initialize cart if authenticated
   const cart = useCart({ enabled: isAuthenticated });
-
 
   const handleAddToCart = () => {
     if (!isAuthenticated) {
@@ -60,14 +59,16 @@ const ProductDetail = () => {
       });
       return;
     }
-    cart.addToCartMutation.mutate({
+     cart.addToCartMutation.mutate({
       productId: product.id,
       variantId: product.variants[selectedWeight].id,
       quantity
     });
+
     toast.success('Added to cart!', {
       description: `${product.name} - ${product.variants[selectedWeight].value}${product.variants[selectedWeight].unit}`
     });
+    setQuantity(0);
   };
 
   const handleBuy = () => {

@@ -265,7 +265,7 @@ function SignupDetails() {
             return;
           }
           navigate("/verify/signup/address");
-            useSignupStore.setState({ verString: "" });
+          useSignupStore.setState({ verString: "" });
         }}
       >
         {/* {isLoading ? "Loading..." : !isCodeOpen ? "Send otp" : "Verify"} */}

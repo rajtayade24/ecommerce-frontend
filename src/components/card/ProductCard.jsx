@@ -6,6 +6,7 @@ import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
 import { Card } from "@/components/ui/Card";
 import useAuthStore from "@/store/useAuthStore";
+import { toast } from "@/components/ui/Sonner";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate()
@@ -30,7 +31,9 @@ export const ProductCard = ({ product }) => {
       variantId: product.variants[0].id,
       quantity: qty,
     });
-
+    toast.success('Added to cart!', {
+      description: `${product.name} - ${product.variants[0].value}${product.variants[0].unit}`
+    });
     setQty(0);
   };
   if (!product) return null;
