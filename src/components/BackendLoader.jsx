@@ -11,15 +11,23 @@ const BackendLoader = ({ children }) => {
   const [max, setMax] = useState(0);
 
   useEffect(() => {
+    let alive = true;
+
     waitForBackend(VITE_API_BASE, {
       onAttempt: (i, m) => {
+        if (!alive) return;
         setAttempt(i);
         setMax(m);
       },
     }).then((ok) => {
+      if (!alive) return;
       if (ok) setReady(true);
       else setFailed(true);
     });
+
+    return () => {
+      alive = false;
+    };
   }, []);
 
   if (ready) return children;
@@ -69,7 +77,14 @@ const BackendLoader = ({ children }) => {
         <p className="text-sm tracking-widest text-white/70">
           CONNECTING TO SERVER
         </p>
-
+        <motion.p
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="mt-2 text-xs text-white/40"
+        >
+          This may take a few seconds
+        </motion.p>
+        
         <p className="mt-2 text-xs text-white/40">
           Attempt {attempt} / {max}
         </p>
