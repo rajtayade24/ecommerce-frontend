@@ -49,10 +49,11 @@ const OrderCheckout = () => {
       setLoadingAddress(false);
     }
   };
-  
-  setTimeout(() => {
-    refreshAddresses()
-  }, 2000);
+  useEffect(() => {
+    setTimeout(() => {
+      refreshAddresses();
+    }, 2000);
+  }, [])
 
   useEffect(() => {
     const fetchAddress = async () => {
