@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { waitForBackend } from "@/utils/waitForBackend";
 
-export const BACKEND_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8080";
+export const VITE_API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
 const BackendLoader = ({ children }) => {
   const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
-    waitForBackend(BACKEND_URL).then(setBackendReady);
+    waitForBackend(VITE_API_BASE).then(setBackendReady);
   }, []);
 
   if (backendReady) return children;
