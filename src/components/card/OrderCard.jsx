@@ -75,7 +75,7 @@ const OrderCard = ({ order, onCancel, cancelling }) => {
             ₹{order?.totalAmount?.toFixed(2)}
           </div>
 
-          <Link to={`/orders/${order.orderNumber}`}>
+          <Link to={`/me/orders/${order.orderNumber}`}>
             <Button variant="outline" size="sm" className="flex items-center gap-2">
               <Eye className="h-4 w-4" />
               View

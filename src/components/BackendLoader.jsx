@@ -11,6 +11,7 @@ const BackendLoader = ({ children }) => {
   const [max, setMax] = useState(0);
 
   useEffect(() => {
+    console.log("Waiting for server response...");
     let alive = true;
 
     waitForBackend(VITE_API_BASE, {
@@ -30,8 +31,16 @@ const BackendLoader = ({ children }) => {
     };
   }, []);
 
-  if (ready) return children;
+  useEffect(() => {
+    if (ready) {
+      console.log("Server started!");
+    }
+  }, [ready]);
 
+  if (ready) {
+    return children;
+  }
+  
   if (failed) {
     return (
       <div className="fixed inset-0 bg-black text-white flex items-center justify-center">
@@ -84,7 +93,7 @@ const BackendLoader = ({ children }) => {
         >
           This may take a few seconds
         </motion.p>
-        
+
         <p className="mt-2 text-xs text-white/40">
           Attempt {attempt} / {max}
         </p>

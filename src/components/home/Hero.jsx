@@ -85,7 +85,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               whileTap={{ scale: 1.02 }}
-              className="absolute -bottom-6 -left-6 bg-card p-6 rounded-2xl shadow-[var(--shadow-card)] border"
+              className="absolute -bottom-6 -left-6 bg-card p-4 rounded-2xl shadow-[var(--shadow-card)] border"
             >
               <div className="text-sm text-muted-foreground">Starting from</div>
               <div className="text-3xl font-bold text-primary">₹19</div>

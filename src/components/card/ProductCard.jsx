@@ -20,7 +20,7 @@ export const ProductCard = ({ product }) => {
 
   const handleAddToCart = () => {
     if (!isAuthenticated) {
-      navigate("/carts", {
+      navigate("/cart", {
         state: { redirectTo: window.location.pathname },
       });
       return;

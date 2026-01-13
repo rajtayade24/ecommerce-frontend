@@ -19,7 +19,7 @@ export default function PaymentPage() {
   const platformFee = 7;
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+    <div className="min-h-screen bg-slate-50 p-4">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <ArrowLeft className="cursor-pointer" />
@@ -65,7 +65,7 @@ export default function PaymentPage() {
               </div>
 
               {/* Details */}
-              <div className="md:col-span-2 p-6">
+              <div className="md:col-span-2 p-4">
                 {method === "upi" && (
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                     <h2 className="font-semibold mb-4">Add new UPI ID</h2>
@@ -118,7 +118,7 @@ export default function PaymentPage() {
 
         {/* Right: Price Summary */}
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4">
             <h3 className="font-semibold mb-4">Price Details</h3>
             <div className="flex justify-between text-sm mb-2">
               <span>Price (1 item)</span>

@@ -61,7 +61,7 @@ const MyOrders = () => {
   }
 
   return (
-    <div className="bg-background max-w-4xl mx-auto p-2 lg:p-6 space-y-4">
+    <div className="bg-background max-w-4xl mx-auto p-2 lg:p-4 space-y-4">
       <h1 className="text-2xl font-bold">Your Orders</h1>
 
       <div className="space-y-3">

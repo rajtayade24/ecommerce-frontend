@@ -40,20 +40,20 @@ export default function MyProfile() {
     setAuthenticated(false)
     navigate("/");
   }
-  
+
   const initials = (user?.name || "?")
     .split(" ")
     .map((s) => s.charAt(0))
     .slice(0, 2)
     .join("");
-  
-    if (!isAuthenticated) {
+
+  if (!isAuthenticated) {
     return <UnAuthorizedUser />;
   }
 
   if (!user)
     return (
-      <div className="p-6 max-w-xl mx-auto text-center">
+      <div className="p-4 max-w-xl mx-auto text-center">
         <p>No user data. Please login.</p>
         <Button
           onClick={() => navigate("/verify/login")}
@@ -66,7 +66,7 @@ export default function MyProfile() {
 
   return (
     <div className="max-w-3xl mx-auto ">
-      <div className="shadow-md rounded-lg p-6 flex gap-6 border-muted">
+      <div className="shadow-md rounded-lg p-4 flex gap-6 border-muted">
         <div className="flex-shrink-0">
           <div className="h-20 w-20 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-700">
             {initials}
@@ -128,7 +128,7 @@ export default function MyProfile() {
                       </Label>
                     ))
                   ) : (
-                    <div className="p-6 text-center text-slate-500">No saved addresses. Add a new address to continue.</div>
+                    <div className="p-4 text-center text-slate-500">No saved addresses. Add a new address to continue.</div>
                   )}
 
                   <div className="pt-2 border-t">

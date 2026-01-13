@@ -65,7 +65,7 @@ const PaymentSuccess = () => {
             </p>
 
             <div className="mt-6 flex gap-3 justify-center">
-              <Button onClick={() => navigate("/orders")}>
+              <Button onClick={() => navigate("/me/orders")}>
                 View Orders
               </Button>
               <Button variant="outline" onClick={() => navigate("/products")}>

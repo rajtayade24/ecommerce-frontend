@@ -159,7 +159,7 @@ const Cart = () => {
         </div>
 
         {/* SUMMARY */}
-        <div className="sticky top-24 bg-card border rounded-2xl p-6 h-fit">
+        <div className="sticky top-24 bg-card border rounded-2xl p-4 h-fit">
           <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
 
           <div className="space-y-3 mb-6">

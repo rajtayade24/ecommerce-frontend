@@ -212,7 +212,7 @@ const Products = () => {
 
           {/* Desktop Filters */}
           <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24 bg-card border rounded-2xl p-6">
+            <div className="sticky top-24 bg-card border rounded-2xl p-4">
               <h2 className="text-xl font-bold mb-6">Filters</h2>
               <FilterPanel />
             </div>

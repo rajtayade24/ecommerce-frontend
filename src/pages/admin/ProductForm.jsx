@@ -234,7 +234,7 @@ export default function ProductForm() {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className=" rounded-2xl shadow-sm p-6 space-y-6">
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className=" rounded-2xl shadow-sm p-4 space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
           {/* Name */}

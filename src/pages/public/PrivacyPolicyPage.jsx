@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage({
   ];
 
   return (
-    <motion.main className="container mx-auto p-6 md:p-12" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
+    <motion.main className="container mx-auto p-4 md:p-12" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <aside className="lg:col-span-1">
           <Card className="sticky top-6 shadow-lg">

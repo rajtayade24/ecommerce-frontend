@@ -60,13 +60,13 @@ function ProfileMenu() {
         </DropdownMenuItem>
 
         <DropdownMenuItem className='p-0 m-0 w-full' asChild>
-          <Link to="/orders" className='w-full'>
+          <Link to="/me/orders" className='w-full'>
             <Button variant="ghost" className="w-full justify-start rounded-none">  <Package size={16} /> Your Orders</Button>
           </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem className='p-0 m-0 w-full' asChild>
-          <Link to="/carts" className='w-full'>
+          <Link to="/cart" className='w-full'>
             <Button variant="ghost" className="w-full justify-start rounded-none"> <ShoppingCart size={16} />Your Cart</Button>
           </Link>
         </DropdownMenuItem>

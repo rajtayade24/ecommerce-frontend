@@ -44,9 +44,9 @@ const UserOrderDetails = () => {
   if (isError) return <div className="p-8 text-center text-red-600">Error: {error?.message}</div>;
 
   return (
-    <div className="max-w-4xl mx-auto  p-2 lg:p-6">
+    <div className="max-w-4xl mx-auto  p-2 lg:p-4">
       <div className="flex items-center gap-3 mb-6">
-        <Link to="/orders"><Button variant="ghost"><ArrowLeft className="h-4 w-4" /> Back</Button></Link>
+        <Link to="/me/orders"><Button variant="ghost"><ArrowLeft className="h-4 w-4" /> Back</Button></Link>
         <h1 className="text-2xl font-semibold">Order #{order.orderNumber}</h1>
         <div className="ml-auto text-sm text-slate-500">{format(new Date(order.createdAt), 'dd MMM yyyy, hh:mm a')}</div>
       </div>

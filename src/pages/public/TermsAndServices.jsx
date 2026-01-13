@@ -34,7 +34,7 @@ export default function TermsAndServices({
 
   return (
     <motion.main
-      className="container mx-auto p-6 md:p-12"
+      className="container mx-auto p-4 md:p-12"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}

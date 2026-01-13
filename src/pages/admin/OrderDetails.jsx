@@ -95,9 +95,9 @@ export default function OrderDetails() {
     URL.revokeObjectURL(url);
   };
 
-  if (loading) return <div className="p-6">Loading order…</div>;
-  if (error) return <div className="p-6 text-red-600">Error: {String(error.message ?? error)}</div>;
-  if (!order) return <div className="p-6 text-muted-foreground">Order not found</div>;
+  if (loading) return <div className="p-4">Loading order…</div>;
+  if (error) return <div className="p-4 text-red-600">Error: {String(error.message ?? error)}</div>;
+  if (!order) return <div className="p-4 text-muted-foreground">Order not found</div>;
 
   const items = order.items ?? [];
   const createdAt = order.createdAt ? new Date(order.createdAt).toLocaleString() : "—";

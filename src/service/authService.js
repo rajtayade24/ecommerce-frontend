@@ -73,7 +73,7 @@ export const getUserAddress = async () => {
 // NEW: add address
 export async function addUserAddress(payload) {
   try {
-    const response = await api.post(`/auth/addresses/add`, { payload }); console.log("addresses: ", response);
+    const response = await api.post(`/auth/addresses/add`, payload ); console.log("addresses: ", response);
     return response.data
   }
   catch (err) {

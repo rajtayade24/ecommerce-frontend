@@ -54,12 +54,12 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (!isAuthenticated) {
-      navigate("/carts", {
+      navigate("/cart", {
         state: { redirectTo: window.location.pathname },
       });
       return;
     }
-     cart.addToCartMutation.mutate({
+    cart.addToCartMutation.mutate({
       productId: product.id,
       variantId: product.variants[selectedWeight].id,
       quantity
@@ -154,7 +154,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Price */}
-            <div className="bg-primary/5 rounded-2xl p-6 border border-primary/20">
+            <div className="bg-primary/5 rounded-2xl p-4 border border-primary/20">
               <div className="text-4xl font-bold text-primary mb-2">
                 ₹{product.variants[selectedWeight].price.toFixed(2)}
               </div>
@@ -215,14 +215,14 @@ const ProductDetail = () => {
               >
                 <ShoppingCart className="h-5 w-5 mr-2" />
                 {product.variants[selectedWeight].stock > 0
-                  ? 'Buy Now'
+                  ? 'Checkout'
                   : 'Out of Stock'}
               </Button>
             </div>
 
             {/* Nutrition Info */}
             {product.nutrition && (
-              <div className="bg-card border rounded-2xl p-6">
+              <div className="bg-card border rounded-2xl p-4">
                 <h3 className="font-bold text-lg mb-4">Nutrition Facts</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">

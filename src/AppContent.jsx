@@ -21,7 +21,6 @@ import MyProfile from "@/pages/public/MyProfile";
 import AboutPage from "@/pages/public/AboutPage";
 import PrivacyPolicyPage from "@/pages/public/PrivacyPolicyPage";
 import TermsAndServices from "@/pages/public/TermsAndServices";
-import AddAddressModal from "@/pages/public/order/AddAddressModal";
 import NotFound from "@/pages/public/NotFound";
 
 // auth
@@ -43,6 +42,7 @@ import Users from "@/pages/admin/Users";
 import UserDetails from "@/pages/admin/UserDetails";
 import OrderDetails from "@/pages/admin/OrderDetails";
 import Settings from "@/pages/admin/Settings";
+import AddAddressModal from "@/pages/public/AddAddressModal";
 
 const AppContent = () => {
   const { setUser, setAuthenticated, setUserMainId } = useAuthStore();
@@ -75,13 +75,13 @@ const AppContent = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/carts" element={<Cart />} />
-          <Route path="/orders" element={<MyOrders />} />
-          <Route path="/orders/:id" element={<UserOrderDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/me/orders" element={<MyOrders />} />
+          <Route path="/me/orders/:id" element={<UserOrderDetails />} />
           <Route path="/order/checkout" element={<OrderCheckout />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/me/profile" element={<MyProfile />} />
-          <Route path="/address/new" element={<AddAddressModal />} />
+          <Route path="/me/address/new" element={<AddAddressModal/>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/term-service" element={<TermsAndServices />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

@@ -52,7 +52,7 @@ export const Categories = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-4">
                     <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
                       {category.name}
                     </h3>

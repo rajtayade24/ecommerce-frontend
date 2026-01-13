@@ -215,7 +215,7 @@ export const Navbar = () => {
             )}
 
             {/* Cart */}
-            <Link to="/carts">
+            <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {carts > 0 && (
