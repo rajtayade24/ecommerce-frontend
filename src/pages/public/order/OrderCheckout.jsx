@@ -51,6 +51,7 @@ const OrderCheckout = () => {
   };
   useEffect(() => {
     setTimeout(() => {
+      if (addresses.length !== 0) return;
       refreshAddresses();
     }, 2000);
   }, [])
