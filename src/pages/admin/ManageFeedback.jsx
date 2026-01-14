@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Trash2, Filter } from "lucide-react";
-import { toast } from "Sonner";
+import { toast } from "@/components/ui/Sonner";
 
 import {
   Table,
@@ -21,6 +21,7 @@ import {
   getAllFeedback,
   updateFeedbackStatus,
 } from "@/service/adminService";
+
 
 export default function ManageFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -224,9 +225,6 @@ export default function ManageFeedback() {
       </div>
     </div>
   );
-
-
-  
 }
 
 
