@@ -68,6 +68,12 @@ export default function AdminTopBar() {
               Users
             </Link>
             <Link
+              to="/admin/feedbacks"
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              Feedbacks
+            </Link>
+            <Link
               to="/admin/settings"
               className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
             >
@@ -85,36 +91,54 @@ export default function AdminTopBar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-40" align="end">
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>  <Link
-                    to="/admin/orders"
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    Orders
-                  </Link> </DropdownMenuItem>
-                  <DropdownMenuItem>  <Link
-                    to="/admin/products"
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    Products
-                  </Link> </DropdownMenuItem>
-                  <DropdownMenuItem>    <Link
-                    to="/admin/categories"
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    categories
-                  </Link> </DropdownMenuItem>
-                  <DropdownMenuItem>  <Link
-                    to="/admin/users"
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    Users
-                  </Link> </DropdownMenuItem>
-                  <DropdownMenuItem>  <Link
-                    to="/admin/settings"
-                    className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    Settings
-                  </Link> </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/orders"
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <span> Orders</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/products"
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <span> Products</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/categories"
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <span> categories</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/users"
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <span> Users</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/feedbacks"
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <span> Feedbacks</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/settings"
+                      className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <span> Settings</span>
+                    </Link>
+                  </DropdownMenuItem>
 
                 </DropdownMenuGroup>
               </DropdownMenuContent>

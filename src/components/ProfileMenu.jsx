@@ -89,6 +89,12 @@ function ProfileMenu() {
           </Link>
         </DropdownMenuItem>
 
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
+          <Link to="/feedbacks" className='w-full'>
+            <Button variant="ghost" className="w-full justify-start rounded-none">   <Info size={16} />Feedback</Button>
+          </Link>
+        </DropdownMenuItem>
+
         {isAuthenticated && (
           <DropdownMenuItem className='p-0 m-0 w-full '
             onSelect={(e) => e.preventDefault()} // 👈 IMPORTANT

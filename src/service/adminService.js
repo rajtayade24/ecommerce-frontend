@@ -1,14 +1,5 @@
-import { api } from "./api";
-
-// Standardized helper to unwrap axios errors into a string
-function extractError(err, fallback = "Request failed") {
-  return (
-    err.response?.data?.message ||
-    err?.response?.data ||
-    err?.message ||
-    fallback
-  );
-}
+import { api } from "@/service/api";
+import { extractError } from "@/utils/extractError";
 
 // Create or update category
 export const postCategory = async (category, image) => {
@@ -43,11 +34,11 @@ export const postProduct = async (product, images) => {
     console.log("product post request", product, images);
     const formData = new FormData();
     formData.append("product", new Blob([JSON.stringify(product)], { type: "application/json" }));
-    
+
     images.forEach((img) => {
       if (img.file) formData.append("images", img.file);
     });
-    
+
     const response = await api.post("/admin/products",
       formData,
       {
@@ -56,7 +47,7 @@ export const postProduct = async (product, images) => {
         },
       }
     ); console.log(response);
-    
+
     return { data: response.data, error: null };
   } catch (err) {
     throw new Error(extractError(err, "postproduct failed"));
@@ -71,13 +62,13 @@ export const updateProduct = async (id, product, images) => {
     images.forEach((img) => {
       if (img.file) formData.append("images", img.file);
     });
-    
+
     const response = await api.put(`/admin/products/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }); console.log(response);
-    
+
     return { data: response.data, error: null };
   } catch (err) {
     throw new Error(extractError(err, "update product failed"));
@@ -97,7 +88,7 @@ export const getAllOrders = async (page, size, filter) => {
   const params = { page: page, size: size };
   if (filter.search != undefined) { params["search"] = filter.search }
   if (filter.status != undefined && filter.status !== null) { params["status"] = filter.status }
-  
+
   try {
     const response = await api.get(`/admin/orders`, { params }); console.log("get All order", response);
     return response.data
@@ -140,7 +131,7 @@ export const getUsers = async (page = 0, size = 8, filters = {}) => {
   const params = { page, size };
   if (filters.search !== undefined && filters.search !== "") params.search = filters.search;
   if (filters.active !== undefined && filters.active !== null) params.active = filters.active;
-  
+
   const res = await api.get("/admin/users", { params });
   return res.data;
 };
@@ -178,3 +169,32 @@ export const getAllCategoriesCount = async () => {
   const res = await api.get(`/admin/categories/count`); console.log("categories count ", res);
   return res.data;
 }
+
+
+export const getAllFeedback = async (params) => {
+  try {
+    const res = await api.get("/feedbacks", { params });
+    return res.data; // Page<FeedbackResponse>
+  } catch (err) {
+    throw new Error(extractError(err, "Failed to load feedbacks"));
+  }
+};
+
+export const updateFeedbackStatus = async (id, status) => {
+  try {
+    const res = await api.patch(`/feedbacks/${id}/status`, null, {
+      params: { status },
+    });
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "Failed to update status"));
+  }
+};
+
+export const deleteFeedback = async (id) => {
+  try {
+    await api.delete(`/feedbacks/${id}`);
+  } catch (err) {
+    throw new Error(extractError(err, "Failed to delete feedback"));
+  }
+};

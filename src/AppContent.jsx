@@ -21,6 +21,7 @@ import MyProfile from "@/pages/public/MyProfile";
 import AboutPage from "@/pages/public/AboutPage";
 import PrivacyPolicyPage from "@/pages/public/PrivacyPolicyPage";
 import TermsAndServices from "@/pages/public/TermsAndServices";
+import Feedback from "@/pages/public/Feedback";
 import NotFound from "@/pages/public/NotFound";
 
 // auth
@@ -43,6 +44,7 @@ import UserDetails from "@/pages/admin/UserDetails";
 import OrderDetails from "@/pages/admin/OrderDetails";
 import Settings from "@/pages/admin/Settings";
 import AddAddressModal from "@/pages/public/AddAddressModal";
+import ManageFeedback from "@/pages/admin/ManageFeedback";
 
 const AppContent = () => {
   const { setUser, setAuthenticated, setUserMainId } = useAuthStore();
@@ -83,6 +85,7 @@ const AppContent = () => {
           <Route path="/me/profile" element={<MyProfile />} />
           <Route path="/me/address/new" element={<AddAddressModal/>} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/feedbacks" element={<Feedback/>} />
           <Route path="/term-service" element={<TermsAndServices />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Route>
@@ -98,6 +101,7 @@ const AppContent = () => {
           <Route path="orders/:id" element={<OrderDetails />} />
           <Route path="users" element={<Users />} />
           <Route path="users/:id" element={<UserDetails />} />
+          <Route path="feedbacks" element={<ManageFeedback />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

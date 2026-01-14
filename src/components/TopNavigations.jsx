@@ -22,6 +22,12 @@ const TopNavigations = () => {
       >
         About
       </Link>
+      <Link
+        to="/feedbacks"
+        className="text-sm font-medium hover:text-primary transition-colors px-3"
+      >
+        Feedback
+      </Link>
     </>
   )
 }

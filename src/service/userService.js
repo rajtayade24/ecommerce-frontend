@@ -1,14 +1,5 @@
-import { api } from "./api";
-
-// Standardized helper to unwrap axios errors into a string
-function extractError(err, fallback = "Request failed") {
-  return (
-    err.response?.data?.message ||
-    err?.response?.data ||
-    err?.message ||
-    fallback
-  );
-}
+import { api } from "@/service/api";
+import { extractError } from "@/utils/extractError";
 
 // GET /products
 //   ?search=
@@ -191,5 +182,13 @@ export const getSearchSuggestions = async (q, limit = 6) => {
   } catch (err) {
     throw new Error(extractError(err, " getSearchSuggestions failed"));
   }
+};
 
+export const postFeedback = async (body) => {
+  try {
+    const res = await api.post("/feedbacks", body)
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "feedback failed"));
+  }
 };
