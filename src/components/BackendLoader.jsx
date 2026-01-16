@@ -5,12 +5,15 @@ import { waitForBackend } from "@/utils/waitForBackend";
 export const VITE_API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
 
 const BackendLoader = ({ children }) => {
-  const [ready, setReady] = useState(false);
+  const isPaymentSuccess = window.location.pathname.includes("payment-success");
+  
+  const [ready, setReady] = useState(isPaymentSuccess);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const [max, setMax] = useState(0);
 
   useEffect(() => {
+    if (isPaymentSuccess) return; 
     console.log("Waiting for server response...");
     let alive = true;
 
@@ -40,7 +43,7 @@ const BackendLoader = ({ children }) => {
   if (ready) {
     return children;
   }
-  
+
   if (failed) {
     return (
       <div className="fixed inset-0 bg-black text-white flex items-center justify-center">

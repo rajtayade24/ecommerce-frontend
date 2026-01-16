@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { EditProfile } from "@/components/EditProfile";
 import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
+import DialogContentImpl from "@/components/DialogContentImpl";
 // MyProfile.jsx
 export default function MyProfile() {
   const navigate = useNavigate();
@@ -86,15 +87,21 @@ export default function MyProfile() {
                   <DialogTrigger asChild>
                     <Button variant="outline">Edit</Button>
                   </DialogTrigger>
-                  <EditProfile />
+                  <EditProfile user={user} />
                 </form>
               </Dialog>
-              <Button
-                onClick={handleLogout}
-                className="px-3 py-1 bg-destructive rounded text-sm"
-              >
-                Logout
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="destructive" className="w-full justify-start rounded-none">  Logout</Button>
+                </DialogTrigger>
+
+                <DialogContentImpl
+                  desc='Do you Want to logout??'
+                  title='Logout Conformation'
+                  save='Logout'
+                  onSave={handleLogout}
+                />
+              </Dialog>
             </div>
           </div>
 

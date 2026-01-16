@@ -128,7 +128,7 @@ export const useCart = ({ enabled = true } = {}) => {
 
     onSettled: () => {
       queryClient.invalidateQueries(["cart"]);
-      toast.info("Cart updated");
+      toast.info("Cart Removed");
     },
   });
 
