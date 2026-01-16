@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/Label";
 import { EditProfile } from "@/components/EditProfile";
 import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
 import DialogContentImpl from "@/components/DialogContentImpl";
+import { useSignupStore } from "@/store/useSignupStore";
 // MyProfile.jsx
 export default function MyProfile() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function MyProfile() {
   const { isAuthenticated } = useAuthStore();
   const setUserMainId = useAuthStore(s => s.setUserMainId)
   const setToken = useAuthStore(s => s.setToken)
+  const onLogout= useSignupStore(s => s.onLogout)
 
   const [addresses, setAddresses] = useState([])
   const primaryAddress = addresses?.find(a => a.primaryAddress === true);
