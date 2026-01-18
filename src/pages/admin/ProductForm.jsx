@@ -10,6 +10,7 @@ import { useProduct } from "@/hooks/useProduct";
 import { getProductById } from "@/service/userService";
 import { useCategory } from "@/hooks/useCategory";
 import { toast } from "@/components/ui/Sonner";
+import { formatNutrition } from "@/utils/formatNutrition";
 
 export default function ProductForm() {
   const { id } = useParams();
@@ -239,37 +240,13 @@ export default function ProductForm() {
       isOrganic,
 
       nutrition: {
-        calories: nutrition.calories
-          ? (nutrition.calories.includes("per")
-            ? nutrition.calories.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.calories.includes("kcal")
-              ? nutrition.calories.replaceAll('"', "").replaceAll(",", "") + " per 100g"
-              : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + "kcal per 100g")
-          : "",
-        protein: nutrition.protein
-          ? (nutrition.protein.includes("per")
-            ? nutrition.protein.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.calories.includes("g")
-              ? nutrition.protein.replaceAll('"', "").replaceAll(",", "") + " per 100g"
-              : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + "g")
-          : "",
-        carbs: nutrition.carbs
-          ? (nutrition.carbs.includes("per")
-            ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.calories.includes("g")
-              ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + " per 100g"
-              : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + "g")
-          : "",
-        fiber: nutrition.fiber
-          ? (nutrition.fiber.includes("per")
-            ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.calories.includes("g")
-              ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + " per 100g"
-              : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + "g")
-          : "",
+        calories: formatNutrition(nutrition.calories, "kcal"),
+        protein: formatNutrition(nutrition.protein, "g"),
+        carbs: formatNutrition(nutrition.carbs, "g"),
+        fiber: formatNutrition(nutrition.fiber, "g"),
         vitamins: nutrition?.vitamins
           ?.split(",")
-          .map((s) => s.trim().replaceAll('"', ""))
+          .map(v => v.trim().replaceAll('"', ""))
           .filter(Boolean),
       },
 
