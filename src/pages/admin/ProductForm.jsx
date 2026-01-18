@@ -1,6 +1,6 @@
 // src/pages/admin/ProductForm.jsx
 import React, { useEffect, useState } from "react";
-import { useNavigate,  useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
@@ -237,11 +237,28 @@ export default function ProductForm() {
       isOrganic,
 
       nutrition: {
-        calories: nutrition.calories.replaceAll('"', "").replaceAll(",", ""),
-        protein: nutrition.protein.replaceAll('"', "").replaceAll(",", ""),
-        carbs: nutrition.carbs.replaceAll('"', "").replaceAll(",", ""),
-        fiber: nutrition.fiber.replaceAll('"', "").replaceAll(",", ""),
-        vitamins: nutrition?.vitamins.split(",")
+        calories: nutrition.calories
+          ? (nutrition.calories.includes("per")
+            ? nutrition.calories.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+          : "",
+        protein: nutrition.protein
+          ? (nutrition.protein.includes("per")
+            ? nutrition.protein.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+          : "",
+        carbs: nutrition.carbs
+          ? (nutrition.carbs.includes("per")
+            ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+          : "",
+        fiber: nutrition.fiber
+          ? (nutrition.fiber.includes("per")
+            ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+          : "",
+        vitamins: nutrition?.vitamins
+          ?.split(",")
           .map((s) => s.trim().replaceAll('"', ""))
           .filter(Boolean),
       },
