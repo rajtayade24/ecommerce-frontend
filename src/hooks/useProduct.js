@@ -1,10 +1,13 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getProducts } from "@/service/userService";
 import { deleteProduct, postProduct, updateProduct } from "@/service/adminService";
+import { toast } from "@/components/ui/Sonner";
 
 const PAGE_SIZE = 12;
 
 export function useProduct(filter = {}) {
+  const productQueryKey = ["product", filter];
+
   const {
     data,
     isLoading,
@@ -14,18 +17,21 @@ export function useProduct(filter = {}) {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["product", filter],
+    queryKey: productQueryKey,
     queryFn: ({ pageParam = 0 }) => getProducts(pageParam, PAGE_SIZE, filter),
-    keepPreviousData: false,
     getNextPageParam: (lastPage) => {
+      const page = lastPage.page;
+
       if (
-        typeof lastPage.number !== "number" ||
-        typeof lastPage.totalPages !== "number"
+        !page ||
+        typeof page.number !== "number" ||
+        typeof page.totalPages !== "number"
       ) {
         return undefined;
       }
-      return lastPage.number < lastPage.totalPages - 1
-        ? lastPage.number + 1
+
+      return page.number < page.totalPages - 1
+        ? page.number + 1
         : undefined;
     },
   });
@@ -50,9 +56,7 @@ export function useProduct(filter = {}) {
     },
 
     onSuccess: (createdProduct) => {
-      const queryKey = ["product"];
-
-      queryClient.setQueryData(queryKey, (old) => {
+      queryClient.setQueryData(productQueryKey, (old) => {
         if (!old) {
           return {
             pageParams: [],
@@ -96,14 +100,12 @@ export function useProduct(filter = {}) {
     },
 
     onMutate: async ({ id, product }) => {
-      const queryKey = ["product"];
+      await queryClient.cancelQueries({ queryKey: productQueryKey });
 
-      await queryClient.cancelQueries({ queryKey });
-
-      const previousData = queryClient.getQueryData(queryKey);
+      const previousData = queryClient.getQueryData(productQueryKey);
 
       // Optimistically update product in all pages
-      queryClient.setQueryData(queryKey, (old) => {
+      queryClient.setQueryData(productQueryKey, (old) => {
         if (!old) return old;
 
         return {
@@ -122,14 +124,14 @@ export function useProduct(filter = {}) {
 
     onError: (err, _, context) => {
       if (context?.previousData) {
-        queryClient.setQueryData(["product"], context.previousData);
+        queryClient.setQueryData(productQueryKey, context.previousData);
       }
       toast.error("Failed to update product");
     },
 
     onSuccess: (updatedProduct) => {
       // Ensure final server state is reflected
-      queryClient.setQueryData(["product"], (old) => {
+      queryClient.setQueryData(productQueryKey, (old) => {
         if (!old) return old;
 
         return {
@@ -146,7 +148,7 @@ export function useProduct(filter = {}) {
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries(["product"]);
+      queryClient.invalidateQueries(productQueryKey);
     },
   });
 
@@ -154,8 +156,8 @@ export function useProduct(filter = {}) {
   const deleteProductMutation = useMutation({
     mutationFn: async (id) => await deleteProduct(id),
 
-    onMutate: async ({ id }) => {
-      const queryKey = ["product"];
+    onMutate: async (id) => {
+      const queryKey = productQueryKey;
       await queryClient.cancelQueries({ queryKey });
 
       const previousData = queryClient.getQueryData(queryKey);
@@ -180,17 +182,17 @@ export function useProduct(filter = {}) {
       });
       return { previousData };
     },
-    
+
     onError: (error, _, context) => {
       if (context?.previousData) {
-        queryClient.setQueryData(["product"], context.previousData);
+        queryClient.setQueryData(productQueryKey, context.previousData);
       }
       toast.error("Failed to delete product ");
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries(["product"]);
-        toast.success("Product deleted "); 
+      queryClient.invalidateQueries(productQueryKey);
+      toast.success("Product deleted ");
     },
   });
 
@@ -206,6 +208,6 @@ export function useProduct(filter = {}) {
     postProductMutation,
     updateProductMutation,
     deleteProductMutation,
-    refetch: () => queryClient.invalidateQueries(["product"]),
+    refetch: () => queryClient.invalidateQueries(productQueryKey),
   };
 }

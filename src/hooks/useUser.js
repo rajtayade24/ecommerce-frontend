@@ -19,17 +19,32 @@ export function useUser(filters = {}) {
   } = useInfiniteQuery({
     queryKey: ["users", filters],
     queryFn: ({ pageParam = 0 }) => getUsers(pageParam, PAGE_SIZE, filters),
-    getNextPageParam: (lastPage) => {
+     getNextPageParam: (lastPage) => {
+      const page = lastPage.page;
+
       if (
-        typeof lastPage?.number !== "number" ||
-        typeof lastPage?.totalPages !== "number"
+        !page ||
+        typeof page.number !== "number" ||
+        typeof page.totalPages !== "number"
       ) {
         return undefined;
       }
-      return lastPage.number < lastPage.totalPages - 1
-        ? lastPage.number + 1
+
+      return page.number < page.totalPages - 1
+        ? page.number + 1
         : undefined;
     },
+    // getNextPageParam: (lastPage) => {
+    //   if (
+    //     typeof lastPage?.number !== "number" ||
+    //     typeof lastPage?.totalPages !== "number"
+    //   ) {
+    //     return undefined;
+    //   }
+    //   return lastPage.number < lastPage.totalPages - 1
+    //     ? lastPage.number + 1
+    //     : undefined;
+    // },
   });
 
   const users = useMemo(

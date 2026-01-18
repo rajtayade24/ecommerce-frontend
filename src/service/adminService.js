@@ -209,7 +209,7 @@ export const uploadImg = async (image) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    });
+    }); console.log("upload image ", res);
 
     return { data: res.data, error: null };
   } catch (err) {
