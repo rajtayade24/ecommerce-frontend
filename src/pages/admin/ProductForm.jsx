@@ -181,8 +181,10 @@ export default function ProductForm() {
     postCategoryMutation,
   } = useCategory()
 
+  const [isLoadingSubmit, setLoadingSubmit] = useState(false);
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoadingSubmit(true)
 
     if (!slug.trim()) return toast.warning("Product slug is required");
     if (!category) return toast.warning("Category is required");
@@ -289,6 +291,8 @@ export default function ProductForm() {
       navigate("/admin/products");
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoadingSubmit(false)
     }
   }
 
@@ -514,7 +518,7 @@ export default function ProductForm() {
                         </SelectTrigger>
                         <SelectContent>
                           {/* example preset values - adjust to your domain */}
-                          <SelectItem value="250">100</SelectItem>
+                          <SelectItem value="100">100</SelectItem>
                           <SelectItem value="250">250</SelectItem>
                           <SelectItem value="500">500</SelectItem>
                           <SelectItem value="1">1</SelectItem>
@@ -636,7 +640,7 @@ export default function ProductForm() {
           </div>
         </div>
 
-        <button id="product-form-submit" type="submit" className="hidden">
+        <button disabled={isLoadingSubmit} id="product-form-submit" type="submit" className="hidden">
           Save
         </button>
       </form>
