@@ -241,31 +241,31 @@ export default function ProductForm() {
       nutrition: {
         calories: nutrition.calories
           ? (nutrition.calories.includes("per")
-            ? nutrition.calories.includes("kcal")
-              ? nutrition.calories.replaceAll('"', "").replaceAll(",", "")
-              : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + "kcal"
-            : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + " per 100g")
+            ? nutrition.calories.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.calories.includes("kcal")
+              ? nutrition.calories.replaceAll('"', "").replaceAll(",", "") + " per 100g"
+              : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + "kcal per 100g")
           : "",
         protein: nutrition.protein
           ? (nutrition.protein.includes("per")
-            ? nutrition.calories.includes("g")
-              ? nutrition.protein.replaceAll('"', "").replaceAll(",", "")
-              : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + "g"
-            : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + " per 100g")
+            ? nutrition.protein.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.calories.includes("g")
+              ? nutrition.protein.replaceAll('"', "").replaceAll(",", "") + " per 100g"
+              : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + "g")
           : "",
         carbs: nutrition.carbs
           ? (nutrition.carbs.includes("per")
-            ? nutrition.calories.includes("g")
-              ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "")
-              : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + "g"
-            : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + " per 100g")
+            ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.calories.includes("g")
+              ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + " per 100g"
+              : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + "g")
           : "",
         fiber: nutrition.fiber
           ? (nutrition.fiber.includes("per")
-            ? nutrition.calories.includes("g")
-              ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "")
-              : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + "g"
-            : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + " per 100g")
+            ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "")
+            : nutrition.calories.includes("g")
+              ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + " per 100g"
+              : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + "g")
           : "",
         vitamins: nutrition?.vitamins
           ?.split(",")
@@ -320,7 +320,7 @@ export default function ProductForm() {
           <Button variant="outline" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Button onClick={() => document.getElementById("product-form-submit").click()}>
+          <Button disabled={isLoadingSubmit} onClick={() => document.getElementById("product-form-submit").click()}>
             Save
           </Button>
         </div>
