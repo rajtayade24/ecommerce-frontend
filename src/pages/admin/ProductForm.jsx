@@ -242,22 +242,22 @@ export default function ProductForm() {
         calories: nutrition.calories
           ? (nutrition.calories.includes("per")
             ? nutrition.calories.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+            : nutrition.calories.replaceAll('"', "").replaceAll(",", "") + " per 100g")
           : "",
         protein: nutrition.protein
           ? (nutrition.protein.includes("per")
             ? nutrition.protein.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+            : nutrition.protein.replaceAll('"', "").replaceAll(",", "") + " per 100g")
           : "",
         carbs: nutrition.carbs
           ? (nutrition.carbs.includes("per")
             ? nutrition.carbs.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+            : nutrition.carbs.replaceAll('"', "").replaceAll(",", "") + " per 100g")
           : "",
         fiber: nutrition.fiber
           ? (nutrition.fiber.includes("per")
             ? nutrition.fiber.replaceAll('"', "").replaceAll(",", "")
-            : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + " per 100 g")
+            : nutrition.fiber.replaceAll('"', "").replaceAll(",", "") + " per 100g")
           : "",
         vitamins: nutrition?.vitamins
           ?.split(",")
@@ -468,19 +468,19 @@ export default function ProductForm() {
             <h3 className="text-sm font-medium mb-2">Nutrition</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
               <div>
-                <label className="block text-xs mb-1">Calories</label>
-                <Input value={nutrition.calories} onChange={(e) => updateNutrition("calories", e.target.value)} />
+                <label className="block text-xs mb-1">Calories (Kcal)</label>
+                <Input value={nutrition.calories} onChange={(e) => updateNutrition("calories", e.target.value)} placeholder="e.g. 103kcal" />
               </div>
               <div>
-                <label className="block text-xs mb-1">Protein</label>
+                <label className="block text-xs mb-1">Protein (g)</label>
                 <Input value={nutrition.protein} onChange={(e) => updateNutrition("protein", e.target.value)} placeholder="e.g. 0.9g" />
               </div>
               <div>
-                <label className="block text-xs mb-1">Carbs</label>
+                <label className="block text-xs mb-1">Carbs (g)</label>
                 <Input value={nutrition.carbs} onChange={(e) => updateNutrition("carbs", e.target.value)} placeholder="e.g. 9.6g" />
               </div>
               <div>
-                <label className="block text-xs mb-1">Fiber</label>
+                <label className="block text-xs mb-1">Fiber (g)</label>
                 <Input value={nutrition.fiber} onChange={(e) => updateNutrition("fiber", e.target.value)} placeholder="e.g. 2.8g" />
               </div>
 
