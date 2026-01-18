@@ -1,5 +1,7 @@
+import { toast } from "@/components/ui/Sonner";
+
 export function exportCSV(orders) {
-  if (!orders.length) return alert("No orders to export");
+  if (!orders.length) return toast.warning("No orders to export");
 
   const header = [
     "Order Number",

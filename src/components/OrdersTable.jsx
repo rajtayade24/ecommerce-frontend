@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from '@/components/ui/Card';
 import { Dialog, DialogTrigger } from '@/components/ui/Dialog';
 import DialogContentImpl from '@/components/DialogContentImpl'
+import { toast } from '@/components/ui/Sonner';
 
 const STATUS_BADGE = {
   PENDING: "bg-gray-100 text-gray-800",
@@ -128,7 +129,7 @@ export function OrderRow({ o, }) {
   const handleCancel = async (orderNumber) => {
     if (!window.confirm(`Cancel order ${orderNumber}? This cannot be undone.`)) return;
     await cancelOrderMutation.mutateAsync(orderNumber);
-    alert(`Order ${orderNumber} cancelled (mock).`);
+    toast.success(`Order ${orderNumber} cancelled (mock).`);
   };
 
   const handleView = (id) => {

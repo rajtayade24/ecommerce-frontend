@@ -1,6 +1,7 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getCategories } from "@/service/userService";
 import { postCategory, deleteCategory } from "@/service/adminService";
+import { toast } from "@/components/ui/Sonner";
 
 const PAGE_SIZE = 4;
 
@@ -84,8 +85,8 @@ export function useCategory() {
 
 
   const deleteCategoryMutation = useMutation({
-    mutationFn: async ({ id, token }) => {
-      return await deleteCategory(id, token);
+    mutationFn: async (id) => {
+      return await deleteCategory(id);
     },
 
     onMutate: async ({ id }) => {

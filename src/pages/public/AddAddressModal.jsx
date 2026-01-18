@@ -14,6 +14,7 @@ import { addUserAddress } from "@/service/authService";
 import useAuthStore from "@/store/useAuthStore";
 import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
 import MobileNumberInput from "@/components/MobileNumberInput";
+import { toast } from "@/components/ui/Sonner";
 
 const AddAddressModal = ({ open, onClose, onAdded }) => {
   const { isAuthenticated } = useAuthStore();
@@ -56,7 +57,7 @@ const AddAddressModal = ({ open, onClose, onAdded }) => {
       onClose();
     } catch (err) {
       console.error("Add address failed", err);
-      alert("Failed to add address");
+      toast.error("Failed to add address");
     } finally {
       setLoading(false);
     }

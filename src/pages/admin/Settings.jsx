@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea"; // if not available, replace with <textarea>
 import { Image, CreditCard, Truck, Mail } from "lucide-react";
+import { uploadImg } from "@/service/adminService";
+import { toast } from "@/components/ui/Sonner";
 
 /**
  * Settings
@@ -67,7 +69,7 @@ export default function Settings() {
   useEffect(() => {
     return () => {
       // cleanup preview URL on unmount
-      if (logoPreview && logoPreview.startsWith("blob:")) URL.revokeObjectURL(logoPreview);
+      // if (logoPreview && logoPreview.startsWith("blob:")) URL.revokeObjectURL(logoPreview);
     };
   }, [logoPreview]);
 
@@ -85,11 +87,21 @@ export default function Settings() {
     setLogoPreview("");
   }
 
+  const uploadLogo = async () => {
+    try {
+      const img = await uploadImg(logoFile);
+      setLogoPreview(img);
+      toast.success("image upload successfully!!")
+    } catch (err) {
+      toast.error("error to upload image!!")
+    }
+  }
+
   async function handleSave(e) {
     e.preventDefault();
     // basic validation
-    if (!storeName.trim()) return alert("Store name is required");
-    if (!storeEmail || !storeEmail.includes("@")) return alert("Valid store email is required");
+    if (!storeName.trim()) return toast.warning("Store name is required");
+    if (!storeEmail || !storeEmail.includes("@")) return toast.success("Valid store email is required");
 
     setSaving(true);
 
@@ -100,11 +112,10 @@ export default function Settings() {
     // ...
     // if (logoFile) fd.append('logo', logoFile);
 
-    // TODO: Replace with useMutation / API call
-    setTimeout(() => {
-      setSaving(false);
-      alert("Settings saved (mock). Replace with API call.");
-    }, 700);
+    // setTimeout(() => {
+    //   setSaving(false);
+    //   alert("Settings saved (mock). Replace with API call.");
+    // }, 700);
   }
 
   if (loading) return <div>Loading settings…</div>;
@@ -145,10 +156,12 @@ export default function Settings() {
             <label className="block text-sm font-medium">Store logo</label>
 
             <div className="flex items-center gap-3">
-              <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-2 border rounded-md">
-                <Image className="h-4 w-4" /> Upload logo
-                <input type="file" accept="image/*" onChange={handleLogoSelect} className="hidden" />
-              </label>
+              <div>
+                <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-2 border rounded-md">
+                  <Image className="h-4 w-4" /> Upload logo
+                  <input type="file" accept="image/*" onChange={handleLogoSelect} className="hidden" />
+                </label>
+              </div>
 
               {logoPreview ? (
                 <div className="relative w-24 h-24 rounded-md overflow-hidden border">
@@ -165,6 +178,9 @@ export default function Settings() {
             </div>
 
             <div className="text-xs text-muted-foreground">SVG/PNG recommended. Max 2MB.</div>
+            <Button onClick={uploadLogo}>
+              update logo
+            </Button>
           </div>
         </div>
 

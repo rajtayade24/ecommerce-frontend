@@ -497,13 +497,6 @@ export default SignupDetails;
 
 
 
-
-
-
-
-
-
-
 // function SignupDetails() {
 //   const navigate = useNavigate();
 //   const [otp, setOtp] = useState("");

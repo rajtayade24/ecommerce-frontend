@@ -198,3 +198,21 @@ export const deleteFeedback = async (id) => {
     throw new Error(extractError(err, "Failed to delete feedback"));
   }
 };
+
+
+export const uploadImg = async (image) => {
+  try {
+    const formData = new FormData();
+    if (image) formData.append("image", image);
+
+    const res = await api.post("/admin/logo", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return { data: res.data, error: null };
+  } catch (err) {
+    throw new Error(extractError(err, "upload image failed"));
+  }
+};

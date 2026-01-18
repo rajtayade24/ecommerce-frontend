@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/Button";
 import { formatMoney } from "@/utils/formatMoney";
 import { getOrderById, markOrderComplete, cancelOrder } from "@/service/adminService";
 import { Card } from "@/components/ui/Card";
+import { toast } from "@/components/ui/Sonner";
 
 const STATUS_BADGE = {
   PENDING: "bg-gray-100 text-gray-800",
@@ -63,7 +64,7 @@ export default function OrderDetails() {
       const refreshed = await getOrderById(order.orderNumber);
       setOrder(refreshed);
     } catch (err) {
-      alert(err?.message || "Failed to mark complete");
+      toast.error(err?.message || "Failed to mark complete");
     } finally {
       setBusy(false);
     }
@@ -78,7 +79,7 @@ export default function OrderDetails() {
       const refreshed = await getOrderById(order.orderNumber);
       setOrder(refreshed);
     } catch (err) {
-      alert(err?.message || "Failed to cancel order");
+      toast.error(err?.message || "Failed to cancel order");
     } finally {
       setBusy(false);
     }

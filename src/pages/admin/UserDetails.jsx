@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/Button";
 import { getUserById, setUserActive } from "@/service/adminService";
 import { Eye } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { toast } from "@/components/ui/Sonner";
 
 function statusBadge(active) {
   return active ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
 }
-
 export default function UserDetails() {
   const { id } = useParams(); // route should be like /admin/users/:id
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ export default function UserDetails() {
       if (context?.prevUsers) {
         queryClient.setQueryData(["users"], context.prevUsers);
       }
-      alert(err?.message || "Failed to update user status");
+       toast.error(err?.message || "Failed to update user status");
     },
 
     onSettled: () => {

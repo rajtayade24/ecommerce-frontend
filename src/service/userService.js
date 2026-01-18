@@ -20,6 +20,7 @@ export const getProducts = async (page = 0, size = 1, filter = {}) => {
   if (filter.sort) params.sort = filter.sort;
 
   try {
+    console.log("product filter ", params);
     // const response = await api.get(`/products?page=${page}&size=${size}&isOrganic=${isOrganic}`, { param: { page, size } }); console.log("products", response);
     const response = await api.get("/products", { params: params }); console.log("\n\nproducts: ", response);
     // Backend should return: { content: [...], number, totalPages, totalElements, size }

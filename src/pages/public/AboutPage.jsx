@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordion';
+import { toast } from '@/components/ui/Sonner';
 
 export default function AboutPage({ companyName = 'FreshMart' }) {
   const [email, setEmail] = useState('');
@@ -43,7 +44,7 @@ export default function AboutPage({ companyName = 'FreshMart' }) {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email || !/^[\w-.]+@[\w-]+\.[a-z]{2,}$/i.test(email)) {
-      alert('Please enter a valid email');
+      toast.warning('Please enter a valid email');
       return;
     }
     setSent(true);

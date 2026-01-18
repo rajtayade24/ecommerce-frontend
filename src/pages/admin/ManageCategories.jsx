@@ -140,7 +140,6 @@ export function ManageCategories() {
   );
 }
 
-
 export function CategoryRow({ c, }) {
   const [open, setOpen] = useState(false);
 

@@ -3,7 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
+import { motion } from "framer-motion";
 import { useCategory } from "@/hooks/useCategory";
+import { toast } from "@/components/ui/Sonner";
 // import { getCategoryById } from "@/service/userService";
 
 export default function CategoryForm() {
@@ -61,25 +63,17 @@ export default function CategoryForm() {
   }
 
   const {
-    categories,
-    data,
     isLoading,
     isError,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
     postCategoryMutation,
-    refetch,
-
   } = useCategory()
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!catId.trim()) return alert("Category ID is required");
-    if (!name.trim()) return alert("Category name is required");
-    if (!isEdit && !imageFile) return alert("Category image is required");
+    if (!catId.trim()) return toast.warning("Category ID is required");
+    if (!name.trim()) return toast.warning("Category name is required");
+    if (!isEdit && !imageFile) return toast.warning("Category image is required");
 
     const payload = {
       slug: catId.toLowerCase().replace(/\s+/g, "-"),
@@ -116,7 +110,7 @@ export default function CategoryForm() {
       <motion.form
 
         onSubmit={handleSubmit}
-        className="bg-white rounded-2xl shadow-sm p-4 space-y-6"
+        className="rounded-2xl shadow-sm p-4 space-y-6"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
