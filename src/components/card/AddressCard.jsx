@@ -6,8 +6,9 @@ const AddressCard = ({
   a,
   handleDeliver,
   isOrder = true,
+  loadingDeliver = false
 }) => {
-  const isPrimary= a.primaryAddress;
+  const isPrimary = a.primaryAddress;
 
   return (
     <motion.label
@@ -24,7 +25,7 @@ const AddressCard = ({
     >
       {/* Top row: radio + name/label + phone */}
       <div className="flex items-start gap-3">
-      
+
         <div className="flex-1 min-w-0">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
             <div className="font-semibold truncate">{a.name}</div>
@@ -55,7 +56,7 @@ const AddressCard = ({
             }}
             className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg shadow-lg"
           >
-            DELIVER HERE
+            {loadingDeliver ? "Loading..." : "DELIVER HERE"}
           </Button>
         </div>
       )}

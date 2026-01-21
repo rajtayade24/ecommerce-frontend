@@ -83,7 +83,6 @@ export const useCart = ({ enabled = true } = {}) => {
 
         return { ...old, pages: newPages };
       });
-      toast.success("Item added to cart!");
     },
 
     onError: (err) => {

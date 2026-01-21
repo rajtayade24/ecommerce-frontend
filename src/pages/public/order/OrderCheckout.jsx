@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams, Link } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { MapPin, CreditCard, ArrowLeft } from 'lucide-react';
 import { getUserAddress } from '@/service/authService';
 import useAuthStore from '@/store/useAuthStore';
@@ -10,7 +10,6 @@ import { Card } from '@/components/ui/Card';
 import { motion, AnimatePresence } from 'framer-motion';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 import { toast } from '@/components/ui/Sonner';
-import AddressCard from '@/components/card/AddressCard';
 import AddAddressModal from '@/pages/public/AddAddressModal';
 import { extractError } from '@/utils/extractError';
 
@@ -23,10 +22,19 @@ const OrderCheckout = () => {
 
 
   const [addresses, setAddresses] = useState([]);
-  const primaryAddress = addresses?.find(a => a.primaryAddress === true);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [loadingAddress, setLoadingAddress] = useState(false);
   const [loadingItems, setLoadingItems] = useState(false);
+  const [loadingDeliver, setLoadingDeliver] = useState(false);
+
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
+
+  useEffect(() => {
+    const primary = addresses.find(a => a.primaryAddress);
+    if (primary && !selectedAddressId) {
+      setSelectedAddressId(primary.id);
+    }
+  }, [addresses]);
 
   useEffect(() => {
     if (!state?.items) return;
@@ -44,7 +52,8 @@ const OrderCheckout = () => {
       const list = await getUserAddress();
       setAddresses(list);
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+      toast.error(extractError(err, "Failed to load addresses"));
     }
     finally {
       setLoadingAddress(false);
@@ -55,41 +64,35 @@ const OrderCheckout = () => {
     refreshAddresses();
   }, [])
 
-  useEffect(() => {
-    const fetchAddress = async () => {
-      setLoadingAddress(true);
-      try {
-        const adds = await getUserAddress();
-        setAddresses(adds);
-      } catch (err) {
-        console.error(err);
-        toast.error(extractError(err, "Failed to load addresses"));
-      } finally {
-        setLoadingAddress(false);
-      }
-    };
+  const handleDeliver = async () => {
+    if (!data?.items?.length) {
+      toast.error("Your cart is empty");
+      return;
+    }
 
-    fetchAddress();
-  }, []);
+    setLoadingDeliver(true)
 
-  const handleDeliver = async (address) => {
     const order = {
       userId: user.id,
       currency: "INR",
       paymentMethod: "STRIPE",
-      shippingAddress: address,
+      shippingAddress: addresses.find((a) => a.id === selectedAddressId),
       items: data?.items ?? []
     };
 
     try {
       const res = await postOrder(order);
+      console.log(res);
       if (res?.status === "SUCCESS" && res?.sessionUrl) {
-        window.location.href = res.sessionUrl;
+        window.location.assign(res.sessionUrl);
       } else {
         toast.error("Payment initialization failed");
       }
-    } catch {
-         toast.error(extractError(err, "Unable to place order. Please try again."));
+    } catch (err) {
+      toast.error(extractError(err, "Unable to place order. Please try again."));
+    }
+    finally {
+      setLoadingDeliver(false);
     }
   };
   if (!isAuthenticated) {
@@ -137,29 +140,69 @@ const OrderCheckout = () => {
                   <div className="text-center p-4 text-slate-500">No saved addresses. Add a new address to continue.</div>
                 ) : (
                   addresses?.map(a => (
-                    <AddressCard
-                      a={a}
-                      handleDeliver={handleDeliver}
+                    <motion.Label
                       key={a.id}
-                    />
+                      layout
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className={`flex items-center border rounded-lg p-4 transition-shadow hover:shadow-md ${a.id === selectedAddressId ? 'ring-2 ring-blue-200' : ''
+                        }`}
+                    >
+                      <input
+                        type="radio"
+                        name="address"
+                        checked={a.id === selectedAddressId}
+                        onChange={() => setSelectedAddressId(a.id)}
+                        className="mr-4"
+                      />
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
+                          <div className="font-semibold truncate">{a.name}</div>
+                          <div className="w-fit text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                            {a.label}
+                          </div>
+                          <div className="sm:ml-auto text-sm text-slate-500">{a.phone}</div>
+                        </div>
+
+                        {/* Address */}
+                        <div className="mt-2 space-y-0.5 text-sm text-slate-600">
+                          <div>{a.line1}</div>
+                          <div>
+                            {a.line2} — {a.city}, {a.state} —{' '}
+                            <span className="font-medium">{a.pincode}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.Label>
                   ))
                 )}
               </AnimatePresence>
 
-              <div className="pt-2 border-t">
+              <div className="flex justify-between items-center pt-2 border-t">
                 <Button onClick={() => setIsAddOpen(true)}>
                   + Add a new address
                 </Button>
 
-                <AddAddressModal
-                  open={isAddOpen}
-                  onClose={() => setIsAddOpen(false)}
-                  onAdded={(saved) => {
-                    refreshAddresses();
-                  }}
-                />
+                <Button
+                  disabled={!selectedAddressId || loadingDeliver}
+                  onClick={handleDeliver}
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg shadow-lg"
+                >
+                  {loadingDeliver ? "Loading..." : "DELIVER HERE"}
+                </Button>
+
               </div>
             </div>
+            <AddAddressModal
+              open={isAddOpen}
+              onClose={() => setIsAddOpen(false)}
+              onAdded={(saved) => {
+                refreshAddresses();
+              }}
+            />
           </section>
         </div>
 
