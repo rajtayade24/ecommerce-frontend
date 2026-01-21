@@ -6,37 +6,37 @@ import useAuthStore from '@/store/useAuthStore';
 import { Button } from '@/components/ui/Button';
 import { getCartItems, postOrder } from '@/service/userService';
 import OrderItemCard from '@/components/card/OrderItemCard';
-import { Label } from '@/components/ui/Label';
 import { Card } from '@/components/ui/Card';
 import { motion, AnimatePresence } from 'framer-motion';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 import { toast } from '@/components/ui/Sonner';
 import AddressCard from '@/components/card/AddressCard';
 import AddAddressModal from '@/pages/public/AddAddressModal';
+import { extractError } from '@/utils/extractError';
 
 const OrderCheckout = () => {
   const { state } = useLocation();
 
   const { id } = useParams()
   const [data, setData] = useState([]);
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore()
+
+
+  const [addresses, setAddresses] = useState([]);
+  const primaryAddress = addresses?.find(a => a.primaryAddress === true);
+  const [isAddOpen, setIsAddOpen] = useState(false);
+  const [loadingAddress, setLoadingAddress] = useState(false);
+  const [loadingItems, setLoadingItems] = useState(false);
 
   useEffect(() => {
     if (!state?.items) return;
 
-    setLoadinItems(true);
+    setLoadingItems(true);
     getCartItems(state.items)
       .then(res => setData(res))
       .catch(console.error)
-      .finally(() => setLoadinItems(false));
-  }, [state]);
-
-  const [addresses, setAddresses] = useState([]);
-  const { user } = useAuthStore()
-  const primaryAddress = addresses?.find(a => a.primaryAddress === true);
-  const [isAddOpen, setIsAddOpen] = useState(false);
-  const [loadingAddress, setLoadingAddress] = useState(false);
-  const [loadinItems, setLoadinItems] = useState(false);
+      .finally(() => setLoadingItems(false));
+  }, [state?.items]);
 
   const refreshAddresses = async () => {
     setLoadingAddress(true);
@@ -51,10 +51,8 @@ const OrderCheckout = () => {
     }
   };
   useEffect(() => {
-    setTimeout(() => {
-      if (addresses.length !== 0) return;
-      refreshAddresses();
-    }, 2000);
+    if (addresses.length !== 0) return;
+    refreshAddresses();
   }, [])
 
   useEffect(() => {
@@ -65,6 +63,7 @@ const OrderCheckout = () => {
         setAddresses(adds);
       } catch (err) {
         console.error(err);
+        toast.error(extractError(err, "Failed to load addresses"));
       } finally {
         setLoadingAddress(false);
       }
@@ -82,12 +81,15 @@ const OrderCheckout = () => {
       items: data?.items ?? []
     };
 
-    const res = await postOrder(order);
-
-    if (res?.status === "SUCCESS" && res?.sessionUrl) {
-      window.location.href = res.sessionUrl; // redirect to Stripe
-    } else {
-      toast.error("Payment initialization failed");
+    try {
+      const res = await postOrder(order);
+      if (res?.status === "SUCCESS" && res?.sessionUrl) {
+        window.location.href = res.sessionUrl;
+      } else {
+        toast.error("Payment initialization failed");
+      }
+    } catch {
+         toast.error(extractError(err, "Unable to place order. Please try again."));
     }
   };
   if (!isAuthenticated) {
@@ -108,7 +110,7 @@ const OrderCheckout = () => {
           <section className="rounded-2xl shadow p-4">
             <h3 className="font-medium text-lg mb-4">Order Summary</h3>
 
-            {loadinItems ? (
+            {loadingItems ? (
               <div className="text-center">Loading order Items</div>
             ) : data?.items?.length === 0 ? (
               <div className="text-center">No order Items found</div>
