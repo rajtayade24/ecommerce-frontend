@@ -18,7 +18,7 @@ const queryClient = new QueryClient({
 
 const App = () => {
   const { darkMode } = useAuthStore();
-
+  
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
     localStorage.setItem("dark", darkMode ? "true" : "false");

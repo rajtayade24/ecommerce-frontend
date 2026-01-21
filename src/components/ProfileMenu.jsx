@@ -97,7 +97,7 @@ function ProfileMenu() {
 
         {isAuthenticated && (
           <DropdownMenuItem className='p-0 m-0 w-full '
-            onSelect={(e) => e.preventDefault()} // 👈 IMPORTANT
+            onSelect={(e) => e.preventDefault()}
           >
             <Dialog>
               <DialogTrigger asChild>

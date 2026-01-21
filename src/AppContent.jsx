@@ -45,7 +45,7 @@ import OrderDetails from "@/pages/admin/OrderDetails";
 import Settings from "@/pages/admin/Settings";
 import AddAddressModal from "@/pages/public/AddAddressModal";
 import ManageFeedback from "@/pages/admin/ManageFeedback";
-import AdminGuard from "./pages/admin/AdminGuard";
+import AdminGuard from "@/pages/admin/AdminGuard";
 
 const AppContent = () => {
   const { setUser, setAuthenticated, setUserMainId } = useAuthStore();

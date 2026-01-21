@@ -68,7 +68,7 @@ const ProductDetail = () => {
     toast.success('Added to cart!', {
       description: `${product.name} - ${product.variants[selectedWeight].value}${product.variants[selectedWeight].unit}`
     });
-    setQuantity(0);
+    setQuantity(1);
   };
 
   const handleBuy = () => {
