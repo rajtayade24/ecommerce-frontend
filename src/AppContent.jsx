@@ -45,18 +45,28 @@ import OrderDetails from "@/pages/admin/OrderDetails";
 import Settings from "@/pages/admin/Settings";
 import AddAddressModal from "@/pages/public/AddAddressModal";
 import ManageFeedback from "@/pages/admin/ManageFeedback";
+import AdminGuard from "./pages/admin/AdminGuard";
 
 const AppContent = () => {
   const { setUser, setAuthenticated, setUserMainId } = useAuthStore();
 
   useEffect(() => {
-    getMe().then((user) => {
-      if (user) {
+    let mounted = true;
+
+    getMe()
+      .then((user) => {
+        if (!mounted || !user) return;
         setAuthenticated(true);
         setUser(user);
         setUserMainId(user.id);
-      }
-    });
+      })
+      .catch(() => {
+        setAuthenticated(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
   }, [setAuthenticated, setUser, setUserMainId]);
 
   return (
@@ -83,14 +93,21 @@ const AppContent = () => {
           <Route path="/order/checkout" element={<OrderCheckout />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/me/profile" element={<MyProfile />} />
-          <Route path="/me/address/new" element={<AddAddressModal/>} />
+          <Route path="/me/address/new" element={<AddAddressModal />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/feedbacks" element={<Feedback/>} />
+          <Route path="/feedbacks" element={<Feedback />} />
           <Route path="/term-service" element={<TermsAndServices />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Route>
-
-        <Route path="/admin" element={<AdminLayout />}>
+        
+        <Route
+          path="/admin"
+          element={
+            <AdminGuard>
+              <AdminLayout />
+            </AdminGuard>
+          }
+        >
           <Route index element={<AdminDashboard />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="products" element={<ManageProducts />} />

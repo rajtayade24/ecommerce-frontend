@@ -236,7 +236,6 @@ function SignupDetails() {
   const [isLoading, setLoading] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(0);
 
-  // pull everything once from the store (avoid multiple calls)
   const {
     name,
     setName,
@@ -267,31 +266,37 @@ function SignupDetails() {
 
     if (!mobile || mobile.trim().length === 0) {
       useSignupStore.setState({ verString: "Mobile number is required" });
+      setLoading(false);
       return;
     }
 
     if (!isValidIndianMobile(mobile)) {
       useSignupStore.setState({ verString: "Enter a valid 10-digit mobile number" });
+      setLoading(false);
       return;
     }
 
-    if (!name !== name.length <= 0) {
+    if (!name || name.trim().length === 0) {
       useSignupStore.setState({ verString: "Name is required" });
+      setLoading(false);
       return;
     }
     if (!password) {
       useSignupStore.setState({ verString: "Password is required" });
+      setLoading(false);
       return;
     }
     if (!isValidPassword(password)) {
       useSignupStore.setState({
         verString: "Password must be at least 6 characters and contain letters and numbers",
       });
+      setLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
       useSignupStore.setState({ verString: "Passwords do not match" });
+      setLoading(false);
       return;
     }
 
@@ -332,23 +337,16 @@ function SignupDetails() {
     useSignupStore.setState({ verString: "" });
     setLoading(true)
     try {
-      // const result = await submitOtp(otp);
-
       const result = await window.confirmationResult.confirm(otp);
-      const idToken = await result.user.getIdToken();
 
       console.log(result);
       useSignupStore.setState({ verString: "Otp verified" });
 
-      // Send ID token to backend signup API
-      // fetch("/api/auth/signup", { Authorization: Bearer idToken })
-
-      // if (result.success == true) {
       navigate("/verify/signup/address");
       useSignupStore.setState({ verString: "" });
       // }
     } catch (err) {
-      useSignupStore.setState({ error: "Invalid OTP" });
+      useSignupStore.setState({ verString: "Invalid OTP", success: false });
     } finally {
       setLoading(false);
     }
@@ -367,7 +365,7 @@ function SignupDetails() {
   }, [timeRemaining]);
 
   useEffect(() => {
-    if (otp.length === 6 && window.confirmationResult) {
+    if (otp.length === 6 && window.confirmationResult && !isLoading) {
       handleVerifyOtp();
     }
   }, [otp]);
@@ -375,7 +373,7 @@ function SignupDetails() {
   return (
     <div>
       {/* MUST EXIST BEFORE send OTP */}
-      {/* <div id="recaptcha-container" className="max-h-[70vh]" inert></div> */}
+      <div id="recaptcha-container" className="max-h-[70vh]"></div>
 
       <nav className="text-center text-xl font-semibold py-4">
         <div> Let's create an account using your mobile number</div>
@@ -426,7 +424,7 @@ function SignupDetails() {
                 required
               />
               <button
-                disabled={disableVerifyBtn}
+                disabled={timeRemaining > 0}
                 type="button"
                 onClick={async (e) => {
                   if (disableVerifyBtn) return;
@@ -450,43 +448,11 @@ function SignupDetails() {
         type="button"
         disabled={isCodeOpen && otp.length !== 6}
         onClick={(e) => {
-          // if (!isCodeOpen) handleSendOtp(e);
-          // else handleVerifyOtp(e);
-          if (!mobile || mobile.trim().length === 0) {
-            useSignupStore.setState({ verString: "Mobile number is required" });
-            return;
-          }
-
-          if (!isValidIndianMobile(mobile)) {
-            useSignupStore.setState({ verString: "Enter a valid 10-digit mobile number" });
-            return;
-          }
-
-          if (!name !== name.length <= 0) {
-            useSignupStore.setState({ verString: "Name is required" });
-            return;
-          }
-          if (!password) {
-            useSignupStore.setState({ verString: "Password is required" });
-            return;
-          }
-          if (!isValidPassword(password)) {
-            useSignupStore.setState({
-              verString: "Password must be at least 6 characters and contain letters and numbers",
-            });
-            return;
-          }
-
-          if (password !== confirmPassword) {
-            useSignupStore.setState({ verString: "Passwords do not match" });
-            return;
-          }
-          navigate("/verify/signup/address");
-          useSignupStore.setState({ verString: "" });
+          if (!isCodeOpen) handleSendOtp(e);
+          else handleVerifyOtp();
         }}
       >
-        {/* {isLoading ? "Loading..." : !isCodeOpen ? "Send otp" : "Verify"} */}
-        verify
+        {isLoading ? "Loading..." : !isCodeOpen ? "Send otp" : "Verify"}
       </Button>
     </div >
   )

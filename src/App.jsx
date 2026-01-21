@@ -6,16 +6,22 @@ import BackendLoader from "@/components/BackendLoader";
 import AppContent from "@/AppContent";
 import useAuthStore from "@/store/useAuthStore";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 30,
+    },
+  },
+});
 
 const App = () => {
   const { darkMode } = useAuthStore();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
-    try {
-      localStorage.setItem("dark", darkMode ? "true" : "false");
-    } catch {}
+    localStorage.setItem("dark", darkMode ? "true" : "false");
   }, [darkMode]);
 
   return (

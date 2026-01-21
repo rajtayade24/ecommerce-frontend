@@ -11,6 +11,7 @@ import { getProductById } from "@/service/userService";
 import { useCategory } from "@/hooks/useCategory";
 import { toast } from "@/components/ui/Sonner";
 import { formatNutrition } from "@/utils/formatNutrition";
+import { toCapitalize } from "@/utils/toCapitalize";
 
 export default function ProductForm() {
   const { id } = useParams();
@@ -246,7 +247,9 @@ export default function ProductForm() {
         fiber: formatNutrition(nutrition.fiber, "g"),
         vitamins: nutrition?.vitamins
           ?.split(",")
-          .map(v => v.trim().replaceAll('"', ""))
+          .map(v =>
+            toCapitalize(v.trim().replaceAll('"', ""))
+          )
           .filter(Boolean),
       },
 
@@ -298,13 +301,13 @@ export default function ProductForm() {
             Cancel
           </Button>
           <Button disabled={isLoadingSubmit} onClick={() => document.getElementById("product-form-submit").click()}>
-            Save
+            {isLoadingSubmit ? "Loading..." : "Save"}
           </Button>
         </div>
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className=" rounded-2xl shadow-sm p-4 space-y-6">
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className=" rounded-2xl shadow-sm space-y-6 lg:p-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
           {/* Name */}
@@ -483,9 +486,9 @@ export default function ProductForm() {
             <div className="space-y-3">
               {variants.map((v, idx) => (
                 <div key={idx} className="rounded-xl border p-3">
-                  <div className="grid grid-cols-12 gap-3 items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center items-start">
                     {/* Value - Select with Other */}
-                    <div className="col-span-3">
+                    <div className="md:col-span-3">
                       <label className="block text-xs mb-1">Value</label>
                       <Select
                         value={v.value || ""}
@@ -525,7 +528,7 @@ export default function ProductForm() {
                     </div>
 
                     {/* Unit - Select with Other */}
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                       <label className="block text-xs mb-1">Unit</label>
                       <Select
                         value={v.unit || ""}
@@ -563,7 +566,7 @@ export default function ProductForm() {
                     </div>
 
                     {/* Price */}
-                    <div className="col-span-3">
+                    <div className="md:col-span-3">
                       <label className="block text-xs mb-1">Price</label>
                       <Input
                         type="number"
@@ -575,7 +578,7 @@ export default function ProductForm() {
                     </div>
 
                     {/* Stock */}
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                       <label className="block text-xs mb-1">Stock</label>
                       <Input
                         type="number"
@@ -588,40 +591,59 @@ export default function ProductForm() {
 
                     {/* Actions */}
                     <div className="col-span-2 flex gap-2 justify-end">
-                      <button
+                      <Button
                         type="button"
+                        variant="outline"
                         onClick={() => copyBelow(idx)}
-                        className="text-sm px-3 py-1 rounded-md border hover:bg-gray-50"
+                        className="text-sm px-3 py-1 rounded-md border"
                         title="Duplicate variant"
                       >
                         Duplicate
-                      </button>
+                      </Button>
 
-                      <button
+                      <Button
                         type="button"
+                        variant="outline"
                         onClick={() => removeVariant(idx)}
-                        className="text-sm px-3 py-1 rounded-md border text-red-600 hover:bg-red-50"
+                        className="text-sm px-3 py-1 rounded-md border text-red-600"
                         title="Remove variant"
                       >
                         Remove
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
               ))}
 
-              <div>
-                <Button
-                  variant="outline"
-                  type="button"
-                  onClick={() =>
-                    addVariant({ value: "", unit: "", price: "", stock: 0, customValue: "", customUnit: "" })
-                  }
-                >
-                  Add Variant
-                </Button>
-              </div>
+              <Button
+                variant="outline"
+                type="button"
+                onClick={() =>
+                  addVariant({ value: "", unit: "", price: "", stock: 0, customValue: "", customUnit: "" })
+                }
+              >
+                Add Variant
+              </Button>
             </div>
+          </div>
+          <div className="bg-background border-t p-3 flex justify-between items-center gap-3 lg:hidden">
+            <Button
+              variant="outline"
+              className="flex-1"
+              onClick={() => navigate(-1)}
+            >
+              Cancel
+            </Button>
+
+            <Button
+              className="flex-1"
+              disabled={isLoadingSubmit}
+              onClick={() =>
+                document.getElementById("product-form-submit").click()
+              }
+            >
+              {isLoadingSubmit ? "Saving..." : "Save"}
+            </Button>
           </div>
         </div>
 
