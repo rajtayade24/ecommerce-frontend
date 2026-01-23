@@ -26,59 +26,53 @@ export default function AddressDetails() {
   const [addressLine1, setAddressLine1] = useState("")
   const [addressLine2, setAddressLine2] = useState("")
 
-  const {
-    addAddress,
-    loading,
-    success,
-    submitSignup,
-    verString,
-    mobile,
-    name,
-  } = useSignupStore();
+  const loading = useSignupStore(state => state.loading);
+  const success = useSignupStore(state => state.success);
+  const verString = useSignupStore(state => state.verString);
+  const mobile = useSignupStore(state => state.mobile);
+  const name = useSignupStore(state => state.name);
 
-  const { setUser, setAuthenticated } = useAuthStore()
+  const addAddress = useSignupStore(state => state.addAddress);
+  const submitSignup = useSignupStore(state => state.submitSignup);
 
-  // local: currently selected state for populating cities
+  const setUser = useAuthStore(state => state.setUser);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const setVerString = useSignupStore(state => state.setVerString);
+
   const [selectedState, setSelectedState] = useState(state || "");
-  // special flag when user chooses "Other" city
   const [isOtherCity, setIsOtherCity] = useState(false);
 
-  // update city options when state changes
   const citiesForState = useMemo(() => {
     if (!selectedState) return [];
     return CITY_MAP[selectedState] || [];
   }, [selectedState]);
 
-  // Clear city if state changes
   useEffect(() => {
     setCity("");
     setIsOtherCity(false);
-    // sync store state
     setStateVal(selectedState || "");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedState]);
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    // clear previous error
-    useSignupStore.setState({ verString: null });
+    setVerString(null);
 
     if (!addressLine1 || addressLine1.trim().length === 0) {
-      useSignupStore.setState({ verString: "Address Line 1 is required" });
+      setVerString("Address Line 1 is required");
       return;
     }
 
     if (!city || city.trim().length === 0) {
-      useSignupStore.setState({ verString: "city is required" });
+      setVerString("city is required");
       return;
     }
     if (!state || state.trim().length === 0) {
-      useSignupStore.setState({ verString: "state is required" });
+      setVerString("state is required");
       return;
     }
     if (!pincode || pincode.trim().length === 0) {
-      useSignupStore.setState({ verString: "pincode is required" });
+      setVerString("pincode is required");
       return;
     }
     const addressObj = {
@@ -92,13 +86,12 @@ export default function AddressDetails() {
       label: null,
     }
     addAddress(addressObj);
-    // call submitSignup; on success navigate to login or home
     await submitSignup((data) => {
       console.log("sign in data is: ", data);
       setUser(data)
       setAuthenticated(true)
       navigate("/"); // adjust target as needed
-      useSignupStore.setState({ verString: "" });
+      setVerString("");
     });
   };
 

@@ -23,8 +23,8 @@ const Products = () => {
 
   const initialCategory = searchParams.get("category") ?? null;
 
-  const { searchQuery } = useAuthStore();
-
+  const searchQuery = useAuthStore(state => state.searchQuery);
+  
   const [selectedCategories, setSelectedCategories] = useState(initialCategory);
   const [organicOnly, setOrganicOnly] = useState(null);
   const [featureOnly, setFeatureOnly] = useState(null);

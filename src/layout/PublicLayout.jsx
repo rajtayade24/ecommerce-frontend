@@ -4,11 +4,12 @@ import { Navbar } from "@/layout/Navbar";
 import Footer from "@/layout/Footer";
 import { useEffect } from "react";
 import useAuthStore from "@/store/useAuthStore";
-import { toast } from "@/components/ui/Sonner";
 
 export default function PublicLayout() {
   const location = useLocation();
-  const { setShowProfileDetails, setMobileMenuOpen } = useAuthStore();
+const setShowProfileDetails = useAuthStore(state => state.setShowProfileDetails);
+const setMobileMenuOpen = useAuthStore(state => state.setMobileMenuOpen);
+
 
   useEffect(() => {
     console.log(location)

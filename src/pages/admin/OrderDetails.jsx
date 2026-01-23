@@ -9,7 +9,6 @@ import {
   XCircle,
   CreditCard,
   MapPin,
-  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { formatMoney } from "@/utils/formatMoney";

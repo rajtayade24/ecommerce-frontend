@@ -6,7 +6,7 @@ import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 import useAuthStore from '@/store/useAuthStore';
 
 const MyOrders = () => {
-  const { isAuthenticated } = useAuthStore();
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   const {
     orders,

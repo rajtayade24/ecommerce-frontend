@@ -48,7 +48,9 @@ import ManageFeedback from "@/pages/admin/ManageFeedback";
 import AdminGuard from "@/pages/admin/AdminGuard";
 
 const AppContent = () => {
-  const { setUser, setAuthenticated, setUserMainId } = useAuthStore();
+  const setUser = useAuthStore(state => state.setUser);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
+  const setUserMainId = useAuthStore(state => state.setUserMainId);
 
   useEffect(() => {
     let mounted = true;
@@ -99,7 +101,7 @@ const AppContent = () => {
           <Route path="/term-service" element={<TermsAndServices />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Route>
-        
+
         <Route
           path="/admin"
           element={

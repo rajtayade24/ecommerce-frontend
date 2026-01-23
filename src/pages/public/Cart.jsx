@@ -10,7 +10,7 @@ import useAuthStore from "@/store/useAuthStore";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuthStore();
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   const { isLoading, isError, error, items, removeCartMutation, updateQuantityMutation } = useCart({ enabled: isAuthenticated });
 

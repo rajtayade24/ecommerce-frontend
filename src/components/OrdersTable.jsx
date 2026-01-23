@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useOrder } from '@/hooks/useOrder';
 import { useNavigate } from "react-router-dom";
-import { Eye, CheckCircle, XCircle, Download, ArrowRightCircle } from "lucide-react";
+import { Eye, CheckCircle, XCircle } from "lucide-react";
 import { formatMoney } from '@/utils/formatMoney';
 
 import { Button } from "@/components/ui/Button";

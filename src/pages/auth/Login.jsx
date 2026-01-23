@@ -7,30 +7,28 @@ import useAuthStore from '@/store/useAuthStore';
 
 export default function Login() {
   const navigate = useNavigate();
-  // signup store (your setters & values)
-  const {
-    identifier,
-    setIdentifier,
-    password,
-    setPassword,
-    submitLogin,
-    success,
-    verString,
 
-  } = useSignupStore();
+  const identifier = useSignupStore(state => state.identifier);
+  const password = useSignupStore(state => state.password);
+  const success = useSignupStore(state => state.success);
+  const verString = useSignupStore(state => state.verString);
 
-  const { setUser, setAuthenticated } = useAuthStore()
+  const setIdentifier = useSignupStore(state => state.setIdentifier);
+  const setPassword = useSignupStore(state => state.setPassword);
+  const submitLogin = useSignupStore(state => state.submitLogin);
+  const setUser = useAuthStore(state => state.setUser);
+  const setAuthenticated = useAuthStore(state => state.setAuthenticated);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log("login request", identifier, password);
     if (!identifier) {
-      useSignupStore.setState({ verString: "Email or mobile is required" });
+      setVerString("Email or mobile is required");
       return;
     }
 
     if (!password || password.length < 6) {
-      useSignupStore.setState({ verString: "Password must be at least 6 characters" });
+      setVerString("Password must be at least 6 characters");
       return;
     }
 

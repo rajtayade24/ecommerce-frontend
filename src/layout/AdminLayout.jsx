@@ -7,7 +7,8 @@ import { useEffect } from "react";
 
 export default function AdminLayout() {
   const location = useLocation()
-  const { setMobileMenuOpen } = useAuthStore()
+const setMobileMenuOpen = useAuthStore(state => state.setMobileMenuOpen);
+
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [location.pathname]);

@@ -7,7 +7,8 @@ import useAuthStore from "@/store/useAuthStore";
  * - Requires ADMIN role
  */
 const AdminGuard = ({ children }) => {
-  const { isAuthenticated, user } = useAuthStore();
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const user = useAuthStore(state => state.user);
   const location = useLocation();
 
   // Still hydrating auth (optional safety)

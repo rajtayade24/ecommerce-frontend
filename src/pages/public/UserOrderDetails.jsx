@@ -15,7 +15,7 @@ const UserOrderDetails = () => {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(null);
 
-  const { isAuthenticated } = useAuthStore();
+const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   useEffect(() => {
     if (!id || !isAuthenticated) return;

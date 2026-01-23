@@ -20,11 +20,15 @@ import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/DropdownMenu"
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuthStore();
-
-  const user = useAuthStore(s => s.user)
-  const toggleProfileDetails = useAuthStore(s => s.toggleProfileDetails)
-  const { search, setSearch, debouncedSearch, setDebouncedSearch, setSearchQuery } = useAuthStore();
+  
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const user = useAuthStore(state => state.user);
+  const toggleProfileDetails = useAuthStore(state => state.toggleProfileDetails);
+  const search = useAuthStore(state => state.search);
+  const setSearch = useAuthStore(state => state.setSearch);
+  const debouncedSearch = useAuthStore(state => state.debouncedSearch);
+  const setDebouncedSearch = useAuthStore(state => state.setDebouncedSearch);
+  const setSearchQuery = useAuthStore(state => state.setSearchQuery);
 
   const [openMenu, setOpenMenu] = useState(false);
   const [suggestions, setSuggestions] = useState([]);

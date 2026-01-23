@@ -18,8 +18,9 @@ const OrderCheckout = () => {
 
   const { id } = useParams()
   const [data, setData] = useState([]);
-  const { isAuthenticated, user } = useAuthStore()
 
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const user = useAuthStore(state => state.user);
 
   const [addresses, setAddresses] = useState([]);
   const [isAddOpen, setIsAddOpen] = useState(false);

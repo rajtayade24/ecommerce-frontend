@@ -27,10 +27,12 @@ function SignupDetails() {
     setDisableVerifyBtn,
     verString,
     sendOtpStore,
-    error,
     success,
     submitOtp,
   } = useSignupStore();
+  const setVerString = useSignupStore(state => state.setVerString);
+  const setCodeOpen = useSignupStore(state => state.setCodeOpen);
+
 
   const isValidIndianMobile = (mobile) => {
     return /^[6-9]\d{9}$/.test(mobile);
@@ -42,70 +44,69 @@ function SignupDetails() {
 
   const handleSendOtp = async (e) => {
     e?.preventDefault?.();
-    useSignupStore.setState({ verString: "" });
+    setVerString("");
     setLoading(true)
 
     if (!mobile || mobile.trim().length === 0) {
-      useSignupStore.setState({ verString: "Mobile number is required" });
+      setVerString("Mobile number is required");
       return;
     }
 
     if (!isValidIndianMobile(mobile)) {
-      useSignupStore.setState({ verString: "Enter a valid 10-digit mobile number" });
+      setVerString("Enter a valid 10-digit mobile number");
       return;
     }
 
     if (!name !== name.length <= 0) {
-      useSignupStore.setState({ verString: "Name is required" });
+      setVerString("Name is required");
       return;
     }
     if (!password) {
-      useSignupStore.setState({ verString: "Password is required" });
+      setVerString("Password is required");
       return;
     }
     if (!isValidPassword(password)) {
-      useSignupStore.setState({
-        verString: "Password must be at least 6 characters and contain letters and numbers",
-      });
+      setVerString("Password must be at least 6 characters and contain letters and numbers")
       return;
     }
 
     if (password !== confirmPassword) {
-      useSignupStore.setState({ verString: "Passwords do not match" });
+      setVerString("Passwords do not match");
       return;
     }
 
     try {
       await sendOtpStore().then(() => {
-        useSignupStore.setState({ isCodeOpen: true, verString: "Otp sent" });
-        setTimeRemaining(30);
-        setDisableVerifyBtn(true);
-      })
+        setVerString("Otp sent")
+        setCodeOpen(true)
+      });
+      setTimeRemaining(30);
+      setDisableVerifyBtn(true);
     } catch (err) {
       console.error(err);
-      useSignupStore.setState({ verString: err.message });
+      setVerString(err.message);
     } finally {
       setLoading(false)
     }
   };
 
   const handleVerifyOtp = async () => {
-    useSignupStore.setState({ verString: "" });
+    setVerString("");
     setLoading(true)
     try {
       const result = await submitOtp(otp);
 
       if (result.success == true) {
         navigate("/verify/signup/address");
-        useSignupStore.setState({ verString: "" });
+        setVerString("");
       }
     } catch (err) {
-      useSignupStore.setState({ error: "Invalid OTP" });
+      setVerString("Invalid OTP");
     } finally {
       setLoading(false);
     }
   };
-  
+
   useEffect(() => {
     if (timeRemaining <= 0) {
       setDisableVerifyBtn(false);

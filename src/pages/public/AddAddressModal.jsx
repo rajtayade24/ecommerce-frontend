@@ -17,7 +17,8 @@ import MobileNumberInput from "@/components/MobileNumberInput";
 import { toast } from "@/components/ui/Sonner";
 
 const AddAddressModal = ({ open, onClose, onAdded }) => {
-  const { isAuthenticated } = useAuthStore();
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
@@ -40,7 +41,7 @@ const AddAddressModal = ({ open, onClose, onAdded }) => {
     setLoading(true);
 
     try {
-      // ✅ PAYLOAD MATCHES AddAddressRequest
+      // PAYLOAD MATCHES AddAddressRequest
       const payload = {
         name: form.name,
         line1: form.line1,
