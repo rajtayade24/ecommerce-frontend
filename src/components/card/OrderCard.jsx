@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { cardVariants } from '@/utils/motionVariants';
 
 const statusVariant = (status) => {
   switch (status) {
@@ -27,12 +28,11 @@ const OrderCard = ({ order, onCancel, cancelling }) => {
 
   return (
     <MotionCard
-      layout
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      whileHover={{ scale: 1.01 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
+      layout  //  MAGIC Now:, Size changes → animated,  Position changes → animated,   Reorder → animated,
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
       className="rounded-2xl p-4 shadow-sm flex gap-4 items-center"
     >
       <div className="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-muted">

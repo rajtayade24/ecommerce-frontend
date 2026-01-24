@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/Card";
 import useAuthStore from "@/store/useAuthStore";
 import { toast } from "@/components/ui/Sonner";
+import { cardVariants } from "@/utils/motionVariants";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate()
@@ -39,8 +40,10 @@ export const ProductCard = ({ product }) => {
   if (!product) return null;
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      layout  //  MAGIC Now:, Size changes → animated,  Position changes → animated,   Reorder → animated,
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
       className="group"
     >
@@ -51,7 +54,6 @@ export const ProductCard = ({ product }) => {
           className="relative overflow-hidden bg-muted aspect-square"
         >
           <img
-            // src={productImages[product.image] || productImages.tomatoes}
             src={product?.images?.[0] || productImages.tomatoes}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -73,7 +75,7 @@ export const ProductCard = ({ product }) => {
             )}
           </div>
 
-          {!product.inStock > 0 && (
+          {product.inStock <= 0 && (
             <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
               <Badge variant="destructive">Out of Stock</Badge>
             </div>

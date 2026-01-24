@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { motion } from 'framer-motion';
+import { cardVariants } from '@/utils/motionVariants';
 
 const placeholderImage = 'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=1200&auto=format&fit=crop';
 
@@ -17,8 +18,10 @@ export default function CategoryCard({ category }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      layout  //  MAGIC Now:, Size changes → animated,  Position changes → animated,   Reorder → animated,
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
       className="bg-card rounded-2xl border overflow-hidden hover-lift"
     >

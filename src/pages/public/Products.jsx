@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { ProductCard } from '@/components/card/ProductCard';
+import {motion, AnimatePresence } from "framer-motion";
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { Checkbox } from '@/components/ui/Checkbox';
@@ -24,7 +25,7 @@ const Products = () => {
   const initialCategory = searchParams.get("category") ?? null;
 
   const searchQuery = useAuthStore(state => state.searchQuery);
-  
+
   const [selectedCategories, setSelectedCategories] = useState(initialCategory);
   const [organicOnly, setOrganicOnly] = useState(null);
   const [featureOnly, setFeatureOnly] = useState(null);
@@ -230,11 +231,17 @@ const Products = () => {
                     Showing {products.length} products
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products.map(product => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
+                  {/* If cards can be added/removed dynamically later: use animatepresence for re animate child */}
+                  <motion.div
+                    layout
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                    <AnimatePresence>
+                      {products.map(product => (
+                        <ProductCard key={product.id} product={product} />
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
 
                   <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
                     {isFetchingNextPage && <div className="p-4">Loading more products...</div>}

@@ -3,6 +3,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import CategoryCard from '@/components/card/CategoryCard';
 import { useCategory } from '@/hooks/useCategory';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Categories() {
   const [search, setSearch] = useState('');
@@ -73,27 +74,36 @@ export default function Categories() {
         </div>
 
         <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            {isLoading ? (
-              <div className="py-4 text-center">
+          <motion.div
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {isLoading && (
+              <div className="py-4 text-center col-span-full">
                 Loading...
               </div>
-            ) : isError ? (
-              <div className="py-4 text-center text-red-500">
-                Error loading categories: {String(error.message ?? error)}
-              </div>
-            ) : filtered.length === 0 ? (
-              <div className="py-4 text-center">
-                No categories found
-              </div>
-            ) : (
-              filtered.map(cat => (
-                <CategoryCard key={cat.id} category={cat} />
-              ))
             )}
 
-          </div>
+            {isError && (
+              <div className="py-4 text-center text-red-500 col-span-full">
+                Error loading categories: {String(error.message ?? error)}
+              </div>
+            )}
+
+            {!isLoading && !isError && filtered.length === 0 && (
+              <div className="py-4 text-center col-span-full">
+                No categories found
+              </div>
+            )}
+
+            <AnimatePresence initial={false}>
+              {!isLoading && !isError &&
+                filtered.map(cat => (
+                  <CategoryCard key={cat.id} category={cat} />
+                ))}
+            </AnimatePresence>
+          </motion.div>
 
           <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
             {isFetchingNextPage && <div className="p-4">Loading more products...</div>}
@@ -114,6 +124,6 @@ export default function Categories() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
