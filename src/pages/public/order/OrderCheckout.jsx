@@ -79,7 +79,6 @@ const OrderCheckout = () => {
       shippingAddress: addresses.find((a) => a.id === selectedAddressId),
       items: data?.items ?? []
     };
-
     try {
       const res = await postOrder(order);
       console.log(res);

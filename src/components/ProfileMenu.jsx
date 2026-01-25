@@ -27,11 +27,13 @@ function ProfileMenu() {
   const isAuthenticated = useAuthStore(s => s.isAuthenticated)
   const setAuthenticated = useAuthStore(s => s.setAuthenticated)
   const setUserMainId = useAuthStore(s => s.setUserMainId)
+  const token = useAuthStore(s => s.token)
   const setToken = useAuthStore(s => s.setToken)
   const onLogout = useSignupStore(s => s.onLogout)
   const darkMode = useAuthStore(s => s.darkMode)
   const toggleDarkMode = useAuthStore(s => s.toggleDarkMode)
-
+  console.log(token);
+  console.log(localStorage.getItem("token"));
   const handleLogout = () => {
     onLogout();
     setUser(null)
