@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import {motion, AnimatePresence } from "framer-motion";
 import { ProductCard } from "@/components/card/ProductCard";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
