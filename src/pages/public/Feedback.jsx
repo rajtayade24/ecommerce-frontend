@@ -8,6 +8,9 @@ import { Star } from 'lucide-react';
 import { postFeedback } from '@/service/userService';
 import useAuthStore from '@/store/useAuthStore';
 import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
+import { Card } from '@/components/ui/Card';
+
+const MotionCard = motion.create(Card)
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -67,7 +70,7 @@ export default function Feedback() {
   }
 
   return (
-    <motion.div
+    <MotionCard
       className="max-w-lg mx-auto p-6"
       variants={containerVariants}
       initial="hidden"
@@ -75,7 +78,7 @@ export default function Feedback() {
     >
       <motion.form
         onSubmit={submitFeedback}
-        className="bg-white rounded-2xl shadow-lg p-6 space-y-5"
+        className="rounded-2xl shadow-lg p-6 space-y-5"
         layout
       >
         <motion.h2
@@ -132,6 +135,6 @@ export default function Feedback() {
           {loading ? 'Submitting...' : 'Submit Feedback'}
         </Button>
       </motion.form>
-    </motion.div>
+    </MotionCard>
   );
 }

@@ -7,9 +7,11 @@ import {
   Sun,
   Moon,
   Coins,
-  Bell,
+  Boxes,
   Info,
+  Bell, MessageSquare,
   LogOut,
+  Grid
 } from "lucide-react"
 import { Button } from '@/components/ui/Button'
 import useAuthStore from '@/store/useAuthStore'
@@ -41,42 +43,28 @@ function ProfileMenu() {
 
   return (
     <DropdownMenuContent className="w-40 p-0 rounded-none" align="end">
+
+      <DropdownMenuGroup className='md:hidden'>
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
+          <Link to="/products" className="w-full">
+            <Button variant="ghost" className="w-full justify-start rounded-none">
+              <Boxes size={16} /> Products
+            </Button>
+          </Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem className='p-0 m-0 w-full' asChild>
+          <Link to="/categories" className="w-full">
+            <Button variant="ghost" className="w-full justify-start rounded-none">
+              <Grid size={16} /> Categories
+            </Button>
+          </Link>
+        </DropdownMenuItem>
+
+      </DropdownMenuGroup>
+
+
       <DropdownMenuGroup>
-
-        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
-          <Link
-            to="/products"
-            className="text-sm font-medium hover:text-primary transition-colors px-3"
-          >
-            Products
-          </Link >
-        </DropdownMenuItem>
-        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
-          <Link
-            to="/categories"
-            className="text-sm font-medium hover:text-primary transition-colors px-3"
-          >
-            Categories
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
-          <Link
-            to="/about"
-            className="text-sm font-medium hover:text-primary transition-colors px-3"
-          >
-            About
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
-          <Link
-            to="/feedbacks"
-            className="text-sm font-medium hover:text-primary transition-colors px-3"
-          >
-            Feedback
-          </Link>
-        </DropdownMenuItem>
-
-
         <DropdownMenuItem className='p-0 m-0 w-full' asChild>
           {isAuthenticated ? (
             <Link to="/me/profile" className='w-full'>
@@ -149,7 +137,7 @@ function ProfileMenu() {
         )}
 
       </DropdownMenuGroup>
-    </DropdownMenuContent>
+    </DropdownMenuContent >
   )
 }
 

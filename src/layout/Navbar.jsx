@@ -203,7 +203,7 @@ export const Navbar = () => {
             </div>
 
             {isAuthenticated ? (
-              <Link to="/me/profile" className='w-full'>
+              <Link to="/me/profile" className='w-full  hidden md:block'>
                 <Button variant="outline" size="default" className="relative"
                   onClick={toggleProfileDetails}
                 >
@@ -220,7 +220,7 @@ export const Navbar = () => {
 
             {/* Cart */}
             <Link to="/cart">
-              <Button variant="ghost" size="icon" className="relative">
+              <Button title="Cart" variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {carts > 0 && (
                   <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-secondary text-secondary-foreground">
@@ -234,7 +234,7 @@ export const Navbar = () => {
               <DropdownMenu open={openMenu} onOpenChange={setOpenMenu} modal={false}>
                 <DropdownMenuTrigger asChild>
                   {/* Mobile Menu Button */}
-                  <Button variant="ghost" size="icon">
+                  <Button title="Menu" variant="ghost" size="icon">
                     <Menu className="h-5 w-5" />
                   </Button>
                 </DropdownMenuTrigger>

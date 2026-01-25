@@ -188,9 +188,9 @@ const ProductDetail = () => {
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex items-center gap-4">
-              <Button variant="outline" size="icon" onClick={decrementQty}>-</Button>
+              <Button title="Increase Quantity" variant="outline" size="icon" onClick={decrementQty}>-</Button>
               <span className="text-lg font-bold w-8 text-center">{quantity}</span>
-              <Button variant="outline" size="icon" onClick={incrementQty}>+</Button>
+              <Button title="Decrease Quantity" variant="outline" size="icon" onClick={incrementQty}>+</Button>
             </div>
 
             <Button
@@ -253,8 +253,8 @@ const ProductDetail = () => {
             </div>
           )}
         </motion.div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

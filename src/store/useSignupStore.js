@@ -45,6 +45,8 @@ export const useSignupStore = create((set, get) => {
     setConfirmPassword: (v) => set({ confirmPassword: v }),
     setAddresses: (v) => set({ addresses: v }),
     addAddress: (addressDto) => set((s) => ({ addresses: [...s.addresses, addressDto] })),
+
+    setSuccess: (v) => set({success: v}),
     setVerString: (v) => set({ verString: v }),
     setDisableVerifyBtn: (v) => set({ disableVerifyBtn: v }),
     setCodeOpen: (v) => set({ isCodeOpen: v }),
@@ -80,15 +82,15 @@ export const useSignupStore = create((set, get) => {
       let mobile = null;
 
       // identifier can be email or 10-digit local or E.164
-      if (s.identifier) {
-        if (s.identifier.includes("@")) email = s.identifier.trim();
-        else {
-          // if identifier looks like 10 digits or starts with +, prefer normalized mobile
-          const id = s.identifier.trim();
-          if (/^\d{10}$/.test(id)) mobile = id;
-          else mobile = id.startsWith("+") ? id : id;
-        }
-      }
+      // if (s.identifier) {
+      //   if (s.identifier.includes("@")) email = s.identifier.trim();
+      //   else {
+      //     // if identifier looks like 10 digits or starts with +, prefer normalized mobile
+      //     const id = s.identifier.trim();
+      //     if (/^\d{10}$/.test(id)) mobile = id;
+      //     else mobile = id.startsWith("+") ? id : id;
+      //   }
+      // }
 
       // explicit mobile overrides identifier
       if (s.mobile) mobile = s.mobile.trim();

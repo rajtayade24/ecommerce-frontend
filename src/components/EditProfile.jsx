@@ -10,7 +10,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/Dialog"
 import { Input } from "@/components/ui/Input"
-import { Label } from "@/components/ui/Label"
 import { useState } from "react"
 
 export function EditProfile({ user }) {
@@ -43,7 +42,7 @@ export function EditProfile({ user }) {
 
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="name">Name</Label>
+            <label htmlFor="name">Name</label>
             <Input
               id="name"
               name="name"
@@ -54,7 +53,7 @@ export function EditProfile({ user }) {
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <label htmlFor="email">Email</label>
             <Input
               id="email"
               name="email"
@@ -66,7 +65,7 @@ export function EditProfile({ user }) {
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="mobile">Phone number</Label>
+            <label htmlFor="mobile">Phone number</label>
             <Input
               id="mobile"
               name="mobile"

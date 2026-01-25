@@ -437,14 +437,14 @@ export default function ProductForm() {
               {images.map((img, idx) => (
                 <div key={idx} className="relative w-28 h-20 rounded overflow-hidden border">
                   <img src={img.url ?? img} alt={`img-${idx}`} className="w-full h-full object-cover" />
-                  <button
+                  < Button
                     type="button"
                     onClick={() => removeImageAt(idx)}
                     className="absolute top-1 right-1 rounded-full w-6 h-6 flex items-center justify-center text-xs"
                     title="Remove"
                   >
                     ×
-                  </button>
+                  </Button>
 
                 </div>
               ))}

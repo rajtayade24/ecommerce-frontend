@@ -23,12 +23,13 @@ function DialogContentImpl({
 
 
         <DialogClose asChild>
-          <Button variant="outline">{cancel}</Button>
+          <Button title="Cancel" variant="outline">{cancel}</Button>
         </DialogClose>
 
 
         <DialogClose asChild>
           <Button
+            title="Save"
             type="button"
             onClick={() => {
               onSave && onSave()
@@ -37,7 +38,7 @@ function DialogContentImpl({
             {save}
           </Button>
         </DialogClose>
-        
+
       </DialogFooter>
     </DialogContent >
   )

@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/Card";
 import useAuthStore from "@/store/useAuthStore";
 import { toast } from "@/components/ui/Sonner";
 import { cardVariants } from "@/utils/motionVariants";
+import { Button } from "@/components/ui/Button";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate()
@@ -109,13 +110,13 @@ export const ProductCard = ({ product }) => {
             <div className="flex flex-col justify-center items-center gap-1.5">
               <div className="flex items-center gap-0.5 bg-primary text-white rounded-full px-[2px] py-0.5">
                 {qty === 0 ? (
-                  <button
-                    size="icon"
-                    className="rounded-full"
+                  <Button
+                    size="small"
+                    title="Add to Cart"
                     onClick={() => setQty(1)}
                   >
                     <ShoppingCart className="h-4 w-4 p-0.5" />
-                  </button>
+                  </Button>
                 ) : (
                   <>
                     <button
@@ -141,19 +142,23 @@ export const ProductCard = ({ product }) => {
 
               {qty !== 0 && (
                 <div className="flex gap-1">
-                  <button
+                  <Button
+                    size="small"
+                    title="Cancel"
                     onClick={() => setQty(0)}
                     className="flex items-center justify-center bg-primary text-white rounded-full px-1.5 py-0.5 text-xs"
-                  >
+                    >
                     ×
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button
+                    size="small"
+                    title="set quantity"
                     onClick={handleAddToCart}
                     className="flex items-center justify-center bg-primary text-white rounded-full px-1.5 py-0.5"
                   >
                     <Check className="h-3 w-3" />
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

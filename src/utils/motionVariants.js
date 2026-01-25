@@ -8,7 +8,7 @@ export const cardVariants = {
     scale: 1,
     transition: {
       ease: "easeOut",
-      duration: 0.6
+      duration: 0.7
     }
   }
 };

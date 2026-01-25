@@ -160,7 +160,7 @@ export function CategoryRow({ c, }) {
       <td className="py-3 text-sm">{c.count}</td>
       <td className="py-3 text-sm">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={() => handleEdit(c.id)}>
+          <Button title="Edit Category" variant="ghost" size="icon" onClick={() => handleEdit(c.id)}>
             <Edit className="h-4 w-4" />
           </Button>
 
@@ -168,7 +168,7 @@ export function CategoryRow({ c, }) {
           {/* Delete dialog */}
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button title="Delete Category" variant="ghost" size="icon">
                 <Trash2 className="h-4 w-4" />
               </Button>
             </DialogTrigger>

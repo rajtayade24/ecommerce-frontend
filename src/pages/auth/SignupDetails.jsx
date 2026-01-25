@@ -337,19 +337,17 @@ function SignupDetails() {
     setLoading(true)
     try {
       const result = await window.confirmationResult.confirm(otp);
-
+      
       console.log(result);
-
-      setVerString("Otp verified");
+      
       setSuccess(true);
-
       navigate("/verify/signup/address");
       // }
     } catch (err) {
-      setVerString("Invalid OTP");
       setSuccess(false);
     } finally {
       setLoading(false);
+      setVerString("")
     }
   };
   useEffect(() => {

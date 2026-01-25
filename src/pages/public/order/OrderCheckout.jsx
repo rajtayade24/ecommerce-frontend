@@ -74,7 +74,6 @@ const OrderCheckout = () => {
     setLoadingDeliver(true)
 
     const order = {
-      userId: user.id,
       currency: "INR",
       paymentMethod: "STRIPE",
       shippingAddress: addresses.find((a) => a.id === selectedAddressId),
@@ -87,7 +86,7 @@ const OrderCheckout = () => {
       if (res?.status === "SUCCESS" && res?.sessionUrl) {
         window.location.assign(res.sessionUrl);
       } else {
-        toast.error("Payment initialization failed");
+        toast.error(extractError(res, "Payment initialization failed"));
       }
     } catch (err) {
       toast.error(extractError(err, "Unable to place order. Please try again."));
@@ -141,7 +140,7 @@ const OrderCheckout = () => {
                   <div className="text-center p-4 text-slate-500">No saved addresses. Add a new address to continue.</div>
                 ) : (
                   addresses?.map(a => (
-                    <motion.Label
+                    <motion.label
                       key={a.id}
                       layout
                       initial={{ opacity: 0, y: 10 }}
@@ -177,7 +176,7 @@ const OrderCheckout = () => {
                           </div>
                         </div>
                       </div>
-                    </motion.Label>
+                    </motion.label>
                   ))
                 )}
               </AnimatePresence>

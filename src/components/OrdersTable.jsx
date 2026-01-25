@@ -154,14 +154,14 @@ export function OrderRow({ o, }) {
       </td>
       <td className="py-3">
         <div className="flex items-center gap-2">
-          <Button size="icon" variant="ghost" onClick={() => handleView(o.orderNumber)}>
+          <Button title="View"  size="icon" variant="ghost" onClick={() => handleView(o.orderNumber)}>
             <Eye className="h-4 w-4" />
           </Button>
 
           {/* Delete dialog */}
           <Dialog open={openMarkComplote} onOpenChange={setOpenMarkComplote}>
             <DialogTrigger asChild>
-              <Button size="icon" variant="ghost" disabled={o.status == "COMPLETED" || o.status == "CANCELLED"}>
+              <Button title="Completes Order"  size="icon" variant="ghost" disabled={o.status == "COMPLETED" || o.status == "CANCELLED"}>
                 <CheckCircle className="h-4 w-4" />
               </Button>
             </DialogTrigger>
@@ -182,7 +182,7 @@ export function OrderRow({ o, }) {
 
           <Dialog open={openCancelOrder} onOpenChange={setOpenCancelOrder}>
             <DialogTrigger asChild>
-              <Button size="icon" variant="destructive" disabled={o.status === "COMPLETED" || o.status === "CANCELLED"}>
+              <Button title="Cancel Order"  size="icon" variant="destructive" disabled={o.status === "COMPLETED" || o.status === "CANCELLED"}>
                 <XCircle className="h-4 w-4" />
               </Button>
             </DialogTrigger>

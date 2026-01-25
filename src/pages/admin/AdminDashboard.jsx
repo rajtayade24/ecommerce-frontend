@@ -123,7 +123,7 @@ export default function AdminDashboard() {
 
         <div className="flex gap-3">
           <Link to="/admin/products/new">
-            <Button>Add product</Button>
+            <Button title="Add new product" >Add product</Button>
           </Link>
           <Link to="/admin/orders">
             <Button variant="outline">View all orders</Button>

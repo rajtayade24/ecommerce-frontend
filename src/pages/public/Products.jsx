@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { ProductCard } from '@/components/card/ProductCard';
-import {motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { Checkbox } from '@/components/ui/Checkbox';
@@ -106,9 +106,9 @@ const Products = () => {
                 checked={selectedCategories === category.slug}
                 onCheckedChange={(checked) => setSelectedCategories(checked ? category.slug : null)}
               />
-              <Label htmlFor={category.id} className="text-sm capitalize cursor-pointer">
+              <label htmlFor={category.id} className="text-sm capitalize cursor-pointer">
                 {category.name}
-              </Label>
+              </label>
             </div>
           ))}
         </div>
@@ -121,9 +121,9 @@ const Products = () => {
             checked={organicOnly}
             onCheckedChange={(checked) => setOrganicOnly(Boolean(checked))}
           />
-          <Label htmlFor="organic" className="text-sm cursor-pointer">
+          <label htmlFor="organic" className="text-sm cursor-pointer">
             Organic Only
-          </Label>
+          </label>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -132,9 +132,9 @@ const Products = () => {
             checked={featureOnly}
             onCheckedChange={(checked) => setFeatureOnly(Boolean(checked))}
           />
-          <Label htmlFor="feature" className="text-sm cursor-pointer">
+          <label htmlFor="feature" className="text-sm cursor-pointer">
             Feature Only
-          </Label>
+          </label>
         </div>
       </div>
 
@@ -235,7 +235,7 @@ const Products = () => {
                   <motion.div
                     layout
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                    >
+                  >
                     <AnimatePresence>
                       {products.map(product => (
                         <ProductCard key={product.id} product={product} />
