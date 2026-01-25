@@ -43,6 +43,40 @@ function ProfileMenu() {
     <DropdownMenuContent className="w-40 p-0 rounded-none" align="end">
       <DropdownMenuGroup>
 
+        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
+          <Link
+            to="/products"
+            className="text-sm font-medium hover:text-primary transition-colors px-3"
+          >
+            Products
+          </Link >
+        </DropdownMenuItem>
+        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
+          <Link
+            to="/categories"
+            className="text-sm font-medium hover:text-primary transition-colors px-3"
+          >
+            Categories
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
+          <Link
+            to="/about"
+            className="text-sm font-medium hover:text-primary transition-colors px-3"
+          >
+            About
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className='p-0 m-0 w-full  hidden md:block' asChild>
+          <Link
+            to="/feedbacks"
+            className="text-sm font-medium hover:text-primary transition-colors px-3"
+          >
+            Feedback
+          </Link>
+        </DropdownMenuItem>
+
+
         <DropdownMenuItem className='p-0 m-0 w-full' asChild>
           {isAuthenticated ? (
             <Link to="/me/profile" className='w-full'>

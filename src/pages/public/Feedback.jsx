@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/Button';
 import { toast } from '@/components/ui/Sonner';
 import { Star } from 'lucide-react';
 import { postFeedback } from '@/service/userService';
+import useAuthStore from '@/store/useAuthStore';
+import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -58,6 +60,12 @@ export default function Feedback() {
     }
   };
 
+  const isAuthenticated = useAuthStore(s => s.isAuthenticated);
+
+  if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
+  }
+
   return (
     <motion.div
       className="max-w-lg mx-auto p-6"
@@ -75,7 +83,7 @@ export default function Feedback() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          We value your feedback 
+          We value your feedback
         </motion.h2>
 
         <Input
@@ -111,11 +119,10 @@ export default function Feedback() {
               onClick={() => setFormData({ ...formData, rating: value })}
             >
               <Star
-                className={`h-7 w-7 transition-colors ${
-                  value <= (hover || formData.rating)
-                    ? 'fill-yellow-400 text-yellow-400'
-                    : 'text-muted-foreground'
-                }`}
+                className={`h-7 w-7 transition-colors ${value <= (hover || formData.rating)
+                  ? 'fill-yellow-400 text-yellow-400'
+                  : 'text-muted-foreground'
+                  }`}
               />
             </motion.button>
           ))}
