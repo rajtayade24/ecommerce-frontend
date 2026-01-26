@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const BASE_URL =
-  import.meta.env.VITE_API_BASE || "http://localhost:8080/api";
+  import.meta.env.VITE_API_BASE || "https://ecommerce-backend-clean-18-lspu.onrender.com/api";
 
 export const api = axios.create({
   baseURL: BASE_URL,

@@ -1,6 +1,6 @@
 export async function waitForBackend(
   url,
-  { maxRetries = 20, retryDelay = 2000, timeout = 3000, onAttempt } = {}
+  { maxRetries = 60, retryDelay = 2000, timeout = 3000, onAttempt } = {}
 ) {
   const normalized = url?.replace(/\/+$/, "") || "";
 
