@@ -10,21 +10,14 @@ const AdminGuard = ({ children }) => {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
   const user = useAuthStore(state => state.user);
   const location = useLocation();
+  const loading = useAuthStore(state => state.loading);
 
-  // Still hydrating auth (optional safety)
-  if (isAuthenticated === undefined) {
-    return null; // or loader
+  if (loading) {
+    return <div>Checking session...</div>; // or spinner
   }
 
-  // Not logged in
   if (!isAuthenticated) {
-    return (
-      <Navigate
-        to="/verify/login"
-        state={{ from: location }}
-        replace
-      />
-    );
+    return <Navigate to="/verify/login" state={{ from: location }} replace />;
   }
 
   // Logged in but not admin

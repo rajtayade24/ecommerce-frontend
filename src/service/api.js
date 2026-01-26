@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const BASE_URL =
-  import.meta.env.VITE_API_BASE || "http://localhost:8080";
+  import.meta.env.VITE_API_BASE || "http://localhost:8080/api";
 
 export const api = axios.create({
   baseURL: BASE_URL,
@@ -23,7 +23,7 @@ api.interceptors.request.use((config) => {
 // import axios from "axios";
 
 // // src/api.js
-// export const BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+// export const BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8080/api";
 
 // // You may also add a token if you have JWT auth
 // const jwttoken = localStorage.getItem("token"); // or wherever you store it

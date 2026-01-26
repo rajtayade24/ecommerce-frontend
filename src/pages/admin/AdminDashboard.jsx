@@ -173,7 +173,7 @@ export default function AdminDashboard() {
             <span className="text-sm text-muted-foreground">Last 7</span>
           </div>
 
-          <OrdersTable orders={orders.slice(0, 3)} />
+          <OrdersTable orders={orders.slice(0, 3)}/>
 
           <div className="flex justify-center mt-4">
             <Link to="/admin/orders">

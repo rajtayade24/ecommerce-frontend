@@ -12,10 +12,13 @@ const useAuthStore = create(
         return false;
       }
     }),
+    loading: true,
+
     setAuthenticated: (v) => set({ isAuthenticated: v }),
     setUser: (user) => set({ user }),
     setUserMainId: (id) => set({ userMainId: id }),
     setToken: (token) => set({ token }),
+    setLoading: (val) => set({ loading: val }),
 
     showProfileDetails: false,
     setShowProfileDetails: (v) => set({ showProfileDetails: v }),
@@ -39,7 +42,7 @@ const useAuthStore = create(
       } catch (e) {
         return false;
       }
-    // }), // This does NOT run the function.
+      // }), // This does NOT run the function.
     })(), // calls / executes a function.
     toggleDarkMode: () =>
       set((state) => {

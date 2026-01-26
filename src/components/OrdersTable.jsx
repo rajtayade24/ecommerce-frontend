@@ -31,7 +31,7 @@ const OrdersTable = ({ orders, showAll = false }) => {
 
   const loadMoreRef = useRef(null);
   useEffect(() => {
-    if (!loadMoreRef.current || !hasNextPage) return;
+    if (!loadMoreRef.current || !hasNextPage || !showAll) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

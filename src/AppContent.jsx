@@ -51,6 +51,7 @@ const AppContent = () => {
   const setUser = useAuthStore(state => state.setUser);
   const setAuthenticated = useAuthStore(state => state.setAuthenticated);
   const setUserMainId = useAuthStore(state => state.setUserMainId);
+  const setLoading = useAuthStore(state => state.setLoading);
 
   useEffect(() => {
     let mounted = true;
@@ -64,6 +65,9 @@ const AppContent = () => {
       })
       .catch(() => {
         setAuthenticated(false);
+      })
+      .finally(() => {
+        setLoading(false);
       });
 
     return () => {

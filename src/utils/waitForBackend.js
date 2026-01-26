@@ -11,7 +11,7 @@ export async function waitForBackend(
     const id = setTimeout(() => controller.abort(), timeout);
 
     try {
-      const res = await fetch(`${normalized}/actuator/health`, {
+      const res = await fetch(`${normalized}/health`, {
         method: "GET",
         cache: "no-store",
         signal: controller.signal,
