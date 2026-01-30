@@ -37,7 +37,7 @@ export const Navbar = () => {
   const [carts, setCarts] = useState(0);
 
   useEffect(() => {
-    const id = setTimeout(() => setDebouncedSearch(search), 200);
+    const id = setTimeout(() => setDebouncedSearch(search), 150);
     return () => clearTimeout(id);
   }, [search]);
 

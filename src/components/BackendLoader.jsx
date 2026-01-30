@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { waitForBackend } from "@/utils/waitForBackend";
 
-export const VITE_API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080";
+export const VITE_API_BASE = import.meta.env.VITE_API_BASE || "https://ecommerce-backend-clean-18-lspu.onrender.com/api";
 
 const BackendLoader = ({ children }) => {
   const isPaymentSuccess = window.location.pathname.includes("payment-success");
