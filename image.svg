@@ -1,0 +1,56 @@
+<svg width="950" height="420" viewBox="0 0 950 420"
+     xmlns="http://www.w3.org/2000/svg"
+     style="background:#eef4f8; font-family: Arial, sans-serif">
+
+  <!-- Road -->
+  <rect x="0" y="180" width="950" height="150" fill="#444"/>
+
+  <!-- Lane Markings -->
+  <line x1="0" y1="230" x2="950" y2="230" stroke="white" stroke-width="3" stroke-dasharray="20,15"/>
+  <line x1="0" y1="280" x2="950" y2="280" stroke="white" stroke-width="3" stroke-dasharray="20,15"/>
+
+  <!-- Vehicles -->
+  <rect x="200" y="200" width="45" height="25" rx="5" fill="#2ecc71"/>
+  <rect x="260" y="245" width="45" height="25" rx="5" fill="#3498db"/>
+  <rect x="320" y="295" width="45" height="25" rx="5" fill="#e74c3c"/>
+
+  <!-- Reference Line -->
+  <line x1="420" y1="180" x2="420" y2="330" stroke="yellow" stroke-width="4"/>
+  <text x="385" y="170" font-size="12">Reference Line</text>
+
+  <!-- Side RFID Poles -->
+  <rect x="450" y="120" width="10" height="120" fill="#666"/>
+  <rect x="445" y="95" width="30" height="25" rx="4" fill="#888"/>
+  <text x="430" y="85" font-size="11">RFID Reader</text>
+
+  <rect x="450" y="240" width="10" height="120" fill="#666"/>
+  <rect x="445" y="215" width="30" height="25" rx="4" fill="#888"/>
+
+  <!-- Detection Zones -->
+  <ellipse cx="460" cy="225" rx="110" ry="35"
+           fill="none" stroke="orange" stroke-width="2" stroke-dasharray="6,4"/>
+  <ellipse cx="460" cy="275" rx="110" ry="35"
+           fill="none" stroke="orange" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <text x="485" y="350" font-size="12" fill="orange">
+    Lane-wise Detection Zones (3–5 m)
+  </text>
+
+  <!-- Overhead Gantry -->
+  <rect x="350" y="80" width="300" height="10" fill="#555"/>
+  <rect x="380" y="80" width="25" height="35" fill="#777"/>
+  <rect x="470" y="80" width="25" height="35" fill="#777"/>
+  <rect x="560" y="80" width="25" height="35" fill="#777"/>
+
+  <text x="380" y="60" font-size="12">
+    Optional Overhead Gantry (Very Wide Roads)
+  </text>
+
+  <!-- Traffic Signal -->
+  <rect x="860" y="130" width="40" height="100" rx="8" fill="#222"/>
+  <circle cx="880" cy="155" r="7" fill="red"/>
+  <circle cx="880" cy="180" r="7" fill="yellow"/>
+  <circle cx="880" cy="205" r="7" fill="green"/>
+  <text x="835" y="120" font-size="12">Traffic Signal</text>
+
+</svg>

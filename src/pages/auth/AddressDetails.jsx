@@ -14,6 +14,7 @@ import { useSignupStore } from "@/store/useSignupStore";
 import { useNavigate } from "react-router-dom";
 import { CITY_MAP } from "@/data/CITY_MAP";
 import useAuthStore from "@/store/useAuthStore";
+import { RequiredLabel } from "@/components/ui/RequiredLabel";
 
 const ALL_STATES = Object.keys(CITY_MAP);
 
@@ -99,15 +100,16 @@ export default function AddressDetails() {
     <div className="space-y-4">
       {/* Address */}
       <div className="space-y-1">
-        <Label className="text-sm font-medium">Address</Label>
+        <RequiredLabel required>Address Line 1</RequiredLabel>
         <Input
           type="text"
-          placeholder="Enter address iine 1"
-          value={addressLine1 || ""}
+          placeholder="Enter address line 1"
+          value={addressLine1}
           onChange={(e) => setAddressLine1(e.target.value)}
           className="rounded-xl"
           required
         />
+        <RequiredLabel >Address Line 2</RequiredLabel>
         <Input
           type="text"
           placeholder="Enter address iine 2"
@@ -120,7 +122,7 @@ export default function AddressDetails() {
 
       {/* State */}
       <div className="space-y-1">
-        <Label className="text-sm font-medium">State</Label>
+        <RequiredLabel required>State</RequiredLabel>
 
         <Select value={selectedState} onValueChange={(val) => setSelectedState(val)}>
           <SelectTrigger className="w-full rounded-xl">
@@ -139,7 +141,7 @@ export default function AddressDetails() {
 
       {/* City */}
       <div className="space-y-1">
-        <Label className="text-sm font-medium">City</Label>
+        <RequiredLabel required>City</RequiredLabel>
 
         {citiesForState.length > 0 ? (
           <Select
@@ -198,7 +200,7 @@ export default function AddressDetails() {
 
       {/* Pincode */}
       <div className="space-y-1">
-        <Label className="text-sm font-medium">Pincode</Label>
+        <RequiredLabel required>Pincode</RequiredLabel>
         <Input
           type="text"
           placeholder="Enter pincode"

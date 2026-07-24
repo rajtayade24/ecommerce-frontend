@@ -7,6 +7,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/Select";
+import { RequiredLabel } from "@/components/ui/RequiredLabel";
 
 export default function MobileNumberInput({ mobile, setMobile }) {
   const countries = {
@@ -15,7 +16,7 @@ export default function MobileNumberInput({ mobile, setMobile }) {
 
   return (
     <div>
-      <label className="text-sm font-medium">Mobile number</label>
+      <RequiredLabel required>Mobile number</RequiredLabel>
 
       <div className="flex gap-2">
         <Select defaultValue="IN">
