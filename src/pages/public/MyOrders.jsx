@@ -20,7 +20,6 @@ const MyOrders = () => {
     cancelOrderMutation,
   } = useMyOrders({ enabled: isAuthenticated });
 
-
   const loadMoreRef = useRef(null);
   useEffect(() => {
     if (!loadMoreRef.current || !isAuthenticated) return;

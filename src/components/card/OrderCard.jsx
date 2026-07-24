@@ -85,11 +85,11 @@ const OrderCard = ({ order, onCancel, cancelling }) => {
           {order.status === 'PENDING' && (
             <Button
               size="sm"
-              onClick={() => onCancel(order.id)}
+              onClick={() => onCancel(order.orderNumber)}
               disabled={cancelling}
               className="whitespace-normal h-auto"
             >
-              {cancelling ? 'Cancelling…' : 'Cancel Order'}
+              {cancelling ? 'Cancelling…' : 'Cancel'}
             </Button>
           )}
         </div>

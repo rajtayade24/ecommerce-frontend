@@ -152,7 +152,7 @@ export const verifyPayment = (sessionId) => {
 };
 
 
-export const getOrders = async (pageParam, PAGE_SIZE) => {
+export const getMyOrders = async (pageParam, PAGE_SIZE) => {
   const params = {
     page: pageParam,
     size: PAGE_SIZE,
@@ -168,7 +168,7 @@ export const getOrders = async (pageParam, PAGE_SIZE) => {
 
 export const cancelOrder = async (orderId) => {
   try {
-    const res = await api.post(`/orders/${orderId}/cancel`);
+    const res = await api.post(`/admin/orders/${orderId}/cancel`);
     return res.data;
   } catch (err) {
     throw new Error(extractError(err, "cancel orders failed"));

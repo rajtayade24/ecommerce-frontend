@@ -1,6 +1,6 @@
 // hooks/useOrders.js
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getOrders } from '@/service/userService';
+import { getMyOrders } from '@/service/userService';
 import { cancelOrder } from '@/service/userService';
 import { toast } from '@/components/ui/Sonner';
 
@@ -20,9 +20,9 @@ export const useMyOrders = ({ enabled = true } = {}) => {
     refetch,
   } = useInfiniteQuery({
     queryKey: ["orders"],
-    queryFn: ({ pageParam = 0 }) => getOrders(pageParam, PAGE_SIZE),
+    queryFn: ({ pageParam = 0 }) => getMyOrders(pageParam, PAGE_SIZE),
     enabled,
-     getNextPageParam: (lastPage) => {
+    getNextPageParam: (lastPage) => {
       const page = lastPage.page;
 
       if (
