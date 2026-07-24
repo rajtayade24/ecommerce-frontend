@@ -1,30 +1,34 @@
-export async function waitForBackend(
-  url,
-  { maxRetries = 60, retryDelay = 2000, timeout = 3000, onAttempt } = {}
-) {
-  const normalized = url?.replace(/\/+$/, "") || "";
+import { api } from "@/service/api";
 
+export async function waitForBackend({
+  maxRetries = 60,
+  retryDelay = 2000,
+  timeout = 3000,
+  onAttempt,
+} = {}) {
   for (let i = 1; i <= maxRetries; i++) {
-    if (typeof onAttempt === "function") onAttempt(i, maxRetries);
+    if (typeof onAttempt === "function") {
+      onAttempt(i, maxRetries);
+    }
 
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
 
     try {
-      const res = await fetch(`${normalized}/health`, {
-        method: "GET",
-        cache: "no-store",
+      const res = await api.get("/health", {
         signal: controller.signal,
       });
 
-      if (res.ok) return true;
-    } catch {
-      // ignore network + timeout errors
+      if (res.status === 200) {
+        return true;
+      }
+    } catch (error) {
+      // Ignore network/timeout errors
     } finally {
       clearTimeout(id);
     }
 
-    await new Promise((r) => setTimeout(r, retryDelay));
+    await new Promise((resolve) => setTimeout(resolve, retryDelay));
   }
 
   return false;
