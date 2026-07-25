@@ -7,6 +7,55 @@ import { Input } from "@/components/ui/Input";
 import { useCart } from "@/hooks/useCart";
 import UnAuthorizedUser from "@/pages/public/UnAuthorizedUser";
 import useAuthStore from "@/store/useAuthStore";
+import { Skeleton } from "@/components/ui/Skeleton";
+
+const CartItemSkeleton = () => {
+  return (
+    <div className="bg-card border rounded-2xl p-4 flex flex-col sm:flex-row gap-4">
+      <Skeleton className="w-full sm:w-24 h-40 sm:h-24 rounded-xl" />
+
+      <div className="flex-1">
+        <div className="flex justify-between">
+          <div className="space-y-2 flex-1">
+            <Skeleton className="h-5 w-48" />
+            <Skeleton className="h-4 w-24" />
+          </div>
+
+          <Skeleton className="h-9 w-9 rounded-md" />
+        </div>
+
+        <div className="mt-4 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <Skeleton className="h-9 w-9 rounded-md" />
+            <Skeleton className="h-5 w-8" />
+            <Skeleton className="h-9 w-9 rounded-md" />
+          </div>
+
+          <Skeleton className="h-6 w-20" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const OrderSummarySkeleton = () => {
+  return (
+    <div className="sticky top-24 bg-card border rounded-2xl p-4 h-fit">
+      <Skeleton className="h-8 w-48 mb-6" />
+
+      <div className="space-y-4 mb-6">
+        <Skeleton className="h-5 w-full" />
+        <Skeleton className="h-5 w-full" />
+        <Skeleton className="h-5 w-full" />
+      </div>
+
+      <Skeleton className="h-10 w-full mb-3" />
+      <Skeleton className="h-11 w-full mb-3" />
+      <Skeleton className="h-11 w-full" />
+    </div>
+  );
+};
+
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -57,10 +106,10 @@ const Cart = () => {
         <div className="lg:col-span-2 space-y-4">
 
           {isLoading ? (
-            <div className="py-4 text-center">
-              Loading...
-            </div>
-          ) : isError ? (
+  Array.from({ length: 3 }).map((_, index) => (
+    <CartItemSkeleton key={index} />
+  ))
+) : isError ? (
             <div className="py-4 text-center text-red-500">
               Error loading carts: {String(error.message ?? error)}
             </div>

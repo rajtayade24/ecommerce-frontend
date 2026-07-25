@@ -6,10 +6,8 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 export default function PaymentPage() {
-  const { id } = useParams()
   const { state } = useLocation();
 
-  const product = state?.product;
   const total = state?.total;
 
   const [upi, setUpi] = useState("");

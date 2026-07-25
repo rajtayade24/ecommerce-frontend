@@ -21,10 +21,18 @@ export const getProducts = async (page = 0, size = 1, filter = {}) => {
 
   try {
     console.log("product filter ", params);
-    // const response = await api.get(`/products?page=${page}&size=${size}&isOrganic=${isOrganic}`, { param: { page, size } }); console.log("products", response);
-    const response = await api.get("/products", { params: params }); console.log("\n\nproducts: ", response);
+    const res = await api.get("/products", { params: params }); console.log("\n\nproducts: ", res);
     // Backend should return: { content: [...], number, totalPages, totalElements, size }
-    return response.data;
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "getproduct failed"));
+  };
+}
+
+export const getTopFeatureProducts = async () => {
+  try {
+    const res = await api.get("/products/featured"); console.log("\n\nproducts: ", res);
+    return res.data.content;
   } catch (err) {
     throw new Error(extractError(err, "getproduct failed"));
   };
@@ -32,8 +40,8 @@ export const getProducts = async (page = 0, size = 1, filter = {}) => {
 
 export const getProductById = async (id) => {
   try {
-    const response = await api.get(`/products/${id}`); console.log(response.data);
-    return response.data;
+    const res = await api.get(`/products/${id}`); console.log(res.data);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, "Errror to get product"));
   }
@@ -41,20 +49,29 @@ export const getProductById = async (id) => {
 
 export const getCategories = async (page = 0, size = 2) => {
   try {  /// expects query params inside config.params
-    const response = await api.get("/categories", {
+    const res = await api.get("/categories", {
       params: { page, size }      // <- correct place for query params
     });
-    console.log("categories", response);
-    return response.data;
+    console.log("categories", res);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, "getCategories failed"));
   }
 };
 
+export const getTopCategories = async () => {
+  try {
+    const res = await api.get("/categories/top"); console.log("top categories", res);
+    return res.data;
+  } catch (err) {
+    throw new Error(extractError(err, "gettopCategories failed"));
+  }
+}
+
 export const getAllCategories = async () => {
   try {
-    const response = await api.get("/categories/all"); console.log("all categories", response);
-    return response.data;
+    const res = await api.get("/categories/all"); console.log("all categories", res);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, "getAllCategories failed"));
   }
@@ -62,8 +79,8 @@ export const getAllCategories = async () => {
 
 export const getCategoryById = async (id) => {
   try {
-    const response = await api.get(`/categories/${id}`); console.log("category", response);
-    return response.data;
+    const res = await api.get(`/categories/${id}`); console.log("category", res);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, "getCategories failed"));
   }
@@ -72,18 +89,18 @@ export const getCategoryById = async (id) => {
 export const addToCart = async (dto) => {
   try {
     console.log(dto);
-    const response = await api.post("/carts", dto);
-    console.log(response.data);
+    const res = await api.post("/carts", dto);
+    console.log(res.data);
 
-    return response.data; // return ONLY the CartItemDto
+    return res.data; // return ONLY the CartItemDto
   } catch (err) {
     throw new Error(extractError(err, "Add to cart failed"));
   }
 };
 export const getCarts = async (page = 0, size = 10) => {
   try {
-    const response = await api.get("/carts", { params: { page, size } }); console.log("cart", response);
-    return response.data;
+    const res = await api.get("/carts", { params: { page, size } }); console.log("cart", res);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, " getcart failed"));
   }
@@ -117,8 +134,8 @@ export const clearCart = async () => {
 
 export const getAllCarts = async () => {
   try {
-    const response = await api.get("/carts/count"); console.log("carts", response);
-    return response.data;
+    const res = await api.get("/carts/count"); console.log("carts", res);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, "getproduct failed"));
   }
@@ -126,8 +143,8 @@ export const getAllCarts = async () => {
 
 export const getCartItems = async (items) => {
   try {
-    const response = await api.post("/orders/preview", { items }); console.log("orders preview: ", response);
-    return response.data;
+    const res = await api.post("/orders/preview", { items }); console.log("orders preview: ", res);
+    return res.data;
   } catch (err) {
     throw new Error(extractError(err, "get cart items failed"));
   }
@@ -135,8 +152,8 @@ export const getCartItems = async (items) => {
 
 export const postOrder = async (orderRequest) => {
   try {
-    const response = await api.post("/orders", orderRequest); console.log("post order", response);
-    return response.data
+    const res = await api.post("/orders", orderRequest); console.log("post order", res);
+    return res.data
   }
   catch (err) {
     throw new Error(extractError(err, "getproduct failed"));
@@ -158,8 +175,8 @@ export const getMyOrders = async (pageParam, PAGE_SIZE) => {
     size: PAGE_SIZE,
   }
   try {
-    const response = await api.get("/orders", { params: params }); console.log("get order", response);
-    return response.data
+    const res = await api.get("/orders", { params: params }); console.log("get order", res);
+    return res.data
   }
   catch (err) {
     throw new Error(extractError(err, "orders failed"));

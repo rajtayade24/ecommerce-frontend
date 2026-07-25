@@ -7,6 +7,81 @@ import { Badge } from '@/components/ui/Badge';
 import { getOrderById } from '@/service/adminService';
 import useAuthStore from '@/store/useAuthStore';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
+import { Skeleton } from '@/components/ui/Skeleton';
+
+const OrderDetailsSkeleton = () => {
+  return (
+    <div className="max-w-4xl mx-auto p-2 lg:p-4 animate-pulse">
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <Skeleton className="h-10 w-24 rounded-lg" />
+        <Skeleton className="h-8 w-56" />
+        <Skeleton className="ml-auto h-5 w-36" />
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Left */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Items */}
+          <div className="rounded-2xl border p-4 space-y-5">
+            <div className="flex justify-between">
+              <Skeleton className="h-6 w-36" />
+              <Skeleton className="h-6 w-24" />
+            </div>
+
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex gap-4">
+                <Skeleton className="w-20 h-20 rounded-lg" />
+
+                <div className="flex-1 space-y-2">
+                  <Skeleton className="h-5 w-48" />
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-4 w-40" />
+                </div>
+
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-16" />
+                  <Skeleton className="h-5 w-20" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Address */}
+          <div className="rounded-2xl border p-4 space-y-3">
+            <Skeleton className="h-6 w-44" />
+            <Skeleton className="h-4 w-52" />
+            <Skeleton className="h-4 w-60" />
+            <Skeleton className="h-4 w-44" />
+            <Skeleton className="h-4 w-36" />
+          </div>
+        </div>
+
+        {/* Right */}
+        <div className="space-y-4">
+          <div className="rounded-2xl border p-4 space-y-3">
+            <Skeleton className="h-6 w-28" />
+
+            {[1, 2, 3, 4].map((i) => (
+              <Skeleton key={i} className="h-4 w-full" />
+            ))}
+
+            <Skeleton className="h-7 w-28" />
+          </div>
+
+          <div className="rounded-2xl border p-4 space-y-3">
+            <Skeleton className="h-6 w-28" />
+            {[1, 2, 3].map((i) => (
+              <Skeleton key={i} className="h-4 w-full" />
+            ))}
+          </div>
+
+          <Skeleton className="h-11 rounded-xl w-full" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const UserOrderDetails = () => {
   const { id } = useParams();
@@ -15,7 +90,7 @@ const UserOrderDetails = () => {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(null);
 
-const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   useEffect(() => {
     if (!id || !isAuthenticated) return;
@@ -37,10 +112,14 @@ const isAuthenticated = useAuthStore(state => state.isAuthenticated);
     return () => (mounted = false);
   }, [id]);
 
+  if (isLoading) {
+    return <OrderDetailsSkeleton />;
+  }
+
   if (!isAuthenticated) {
     return <UnAuthorizedUser />;
   }
-  if (isLoading) return <div className="p-8 text-center">Loading order...</div>;
+
   if (isError) return <div className="p-8 text-center text-red-600">Error: {error?.message}</div>;
 
   return (

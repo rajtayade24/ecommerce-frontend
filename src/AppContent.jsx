@@ -46,6 +46,8 @@ import Settings from "@/pages/admin/Settings";
 import AddAddressModal from "@/pages/public/AddAddressModal";
 import ManageFeedback from "@/pages/admin/ManageFeedback";
 import AdminGuard from "@/pages/admin/AdminGuard";
+import AdminProductsSeeder from "./test/AdminProductsSeeder";
+import TestPage from "./test/TestPage";
 
 const AppContent = () => {
   const setUser = useAuthStore(state => state.setUser);
@@ -90,6 +92,9 @@ const AppContent = () => {
 
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Index />} />
+
+          <Route path="/test" element={<TestPage />} />
+
           <Route path="/products" element={<Products />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/products/:id" element={<ProductDetail />} />
@@ -130,7 +135,7 @@ const AppContent = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 };
 

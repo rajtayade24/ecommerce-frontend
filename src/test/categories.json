@@ -1,0 +1,40 @@
+
+{
+"categories": [
+	{
+		"created_at" : "2026-01-06T16:11:19.239Z",
+		"id" : 6,
+		"description" : "Healthy dry fruits",
+		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/c388d694-2e5d-476e-ba11-5363ddf19c32.jpg",
+		"name" : "dry fruits   ",
+		"public_id" : null,
+		"slug" : "dry-fruits"
+	},
+	{
+		"created_at" : "2026-01-06T15:58:25.561Z",
+		"id" : 7,
+		"description" : "vegetable",
+		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/f11fb0ce-f1af-4b33-95c6-4bee9fdd2a28.jpg",
+		"name" : "fresh vegetables",
+		"public_id" : null,
+		"slug" : "vegetable"
+	},
+	{
+		"created_at" : "2026-01-06T16:15:49.492Z",
+		"id" : 8,
+		"description" : "Fresh and Juicy fruits",
+		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/f11fb0ce-f1af-4b33-95c6-4bee9fdd2a28.jpg",
+		"name" : "fresh fruits",
+		"public_id" : null,
+		"slug" : "fruits"
+	},
+	{
+		"created_at" : "2026-01-06T16:16:38.556Z",
+		"id" : 9,
+		"description" : "Rare and tropical picks",
+		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/63bbcaf0-8b66-4c5a-af9d-915933305a70.jpg",
+		"name" : "Exotic Selection",
+		"public_id" : null,
+		"slug" : "exotic-selection"
+	}
+]}

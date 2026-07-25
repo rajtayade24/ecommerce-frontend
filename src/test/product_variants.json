@@ -1,0 +1,764 @@
+{
+  "product_variants": [
+    {
+      "price": 30.0,
+      "stock": 34,
+      "value": 1.00,
+      "id": 1,
+      "product_id": 1,
+      "label": "1kg",
+      "sku": "FRESH VEGETABLES-POTATO-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 100.0,
+      "stock": 23,
+      "value": 5.00,
+      "id": 2,
+      "product_id": 1,
+      "label": "5kg",
+      "sku": "FRESH VEGETABLES-POTATO-5KG",
+      "unit": "kg"
+    },
+    {
+      "price": 30.0,
+      "stock": 54,
+      "value": 1.00,
+      "id": 3,
+      "product_id": 2,
+      "label": "1kg",
+      "sku": "FRESH VEGETABLES-SPINACH-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 40.0,
+      "stock": 20,
+      "value": 1.00,
+      "id": 4,
+      "product_id": 3,
+      "label": "1kg",
+      "sku": "FRESH VEGETABLES-ONION-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 25.0,
+      "stock": 242,
+      "value": 500.00,
+      "id": 5,
+      "product_id": 3,
+      "label": "500gm",
+      "sku": "FRESH VEGETABLES-ONION-500GM",
+      "unit": "gm"
+    },
+    {
+      "price": 20.0,
+      "stock": 564,
+      "value": 1.00,
+      "id": 6,
+      "product_id": 4,
+      "label": "1kg",
+      "sku": "FRESH VEGETABLES-TOMATO-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 10.0,
+      "stock": 17,
+      "value": 500.00,
+      "id": 7,
+      "product_id": 4,
+      "label": "500g",
+      "sku": "FRESH VEGETABLES-TOMATO-500G",
+      "unit": "g"
+    },
+    {
+      "price": 40.0,
+      "stock": 46,
+      "value": 1.00,
+      "id": 8,
+      "product_id": 5,
+      "label": "1kg",
+      "sku": "FRESH FRUITS-BANANA-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 70.0,
+      "stock": 24,
+      "value": 2.00,
+      "id": 9,
+      "product_id": 5,
+      "label": "2kg",
+      "sku": "FRESH FRUITS-BANANA-2KG",
+      "unit": "kg"
+    },
+    {
+      "price": 60.0,
+      "stock": 21,
+      "value": 1.00,
+      "id": 10,
+      "product_id": 6,
+      "label": "1kg",
+      "sku": "FRESH FRUITS-ORANGE-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 35.0,
+      "stock": 17,
+      "value": 500.00,
+      "id": 11,
+      "product_id": 6,
+      "label": "500g",
+      "sku": "FRESH FRUITS-ORANGE-500G",
+      "unit": "g"
+    },
+    {
+      "price": 300.0,
+      "stock": 124,
+      "value": 2.00,
+      "id": 13,
+      "product_id": 7,
+      "label": "2kg",
+      "sku": "FRESH FRUITS-APPLE-2KG",
+      "unit": "kg"
+    },
+    {
+      "price": 100.0,
+      "stock": 194,
+      "value": 500.00,
+      "id": 14,
+      "product_id": 7,
+      "label": "500g",
+      "sku": "FRESH FRUITS-APPLE-500G",
+      "unit": "g"
+    },
+    {
+      "price": 40.0,
+      "stock": 54,
+      "value": 500.00,
+      "id": 16,
+      "product_id": 8,
+      "label": "500g",
+      "sku": "FRESH FRUITS-MANGO-500G",
+      "unit": "g"
+    },
+    {
+      "price": 180.0,
+      "stock": 56,
+      "value": 1.00,
+      "id": 17,
+      "product_id": 9,
+      "label": "1kg",
+      "sku": "EXOTIC SELECTION-DRAGON FRUIT (PITAYA)-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 100.0,
+      "stock": 17,
+      "value": 500.00,
+      "id": 18,
+      "product_id": 9,
+      "label": "500g",
+      "sku": "EXOTIC SELECTION-DRAGON FRUIT (PITAYA)-500G",
+      "unit": "g"
+    },
+    {
+      "price": 32.0,
+      "stock": 145,
+      "value": 1.00,
+      "id": 24,
+      "product_id": 14,
+      "label": "1kg",
+      "sku": "FRESH VEGETABLES-CAULIFLOWER-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 54.0,
+      "stock": 152,
+      "value": 1.00,
+      "id": 25,
+      "product_id": 16,
+      "label": "1kg",
+      "sku": "FRESH VEGETABLES-CARROT-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 200.0,
+      "stock": 14,
+      "value": 250.00,
+      "id": 26,
+      "product_id": 17,
+      "label": "250g",
+      "sku": "DRY FRUITS-RAISINS-250G",
+      "unit": "g"
+    },
+    {
+      "price": 230.0,
+      "stock": 45,
+      "value": 250.00,
+      "id": 27,
+      "product_id": 18,
+      "label": "250g",
+      "sku": "DRY FRUITS-PISTACHIO-250G",
+      "unit": "g"
+    },
+    {
+      "price": 340.0,
+      "stock": 548,
+      "value": 250.00,
+      "id": 28,
+      "product_id": 19,
+      "label": "250g",
+      "sku": "DRY FRUITS-DRIED APRICOT-250G",
+      "unit": "g"
+    },
+    {
+      "price": 239.0,
+      "stock": 98,
+      "value": 250.00,
+      "id": 29,
+      "product_id": 20,
+      "label": "250g",
+      "sku": "DRY FRUITS-CRANBERRIES-250G",
+      "unit": "g"
+    },
+    {
+      "price": 29.0,
+      "stock": 15,
+      "value": 100.00,
+      "id": 57,
+      "product_id": 36,
+      "label": "Capsicum100g",
+      "sku": "FRESH VEGETABLES-CAPSICUM-100G",
+      "unit": "g"
+    },
+    {
+      "price": 180.0,
+      "stock": 384,
+      "value": 1.00,
+      "id": 12,
+      "product_id": 7,
+      "label": "1kg",
+      "sku": "FRESH FRUITS-APPLE-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 59.0,
+      "stock": 15,
+      "value": 250.00,
+      "id": 58,
+      "product_id": 36,
+      "label": "Capsicum250g",
+      "sku": "FRESH VEGETABLES-CAPSICUM-250G",
+      "unit": "g"
+    },
+    {
+      "price": 70.0,
+      "stock": 25,
+      "value": 1.00,
+      "id": 15,
+      "product_id": 8,
+      "label": "1kg",
+      "sku": "FRESH FRUITS-MANGO-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 79.0,
+      "stock": 15,
+      "value": 500.00,
+      "id": 59,
+      "product_id": 36,
+      "label": "Capsicum500g",
+      "sku": "FRESH VEGETABLES-CAPSICUM-500G",
+      "unit": "g"
+    },
+    {
+      "price": 200.0,
+      "stock": 72,
+      "value": 250.00,
+      "id": 21,
+      "product_id": 11,
+      "label": "250g",
+      "sku": "DRY FRUITS-CASHEW-250G",
+      "unit": "g"
+    },
+    {
+      "price": 400.0,
+      "stock": 10,
+      "value": 250.00,
+      "id": 23,
+      "product_id": 12,
+      "label": "250g",
+      "sku": "DRY FRUITS-ANJEER-250G",
+      "unit": "g"
+    },
+    {
+      "price": 19.0,
+      "stock": 15,
+      "value": 100.00,
+      "id": 60,
+      "product_id": 37,
+      "label": "green chilli100g",
+      "sku": "FRESH VEGETABLES-GREEN CHILLI-100G",
+      "unit": "g"
+    },
+    {
+      "price": 44.0,
+      "stock": 20,
+      "value": 250.00,
+      "id": 61,
+      "product_id": 37,
+      "label": "green chilli250g",
+      "sku": "FRESH VEGETABLES-GREEN CHILLI-250G",
+      "unit": "g"
+    },
+    {
+      "price": 340.0,
+      "stock": 45,
+      "value": 250.00,
+      "id": 31,
+      "product_id": 22,
+      "label": "250g",
+      "sku": "DRY FRUITS-PINE NUTS-250G",
+      "unit": "g"
+    },
+    {
+      "price": 59.0,
+      "stock": 68,
+      "value": 500.00,
+      "id": 32,
+      "product_id": 23,
+      "label": "Fresh grapes500g",
+      "sku": "FRESH FRUITS-FRESH GRAPES-500G",
+      "unit": "g"
+    },
+    {
+      "price": 100.0,
+      "stock": 68,
+      "value": 1.00,
+      "id": 33,
+      "product_id": 23,
+      "label": "Fresh grapes1g",
+      "sku": "FRESH FRUITS-FRESH GRAPES-1G",
+      "unit": "g"
+    },
+    {
+      "price": 40.0,
+      "stock": 35,
+      "value": 500.00,
+      "id": 34,
+      "product_id": 25,
+      "label": "Fresh pears500g",
+      "sku": "DRY FRUITS-FRESH PEARS-500G",
+      "unit": "g"
+    },
+    {
+      "price": 70.0,
+      "stock": 35,
+      "value": 1.00,
+      "id": 35,
+      "product_id": 25,
+      "label": "Fresh pears1kg",
+      "sku": "DRY FRUITS-FRESH PEARS-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 35.0,
+      "stock": 22,
+      "value": 1.00,
+      "id": 36,
+      "product_id": 27,
+      "label": "Fresh Watermelon1pcs",
+      "sku": "DRY FRUITS-FRESH WATERMELON-1PCS",
+      "unit": "pcs"
+    },
+    {
+      "price": 55.0,
+      "stock": 22,
+      "value": 2.00,
+      "id": 37,
+      "product_id": 27,
+      "label": "Fresh Watermelon2pcs",
+      "sku": "DRY FRUITS-FRESH WATERMELON-2PCS",
+      "unit": "pcs"
+    },
+    {
+      "price": 80.0,
+      "stock": 2235,
+      "value": 500.00,
+      "id": 38,
+      "product_id": 28,
+      "label": "Fresh Pomegranate500g",
+      "sku": "DRY FRUITS-FRESH POMEGRANATE-500G",
+      "unit": "g"
+    },
+    {
+      "price": 130.0,
+      "stock": 2235,
+      "value": 1.00,
+      "id": 39,
+      "product_id": 28,
+      "label": "Fresh Pomegranate1kg",
+      "sku": "DRY FRUITS-FRESH POMEGRANATE-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 89.0,
+      "stock": 54,
+      "value": 500.00,
+      "id": 40,
+      "product_id": 29,
+      "label": "Fresh Pineapple500g",
+      "sku": "FRESH FRUITS-FRESH PINEAPPLE-500G",
+      "unit": "g"
+    },
+    {
+      "price": 150.0,
+      "stock": 54,
+      "value": 1.00,
+      "id": 41,
+      "product_id": 29,
+      "label": "Fresh Pineapple1kg",
+      "sku": "FRESH FRUITS-FRESH PINEAPPLE-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 199.0,
+      "stock": 45,
+      "value": 500.00,
+      "id": 42,
+      "product_id": 30,
+      "label": "Fresh Kiwi500g",
+      "sku": "FRESH FRUITS-FRESH KIWI-500G",
+      "unit": "g"
+    },
+    {
+      "price": 379.0,
+      "stock": 49,
+      "value": 1.00,
+      "id": 43,
+      "product_id": 30,
+      "label": "Fresh Kiwi1kg",
+      "sku": "FRESH FRUITS-FRESH KIWI-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 456.0,
+      "stock": 78,
+      "value": 250.00,
+      "id": 44,
+      "product_id": 31,
+      "label": "Pumpkin Seeds250g",
+      "sku": "DRY FRUITS-PUMPKIN SEEDS-250G",
+      "unit": "g"
+    },
+    {
+      "price": 569.0,
+      "stock": 37,
+      "value": 250.00,
+      "id": 46,
+      "product_id": 32,
+      "label": "Charoli (Chironji)250g",
+      "sku": "DRY FRUITS-CHAROLI (CHIRONJI)-250G",
+      "unit": "g"
+    },
+    {
+      "price": 45.0,
+      "stock": 154,
+      "value": 250.00,
+      "id": 47,
+      "product_id": 33,
+      "label": "Fresh Beetroot250g",
+      "sku": "FRESH VEGETABLES-FRESH BEETROOT-250G",
+      "unit": "g"
+    },
+    {
+      "price": 89.0,
+      "stock": 15,
+      "value": 500.00,
+      "id": 48,
+      "product_id": 33,
+      "label": "Fresh Beetroot500g",
+      "sku": "FRESH VEGETABLES-FRESH BEETROOT-500G",
+      "unit": "g"
+    },
+    {
+      "price": 150.0,
+      "stock": 13,
+      "value": 1.00,
+      "id": 49,
+      "product_id": 33,
+      "label": "Fresh Beetroot1kg",
+      "sku": "FRESH VEGETABLES-FRESH BEETROOT-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 29.0,
+      "stock": 47,
+      "value": 100.00,
+      "id": 50,
+      "product_id": 34,
+      "label": "Bitter Gourd100g",
+      "sku": "FRESH VEGETABLES-BITTER GOURD-100G",
+      "unit": "g"
+    },
+    {
+      "price": 49.0,
+      "stock": 45,
+      "value": 250.00,
+      "id": 51,
+      "product_id": 34,
+      "label": "Bitter Gourd250g",
+      "sku": "FRESH VEGETABLES-BITTER GOURD-250G",
+      "unit": "g"
+    },
+    {
+      "price": 89.0,
+      "stock": 45,
+      "value": 500.00,
+      "id": 52,
+      "product_id": 34,
+      "label": "Bitter Gourd500g",
+      "sku": "FRESH VEGETABLES-BITTER GOURD-500G",
+      "unit": "g"
+    },
+    {
+      "price": 149.0,
+      "stock": 26,
+      "value": 1.00,
+      "id": 53,
+      "product_id": 34,
+      "label": "Bitter Gourd1kg",
+      "sku": "FRESH VEGETABLES-BITTER GOURD-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 29.0,
+      "stock": 48,
+      "value": 500.00,
+      "id": 54,
+      "product_id": 35,
+      "label": "Fresh Cabbage500g",
+      "sku": "FRESH VEGETABLES-FRESH CABBAGE-500G",
+      "unit": "g"
+    },
+    {
+      "price": 19.0,
+      "stock": 48,
+      "value": 250.00,
+      "id": 55,
+      "product_id": 35,
+      "label": "Fresh Cabbage250g",
+      "sku": "FRESH VEGETABLES-FRESH CABBAGE-250G",
+      "unit": "g"
+    },
+    {
+      "price": 49.0,
+      "stock": 48,
+      "value": 1.00,
+      "id": 56,
+      "product_id": 35,
+      "label": "Fresh Cabbage1kg",
+      "sku": "FRESH VEGETABLES-FRESH CABBAGE-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 41.0,
+      "stock": 20,
+      "value": 1.00,
+      "id": 62,
+      "product_id": 37,
+      "label": "green chilli1g",
+      "sku": "FRESH VEGETABLES-GREEN CHILLI-1G",
+      "unit": "g"
+    },
+    {
+      "price": 19.0,
+      "stock": 15,
+      "value": 1.00,
+      "id": 63,
+      "product_id": 38,
+      "label": "corn1pcs",
+      "sku": "FRESH VEGETABLES-CORN-1PCS",
+      "unit": "pcs"
+    },
+    {
+      "price": 29.0,
+      "stock": 16,
+      "value": 2.00,
+      "id": 64,
+      "product_id": 38,
+      "label": "corn2pcs",
+      "sku": "FRESH VEGETABLES-CORN-2PCS",
+      "unit": "pcs"
+    },
+    {
+      "price": 59.0,
+      "stock": 20,
+      "value": 5.00,
+      "id": 65,
+      "product_id": 38,
+      "label": "corn5pcs",
+      "sku": "FRESH VEGETABLES-CORN-5PCS",
+      "unit": "pcs"
+    },
+    {
+      "price": 19.0,
+      "stock": 15,
+      "value": 250.00,
+      "id": 66,
+      "product_id": 39,
+      "label": "Eggplant250g",
+      "sku": "FRESH VEGETABLES-EGGPLANT-250G",
+      "unit": "g"
+    },
+    {
+      "price": 29.0,
+      "stock": 15,
+      "value": 500.00,
+      "id": 67,
+      "product_id": 39,
+      "label": "Eggplant500g",
+      "sku": "FRESH VEGETABLES-EGGPLANT-500G",
+      "unit": "g"
+    },
+    {
+      "price": 49.0,
+      "stock": 15,
+      "value": 1.00,
+      "id": 68,
+      "product_id": 39,
+      "label": "Eggplant1kg",
+      "sku": "FRESH VEGETABLES-EGGPLANT-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 19.0,
+      "stock": 145,
+      "value": 100.00,
+      "id": 69,
+      "product_id": 40,
+      "label": "Fresh Ginger100g",
+      "sku": "FRESH VEGETABLES-FRESH GINGER-100G",
+      "unit": "g"
+    },
+    {
+      "price": 49.0,
+      "stock": 45,
+      "value": 250.00,
+      "id": 70,
+      "product_id": 41,
+      "label": "Fresh Garlic250g",
+      "sku": "FRESH VEGETABLES-FRESH GARLIC-250G",
+      "unit": "g"
+    },
+    {
+      "price": 29.0,
+      "stock": 56,
+      "value": 250.00,
+      "id": 71,
+      "product_id": 42,
+      "label": "ladies finger250g",
+      "sku": "FRESH VEGETABLES-LADIES FINGER-250G",
+      "unit": "g"
+    },
+    {
+      "price": 49.0,
+      "stock": 57,
+      "value": 500.00,
+      "id": 72,
+      "product_id": 42,
+      "label": "ladies finger500g",
+      "sku": "FRESH VEGETABLES-LADIES FINGER-500G",
+      "unit": "g"
+    },
+    {
+      "price": 150.0,
+      "stock": 5,
+      "value": 500.00,
+      "id": 20,
+      "product_id": 10,
+      "label": "500g",
+      "sku": "EXOTIC SELECTION-PASSION FRUIT-500G",
+      "unit": "g"
+    },
+    {
+      "price": 700.0,
+      "stock": 2,
+      "value": 1.00,
+      "id": 22,
+      "product_id": 11,
+      "label": "1kg",
+      "sku": "DRY FRUITS-CASHEW-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 19.0,
+      "stock": 12,
+      "value": 100.00,
+      "id": 73,
+      "product_id": 43,
+      "label": "Fresh Green Peas100g",
+      "sku": "FRESH VEGETABLES-FRESH GREEN PEAS-100G",
+      "unit": "g"
+    },
+    {
+      "price": 39.0,
+      "stock": 16,
+      "value": 250.00,
+      "id": 74,
+      "product_id": 43,
+      "label": "Fresh Green Peas250g",
+      "sku": "FRESH VEGETABLES-FRESH GREEN PEAS-250G",
+      "unit": "g"
+    },
+    {
+      "price": 99.0,
+      "stock": 17,
+      "value": 1.00,
+      "id": 75,
+      "product_id": 43,
+      "label": "Fresh Green Peas1kg",
+      "sku": "FRESH VEGETABLES-FRESH GREEN PEAS-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 230.0,
+      "stock": 36,
+      "value": 1.00,
+      "id": 19,
+      "product_id": 10,
+      "label": "1kg",
+      "sku": "EXOTIC SELECTION-PASSION FRUIT-1KG",
+      "unit": "kg"
+    },
+    {
+      "price": 265.0,
+      "stock": 23,
+      "value": 100.00,
+      "id": 45,
+      "product_id": 32,
+      "label": "Charoli (Chironji)100g",
+      "sku": "DRY FRUITS-CHAROLI (CHIRONJI)-100G",
+      "unit": "g"
+    },
+    {
+      "price": 49.0,
+      "stock": 24,
+      "value": 100.00,
+      "id": 76,
+      "product_id": 44,
+      "label": "fresh cherry100g",
+      "sku": "DRY FRUITS-FRESH CHERRY-100G",
+      "unit": "g"
+    },
+    {
+      "price": 99.0,
+      "stock": 48,
+      "value": 250.00,
+      "id": 77,
+      "product_id": 44,
+      "label": "fresh cherry250g",
+      "sku": "DRY FRUITS-FRESH CHERRY-250G",
+      "unit": "g"
+    }
+  ]
+}

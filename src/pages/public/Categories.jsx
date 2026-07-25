@@ -4,6 +4,27 @@ import { Button } from '@/components/ui/Button';
 import CategoryCard from '@/components/card/CategoryCard';
 import { useCategory } from '@/hooks/useCategory';
 import { motion, AnimatePresence } from "framer-motion";
+import { Skeleton } from '@/components/ui/Skeleton';
+
+export function CategoryCardSkeleton() {
+  return (
+    <div className="bg-card rounded-2xl border overflow-hidden">
+      <Skeleton className="aspect-video w-full" />
+
+      <div className="p-4">
+        <Skeleton className="h-6 w-28 mb-3" />
+
+        <Skeleton className="h-4 w-full mb-2" />
+        <Skeleton className="h-4 w-3/4 mb-4" />
+
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-4 w-28" />
+          <Skeleton className="h-9 w-20 rounded-md" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Categories() {
   const [search, setSearch] = useState('');
@@ -79,11 +100,11 @@ export default function Categories() {
             layout
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {isLoading && (
-              <div className="py-4 text-center col-span-full">
-                Loading...
-              </div>
-            )}
+            {isLoading &&
+              Array.from({ length: 6 }).map((_, index) => (
+                <CategoryCardSkeleton key={index} />
+              ))
+            }
 
             {isError && (
               <div className="py-4 text-center text-red-500 col-span-full">
@@ -106,7 +127,13 @@ export default function Categories() {
           </motion.div>
 
           <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
-            {isFetchingNextPage && <div className="p-4">Loading more products...</div>}
+            {isFetchingNextPage && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <CategoryCardSkeleton key={index} />
+                ))}
+              </div>
+            )}
 
             {hasNextPage ? (
               <div className="p-4">

@@ -23,6 +23,8 @@ const statusVariant = (status) => {
 const MotionCard = motion.create(Card);
 
 const OrderCard = ({ order, onCancel, cancelling }) => {
+
+  console.log(order);
   const first = order.items?.[0];
   const moreCount = Math.max(0, (order.items?.length || 0) - 1);
 

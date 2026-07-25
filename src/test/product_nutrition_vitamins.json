@@ -1,0 +1,804 @@
+
+{
+"product_nutrition_vitamins": [
+	{
+		"product_id" : 44,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 44,
+		"vitamin" : "B"
+	},
+	{
+		"product_id" : 44,
+		"vitamin" : "B"
+	},
+	{
+		"product_id" : 1,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 1,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 1,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 3,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 3,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 5,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 5,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 6,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 6,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 7,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 7,
+		"vitamin" : "b1"
+	},
+	{
+		"product_id" : 7,
+		"vitamin" : "b3"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "B9"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "b2"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "B2"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 11,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 11,
+		"vitamin" : "B2"
+	},
+	{
+		"product_id" : 11,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "B2"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "B9"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "B5"
+	},
+	{
+		"product_id" : 16,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 16,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 16,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 18,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 18,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 18,
+		"vitamin" : "B9"
+	},
+	{
+		"product_id" : 19,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 19,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 19,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 20,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 20,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 20,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 22,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 22,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 22,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 23,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 23,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 23,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 25,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 25,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 25,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 27,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 27,
+		"vitamin" : "a"
+	},
+	{
+		"product_id" : 27,
+		"vitamin" : "pottasium"
+	},
+	{
+		"product_id" : 28,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 28,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 28,
+		"vitamin" : "folate"
+	},
+	{
+		"product_id" : 29,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 29,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 29,
+		"vitamin" : "Manganese"
+	},
+	{
+		"product_id" : 30,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 30,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 30,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 32,
+		"vitamin" : "656"
+	},
+	{
+		"product_id" : 33,
+		"vitamin" : "Folate"
+	},
+	{
+		"product_id" : 33,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 33,
+		"vitamin" : "Potassium"
+	},
+	{
+		"product_id" : 34,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 34,
+		"vitamin" : "a"
+	},
+	{
+		"product_id" : 34,
+		"vitamin" : "Folate"
+	},
+	{
+		"product_id" : 35,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 35,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 36,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 36,
+		"vitamin" : "a"
+	},
+	{
+		"product_id" : 36,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 37,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 37,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 37,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 38,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 38,
+		"vitamin" : "b1"
+	},
+	{
+		"product_id" : 38,
+		"vitamin" : "Folate"
+	},
+	{
+		"product_id" : 39,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 39,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 39,
+		"vitamin" : "Potassium"
+	},
+	{
+		"product_id" : 40,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 40,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 41,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 41,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 42,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 42,
+		"vitamin" : "b"
+	},
+	{
+		"product_id" : 43,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 43,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 1,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 1,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 1,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 2,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 3,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 3,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 5,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 5,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 6,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 6,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 7,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 7,
+		"vitamin" : "b1"
+	},
+	{
+		"product_id" : 7,
+		"vitamin" : "b3"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 8,
+		"vitamin" : "B9"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "b2"
+	},
+	{
+		"product_id" : 9,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "B2"
+	},
+	{
+		"product_id" : 10,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 11,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 11,
+		"vitamin" : "B2"
+	},
+	{
+		"product_id" : 11,
+		"vitamin" : "B3"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "B2"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 12,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "B9"
+	},
+	{
+		"product_id" : 14,
+		"vitamin" : "B5"
+	},
+	{
+		"product_id" : 16,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 16,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 16,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 18,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 18,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 18,
+		"vitamin" : "B9"
+	},
+	{
+		"product_id" : 19,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 19,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 19,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 20,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 20,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 20,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 22,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 22,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 22,
+		"vitamin" : "B1"
+	},
+	{
+		"product_id" : 23,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 23,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 23,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 25,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 25,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 25,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 27,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 27,
+		"vitamin" : "a"
+	},
+	{
+		"product_id" : 27,
+		"vitamin" : "pottasium"
+	},
+	{
+		"product_id" : 28,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 28,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 28,
+		"vitamin" : "folate"
+	},
+	{
+		"product_id" : 29,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 29,
+		"vitamin" : "B6"
+	},
+	{
+		"product_id" : 29,
+		"vitamin" : "Manganese"
+	},
+	{
+		"product_id" : 30,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 30,
+		"vitamin" : "K"
+	},
+	{
+		"product_id" : 30,
+		"vitamin" : "E"
+	},
+	{
+		"product_id" : 32,
+		"vitamin" : "656"
+	},
+	{
+		"product_id" : 33,
+		"vitamin" : "Folate"
+	},
+	{
+		"product_id" : 33,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 33,
+		"vitamin" : "Potassium"
+	},
+	{
+		"product_id" : 34,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 34,
+		"vitamin" : "a"
+	},
+	{
+		"product_id" : 34,
+		"vitamin" : "Folate"
+	},
+	{
+		"product_id" : 35,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 35,
+		"vitamin" : "k"
+	},
+	{
+		"product_id" : 36,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 36,
+		"vitamin" : "a"
+	},
+	{
+		"product_id" : 36,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 37,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 37,
+		"vitamin" : "A"
+	},
+	{
+		"product_id" : 37,
+		"vitamin" : "b6"
+	},
+	{
+		"product_id" : 38,
+		"vitamin" : "C"
+	},
+	{
+		"product_id" : 38,
+		"vitamin" : "b1"
+	},
+	{
+		"product_id" : 38,
+		"vitamin" : "Folate"
+	},
+	{
+		"product_id" : 39,
+		"vitamin" : "c"
+	},
+	{
+		"product_id" : 39,
+		"vitamin" : "b6"
+	}
+]}

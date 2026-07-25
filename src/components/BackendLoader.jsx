@@ -2,56 +2,93 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { waitForBackend } from "@/utils/waitForBackend";
 
-export const VITE_API_BASE = import.meta.env.VITE_API_BASE || "https://ecommerce-backend-clean-18-lspu.onrender.com/api";
+const SESSION_KEY = "backend-ready";
+const SHOW_LOADER_DELAY = 2000; // Show loader only after 2 seconds
 
 const BackendLoader = ({ children }) => {
   const isPaymentSuccess = window.location.pathname.includes("payment-success");
-  
-  const [ready, setReady] = useState(isPaymentSuccess);
+
+  const [ready, setReady] =useState(() => {
+    if (isPaymentSuccess) return true;
+    return sessionStorage.getItem(SESSION_KEY) === "true";
+  });
+
   const [failed, setFailed] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const [attempt, setAttempt] = useState(0);
-  const [max, setMax] = useState(0);
+  const [maxAttempts, setMaxAttempts] = useState(0);
 
   useEffect(() => {
-    if (isPaymentSuccess) return; 
-    console.log("Waiting for server response...");
-    let alive = true;
+    if (ready || isPaymentSuccess) return;
 
-    waitForBackend(VITE_API_BASE, {
-      onAttempt: (i, m) => {
-        if (!alive) return;
-        setAttempt(i);
-        setMax(m);
-      },
-    }).then((ok) => {
-      if (!alive) return;
-      if (ok) setReady(true);
-      else setFailed(true);
-    });
+    let cancelled = false;
+
+    // Don't show loader immediately.
+    const loaderTimer = setTimeout(() => {
+      if (!cancelled) {
+        setShowLoader(true);
+      }
+    }, SHOW_LOADER_DELAY);
+
+    (async () => {
+      const ok = await waitForBackend({
+        maxRetries: 20,
+        retryDelay: 2000,
+        timeout: 3000,
+        onAttempt: (current, total) => {
+          if (cancelled) return;
+          setAttempt(current);
+          setMaxAttempts(total);
+        },
+      });
+
+      clearTimeout(loaderTimer);
+
+      if (cancelled) return;
+
+      if (ok) {
+        sessionStorage.setItem(SESSION_KEY, "true");
+        setReady(true);
+      } else {
+        setShowLoader(true);
+        setFailed(true);
+      }
+    })();
 
     return () => {
-      alive = false;
+      cancelled = true;
+      clearTimeout(loaderTimer);
     };
-  }, []);
-
-  useEffect(() => {
-    if (ready) {
-      console.log("Server started!");
-    }
-  }, [ready]);
+  }, [ready, isPaymentSuccess]);
 
   if (ready) {
     return children;
+  }
+
+  // Don't render anything during the first 2 seconds.
+  // The backend may already be awake.
+  if (!showLoader) {
+    return null;
   }
 
   if (failed) {
     return (
       <div className="fixed inset-0 bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <p className="tracking-widest text-sm">SERVER UNAVAILABLE</p>
-          <p className="mt-2 text-xs text-white/50">
-            Please refresh or try again later
+          <p className="text-xl font-semibold">
+            Server is taking longer than expected
           </p>
+
+          <p className="text-sm text-white/60 mt-2">
+            Please refresh in a few moments.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-6 px-5 py-2 rounded-lg bg-white text-black font-medium"
+          >
+            Retry
+          </button>
         </div>
       </div>
     );
@@ -59,7 +96,8 @@ const BackendLoader = ({ children }) => {
 
   return (
     <div className="fixed inset-0 bg-black text-white flex items-center justify-center overflow-hidden">
-      {/* Signal animation */}
+
+      {/* Animated bars */}
       <div className="absolute inset-0 flex items-center justify-center gap-2">
         {[...Array(9)].map((_, i) => (
           <motion.div
@@ -79,26 +117,25 @@ const BackendLoader = ({ children }) => {
         ))}
       </div>
 
-      {/* Text */}
       <motion.div
+        className="absolute bottom-16 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="absolute bottom-16 text-center"
       >
-        <p className="text-sm tracking-widest text-white/70">
+        <p className="tracking-widest text-sm text-white/80">
           CONNECTING TO SERVER
         </p>
+
         <motion.p
+          className="mt-2 text-xs text-white/50"
           animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="mt-2 text-xs text-white/40"
+          transition={{ repeat: Infinity, duration: 2 }}
         >
-          This may take a few seconds
+          Waking up the backend...
         </motion.p>
 
         <p className="mt-2 text-xs text-white/40">
-          Attempt {attempt} / {max}
+          Attempt {attempt} / {maxAttempts}
         </p>
       </motion.div>
     </div>

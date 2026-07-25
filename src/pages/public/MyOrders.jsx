@@ -4,6 +4,52 @@ import { Button } from '@/components/ui/Button';
 import useMyOrders from '@/hooks/useMyOrders';
 import UnAuthorizedUser from '@/pages/public/UnAuthorizedUser';
 import useAuthStore from '@/store/useAuthStore';
+import { Skeleton } from '@/components/ui/Skeleton';
+import { Card } from '@/components/ui/Card';
+
+const OrderCardSkeleton = () => {
+  return (
+    <Card className="rounded-2xl p-4 flex gap-4 items-center animate-pulse">
+      {/* Image */}
+      <Skeleton className="w-20 h-20 rounded-xl flex-shrink-0" />
+
+      <div className="flex-1">
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <Skeleton className="h-4 w-36" />
+          <Skeleton className="h-6 w-20 rounded-full" />
+          <Skeleton className="ml-auto h-4 w-32" />
+        </div>
+
+        {/* Product */}
+        <div className="mt-3 space-y-2">
+          <Skeleton className="h-5 w-48" />
+          <Skeleton className="h-4 w-28" />
+        </div>
+
+        {/* Footer */}
+        <div className="mt-4 flex items-center gap-3">
+          <Skeleton className="h-7 w-20" />
+          <Skeleton className="h-9 w-24 rounded-lg" />
+          <Skeleton className="h-9 w-24 rounded-lg" />
+        </div>
+      </div>
+    </Card>
+  );
+}
+const MyOrdersSkeleton = () => {
+  return (
+    <div className="max-w-4xl mx-auto p-2 lg:p-4 animate-pulse">
+      <Skeleton className="h-9 w-48 mb-6" />
+
+      <div className="space-y-4">
+        {[1, 2, 3, 4].map((item) => (
+          <OrderCardSkeleton key={item} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const MyOrders = () => {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
@@ -43,12 +89,12 @@ const MyOrders = () => {
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
-  if (!isAuthenticated) {
-    return <UnAuthorizedUser />;
+  if (isLoading) {
+    return <MyOrdersSkeleton />;
   }
 
-  if (isLoading) {
-    return <div className="p-8 text-center">Loading orders...</div>;
+  if (!isAuthenticated) {
+    return <UnAuthorizedUser />;
   }
 
   if (isError) {

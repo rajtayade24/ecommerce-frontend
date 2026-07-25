@@ -1,0 +1,2417 @@
+// {
+// "products": [
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-06T16:22:20.464Z",
+// 		"id" : 1,
+// 		"description" : "Fresh raw potatoes.",
+// 		"name" : "Potato",
+// 		"nutrition_calories" : "77 kcal per 100 g",
+// 		"nutrition_carbs" : "17.0 g per 100 g",
+// 		"nutrition_fiber" : "2.2 g per 100 g",
+// 		"nutrition_protein" : "2.0 g per 100 g",
+// 		"slug" : "potato"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-06T16:27:16.262Z",
+// 		"id" : 3,
+// 		"description" : "Fresh raw onion bulb.",
+// 		"name" : "Onion",
+// 		"nutrition_calories" : "40 kcal per 100 g",
+// 		"nutrition_carbs" : "9.3 g per 100 g",
+// 		"nutrition_fiber" : "1.7 g per 100 g",
+// 		"nutrition_protein" : "1.1 g per 100 g",
+// 		"slug" : "onion"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-06T16:29:17.716Z",
+// 		"id" : 4,
+// 		"description" : "Fresh raw ripe tomato.",
+// 		"name" : "Tomato",
+// 		"nutrition_calories" : "18 kcal per 100 g",
+// 		"nutrition_carbs" : "3.9 g per 100 g",
+// 		"nutrition_fiber" : "1.2 g per 100 g",
+// 		"nutrition_protein" : "0.9 g per 100 g",
+// 		"slug" : "tomato"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-06T16:38:40.228Z",
+// 		"id" : 6,
+// 		"description" : "Fresh raw orange.",
+// 		"name" : "Orange",
+// 		"nutrition_calories" : "47 kcal per 100 g",
+// 		"nutrition_carbs" : "12 g per 100 g",
+// 		"nutrition_fiber" : "0.9 g per 100 g",
+// 		"nutrition_protein" : "0.9 g per 100 g",
+// 		"slug" : "orange"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-06T16:41:03.191Z",
+// 		"id" : 7,
+// 		"description" : "Fresh raw apple with skin.",
+// 		"name" : "apple ",
+// 		"nutrition_calories" : "52 kcal per 100 g",
+// 		"nutrition_carbs" : "14 g per 100 g",
+// 		"nutrition_fiber" : "2.4 g per 100 g",
+// 		"nutrition_protein" : "0.3 g per 100 g",
+// 		"slug" : "apple"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-06T16:53:08.984Z",
+// 		"id" : 12,
+// 		"description" : "Naturally dried figs rich in fiber and minerals.",
+// 		"name" : "Anjeer",
+// 		"nutrition_calories" : "249 kcal per 100 g",
+// 		"nutrition_carbs" : "9.8 g per 100 g",
+// 		"nutrition_fiber" : "3.3 g per 100 g",
+// 		"nutrition_protein" : "63.9 g per 100 g",
+// 		"slug" : "anjeer"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-18T13:39:23.662Z",
+// 		"id" : 31,
+// 		"description" : "Crunchy and nutritious pumpkin seeds rich in protein healthy fats and minerals",
+// 		"name" : "Pumpkin Seeds",
+// 		"nutrition_calories" : "559kcal per 100g",
+// 		"nutrition_carbs" : "11g per 100g",
+// 		"nutrition_fiber" : "6g per 100g",
+// 		"nutrition_protein" : "30g per 100g",
+// 		"slug" : "pumpkin-seeds"
+// 	},
+// 	{
+// 		"is_featured" : true,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-06T16:31:19.048Z",
+// 		"id" : 5,
+// 		"description" : "Fresh ripe banana.",
+// 		"name" : "banana",
+// 		"nutrition_calories" : "89 kcal per 100 g",
+// 		"nutrition_carbs" : "23 g per 100 g",
+// 		"nutrition_fiber" : "1.9 g per 100 g",
+// 		"nutrition_protein" : "1.1 g per 100 g",
+// 		"slug" : "banana"
+// 	},
+// 	{
+// 		"is_featured" : true,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-06T16:43:37.292Z",
+// 		"id" : 8,
+// 		"description" : "Fresh ripe mango.",
+// 		"name" : "Mango",
+// 		"nutrition_calories" : "60 kcal per 100 g",
+// 		"nutrition_carbs" : "15 g per 100 g",
+// 		"nutrition_fiber" : "1.6 g per 100 g",
+// 		"nutrition_protein" : "0.8 g per 100 g",
+// 		"slug" : "mango"
+// 	},
+// 	{
+// 		"is_featured" : true,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-06T16:50:40.717Z",
+// 		"id" : 11,
+// 		"description" : "Raw whole almonds.",
+// 		"name" : "Cashew",
+// 		"nutrition_calories" : "553 kcal per 100 g",
+// 		"nutrition_carbs" : "30.2 g per 100 g",
+// 		"nutrition_fiber" : "3.3 g per 100 g",
+// 		"nutrition_protein" : "21.1 g per 100 g",
+// 		"slug" : "cashew"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : true,
+// 		"category_id" : 5,
+// 		"created_at" : "2026-01-06T16:46:15.127Z",
+// 		"id" : 9,
+// 		"description" : "Fresh dragon fruit with mildly sweet flavor and crunchy seeds.",
+// 		"name" : "Dragon Fruit (Pitaya)",
+// 		"nutrition_calories" : "60 kcal per 100 g",
+// 		"nutrition_carbs" : "13 g per 100 g",
+// 		"nutrition_fiber" : "3 g per 100 g",
+// 		"nutrition_protein" : "1.2 g per 100 g",
+// 		"slug" : "dragon-fruit-pitaya"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : true,
+// 		"category_id" : 5,
+// 		"created_at" : "2026-01-06T16:48:08.622Z",
+// 		"id" : 10,
+// 		"description" : "Fresh aromatic passion fruits with tangy-sweet pulp.",
+// 		"name" : "Passion Fruit",
+// 		"nutrition_calories" : "97 kcal per 100 g",
+// 		"nutrition_carbs" : "23 g per 100 g",
+// 		"nutrition_fiber" : "10.4 g per 100 g",
+// 		"nutrition_protein" : "2.2 g per 100 g",
+// 		"slug" : "passion-fruit"
+// 	},
+// 	{
+// 		"is_featured" : true,
+// 		"is_organic" : true,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-06T16:24:44.370Z",
+// 		"id" : 2,
+// 		"description" : "Fresh raw spinach leaves.",
+// 		"name" : "Spinach",
+// 		"nutrition_calories" : "23 kcal per 100 g",
+// 		"nutrition_carbs" : "3.6 g per 100 g",
+// 		"nutrition_fiber" : "2.2 g per 100 g",
+// 		"nutrition_protein" : "2.9 g per 100 g",
+// 		"slug" : "spinach"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-08T15:34:44.377Z",
+// 		"id" : 14,
+// 		"description" : "Fresh raw cauliflower head.",
+// 		"name" : "Cauliflower",
+// 		"nutrition_calories" : "25 kcal per 100 g",
+// 		"nutrition_carbs" : "9.3 g per 100 g",
+// 		"nutrition_fiber" : "2.7 g per 100 g",
+// 		"nutrition_protein" : "2.0 g per 100 g",
+// 		"slug" : "cauliflower"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-08T15:39:06.271Z",
+// 		"id" : 16,
+// 		"description" : "Fresh raw orange carrots.",
+// 		"name" : "carrot",
+// 		"nutrition_calories" : "41 kcal per 100 g",
+// 		"nutrition_carbs" : "9.6 g per 100 g",
+// 		"nutrition_fiber" : "0.93 g per 100 g",
+// 		"nutrition_protein" : "2. 56 g per 100 g",
+// 		"slug" : "carrot"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-08T15:42:51.675Z",
+// 		"id" : 17,
+// 		"description" : "Naturally sun-dried seedless raisins.",
+// 		"name" : "Raisins",
+// 		"nutrition_calories" : "299 kcal per 100 g",
+// 		"nutrition_carbs" : "79.2 g per 100 g",
+// 		"nutrition_fiber" : "3 g per 100 g",
+// 		"nutrition_protein" : "3.1 g per 100 g",
+// 		"slug" : "raisins"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-08T15:44:28.874Z",
+// 		"id" : 18,
+// 		"description" : "Roasted pistachios with natural crunch.",
+// 		"name" : "Pistachio",
+// 		"nutrition_calories" : "562 kcal per 100 g",
+// 		"nutrition_carbs" : "27.5 g per 100 g",
+// 		"nutrition_fiber" : "10.6 g per 100 g",
+// 		"nutrition_protein" : "20.3 g per 100 g",
+// 		"slug" : "pistachio"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-08T15:46:50.367Z",
+// 		"id" : 19,
+// 		"description" : " Soft and juicy dried apricots with natural sweetness.",
+// 		"name" : "Dried Apricot",
+// 		"nutrition_calories" : "241 kcal per 100 g",
+// 		"nutrition_carbs" : "62.6 g per 100 g",
+// 		"nutrition_fiber" : "7.3 g per 100 g",
+// 		"nutrition_protein" : "3.4 g per 100 g",
+// 		"slug" : "dried-apricot"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-08T15:48:49.337Z",
+// 		"id" : 20,
+// 		"description" : "Tangy dried cranberries perfect for snacking.",
+// 		"name" : "cranberries",
+// 		"nutrition_calories" : "308 kcal per 100 g",
+// 		"nutrition_carbs" : "82 g per 100 g",
+// 		"nutrition_fiber" : "5.3 g per 100 g",
+// 		"nutrition_protein" : "0.4 g per 100 g",
+// 		"slug" : "cranberries"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-08T15:55:37.076Z",
+// 		"id" : 22,
+// 		"description" : "Premium chilgoza nuts with rich buttery flavor.",
+// 		"name" : "Pine Nuts",
+// 		"nutrition_calories" : "673 kcal per 100 g",
+// 		"nutrition_carbs" : " 13.1 g per 100 g",
+// 		"nutrition_fiber" : "3.7 g per 100 g",
+// 		"nutrition_protein" : "13.7 g per 100 g",
+// 		"slug" : "pine-nuts"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-18T10:04:07.372Z",
+// 		"id" : 23,
+// 		"description" : "Juicy and sweet fresh grapes perfect for snacking and desserts",
+// 		"name" : "Fresh grapes",
+// 		"nutrition_calories" : "69kcal per 100 g",
+// 		"nutrition_carbs" : "18g per 100 g",
+// 		"nutrition_fiber" : "0.9g per 100 g",
+// 		"nutrition_protein" : "0.7g per 100 g",
+// 		"slug" : "fresh-grapes"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-18T13:10:50.787Z",
+// 		"id" : 29,
+// 		"description" : "Sweet and tangy fresh pineapple with juicy flesh perfect for juices desserts and cooking",
+// 		"name" : "Fresh Pineapple",
+// 		"nutrition_calories" : "50kcal per 100 g",
+// 		"nutrition_carbs" : "13g per 100 g",
+// 		"nutrition_fiber" : "1.4g per 100 g",
+// 		"nutrition_protein" : "0.5g per 100 g",
+// 		"slug" : "fresh-pineapple"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-18T13:19:15.681Z",
+// 		"id" : 30,
+// 		"description" : "Tangy and sweet fresh kiwi fruit with vibrant green flesh rich in vitamin C",
+// 		"name" : "Fresh Kiwi",
+// 		"nutrition_calories" : "61kcal per 100 g",
+// 		"nutrition_carbs" : "15g per 100 g",
+// 		"nutrition_fiber" : "3g per 100 g",
+// 		"nutrition_protein" : "1.1g per 100 g",
+// 		"slug" : "fresh-kiwi"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-18T11:02:32.380Z",
+// 		"id" : 25,
+// 		"description" : "Sweet and juicy fresh pears with a soft texture and refreshing taste",
+// 		"name" : "Fresh pears",
+// 		"nutrition_calories" : "57kcal per 100 g",
+// 		"nutrition_carbs" : "15g per 100 g",
+// 		"nutrition_fiber" : "3.1 per 100 g",
+// 		"nutrition_protein" : "0.4g per 100 g",
+// 		"slug" : "fresh-pears"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-18T11:05:32.468Z",
+// 		"id" : 27,
+// 		"description" : "Refreshing and juicy watermelon with a naturally sweet taste perfect for summer",
+// 		"name" : "Fresh Watermelon",
+// 		"nutrition_calories" : "30kcal per 100 g",
+// 		"nutrition_carbs" : "8g per 100 g",
+// 		"nutrition_fiber" : "0.4g per 100 g",
+// 		"nutrition_protein" : "0.6g per 100 g",
+// 		"slug" : "fresh-watermelon"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 4,
+// 		"created_at" : "2026-01-18T11:11:34.958Z",
+// 		"id" : 28,
+// 		"description" : "Fresh and juicy pomegranates with ruby-red arils rich in antioxidants and flavor",
+// 		"name" : "Fresh Pomegranate",
+// 		"nutrition_calories" : "83kcal per 100 g",
+// 		"nutrition_carbs" : "19g per 100 g",
+// 		"nutrition_fiber" : "4g per 100 g",
+// 		"nutrition_protein" : "0.7g per 100 g",
+// 		"slug" : "fresh-pomegranate"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-18T13:44:42.981Z",
+// 		"id" : 32,
+// 		"description" : "Premium quality charoli (chironji) seeds widely used in Indian sweets and desserts for their rich nutty flavor",
+// 		"name" : "Charoli (Chironji)",
+// 		"nutrition_calories" : "83kcal per 100 g",
+// 		"nutrition_carbs" : "12 g per 100g",
+// 		"nutrition_fiber" : "5g per 100g",
+// 		"nutrition_protein" : "21g  per 100g",
+// 		"slug" : "charoli-chironji"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:41:13.910Z",
+// 		"id" : 33,
+// 		"description" : "Fresh and earthy beetroot with a naturally sweet flavor ideal for salads juices and cooking",
+// 		"name" : "Fresh Beetroot",
+// 		"nutrition_calories" : "43 kcal per 100g",
+// 		"nutrition_carbs" : "10 g per 100g",
+// 		"nutrition_fiber" : "2.8 g per 100g",
+// 		"nutrition_protein" : "1.6 g per 100g",
+// 		"slug" : "fresh-beetroot"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:43:38.512Z",
+// 		"id" : 34,
+// 		"description" : "Fresh bitter gourd (karela) known for its distinct bitter taste and health benefits commonly used in Indian cooking",
+// 		"name" : "Bitter Gourd",
+// 		"nutrition_calories" : "17 kcal per 100g",
+// 		"nutrition_carbs" : "3.7 g per 100g",
+// 		"nutrition_fiber" : "2.8 g per 100g",
+// 		"nutrition_protein" : "1 g per 100g",
+// 		"slug" : "bitter-gourd"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:46:22.308Z",
+// 		"id" : 35,
+// 		"description" : "Crisp and fresh cabbage with a mild flavor perfect for salads stir-fries and cooking",
+// 		"name" : "Fresh Cabbage",
+// 		"nutrition_calories" : "25 kcal per 100g",
+// 		"nutrition_carbs" : "6 g per 100g",
+// 		"nutrition_fiber" : "2.5 g per 100g",
+// 		"nutrition_protein" : "1.3 g per 100g",
+// 		"slug" : "fresh-cabbage"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:48:19.711Z",
+// 		"id" : 36,
+// 		"description" : "Fresh and crunchy capsicum (bell pepper) with a mild sweet flavor ideal for salads stir-fries and cooking",
+// 		"name" : "Capsicum",
+// 		"nutrition_calories" : "20 kcal per 100g",
+// 		"nutrition_carbs" : "4.6 g per 100g",
+// 		"nutrition_fiber" : "1.7 g per 100g",
+// 		"nutrition_protein" : "9 g per 100g",
+// 		"slug" : "capsicum"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:50:05.112Z",
+// 		"id" : 37,
+// 		"description" : "Fresh green chillies with a sharp spicy flavor essential for Indian cooking",
+// 		"name" : "green chilli",
+// 		"nutrition_calories" : "40 kcal per 100g",
+// 		"nutrition_carbs" : "9 g per 100g",
+// 		"nutrition_fiber" : "1 g per 100g",
+// 		"nutrition_protein" : "2 g per 100g",
+// 		"slug" : "green-chilli"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:53:18.113Z",
+// 		"id" : 38,
+// 		"description" : "Sweet and tender fresh corn perfect for boiling roasting and adding to dishes",
+// 		"name" : "corn",
+// 		"nutrition_calories" : "96 kcal per 100g",
+// 		"nutrition_carbs" : "45 g per 100g",
+// 		"nutrition_fiber" : "2.4 g per 100g",
+// 		"nutrition_protein" : "3.4 g per 100g",
+// 		"slug" : "corn"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:55:13.371Z",
+// 		"id" : 39,
+// 		"description" : "Fresh eggplant (brinjal) with smooth skin and mild flavor ideal for curries grilling and roasting",
+// 		"name" : "Eggplant",
+// 		"nutrition_calories" : "25 kcal per 100g",
+// 		"nutrition_carbs" : "6 g per 100g",
+// 		"nutrition_fiber" : "3 g per 100g",
+// 		"nutrition_protein" : "1 g per 100g",
+// 		"slug" : "eggplant"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T15:57:50.664Z",
+// 		"id" : 40,
+// 		"description" : "Fresh and aromatic ginger root with a strong spicy flavor widely used in cooking and herbal remedies",
+// 		"name" : "Fresh Ginger",
+// 		"nutrition_calories" : "88 kcal per 100g",
+// 		"nutrition_carbs" : "18 g per 100g",
+// 		"nutrition_fiber" : "2 g per 100g",
+// 		"nutrition_protein" : "1 g per 100g",
+// 		"slug" : "fresh-ginger"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T16:00:35.400Z",
+// 		"id" : 41,
+// 		"description" : "Fresh and pungent garlic bulbs with strong aroma and flavor essential for cooking and traditional remedies",
+// 		"name" : "Fresh Garlic",
+// 		"nutrition_calories" : "149 kcal per 100g",
+// 		"nutrition_carbs" : "33 g per 100g",
+// 		"nutrition_fiber" : "2 g per 100g",
+// 		"nutrition_protein" : "6.4 g per 100g",
+// 		"slug" : "fresh-garlic"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T16:02:52.384Z",
+// 		"id" : 42,
+// 		"description" : "Fresh and tender ladies finger (okra) with a mild flavor perfect for stir-fries curries and frying",
+// 		"name" : "ladies finger",
+// 		"nutrition_calories" : "33 kcal per 100g",
+// 		"nutrition_carbs" : "7 g per 100g",
+// 		"nutrition_fiber" : "3 g per 100g",
+// 		"nutrition_protein" : "1.6 g per 100g",
+// 		"slug" : "ladies-finger"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 2,
+// 		"created_at" : "2026-01-18T16:09:52.847Z",
+// 		"id" : 43,
+// 		"description" : "Fresh and sweet green peas rich in protein and fiber perfect for curries rice and snacks",
+// 		"name" : "Fresh Green Peas",
+// 		"nutrition_calories" : "91 kcal per 100g",
+// 		"nutrition_carbs" : "14 g per 100g",
+// 		"nutrition_fiber" : "5 g per 100g",
+// 		"nutrition_protein" : "5 g per 100g",
+// 		"slug" : "fresh-green-peas"
+// 	},
+// 	{
+// 		"is_featured" : false,
+// 		"is_organic" : false,
+// 		"category_id" : 3,
+// 		"created_at" : "2026-01-30T18:00:04.461Z",
+// 		"id" : 44,
+// 		"description" : "sweet and juicy cherris",
+// 		"name" : "fresh cherry",
+// 		"nutrition_calories" : "63kcal per 100g",
+// 		"nutrition_carbs" : "16g per 100g",
+// 		"nutrition_fiber" : "2.1h g per 100g",
+// 		"nutrition_protein" : "1.1g per 100g",
+// 		"slug" : "fresh-cherry"
+// 	}
+// ]}
+
+
+// this are my products
+
+
+// {
+// "product_variants": [
+// 	{
+// 		"price" : 30.0,
+// 		"stock" : 34,
+// 		"value" : 1.00,
+// 		"id" : 1,
+// 		"product_id" : 1,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH VEGETABLES-POTATO-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 100.0,
+// 		"stock" : 23,
+// 		"value" : 5.00,
+// 		"id" : 2,
+// 		"product_id" : 1,
+// 		"label" : "5kg",
+// 		"sku" : "FRESH VEGETABLES-POTATO-5KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 30.0,
+// 		"stock" : 54,
+// 		"value" : 1.00,
+// 		"id" : 3,
+// 		"product_id" : 2,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH VEGETABLES-SPINACH-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 40.0,
+// 		"stock" : 20,
+// 		"value" : 1.00,
+// 		"id" : 4,
+// 		"product_id" : 3,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH VEGETABLES-ONION-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 25.0,
+// 		"stock" : 242,
+// 		"value" : 500.00,
+// 		"id" : 5,
+// 		"product_id" : 3,
+// 		"label" : "500gm",
+// 		"sku" : "FRESH VEGETABLES-ONION-500GM",
+// 		"unit" : "gm"
+// 	},
+// 	{
+// 		"price" : 20.0,
+// 		"stock" : 564,
+// 		"value" : 1.00,
+// 		"id" : 6,
+// 		"product_id" : 4,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH VEGETABLES-TOMATO-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 10.0,
+// 		"stock" : 17,
+// 		"value" : 500.00,
+// 		"id" : 7,
+// 		"product_id" : 4,
+// 		"label" : "500g",
+// 		"sku" : "FRESH VEGETABLES-TOMATO-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 40.0,
+// 		"stock" : 46,
+// 		"value" : 1.00,
+// 		"id" : 8,
+// 		"product_id" : 5,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH FRUITS-BANANA-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 70.0,
+// 		"stock" : 24,
+// 		"value" : 2.00,
+// 		"id" : 9,
+// 		"product_id" : 5,
+// 		"label" : "2kg",
+// 		"sku" : "FRESH FRUITS-BANANA-2KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 60.0,
+// 		"stock" : 21,
+// 		"value" : 1.00,
+// 		"id" : 10,
+// 		"product_id" : 6,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH FRUITS-ORANGE-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 35.0,
+// 		"stock" : 17,
+// 		"value" : 500.00,
+// 		"id" : 11,
+// 		"product_id" : 6,
+// 		"label" : "500g",
+// 		"sku" : "FRESH FRUITS-ORANGE-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 300.0,
+// 		"stock" : 124,
+// 		"value" : 2.00,
+// 		"id" : 13,
+// 		"product_id" : 7,
+// 		"label" : "2kg",
+// 		"sku" : "FRESH FRUITS-APPLE-2KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 100.0,
+// 		"stock" : 194,
+// 		"value" : 500.00,
+// 		"id" : 14,
+// 		"product_id" : 7,
+// 		"label" : "500g",
+// 		"sku" : "FRESH FRUITS-APPLE-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 40.0,
+// 		"stock" : 54,
+// 		"value" : 500.00,
+// 		"id" : 16,
+// 		"product_id" : 8,
+// 		"label" : "500g",
+// 		"sku" : "FRESH FRUITS-MANGO-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 180.0,
+// 		"stock" : 56,
+// 		"value" : 1.00,
+// 		"id" : 17,
+// 		"product_id" : 9,
+// 		"label" : "1kg",
+// 		"sku" : "EXOTIC SELECTION-DRAGON FRUIT (PITAYA)-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 100.0,
+// 		"stock" : 17,
+// 		"value" : 500.00,
+// 		"id" : 18,
+// 		"product_id" : 9,
+// 		"label" : "500g",
+// 		"sku" : "EXOTIC SELECTION-DRAGON FRUIT (PITAYA)-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 32.0,
+// 		"stock" : 145,
+// 		"value" : 1.00,
+// 		"id" : 24,
+// 		"product_id" : 14,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH VEGETABLES-CAULIFLOWER-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 54.0,
+// 		"stock" : 152,
+// 		"value" : 1.00,
+// 		"id" : 25,
+// 		"product_id" : 16,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH VEGETABLES-CARROT-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 200.0,
+// 		"stock" : 14,
+// 		"value" : 250.00,
+// 		"id" : 26,
+// 		"product_id" : 17,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-RAISINS-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 230.0,
+// 		"stock" : 45,
+// 		"value" : 250.00,
+// 		"id" : 27,
+// 		"product_id" : 18,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-PISTACHIO-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 340.0,
+// 		"stock" : 548,
+// 		"value" : 250.00,
+// 		"id" : 28,
+// 		"product_id" : 19,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-DRIED APRICOT-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 239.0,
+// 		"stock" : 98,
+// 		"value" : 250.00,
+// 		"id" : 29,
+// 		"product_id" : 20,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-CRANBERRIES-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 29.0,
+// 		"stock" : 15,
+// 		"value" : 100.00,
+// 		"id" : 57,
+// 		"product_id" : 36,
+// 		"label" : "Capsicum100g",
+// 		"sku" : "FRESH VEGETABLES-CAPSICUM-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 180.0,
+// 		"stock" : 384,
+// 		"value" : 1.00,
+// 		"id" : 12,
+// 		"product_id" : 7,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH FRUITS-APPLE-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 59.0,
+// 		"stock" : 15,
+// 		"value" : 250.00,
+// 		"id" : 58,
+// 		"product_id" : 36,
+// 		"label" : "Capsicum250g",
+// 		"sku" : "FRESH VEGETABLES-CAPSICUM-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 70.0,
+// 		"stock" : 25,
+// 		"value" : 1.00,
+// 		"id" : 15,
+// 		"product_id" : 8,
+// 		"label" : "1kg",
+// 		"sku" : "FRESH FRUITS-MANGO-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 79.0,
+// 		"stock" : 15,
+// 		"value" : 500.00,
+// 		"id" : 59,
+// 		"product_id" : 36,
+// 		"label" : "Capsicum500g",
+// 		"sku" : "FRESH VEGETABLES-CAPSICUM-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 200.0,
+// 		"stock" : 72,
+// 		"value" : 250.00,
+// 		"id" : 21,
+// 		"product_id" : 11,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-CASHEW-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 400.0,
+// 		"stock" : 10,
+// 		"value" : 250.00,
+// 		"id" : 23,
+// 		"product_id" : 12,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-ANJEER-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 19.0,
+// 		"stock" : 15,
+// 		"value" : 100.00,
+// 		"id" : 60,
+// 		"product_id" : 37,
+// 		"label" : "green chilli100g",
+// 		"sku" : "FRESH VEGETABLES-GREEN CHILLI-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 44.0,
+// 		"stock" : 20,
+// 		"value" : 250.00,
+// 		"id" : 61,
+// 		"product_id" : 37,
+// 		"label" : "green chilli250g",
+// 		"sku" : "FRESH VEGETABLES-GREEN CHILLI-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 340.0,
+// 		"stock" : 45,
+// 		"value" : 250.00,
+// 		"id" : 31,
+// 		"product_id" : 22,
+// 		"label" : "250g",
+// 		"sku" : "DRY FRUITS-PINE NUTS-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 59.0,
+// 		"stock" : 68,
+// 		"value" : 500.00,
+// 		"id" : 32,
+// 		"product_id" : 23,
+// 		"label" : "Fresh grapes500g",
+// 		"sku" : "FRESH FRUITS-FRESH GRAPES-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 100.0,
+// 		"stock" : 68,
+// 		"value" : 1.00,
+// 		"id" : 33,
+// 		"product_id" : 23,
+// 		"label" : "Fresh grapes1g",
+// 		"sku" : "FRESH FRUITS-FRESH GRAPES-1G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 40.0,
+// 		"stock" : 35,
+// 		"value" : 500.00,
+// 		"id" : 34,
+// 		"product_id" : 25,
+// 		"label" : "Fresh pears500g",
+// 		"sku" : "DRY FRUITS-FRESH PEARS-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 70.0,
+// 		"stock" : 35,
+// 		"value" : 1.00,
+// 		"id" : 35,
+// 		"product_id" : 25,
+// 		"label" : "Fresh pears1kg",
+// 		"sku" : "DRY FRUITS-FRESH PEARS-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 35.0,
+// 		"stock" : 22,
+// 		"value" : 1.00,
+// 		"id" : 36,
+// 		"product_id" : 27,
+// 		"label" : "Fresh Watermelon1pcs",
+// 		"sku" : "DRY FRUITS-FRESH WATERMELON-1PCS",
+// 		"unit" : "pcs"
+// 	},
+// 	{
+// 		"price" : 55.0,
+// 		"stock" : 22,
+// 		"value" : 2.00,
+// 		"id" : 37,
+// 		"product_id" : 27,
+// 		"label" : "Fresh Watermelon2pcs",
+// 		"sku" : "DRY FRUITS-FRESH WATERMELON-2PCS",
+// 		"unit" : "pcs"
+// 	},
+// 	{
+// 		"price" : 80.0,
+// 		"stock" : 2235,
+// 		"value" : 500.00,
+// 		"id" : 38,
+// 		"product_id" : 28,
+// 		"label" : "Fresh Pomegranate500g",
+// 		"sku" : "DRY FRUITS-FRESH POMEGRANATE-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 130.0,
+// 		"stock" : 2235,
+// 		"value" : 1.00,
+// 		"id" : 39,
+// 		"product_id" : 28,
+// 		"label" : "Fresh Pomegranate1kg",
+// 		"sku" : "DRY FRUITS-FRESH POMEGRANATE-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 89.0,
+// 		"stock" : 54,
+// 		"value" : 500.00,
+// 		"id" : 40,
+// 		"product_id" : 29,
+// 		"label" : "Fresh Pineapple500g",
+// 		"sku" : "FRESH FRUITS-FRESH PINEAPPLE-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 150.0,
+// 		"stock" : 54,
+// 		"value" : 1.00,
+// 		"id" : 41,
+// 		"product_id" : 29,
+// 		"label" : "Fresh Pineapple1kg",
+// 		"sku" : "FRESH FRUITS-FRESH PINEAPPLE-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 199.0,
+// 		"stock" : 45,
+// 		"value" : 500.00,
+// 		"id" : 42,
+// 		"product_id" : 30,
+// 		"label" : "Fresh Kiwi500g",
+// 		"sku" : "FRESH FRUITS-FRESH KIWI-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 379.0,
+// 		"stock" : 49,
+// 		"value" : 1.00,
+// 		"id" : 43,
+// 		"product_id" : 30,
+// 		"label" : "Fresh Kiwi1kg",
+// 		"sku" : "FRESH FRUITS-FRESH KIWI-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 456.0,
+// 		"stock" : 78,
+// 		"value" : 250.00,
+// 		"id" : 44,
+// 		"product_id" : 31,
+// 		"label" : "Pumpkin Seeds250g",
+// 		"sku" : "DRY FRUITS-PUMPKIN SEEDS-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 569.0,
+// 		"stock" : 37,
+// 		"value" : 250.00,
+// 		"id" : 46,
+// 		"product_id" : 32,
+// 		"label" : "Charoli (Chironji)250g",
+// 		"sku" : "DRY FRUITS-CHAROLI (CHIRONJI)-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 45.0,
+// 		"stock" : 154,
+// 		"value" : 250.00,
+// 		"id" : 47,
+// 		"product_id" : 33,
+// 		"label" : "Fresh Beetroot250g",
+// 		"sku" : "FRESH VEGETABLES-FRESH BEETROOT-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 89.0,
+// 		"stock" : 15,
+// 		"value" : 500.00,
+// 		"id" : 48,
+// 		"product_id" : 33,
+// 		"label" : "Fresh Beetroot500g",
+// 		"sku" : "FRESH VEGETABLES-FRESH BEETROOT-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 150.0,
+// 		"stock" : 13,
+// 		"value" : 1.00,
+// 		"id" : 49,
+// 		"product_id" : 33,
+// 		"label" : "Fresh Beetroot1kg",
+// 		"sku" : "FRESH VEGETABLES-FRESH BEETROOT-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 29.0,
+// 		"stock" : 47,
+// 		"value" : 100.00,
+// 		"id" : 50,
+// 		"product_id" : 34,
+// 		"label" : "Bitter Gourd100g",
+// 		"sku" : "FRESH VEGETABLES-BITTER GOURD-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 49.0,
+// 		"stock" : 45,
+// 		"value" : 250.00,
+// 		"id" : 51,
+// 		"product_id" : 34,
+// 		"label" : "Bitter Gourd250g",
+// 		"sku" : "FRESH VEGETABLES-BITTER GOURD-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 89.0,
+// 		"stock" : 45,
+// 		"value" : 500.00,
+// 		"id" : 52,
+// 		"product_id" : 34,
+// 		"label" : "Bitter Gourd500g",
+// 		"sku" : "FRESH VEGETABLES-BITTER GOURD-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 149.0,
+// 		"stock" : 26,
+// 		"value" : 1.00,
+// 		"id" : 53,
+// 		"product_id" : 34,
+// 		"label" : "Bitter Gourd1kg",
+// 		"sku" : "FRESH VEGETABLES-BITTER GOURD-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 29.0,
+// 		"stock" : 48,
+// 		"value" : 500.00,
+// 		"id" : 54,
+// 		"product_id" : 35,
+// 		"label" : "Fresh Cabbage500g",
+// 		"sku" : "FRESH VEGETABLES-FRESH CABBAGE-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 19.0,
+// 		"stock" : 48,
+// 		"value" : 250.00,
+// 		"id" : 55,
+// 		"product_id" : 35,
+// 		"label" : "Fresh Cabbage250g",
+// 		"sku" : "FRESH VEGETABLES-FRESH CABBAGE-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 49.0,
+// 		"stock" : 48,
+// 		"value" : 1.00,
+// 		"id" : 56,
+// 		"product_id" : 35,
+// 		"label" : "Fresh Cabbage1kg",
+// 		"sku" : "FRESH VEGETABLES-FRESH CABBAGE-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 41.0,
+// 		"stock" : 20,
+// 		"value" : 1.00,
+// 		"id" : 62,
+// 		"product_id" : 37,
+// 		"label" : "green chilli1g",
+// 		"sku" : "FRESH VEGETABLES-GREEN CHILLI-1G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 19.0,
+// 		"stock" : 15,
+// 		"value" : 1.00,
+// 		"id" : 63,
+// 		"product_id" : 38,
+// 		"label" : "corn1pcs",
+// 		"sku" : "FRESH VEGETABLES-CORN-1PCS",
+// 		"unit" : "pcs"
+// 	},
+// 	{
+// 		"price" : 29.0,
+// 		"stock" : 16,
+// 		"value" : 2.00,
+// 		"id" : 64,
+// 		"product_id" : 38,
+// 		"label" : "corn2pcs",
+// 		"sku" : "FRESH VEGETABLES-CORN-2PCS",
+// 		"unit" : "pcs"
+// 	},
+// 	{
+// 		"price" : 59.0,
+// 		"stock" : 20,
+// 		"value" : 5.00,
+// 		"id" : 65,
+// 		"product_id" : 38,
+// 		"label" : "corn5pcs",
+// 		"sku" : "FRESH VEGETABLES-CORN-5PCS",
+// 		"unit" : "pcs"
+// 	},
+// 	{
+// 		"price" : 19.0,
+// 		"stock" : 15,
+// 		"value" : 250.00,
+// 		"id" : 66,
+// 		"product_id" : 39,
+// 		"label" : "Eggplant250g",
+// 		"sku" : "FRESH VEGETABLES-EGGPLANT-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 29.0,
+// 		"stock" : 15,
+// 		"value" : 500.00,
+// 		"id" : 67,
+// 		"product_id" : 39,
+// 		"label" : "Eggplant500g",
+// 		"sku" : "FRESH VEGETABLES-EGGPLANT-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 49.0,
+// 		"stock" : 15,
+// 		"value" : 1.00,
+// 		"id" : 68,
+// 		"product_id" : 39,
+// 		"label" : "Eggplant1kg",
+// 		"sku" : "FRESH VEGETABLES-EGGPLANT-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 19.0,
+// 		"stock" : 145,
+// 		"value" : 100.00,
+// 		"id" : 69,
+// 		"product_id" : 40,
+// 		"label" : "Fresh Ginger100g",
+// 		"sku" : "FRESH VEGETABLES-FRESH GINGER-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 49.0,
+// 		"stock" : 45,
+// 		"value" : 250.00,
+// 		"id" : 70,
+// 		"product_id" : 41,
+// 		"label" : "Fresh Garlic250g",
+// 		"sku" : "FRESH VEGETABLES-FRESH GARLIC-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 29.0,
+// 		"stock" : 56,
+// 		"value" : 250.00,
+// 		"id" : 71,
+// 		"product_id" : 42,
+// 		"label" : "ladies finger250g",
+// 		"sku" : "FRESH VEGETABLES-LADIES FINGER-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 49.0,
+// 		"stock" : 57,
+// 		"value" : 500.00,
+// 		"id" : 72,
+// 		"product_id" : 42,
+// 		"label" : "ladies finger500g",
+// 		"sku" : "FRESH VEGETABLES-LADIES FINGER-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 150.0,
+// 		"stock" : 5,
+// 		"value" : 500.00,
+// 		"id" : 20,
+// 		"product_id" : 10,
+// 		"label" : "500g",
+// 		"sku" : "EXOTIC SELECTION-PASSION FRUIT-500G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 700.0,
+// 		"stock" : 2,
+// 		"value" : 1.00,
+// 		"id" : 22,
+// 		"product_id" : 11,
+// 		"label" : "1kg",
+// 		"sku" : "DRY FRUITS-CASHEW-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 19.0,
+// 		"stock" : 12,
+// 		"value" : 100.00,
+// 		"id" : 73,
+// 		"product_id" : 43,
+// 		"label" : "Fresh Green Peas100g",
+// 		"sku" : "FRESH VEGETABLES-FRESH GREEN PEAS-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 39.0,
+// 		"stock" : 16,
+// 		"value" : 250.00,
+// 		"id" : 74,
+// 		"product_id" : 43,
+// 		"label" : "Fresh Green Peas250g",
+// 		"sku" : "FRESH VEGETABLES-FRESH GREEN PEAS-250G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 99.0,
+// 		"stock" : 17,
+// 		"value" : 1.00,
+// 		"id" : 75,
+// 		"product_id" : 43,
+// 		"label" : "Fresh Green Peas1kg",
+// 		"sku" : "FRESH VEGETABLES-FRESH GREEN PEAS-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 230.0,
+// 		"stock" : 36,
+// 		"value" : 1.00,
+// 		"id" : 19,
+// 		"product_id" : 10,
+// 		"label" : "1kg",
+// 		"sku" : "EXOTIC SELECTION-PASSION FRUIT-1KG",
+// 		"unit" : "kg"
+// 	},
+// 	{
+// 		"price" : 265.0,
+// 		"stock" : 23,
+// 		"value" : 100.00,
+// 		"id" : 45,
+// 		"product_id" : 32,
+// 		"label" : "Charoli (Chironji)100g",
+// 		"sku" : "DRY FRUITS-CHAROLI (CHIRONJI)-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 49.0,
+// 		"stock" : 24,
+// 		"value" : 100.00,
+// 		"id" : 76,
+// 		"product_id" : 44,
+// 		"label" : "fresh cherry100g",
+// 		"sku" : "DRY FRUITS-FRESH CHERRY-100G",
+// 		"unit" : "g"
+// 	},
+// 	{
+// 		"price" : 99.0,
+// 		"stock" : 48,
+// 		"value" : 250.00,
+// 		"id" : 77,
+// 		"product_id" : 44,
+// 		"label" : "fresh cherry250g",
+// 		"sku" : "DRY FRUITS-FRESH CHERRY-250G",
+// 		"unit" : "g"
+// 	}
+// ]}
+
+
+// the above are products variants.
+
+
+
+// {
+// "product_nutrition_vitamins": [
+// 	{
+// 		"product_id" : 44,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 44,
+// 		"vitamin" : "B"
+// 	},
+// 	{
+// 		"product_id" : 44,
+// 		"vitamin" : "B"
+// 	},
+// 	{
+// 		"product_id" : 1,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 1,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 1,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 3,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 3,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 5,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 5,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 6,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 6,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 7,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 7,
+// 		"vitamin" : "b1"
+// 	},
+// 	{
+// 		"product_id" : 7,
+// 		"vitamin" : "b3"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "B9"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "b2"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "B2"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 11,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 11,
+// 		"vitamin" : "B2"
+// 	},
+// 	{
+// 		"product_id" : 11,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "B2"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "B9"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "B5"
+// 	},
+// 	{
+// 		"product_id" : 16,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 16,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 16,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 18,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 18,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 18,
+// 		"vitamin" : "B9"
+// 	},
+// 	{
+// 		"product_id" : 19,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 19,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 19,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 20,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 20,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 20,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 22,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 22,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 22,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 23,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 23,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 23,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 25,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 25,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 25,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 27,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 27,
+// 		"vitamin" : "a"
+// 	},
+// 	{
+// 		"product_id" : 27,
+// 		"vitamin" : "pottasium"
+// 	},
+// 	{
+// 		"product_id" : 28,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 28,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 28,
+// 		"vitamin" : "folate"
+// 	},
+// 	{
+// 		"product_id" : 29,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 29,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 29,
+// 		"vitamin" : "Manganese"
+// 	},
+// 	{
+// 		"product_id" : 30,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 30,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 30,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 32,
+// 		"vitamin" : "656"
+// 	},
+// 	{
+// 		"product_id" : 33,
+// 		"vitamin" : "Folate"
+// 	},
+// 	{
+// 		"product_id" : 33,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 33,
+// 		"vitamin" : "Potassium"
+// 	},
+// 	{
+// 		"product_id" : 34,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 34,
+// 		"vitamin" : "a"
+// 	},
+// 	{
+// 		"product_id" : 34,
+// 		"vitamin" : "Folate"
+// 	},
+// 	{
+// 		"product_id" : 35,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 35,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 36,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 36,
+// 		"vitamin" : "a"
+// 	},
+// 	{
+// 		"product_id" : 36,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 37,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 37,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 37,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 38,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 38,
+// 		"vitamin" : "b1"
+// 	},
+// 	{
+// 		"product_id" : 38,
+// 		"vitamin" : "Folate"
+// 	},
+// 	{
+// 		"product_id" : 39,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 39,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 39,
+// 		"vitamin" : "Potassium"
+// 	},
+// 	{
+// 		"product_id" : 40,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 40,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 41,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 41,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 42,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 42,
+// 		"vitamin" : "b"
+// 	},
+// 	{
+// 		"product_id" : 43,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 43,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 1,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 1,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 1,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 2,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 3,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 3,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 5,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 5,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 6,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 6,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 7,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 7,
+// 		"vitamin" : "b1"
+// 	},
+// 	{
+// 		"product_id" : 7,
+// 		"vitamin" : "b3"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 8,
+// 		"vitamin" : "B9"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "b2"
+// 	},
+// 	{
+// 		"product_id" : 9,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "B2"
+// 	},
+// 	{
+// 		"product_id" : 10,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 11,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 11,
+// 		"vitamin" : "B2"
+// 	},
+// 	{
+// 		"product_id" : 11,
+// 		"vitamin" : "B3"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "B2"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 12,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "B9"
+// 	},
+// 	{
+// 		"product_id" : 14,
+// 		"vitamin" : "B5"
+// 	},
+// 	{
+// 		"product_id" : 16,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 16,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 16,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 18,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 18,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 18,
+// 		"vitamin" : "B9"
+// 	},
+// 	{
+// 		"product_id" : 19,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 19,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 19,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 20,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 20,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 20,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 22,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 22,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 22,
+// 		"vitamin" : "B1"
+// 	},
+// 	{
+// 		"product_id" : 23,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 23,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 23,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 25,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 25,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 25,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 27,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 27,
+// 		"vitamin" : "a"
+// 	},
+// 	{
+// 		"product_id" : 27,
+// 		"vitamin" : "pottasium"
+// 	},
+// 	{
+// 		"product_id" : 28,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 28,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 28,
+// 		"vitamin" : "folate"
+// 	},
+// 	{
+// 		"product_id" : 29,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 29,
+// 		"vitamin" : "B6"
+// 	},
+// 	{
+// 		"product_id" : 29,
+// 		"vitamin" : "Manganese"
+// 	},
+// 	{
+// 		"product_id" : 30,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 30,
+// 		"vitamin" : "K"
+// 	},
+// 	{
+// 		"product_id" : 30,
+// 		"vitamin" : "E"
+// 	},
+// 	{
+// 		"product_id" : 32,
+// 		"vitamin" : "656"
+// 	},
+// 	{
+// 		"product_id" : 33,
+// 		"vitamin" : "Folate"
+// 	},
+// 	{
+// 		"product_id" : 33,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 33,
+// 		"vitamin" : "Potassium"
+// 	},
+// 	{
+// 		"product_id" : 34,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 34,
+// 		"vitamin" : "a"
+// 	},
+// 	{
+// 		"product_id" : 34,
+// 		"vitamin" : "Folate"
+// 	},
+// 	{
+// 		"product_id" : 35,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 35,
+// 		"vitamin" : "k"
+// 	},
+// 	{
+// 		"product_id" : 36,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 36,
+// 		"vitamin" : "a"
+// 	},
+// 	{
+// 		"product_id" : 36,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 37,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 37,
+// 		"vitamin" : "A"
+// 	},
+// 	{
+// 		"product_id" : 37,
+// 		"vitamin" : "b6"
+// 	},
+// 	{
+// 		"product_id" : 38,
+// 		"vitamin" : "C"
+// 	},
+// 	{
+// 		"product_id" : 38,
+// 		"vitamin" : "b1"
+// 	},
+// 	{
+// 		"product_id" : 38,
+// 		"vitamin" : "Folate"
+// 	},
+// 	{
+// 		"product_id" : 39,
+// 		"vitamin" : "c"
+// 	},
+// 	{
+// 		"product_id" : 39,
+// 		"vitamin" : "b6"
+// 	}
+// ]}
+
+
+// this are product nutritions and the below is the images table.
+
+// {
+// "product_images": [
+// 	{
+// 		"id" : 13,
+// 		"product_id" : 14,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/c93e75f8-9ea5-4540-8060-14b564f322e0.jpg",
+// 		"public_id" : "c93e75f8-9ea5-4540-8060-14b564f322e0.jpg"
+// 	},
+// 	{
+// 		"id" : 14,
+// 		"product_id" : 16,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/267e587d-9ad6-4cb6-a1e5-69419a29d118.jpeg",
+// 		"public_id" : "267e587d-9ad6-4cb6-a1e5-69419a29d118.jpeg"
+// 	},
+// 	{
+// 		"id" : 15,
+// 		"product_id" : 17,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/4d7ef006-881b-458f-8de7-31c6326006d3.webp",
+// 		"public_id" : "4d7ef006-881b-458f-8de7-31c6326006d3.webp"
+// 	},
+// 	{
+// 		"id" : 16,
+// 		"product_id" : 18,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/767e8cd5-44de-4ccf-b6b9-b6ddfd0c465a.webp",
+// 		"public_id" : "767e8cd5-44de-4ccf-b6b9-b6ddfd0c465a.webp"
+// 	},
+// 	{
+// 		"id" : 17,
+// 		"product_id" : 19,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/b76990b3-b575-47f9-b79a-fe3886066e1f.webp",
+// 		"public_id" : "b76990b3-b575-47f9-b79a-fe3886066e1f.webp"
+// 	},
+// 	{
+// 		"id" : 18,
+// 		"product_id" : 20,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/865215ef-47d2-4795-bc9a-5ec5bc52af3f.avif",
+// 		"public_id" : "865215ef-47d2-4795-bc9a-5ec5bc52af3f.avif"
+// 	},
+// 	{
+// 		"id" : 20,
+// 		"product_id" : 22,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/72cf48f2-55dc-4bea-81fc-9526d85b6245.webp",
+// 		"public_id" : "72cf48f2-55dc-4bea-81fc-9526d85b6245.webp"
+// 	},
+// 	{
+// 		"id" : 23,
+// 		"product_id" : 27,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/8f880e2f-163b-4e1f-9c3d-a38c95dd1d5e.jpg",
+// 		"public_id" : "8f880e2f-163b-4e1f-9c3d-a38c95dd1d5e.jpg"
+// 	},
+// 	{
+// 		"id" : 24,
+// 		"product_id" : 28,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/5a999a5f-93b6-4857-bd74-59db0b2a232a.jpg",
+// 		"public_id" : "5a999a5f-93b6-4857-bd74-59db0b2a232a.jpg"
+// 	},
+// 	{
+// 		"id" : 25,
+// 		"product_id" : 29,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/27e605aa-4162-4fbc-ac7d-d12c87e17677.jpg",
+// 		"public_id" : "27e605aa-4162-4fbc-ac7d-d12c87e17677.jpg"
+// 	},
+// 	{
+// 		"id" : 26,
+// 		"product_id" : 30,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/b6d08716-1f4d-4a3d-a46a-3761bec64aaf.jpg",
+// 		"public_id" : "b6d08716-1f4d-4a3d-a46a-3761bec64aaf.jpg"
+// 	},
+// 	{
+// 		"id" : 27,
+// 		"product_id" : 31,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/bd735ca1-1b83-49cc-bff9-0b25d7fb91b0.jpg",
+// 		"public_id" : "bd735ca1-1b83-49cc-bff9-0b25d7fb91b0.jpg"
+// 	},
+// 	{
+// 		"id" : 28,
+// 		"product_id" : 32,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/8164b0cf-5ed0-4038-9558-0f1ea3580e3d.jpg",
+// 		"public_id" : "8164b0cf-5ed0-4038-9558-0f1ea3580e3d.jpg"
+// 	},
+// 	{
+// 		"id" : 29,
+// 		"product_id" : 33,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/fb784a23-1bd5-4aa4-a732-7313eac086cc.webp",
+// 		"public_id" : "fb784a23-1bd5-4aa4-a732-7313eac086cc.webp"
+// 	},
+// 	{
+// 		"id" : 30,
+// 		"product_id" : 34,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/9a9df123-e527-4a88-b8b0-34fda668aec4.webp",
+// 		"public_id" : "9a9df123-e527-4a88-b8b0-34fda668aec4.webp"
+// 	},
+// 	{
+// 		"id" : 31,
+// 		"product_id" : 35,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/43b372ed-e24f-493d-8663-accb2692c506.webp",
+// 		"public_id" : "43b372ed-e24f-493d-8663-accb2692c506.webp"
+// 	},
+// 	{
+// 		"id" : 4,
+// 		"product_id" : 4,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/33103fb6-3dbc-4d33-8077-d0c9ddc60b23.webp",
+// 		"public_id" : "33103fb6-3dbc-4d33-8077-d0c9ddc60b23.webp"
+// 	},
+// 	{
+// 		"id" : 3,
+// 		"product_id" : 3,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/8f2dc4eb-b809-478b-bfd6-2723ae859945.webp",
+// 		"public_id" : "8f2dc4eb-b809-478b-bfd6-2723ae859945.webp"
+// 	},
+// 	{
+// 		"id" : 2,
+// 		"product_id" : 2,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/86a65d54-5ac1-4451-a678-0b648da6409c.jpeg",
+// 		"public_id" : "86a65d54-5ac1-4451-a678-0b648da6409c.jpeg"
+// 	},
+// 	{
+// 		"id" : 5,
+// 		"product_id" : 5,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/8006f9d8-92c1-415e-9d45-7a42d82b09e7.jpeg",
+// 		"public_id" : "8006f9d8-92c1-415e-9d45-7a42d82b09e7.jpeg"
+// 	},
+// 	{
+// 		"id" : 7,
+// 		"product_id" : 7,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/f1bd94e1-81dd-458b-b2ef-c4ca0ad9dc0a.webp",
+// 		"public_id" : "f1bd94e1-81dd-458b-b2ef-c4ca0ad9dc0a.webp"
+// 	},
+// 	{
+// 		"id" : 6,
+// 		"product_id" : 6,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/3e356f29-3436-44d3-9565-a20002ff745b.webp",
+// 		"public_id" : "3e356f29-3436-44d3-9565-a20002ff745b.webp"
+// 	},
+// 	{
+// 		"id" : 12,
+// 		"product_id" : 12,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/c8c97e4c-1f7f-4866-ad6d-8d5f8e580d7b.webp",
+// 		"public_id" : "c8c97e4c-1f7f-4866-ad6d-8d5f8e580d7b.webp"
+// 	},
+// 	{
+// 		"id" : 11,
+// 		"product_id" : 11,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/c35fd7b8-e002-43e8-853e-fe745226d03e.jpeg",
+// 		"public_id" : "c35fd7b8-e002-43e8-853e-fe745226d03e.jpeg"
+// 	},
+// 	{
+// 		"id" : 9,
+// 		"product_id" : 9,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/166c9ab2-079d-4081-b20b-ddd30c60f289.webp",
+// 		"public_id" : "166c9ab2-079d-4081-b20b-ddd30c60f289.webp"
+// 	},
+// 	{
+// 		"id" : 21,
+// 		"product_id" : 23,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/6513b9c5-4dbd-450c-8901-792c9f0b0279.jpg",
+// 		"public_id" : "6513b9c5-4dbd-450c-8901-792c9f0b0279.jpg"
+// 	},
+// 	{
+// 		"id" : 22,
+// 		"product_id" : 25,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/b267c058-e7bf-4ec2-a15f-0a6a18d206de.jpg",
+// 		"public_id" : "b267c058-e7bf-4ec2-a15f-0a6a18d206de.jpg"
+// 	},
+// 	{
+// 		"id" : 32,
+// 		"product_id" : 36,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/37f9072b-aa17-4c79-8207-074cc335abc4.webp",
+// 		"public_id" : "37f9072b-aa17-4c79-8207-074cc335abc4.webp"
+// 	},
+// 	{
+// 		"id" : 33,
+// 		"product_id" : 37,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/de0e2c61-96b0-41c4-a01d-0238c34a7caa.webp",
+// 		"public_id" : "de0e2c61-96b0-41c4-a01d-0238c34a7caa.webp"
+// 	},
+// 	{
+// 		"id" : 8,
+// 		"product_id" : 8,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/9a8b3232-aa84-4b44-85bf-b6552d6b15e4.jpeg",
+// 		"public_id" : "9a8b3232-aa84-4b44-85bf-b6552d6b15e4.jpeg"
+// 	},
+// 	{
+// 		"id" : 34,
+// 		"product_id" : 38,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/3c097a45-fe2b-43b6-bd4a-3ecaa9d57ae7.webp",
+// 		"public_id" : "3c097a45-fe2b-43b6-bd4a-3ecaa9d57ae7.webp"
+// 	},
+// 	{
+// 		"id" : 1,
+// 		"product_id" : 1,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/7314def7-7414-4359-98a5-7f1fdac5ff2c.webp",
+// 		"public_id" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/7314def7-7414-4359-98a5-7f1fdac5ff2c.webp"
+// 	},
+// 	{
+// 		"id" : 10,
+// 		"product_id" : 10,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/ca7be9e8-5b3b-4515-a026-7441b385a76e.webp",
+// 		"public_id" : "ca7be9e8-5b3b-4515-a026-7441b385a76e.webp"
+// 	},
+// 	{
+// 		"id" : 35,
+// 		"product_id" : 39,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/8bf8a185-3e37-4ee4-843b-62af8428b2de.webp",
+// 		"public_id" : "8bf8a185-3e37-4ee4-843b-62af8428b2de.webp"
+// 	},
+// 	{
+// 		"id" : 36,
+// 		"product_id" : 40,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/b81cddb6-1102-47b5-ab4d-13252ecdedc4.webp",
+// 		"public_id" : "b81cddb6-1102-47b5-ab4d-13252ecdedc4.webp"
+// 	},
+// 	{
+// 		"id" : 37,
+// 		"product_id" : 41,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/d310b5b7-6151-4c62-bd78-39e59ea7695b.jpg",
+// 		"public_id" : "d310b5b7-6151-4c62-bd78-39e59ea7695b.jpg"
+// 	},
+// 	{
+// 		"id" : 38,
+// 		"product_id" : 42,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/057da81b-206f-4677-a953-1d43c87d1a10.webp",
+// 		"public_id" : "057da81b-206f-4677-a953-1d43c87d1a10.webp"
+// 	},
+// 	{
+// 		"id" : 39,
+// 		"product_id" : 43,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/1fb435f5-f459-4e0a-9087-52474241eec3.webp",
+// 		"public_id" : "1fb435f5-f459-4e0a-9087-52474241eec3.webp"
+// 	},
+// 	{
+// 		"id" : 40,
+// 		"product_id" : 44,
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/f5bb59d9-ef45-4cb1-869b-68a9eb931ea2.webp",
+// 		"public_id" : "f5bb59d9-ef45-4cb1-869b-68a9eb931ea2.webp"
+// 	}
+// ]}
+
+// this are my product image but i want to delete this complete data and use cloudinary to store product images currently i have 4 categories you can see below.  i want to add data through a form so build a react.js file such that.,
+
+
+// the file contains above complete information in a row data and I only should need to choose image to post on the backend server.
+
+// So build a component in react.js
+// server path is api/admin/products
+
+
+
+// {
+// "categories": [
+// 	{
+// 		"created_at" : "2026-01-06T16:11:19.239Z",
+// 		"id" : 3,
+// 		"description" : "Healthy dry fruits   ",
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/c388d694-2e5d-476e-ba11-5363ddf19c32.jpg",
+// 		"name" : "dry fruits   ",
+// 		"public_id" : null,
+// 		"slug" : "dry-fruits"
+// 	},
+// 	{
+// 		"created_at" : "2026-01-06T15:58:25.561Z",
+// 		"id" : 2,
+// 		"description" : "vegetable",
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/f11fb0ce-f1af-4b33-95c6-4bee9fdd2a28.jpg",
+// 		"name" : "fresh vegetables",
+// 		"public_id" : null,
+// 		"slug" : "vegetable"
+// 	},
+// 	{
+// 		"created_at" : "2026-01-06T16:15:49.492Z",
+// 		"id" : 4,
+// 		"description" : "Fresh and Juicy fruits",
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/f11fb0ce-f1af-4b33-95c6-4bee9fdd2a28.jpg",
+// 		"name" : "fresh fruits",
+// 		"public_id" : null,
+// 		"slug" : "fruits"
+// 	},
+// 	{
+// 		"created_at" : "2026-01-06T16:16:38.556Z",
+// 		"id" : 5,
+// 		"description" : "Rare and tropical picks",
+// 		"image" : "https:\/\/ybnuycpntajzjnpqchiu.supabase.co\/storage\/v1\/object\/public\/ecommerceimages\/63bbcaf0-8b66-4c5a-af9d-915933305a70.jpg",
+// 		"name" : "Exotic Selection",
+// 		"public_id" : null,
+// 		"slug" : "exotic-selection"
+// 	}
+// ]}

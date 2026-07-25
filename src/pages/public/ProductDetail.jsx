@@ -8,6 +8,80 @@ import { Badge } from '@/components/ui/Badge';
 import useAuthStore from '@/store/useAuthStore';
 import { useCart } from '@/hooks/useCart';
 import { toast } from '@/components/ui/Sonner';
+import { Skeleton } from '@/components/ui/Skeleton';
+
+const ProductDetailSkeleton = () => {
+  return (
+    <div className="container min-h-screen bg-background">
+      {/* Back Button */}
+      <Skeleton className="h-10 w-40 mb-6 rounded-lg" />
+
+      <div className="grid lg:grid-cols-2 gap-12">
+        {/* Image */}
+        <div>
+          <Skeleton className="aspect-square w-full rounded-3xl" />
+        </div>
+
+        {/* Details */}
+        <div className="space-y-6">
+          {/* Title */}
+          <div className="space-y-3">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="h-10 w-3/4" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-5/6" />
+          </div>
+
+          {/* Price */}
+          <div className="rounded-2xl border p-4 space-y-3">
+            <Skeleton className="h-10 w-40" />
+            <Skeleton className="h-4 w-24" />
+          </div>
+
+          {/* Variants */}
+          <div>
+            <Skeleton className="h-5 w-32 mb-3" />
+            <div className="grid grid-cols-3 gap-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Skeleton key={i} className="h-20 rounded-xl" />
+              ))}
+            </div>
+          </div>
+
+          {/* Quantity + Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex gap-3">
+              <Skeleton className="h-10 w-10 rounded-lg" />
+              <Skeleton className="h-10 w-10 rounded-lg" />
+              <Skeleton className="h-10 w-10 rounded-lg" />
+            </div>
+
+            <Skeleton className="h-12 flex-1 rounded-xl" />
+            <Skeleton className="h-12 flex-1 rounded-xl" />
+          </div>
+
+          {/* Nutrition */}
+          <div className="border rounded-2xl p-4 space-y-4">
+            <Skeleton className="h-7 w-44" />
+
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="flex justify-between">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-4 w-16" />
+              </div>
+            ))}
+
+            <div className="flex gap-2 pt-2">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="h-8 w-20 rounded-full" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ProductDetail = () => {
   const navigate = useNavigate()
@@ -83,7 +157,9 @@ const ProductDetail = () => {
     navigate('/order/checkout', { state: { items: checkoutItems } });
   }
 
-  if (isLoading) return (<div className='text-center'>Loading product...</div>)
+  if (isLoading) {
+    return <ProductDetailSkeleton />;
+  }
 
   if (!product) {
     return (

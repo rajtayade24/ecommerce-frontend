@@ -19,6 +19,58 @@ import { getAllCategories } from '@/service/userService';
 import { useSearchParams, } from 'react-router-dom'
 import useAuthStore from '@/store/useAuthStore';
 
+import { Card } from "@/components/ui/Card";
+import { Skeleton } from "@/components/ui/Skeleton";
+
+
+export const ProductCardSkeleton = () => {
+  return (
+    <Card className="rounded-2xl border overflow-hidden h-full flex flex-col">
+      {/* Image */}
+      <Skeleton className="aspect-square w-full" />
+
+      {/* Content */}
+      <div className="p-4 flex-1 flex flex-col">
+        <Skeleton className="h-6 w-3/4 mb-2" />
+
+        <Skeleton className="h-4 w-full mb-2" />
+        <Skeleton className="h-4 w-5/6 mb-4" />
+
+        <div className="mt-auto flex items-center justify-between border-t pt-3">
+          <div>
+            <Skeleton className="h-7 w-20 mb-2" />
+            <Skeleton className="h-4 w-14" />
+          </div>
+
+          <div className="flex flex-col items-center gap-2">
+            <Skeleton className="h-8 w-8 rounded-full" />
+            <Skeleton className="h-6 w-14 rounded-full" />
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
+
+const FilterSkeleton = () => (
+  <div className="space-y-6">
+    <Skeleton className="h-6 w-24" />
+
+    {Array.from({ length: 5 }).map((_, i) => (
+      <div key={i} className="flex items-center gap-3">
+        <Skeleton className="h-4 w-4 rounded" />
+        <Skeleton className="h-4 w-24" />
+      </div>
+    ))}
+
+    <Skeleton className="h-10 w-full" />
+    <Skeleton className="h-10 w-full" />
+
+    <Skeleton className="h-10 w-full" />
+  </div>
+);
+
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -223,9 +275,19 @@ const Products = () => {
           <div className="flex-1">
 
             {isError ? <div>Error: {error?.message}</div>
-              :
-              (isLoading ? < div > Loading...</div>
-                :
+              : (isLoading ? (
+                <>
+                  <div className="mb-4">
+                    <Skeleton className="h-5 w-40" />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {Array.from({ length: 9 }).map((_, index) => (
+                      <ProductCardSkeleton key={index} />
+                    ))}
+                  </div>
+                </>
+              ) :
                 <>
                   <div className="mb-4 text-sm text-muted-foreground">
                     Showing {products.length} products
@@ -244,7 +306,13 @@ const Products = () => {
                   </motion.div>
 
                   <div ref={loadMoreRef} style={{ padding: 20, textAlign: "center" }}>
-                    {isFetchingNextPage && <div className="p-4">Loading more products...</div>}
+                    {isFetchingNextPage && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                        {Array.from({ length: 3 }).map((_, index) => (
+                          <ProductCardSkeleton key={index} />
+                        ))}
+                      </div>
+                    )}
 
                     {hasNextPage ? (
                       <div className="p-4">

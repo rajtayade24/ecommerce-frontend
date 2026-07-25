@@ -13,14 +13,107 @@ import { toast } from '@/components/ui/Sonner';
 import AddAddressModal from '@/pages/public/AddAddressModal';
 import { extractError } from '@/utils/extractError';
 
+const AddressCardSkeleton = () => {
+  return (
+    <div className="border rounded-lg p-4 flex gap-4 animate-pulse">
+      <Skeleton className="h-5 w-5 rounded-full mt-1" />
+
+      <div className="flex-1 space-y-3">
+        <div className="flex justify-between items-center">
+          <Skeleton className="h-5 w-32" />
+          <Skeleton className="h-4 w-20" />
+        </div>
+
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+      </div>
+    </div>
+  );
+}
+
+const OrderCheckoutSkeleton = () => {
+  return (
+    <div className="container max-w-6xl mx-auto animate-pulse">
+      {/* Header */}
+      <div className="flex items-center gap-4 mb-6">
+        <Skeleton className="h-10 w-24 rounded-lg" />
+        <Skeleton className="h-8 w-72" />
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Left */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Order Summary */}
+          <Card className="p-4">
+            <Skeleton className="h-7 w-48 mb-6" />
+
+            <div className="space-y-5">
+              {[1, 2, 3].map((i) => (
+                <OrderItemCardSkeleton key={i} />
+              ))}
+            </div>
+
+            <Skeleton className="h-4 w-3/4 mt-6" />
+          </Card>
+
+          {/* Address */}
+          <Card className="p-4">
+            <div className="flex justify-between mb-5">
+              <Skeleton className="h-6 w-44" />
+              <Skeleton className="h-5 w-52" />
+            </div>
+
+            <div className="space-y-4">
+              {[1, 2].map((i) => (
+                <AddressCardSkeleton key={i} />
+              ))}
+            </div>
+
+            <div className="flex justify-between mt-6">
+              <Skeleton className="h-10 w-40" />
+              <Skeleton className="h-10 w-40" />
+            </div>
+          </Card>
+        </div>
+
+        {/* Right */}
+        <div className="space-y-4">
+          <Card className="p-4">
+            <Skeleton className="h-6 w-36 mb-5" />
+
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex justify-between mb-4">
+                <Skeleton className="h-4 w-28" />
+                <Skeleton className="h-4 w-20" />
+              </div>
+            ))}
+
+            <Skeleton className="h-6 w-40 mt-5" />
+          </Card>
+
+          {[1, 2].map((i) => (
+            <Card key={i} className="p-4 flex gap-3 items-center">
+              <Skeleton className="h-10 w-10 rounded-full" />
+
+              <div className="flex-1 space-y-2">
+                <Skeleton className="h-5 w-40" />
+                <Skeleton className="h-4 w-56" />
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 const OrderCheckout = () => {
   const { state } = useLocation();
 
-  const { id } = useParams()
   const [data, setData] = useState([]);
 
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
-  const user = useAuthStore(state => state.user);
 
   const [addresses, setAddresses] = useState([]);
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -94,9 +187,15 @@ const OrderCheckout = () => {
       setLoadingDeliver(false);
     }
   };
+
   if (!isAuthenticated) {
     return <UnAuthorizedUser />;
   }
+
+  if (loadingItems || loadingAddress) {
+    return <OrderCheckoutSkeleton />;
+  }
+
   return (
     <div className="bg-background container max-w-6xl mx-auto ">
       <div className="flex items-center gap-4 mb-6">
